@@ -1,0 +1,5 @@
+body {
+  background: map-get($ucx-colors, dark-gray);
+}
+
+@import "edit-profile";

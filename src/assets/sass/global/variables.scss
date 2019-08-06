@@ -1,0 +1,33 @@
+$baseFont: 'Titillium Web', sans-serif;
+$titleFont: 'Raleway', sans-serif;
+
+$body-family: $baseFont;
+
+$section-padding: 0;
+
+$ucx-colors: (
+        blue:#0651a4,
+        green:#40be65,
+        lightGrey:#f5f6f8,
+        black:#14171A,
+        dark:#0b0c10, //background
+        darkest-gray:#151b21,
+        dark-gray:#1f2833, //background of divs
+        light-gray:#bababc,
+        extra-light-gray:#E1E8ED,
+        super-extra-light-gray:#F5F8FA,
+        red-orange:#ff2600,
+        deep-orange: #FF5A09, //text, button(hover), borders
+        light-orange: #ec7f37,
+        orange-yellow: #be4f0c,
+        red:#e0474c,
+        yellow:#ffe234
+
+);
+
+/*
+    Asset paths
+ */
+$assets: (
+        images: 'assets/img/'
+) !default;

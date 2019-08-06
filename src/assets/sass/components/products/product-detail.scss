@@ -1,0 +1,249 @@
+
+.product-details-container {
+  position: relative;
+  background-color: map-get($ucx-colors, dark);
+  min-height: 100vh;
+
+  .columns{
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+  }
+  .product-panel {
+    position: relative;
+    padding-right: 0;
+    padding-left: 0;
+
+    .product-panel-wrapper{
+      border: 1px solid map-get($ucx-colors,deep-orange);
+      border-radius: 3px;
+
+      .product-view{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+
+        img{
+          max-width: 400px;
+        }
+
+        .review-panel{
+          overflow-y: scroll;
+          max-height:100vh;
+          color: map-get($ucx-colors,light-gray);
+          background-color: map-get($ucx-colors,dark-gray);
+          padding:20px 40px;
+
+          .main-rating{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px map-get($ucx-colors,deep-orange) solid;
+
+            h3{
+              font-family: $titleFont;
+              font-size: 1.4rem;
+              color: map-get($ucx-colors,deep-orange);
+            }
+
+            i{
+              color: map-get($ucx-colors,yellow);
+            }
+
+            span{
+              padding-top: 15px;
+              small{
+                color: map-get($ucx-colors,light-orange);
+              }
+              i{
+                color: map-get($ucx-colors,light-gray);
+              }
+            }
+          }
+
+          .customer-rating{
+            .content{
+              padding-top: 20px;
+              text-align: left;
+              .customer-rating-header{
+                .customer-name{
+                  color: map-get($ucx-colors,light-orange);
+                  font-size: 1.1em;
+                }
+
+                i{
+                  color: map-get($ucx-colors,yellow);
+                }
+              }
+              .rating-content{
+                padding-top: 10px;
+              }
+            }
+          }
+        }
+      }
+
+      .panel-actions{
+        border-top: 1px solid map-get($ucx-colors,deep-orange);
+        background-color: map-get($ucx-colors,darkest-gray);
+
+        padding:10px 40px;
+        display: flex;
+        justify-content: space-between;
+
+        a{
+          font-size:20px;
+          color: map-get($ucx-colors, light-orange);
+          margin-left: 10px;
+
+          &:active, :hover{
+            color: map-get($ucx-colors, deep-orange);
+          }
+        }
+
+        .left-actions .fa-star-o{
+          color:map-get($ucx-colors,yellow);
+        }
+
+        .right-actions{
+          display: flex;
+          justify-content: flex-end;
+
+          i{
+            font-size:25px;
+            color: map-get($ucx-colors,light-orange);
+
+            &:hover{
+              color: map-get($ucx-colors,red-orange);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .product-info-panel{
+    height: 100%;
+    position: relative;
+    background: map-get($ucx-colors, dark-gray);;
+
+    .inner-panel{
+      height: 100%;
+
+      .product-info-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 2px solid map-get($ucx-colors,border-color);
+
+        h2{
+          font-family: $titleFont;
+          font-size: 1.3rem;
+          text-transform: uppercase;
+          font-weight: 500;
+          padding: 0 20px;
+          color: map-get($ucx-colors,orange-yellow);
+        }
+      }
+
+      .product-info-body {
+        padding: 30px 50px;
+
+        .product-name-instock{
+
+          h3{
+            font-family: $titleFont;
+            text-transform: uppercase;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: map-get($ucx-colors,deep-orange);
+          }
+
+          h5{
+            color: map-get($ucx-colors,light-orange);
+          }
+        }
+
+        .product-description {
+          padding: 20px 0;
+          color: #999;
+        }
+
+        .product-controls {
+          padding-top: 60px;
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          font-family: $titleFont;
+          color: map-get($ucx-colors,light-gray);
+
+          .product-price {
+            position: relative;
+            padding-right: 15px;
+
+            .heading {
+              font-weight: 600;
+              margin: 5px 0;
+            }
+
+            .value {
+              font-size: 1.6rem;
+              font-weight: 700;
+              color: map-get($ucx-colors,deep-orange);
+            }
+          }
+
+          .product-quantity {
+
+            .heading {
+              font-family: 'Raleway', sans-serif;
+              font-weight: 600;
+              margin: 5px 0;
+              text-align: center;
+            }
+            .input {
+              text-align: center;
+              background-color: transparent;
+              border-color: map-get($ucx-colors, deep-orange);
+              color: map-get($ucx-colors,light-gray);
+              padding: 20px 0;
+            }
+          }
+
+          .add-to-cart {
+            .heading{
+              margin: 5px 0;
+            }
+
+            .is-vhidden {
+              visibility: hidden !important;
+            }
+
+            .button {
+              line-height: 0;
+              font-size: 0.8rem;
+              font-weight: 600;
+              margin-left: 20px;
+              outline: none;
+              border-color: map-get($ucx-colors, deep-orange);
+              background-color: transparent;
+              color: map-get($ucx-colors,light-gray);
+              transition: all 0.5s;
+              padding: 20px 40px;
+              border-radius: 500px;
+
+              &:hover {
+                background-color: map-get($ucx-colors, deep-orange);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

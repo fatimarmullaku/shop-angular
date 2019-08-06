@@ -1,0 +1,35 @@
+/**
+    throw function simulates warning error throwing like low level languages
+ */
+@function throw($log) {
+  @warn $log;
+  @return false;
+}
+
+/**
+    fatal function break the compilation and log the error
+ */
+@function fatal($log) {
+  @error $log;
+  @return false;
+}
+
+/**
+    asset function return path of asset based on paths defined in $assets variable
+    optional: $fileName
+ */
+@function asset($resourceType, $fileName: null) {
+  @if(variable_exists('assets')) {
+    @if (map-has_key($assets, $resourceType)) {
+      @if ($fileName != null) {
+        @return map-get($assets, $resourceType) + $fileName;
+      }
+
+      @return map-get($assets, $resourceType);
+    }
+
+    @return throw("Resource type: #{$resourceType} is not defined in $assets variable");
+  }
+
+  @return fatal("$assets variable is required")
+}

@@ -1,0 +1,42 @@
+@font-face {
+	font-family: "ucxicon";
+	src: url('../fonts/ucxicon/ucxicon.eot');
+	src: url('../fonts/ucxicon/ucxicon.eot?#iefix') format('eot'),
+		url('../fonts/ucxicon/ucxicon.woff2') format('woff2'),
+		url('../fonts/ucxicon/ucxicon.woff') format('woff'),
+		url('../fonts/ucxicon/ucxicon.ttf') format('truetype'),
+		url('../fonts/ucxicon/ucxicon.svg#ucxicon') format('svg');
+}
+
+.ucxicon:before {
+	font-family: "ucxicon";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.ucxicon-console:before {
+	content: "\E001";
+}
+
+.ucxicon-console2:before {
+	content: "\E002";
+}
+
+.ucxicon-home:before {
+	content: "\E003";
+}
+
+.ucxicon-star:before {
+	content: "\E004";
+}
+
+.ucxicon-tracking:before {
+	content: "\E005";
+}

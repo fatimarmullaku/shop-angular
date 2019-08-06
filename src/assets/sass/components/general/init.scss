@@ -1,0 +1,16 @@
+body {
+  background: #ffffff;
+  margin: auto 0;
+}
+
+@import "header";
+
+.grey-background {
+  background: map-get($ucx-colors, black);
+}
+
+.page-unscrollable {
+  overflow: hidden;
+}
+
+
