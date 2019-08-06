@@ -1,0 +1,100 @@
+.auth-intro {
+  text-align: center;
+  //background: url(asset(images, 'signin_signup_bg.jpg')) center center no-repeat;
+  background: linear-gradient(45deg, rgb(45, 11, 30) 0%, rgb(45, 11, 30) 49%,rgb(78, 19, 25) 49%, rgb(78, 19, 25) 67%,rgb(111, 27, 19) 67%, rgb(111, 27, 19) 76%,rgb(143, 36, 14) 76%, rgb(143, 36, 14) 81%,rgb(176, 44, 8) 81%, rgb(176, 44, 8) 82%,rgb(209, 52, 3) 82%, rgb(209, 52, 3) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  color: white;
+  span {
+    font-weight: 600;
+    display: block;
+  }
+
+  h1 {
+    font-size: 68px;
+    color: #fff;
+    font-weight: 400;
+  }
+}
+
+.auth-content {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  border: 0;
+  background-color: #fff;
+  float: right;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0 60px;
+
+  .auth-form-footer {
+    text-align: center;
+    margin-top: 50px;
+  }
+}
+
+.auth-form-header {
+  text-align: center;
+  margin-bottom: 50px;
+
+  h4 {
+    margin-top: 30px;
+    font-weight: 600;
+    text-align: center;
+    color: map_get($ucx-colors,deep-orange);
+    font-size: 1.5rem;
+  }
+
+  span {
+    font-size: 16px;
+    color: map_get($ucx-colors,deep-orange);
+    text-align: center;
+  }
+}
+.auth-button {
+  display: block;
+  font-size: 16px;
+  background: transparent;
+  border: 1px solid map_get($ucx-colors,deep-orange);
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  font-weight: 300;
+  cursor: pointer;
+  border-radius: 3px;
+
+  &:hover {
+    background: map-get($ucx-colors, deep-orange);
+  }
+}
+.login-screen{
+  background-color: map_get($ucx-colors,dark-gray);
+  img{
+    transform: scale(0.4);
+    margin-bottom: -50px;
+  }
+}
+.register-screen{
+  background-color: map_get($ucx-colors,dark-gray);
+  img{
+    transform: scale(0.4);
+    margin-bottom: -50px;
+  }
+}
+.paragraph{
+  color: map_get($ucx-colors,deep-orange);
+}
+.input{
+  border: none;
+
+  &:focus{
+    border: 2px solid map_get($ucx-colors,deep-orange);
+  }
+}
+

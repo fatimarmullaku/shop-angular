@@ -1,0 +1,23 @@
+.checkout-title h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flat-card.is-checkout-form .column.is-padded {
+  padding: 40px;
+}
+
+.flat-card.is-checkout-form .control .input {
+  box-shadow: none !important;
+  color: #828282;
+}
+
+.shop-wrapper {
+  margin-top: 100px;
+
+  .columns.is-vcentered {
+    align-items: center;
+    padding: 30px;
+  }
+}

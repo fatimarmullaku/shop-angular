@@ -1,0 +1,70 @@
+.change-account-settings {
+  padding-top: 20px;
+}
+
+.cancel-button-block {
+  position: relative;
+  padding-left: 50px;
+
+  .cancel-button {
+    display: block;
+    position: absolute;
+    bottom: 20px;
+  }
+
+  @include mobile {
+    padding-left: 0;
+    text-align: center;
+
+    .cancel-button {
+      position: relative;
+      bottom: 0;
+    }
+  }
+}
+
+.save-button {
+  margin-right: 20px;
+}
+
+.static-titles {
+  color: map-get($ucx-colors, deep-orange);
+}
+
+.main-content {
+  background: map-get($ucx-colors, dark-gray);
+}
+
+.columns label {
+  color: map-get($ucx-colors, light-orange);
+}
+
+.side-menu {
+  background: map-get($ucx-colors, dark-gray);
+
+  .edit-profile-menu {
+    position: fixed;
+
+  ul {
+    border-color: map-get($ucx-colors, light-orange);
+    a {
+      color: map-get($ucx-colors, light-orange);
+
+      &:hover {
+        border: 1px solid map-get($ucx-colors, light-orange);
+        background: map-get($ucx-colors, light-orange);
+        color: white;
+      }
+    }
+  }
+
+    @include mobile {
+      position: relative;
+    }
+  }
+}
+
+/*
+body {
+  background: linear-gradient(135deg, rgb(21, 70, 45),rgb(177, 24, 19),rgb(203, 214, 34));
+}*/
