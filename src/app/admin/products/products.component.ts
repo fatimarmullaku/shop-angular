@@ -12,7 +12,7 @@ export class ProductsComponent implements OnInit {
       unitPrice: '29.00',
       inStock: '7',
       recordStatus : 'ACTIVE',
-      description: 'Most popular game on UCZ',
+      description: 'Most popular game on UCX',
       category: 'PS4'
     },
     {  id: 2 ,
@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
       unitPrice: '17.00',
       inStock: '4',
       recordStatus : 'INACTIVE',
-      description: 'Most popular game on UCZ',
+      description: 'Most popular game on UCX',
       category: 'XBOX'
     },
     {  id: 3 ,
@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
       unitPrice: '29.00',
       inStock: '7',
       recordStatus : 'INACTIVE',
-      description: 'Most popular game on UCZ',
+      description: 'Most popular game on UCX',
       category: 'PS4'
     },
     {  id: 4 ,
@@ -36,7 +36,7 @@ export class ProductsComponent implements OnInit {
       unitPrice: '26.00',
       inStock: '10',
       recordStatus : 'ACTIVE',
-      description: 'Most popular game on UCZ',
+      description: 'Most popular game on UCX',
       category: 'XBOX'
     },
   ];
