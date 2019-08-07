@@ -1,0 +1,30 @@
+<div id="content" #content>
+  <div class="container">
+    <div class="card">
+      <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Products</h3>
+      <div class="card-body">
+        <div id="table" class="table-editable">
+
+          <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
+            <tr class="main">
+              <th class="text-center">Name</th>
+              <th class="text-center">Record Status</th>
+              <th class="text-center">Description</th>
+              <th class="text-center">Category</th>
+              <th class="text-center">Unit Price</th>
+              <th class="text-center">inStock</th>
+            </tr>
+            <tr *ngFor="let p of products">
+              <td class="text-center">{{p.name}}</td>
+              <td class="text-center">{{p.recordStatus}}</td>
+              <td class="text-center">{{p.description}}</td>
+              <td class="text-center">{{p.category}}</td>
+              <td class="text-center">{{p.unitPrice}}</td>
+              <td class="text-center"> {{p.inStock}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

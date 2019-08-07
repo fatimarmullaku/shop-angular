@@ -10,11 +10,17 @@ import { NewPasswordComponent } from './auth/new-password/new-password.component
 import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ForgotPasswordComponent, NewPasswordComponent, ProductListComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    NewPasswordComponent,
+    ProductListComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,
-    SharedModule
+    SharedModule,
+
   ]
 })
 export class ShopModule { }
