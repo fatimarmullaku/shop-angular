@@ -39,6 +39,23 @@ export class ProductsComponent implements OnInit {
       description: 'Most popular game on UCX',
       category: 'XBOX'
     },
+    {  id: 5 ,
+      name: 'Need for speed rivals' ,
+      unitPrice: '49.00',
+      inStock: '15',
+      recordStatus : 'ACTIVE',
+      description: 'Most popular game on UCX',
+      category: 'XBOX'
+    },
+
+    {  id: 6 ,
+      name: 'Star Wars' ,
+      unitPrice: '49.00',
+      inStock: '15',
+      recordStatus : 'ACTIVE',
+      description: 'Ultimate edition',
+      category: 'XBOX'
+    },
   ];
 
 
