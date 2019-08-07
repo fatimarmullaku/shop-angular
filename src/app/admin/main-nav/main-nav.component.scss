@@ -1,0 +1,92 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background-color:#2d323e;
+
+}
+
+.sidenav .mat-toolbar {
+  background-color:#2d323e;
+  color:white;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+}
+
+.mat-toolbar {
+  background-color:white;
+}
+
+.btn {
+  margin-left:20px;
+}
+
+mat-nav-list a {
+  color:white;
+}
+
+.fa-user {
+  margin-right:10px;
+}
+
+.fa-home {
+  margin-right: 10px;
+}
+
+.fa-tablet {
+  margin-right: 10px;
+}
+
+.fa-building  {
+  margin-right: 10px;
+}
+
+.fa-list {
+  margin-right: 10px;
+}
+
+.side-nav-container  {
+  text-align:center;
+  margin-bottom: 10px;
+}
+
+.user {
+  color:white;
+}
+
+.detalis {
+  font-size:13px;
+  color:rgba(255, 255, 255, 0.644);
+}
+
+.side-nav-container {
+
+}
+
+/* dropdown color  */
+
+a {
+  text-decoration: none;
+}
+
+
+.form-control {
+  border-top:0px;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+
+.my-menu {
+  font-size: 17px;
+  color:white;
+  margin-left:20px;
+}
+

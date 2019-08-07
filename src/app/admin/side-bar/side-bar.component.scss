@@ -1,0 +1,53 @@
+ .sidenav-container {
+  height: 100%;
+
+   .sidenav {
+     width: 200px;
+     background-color:#2d323e;
+     .mat-toolbar {
+       background-color:#2d323e;
+       color:white;
+       display:flex;
+       justify-content: center;
+       .mat-primary {
+         position: sticky;
+         top: 0;
+         z-index: 1;
+       }
+     }
+     mat-nav-list {
+       a{
+         color:white;
+         text-decoration: none;
+       }
+       i{
+         font-size:20px;
+         margin-left:12px;
+         margin-right:5px;
+       }
+     }
+   }
+
+   .fa-shopping-cart {
+     font-size:16px;
+   }
+
+   .side-nav-container  {
+     text-align:center;
+     margin-bottom: 10px;
+
+     .detalis {
+       font-size:13px;
+       color:white;
+     }
+     .user {
+       font-size:15px;
+       color:white;
+     }
+
+
+   }
+}
+
+
+
