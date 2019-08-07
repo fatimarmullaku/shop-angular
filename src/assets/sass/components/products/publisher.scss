@@ -1,29 +1,4 @@
-.columns-menu-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 10px;
-  padding: 30px;
-  margin: 30px 30px;
-  color: map_get($ucx-colors,deep-orange);
-  border: 1px solid map_get($ucx-colors, deep-orange);
-
-  background: map_get($ucx-colors,dark-gray);
-  .column-menu {
-    border: 3px solid transparent;
-    text-align: center;
-    padding: 20px 3px;
-    margin: -30px 0;
-
-
-    &:hover {
-      border-bottom: 3px solid coral;
-    }
-  }
-
-}
-
-
-.category-container {
+.publisher-container {
   border: 1px solid map_get($ucx-colors, deep-orange);
   background: #fff;
   margin: 40px 30px;
@@ -34,25 +9,28 @@
     background-color: red;
   }
 
-  #img-windows {
-    background-color: #0078d7;
+  #img3 {
+    background-color: black;
   }
 
-  #img-playstation {
+  #img2 {
     background-color: #003791;
   }
 
-  #img-xbox {
+  #img1 {
     background-color: green;
   }
-  #img-android{
+  #img4 {
     background-color: #a4c639;
   }
-  #img-ios{
+  #img5 {
     background-color: rgb(49,49,49);
   }
+  #img6 {
+    background-color: darkslategray;
+  }
 
-  .category-link {
+  .publisher-link {
     background: map_get($ucx-colors,dark-gray);
     border: 1.5px solid map_get($ucx-colors,deep-orange);
     display: block;
@@ -69,7 +47,7 @@
       width: 230px;
       height: 230px;
       padding: 40px;
-
+      
     }
   }
 }

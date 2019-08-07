@@ -1,31 +1,39 @@
-
-
+body{
+  background: #000;
+}
 .main-box {
-  border: 1px solid map_get($ucx-colors, deep-orange);
-  background: map_get($ucx-colors, dark-gray);
+  border: 1px solid map_get($ucx-colors,deep-orange);
+  background: map_get($ucx-colors,dark-gray);
   margin-top: 30px;
-  margin-bottom: 30px;
-
-  .inner-box {
-    background: map_get($ucx-colors, dark-gray);
-    border: 1px solid map_get($ucx-colors, deep-orange);
-    color: map_get($ucx-colors, deep-orange);
-
-    @include mobile {
-      .wish-list-featured-image {
-        width: 60%;
-        margin: 0 auto;
-        display: block;
-      }
+  @include mobile{
+    margin: 10px 10px;
+  }
+  .inner-box{
+    background: map_get($ucx-colors,dark-gray);
+    border: 1px solid map_get($ucx-colors,deep-orange);
+    color: map_get($ucx-colors,deep-orange);
+  }
+  @include desktop{
+    .wishlist-item-information{
+      margin-left: 0px;
+    }
+    .wishlist-image-container{
+      width: auto;
     }
   }
 
+
   h1 {
     font-size: 25px;
-    color: map_get($ucx-colors, deep-orange);
+    color: map_get($ucx-colors,deep-orange);
   }
 
-  .wishlist-button-container {
+  @include mobile{
+    img{
+      width: 600px;
+    }
+  }
+  .wishlist-button-container{
     .wishlist-button {
       line-height: 0;
       font-size: 0.8rem;
@@ -46,15 +54,19 @@
         background-color: map-get($ucx-colors, deep-orange);
       }
     }
+    @include mobile{
+      .wishlist-button{
+        width: 100%;
+      }
+    }
 
   }
 }
-
-.wishlist-button-container {
+.wishlist-button-container{
   align-items: baseline;
 }
-
-.remove-button {
+.remove-button{
+  //float: right;
   line-height: 0;
   font-size: 1rem;
   font-weight: 600;
@@ -69,8 +81,11 @@
   padding: 7px 10px;
   border-radius: 500px;
   cursor: pointer;
-
-  &:hover {
+  &:hover{
     background-color: map-get($ucx-colors, deep-orange);
   }
+
+}
+#icon-container{
+  width: 19%
 }

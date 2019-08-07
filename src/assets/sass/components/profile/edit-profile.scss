@@ -64,6 +64,14 @@
   }
 }
 
+.side-menu-parent {
+  margin-right: 10px;
+
+  @include mobile {
+    margin-right: 0;
+  }
+}
+
 /*
 body {
   background: linear-gradient(135deg, rgb(21, 70, 45),rgb(177, 24, 19),rgb(203, 214, 34));
