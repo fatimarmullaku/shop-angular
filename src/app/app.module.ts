@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ShopModule} from './shop/shop.module';
-import {AdminModule} from "./admin/admin.module";
 import {
   MatButtonModule,
   MatCardModule,
@@ -13,6 +11,7 @@ import {
   MatToolbarModule
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,9 +19,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
-    ShopModule,
-    AdminModule,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
@@ -30,9 +28,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatListModule,
     MatCardModule,
     BrowserAnimationsModule,
-
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

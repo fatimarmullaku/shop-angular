@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {DashboardBaseComponent} from './admin/layout/base/dashboard-base.component';
-import {BaseComponent} from "./shared/layout/base/base.component";
+import {BaseComponent} from './shared/layout/base/base.component';
 
 const routes: Routes = [
 
@@ -11,8 +11,7 @@ const routes: Routes = [
     loadChildren: './shop/shop.module#ShopModule'
   },
   {
-    path:'admin',
-    component:DashboardBaseComponent,
+    path: 'admin',
     loadChildren: './admin/admin.module#AdminModule'
   },
 
@@ -22,4 +21,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
