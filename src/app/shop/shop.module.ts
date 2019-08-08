@@ -13,6 +13,8 @@ import { ProductsSidebarComponent } from './products/products-sidebar/products-s
 import { ProductItemComponent } from './products/product-list/product-item/product-item.component';
 import { ProductMenuComponent } from './products/product-list/product-menu/product-menu.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { ProductReviewsComponent } from './products/product-detail/product-reviews/product-reviews.component';
+import { ProductGalleryComponent } from './products/product-detail/product-gallery/product-gallery.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
     ProductsSidebarComponent,
     ProductItemComponent,
     ProductMenuComponent,
-    ProductDetailComponent],
+    ProductDetailComponent,
+    ProductReviewsComponent,
+    ProductGalleryComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,

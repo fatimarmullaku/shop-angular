@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ProductsComponent} from './products/products.component';
 import {ProductDetailComponent} from './products/product-detail/product-detail.component';
+import {ProductReviewsComponent} from './products/product-detail/product-reviews/product-reviews.component';
+import {ProductGalleryComponent} from './products/product-detail/product-gallery/product-gallery.component';
 
 const routes: Routes = [
   {
@@ -11,7 +13,18 @@ const routes: Routes = [
   },
   {
     path: 'products/:id',
-    component: ProductDetailComponent
+    component: ProductDetailComponent,
+    children: [
+      {
+        path: '',
+        component: ProductGalleryComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'reviews',
+        component: ProductReviewsComponent
+      }
+    ]
   }
 ];
 

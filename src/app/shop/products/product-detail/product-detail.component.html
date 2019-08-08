@@ -5,15 +5,13 @@
     <div class="column product-panel">
       <div class="product-panel-wrapper">
 
-        <div class="product-view">
-          <img [src]="product.image" alt="">
-        </div>
+        <router-outlet></router-outlet>
 
         <div class="panel-actions">
 
           <div class="left-actions">
-            <a href="product-details.html"><i class='far fa-image'></i></a>
-            <a href="product-review.html"><i class="fa fa-star-o"></i></a>
+            <a (click)="onProductsLinkClick('gallery')"><i class='far fa-image'></i></a>
+            <a (click)="onProductsLinkClick('reviews')"><i class="fa fa-star-o"></i></a>
           </div>
 
           <div class="right-actions">
