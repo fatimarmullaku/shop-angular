@@ -1,7 +1,40 @@
-.card-header {
-  background-color:#f5f6f8;
+.card{
+  background: transparent;
+  .card-header {
+    text-align: center;
+    color:white;
+  }
+  .scrollable {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    display: block;
+  }
+  .card-body{
+    .table{
+      border: #4b4747 solid 1px;
+      background: transparent;
+      color:white;
+      .thead{
+        background-color: #4b4747;
+        th {
+          padding: 10px 15px;
+          color:white;
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+        .add{
+          background: #40be65;
+        }
+      }
+      .tbody
+      {
+        td{
+          border-color: #4b4747;
+        }
+      }
+    }
+  }
 }
 
-.main {
-  background-color:#f5f6f8;
-}
+

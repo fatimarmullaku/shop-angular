@@ -1,0 +1,115 @@
+.static-filter {
+  height: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-top: 10px;
+  position: fixed;
+  display: inline;
+
+
+  .dropdown-categories {
+    display: inline-block;
+    width: 100%;
+    position: static;
+    padding-left:35px;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .dropdown-categories-content {
+      width: 100%;
+      display: none;
+      visibility: collapse;
+      position: relative;
+      background-color: transparent;
+      padding: 12px 16px;
+    }
+
+    #dropdown-categories-content:checked + .dropdown-categories-content {
+      display: block;
+      visibility: visible;
+    }
+    label{
+      display: block;
+    }
+  }
+
+  .dropdown-sort {
+    display: inline-block;
+    width: 100%;
+    position: static;
+    padding-left:35px;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .dropdown-sort-content {
+      width: 100%;
+      display: none;
+      visibility: collapse;
+      position: relative;
+      background-color: transparent;
+      padding: 12px 16px;
+    }
+
+    #dropdown-sort-content:checked + .dropdown-sort-content {
+      display: block;
+      visibility: visible;
+    }
+    label{
+      display: block;
+    }
+  }
+
+  .dropdown-filter {
+    display: inline-block;
+    width: 100%;
+    position: static;
+    padding-left:35px;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .dropdown-filter-content {
+      width: 100%;
+      display: none;
+      visibility: collapse;
+      position: relative;
+      background-color: transparent;
+      padding: 12px 16px;
+
+      .slider {
+        -webkit-appearance: none;
+
+        height: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 10px;
+        height: 7.5px;
+        background: orange;
+        cursor: pointer;
+      }
+    }
+
+    #dropdown-filter-content:checked + .dropdown-filter-content {
+      display: block;
+      visibility: visible;
+    }
+  }
+}
+

@@ -1,6 +1,50 @@
-<app-side-bar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)"
+               class="sidenav"
+               fixedInViewport="true">
+    <mat-toolbar>
+      <span class="main-title">UCX Games</span>
+    </mat-toolbar>
+    <div class="side-nav-container">
+      <p class="user"> {{username}}</p>
+      <p class="detalis">{{role}}</p>
+      <mat-nav-list (click)="closeSideNav()">
+        <a class="sidebarMenu" mat-list-item routerLink="/admin/home">
+          <i class="fa fa-home"></i> Home</a>
+        <a class="sidebarMenu" mat-list-item routerLink="/admin/categories">
+          <i class="fa fa-tablet"></i> Categories</a>
+        <a class="sidebarMenu" mat-list-item routerLink="/admin/products">
+          <i class="fas fa-shopping-cart"></i> Products</a>
+        <a class="sidebarMenu" mat-list-item routerLink="/admin/customers">
+          <i class="fa fa-user"></i>Customers</a>
+        <a class="sidebarMenu" mat-list-item routerLink="/admin/orders">
+          <i class="fa fa-building"></i> Orders</a>
+        <a class="sidebarMenu" mat-list-item routerLink="/admin/activitylogs">
+          <i class="fa fa-tablet"></i>Activity Logs</a>
+        <a class="sidebarMenu" mat-list-item routerLink="/admin/roles">
+          <i class="fa fa-user"></i> Roles</a>
+        <a class="sidebarMenu" mat-list-item routerLink="/admin/users">
+          <i class="fa fa-user"></i> Users</a>
+      </mat-nav-list>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+
+      <button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        type="button">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
     <router-outlet></router-outlet>
-</app-side-bar>
-
-
-<!--our modules are lazy loading-->
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,27 +1,43 @@
 <div id="content" #content>
   <div class="container">
     <div class="card">
-      <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Products</h3>
-      <div class="card-body">
-        <div id="table" class="table-editable">
 
-          <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
-            <tr class="main">
-              <th class="text-center">Name</th>
-              <th class="text-center">Record Status</th>
-              <th class="text-center">Description</th>
-              <th class="text-center">Category</th>
-              <th class="text-center">Unit Price</th>
-              <th class="text-center">inStock</th>
-            </tr>
-            <tr *ngFor="let p of products">
-              <td class="text-center">{{p.name}}</td>
-              <td class="text-center">{{p.recordStatus}}</td>
-              <td class="text-center">{{p.description}}</td>
-              <td class="text-center">{{p.category}}</td>
-              <td class="text-center">{{p.unitPrice}}</td>
-              <td class="text-center"> {{p.inStock}}</td>
-            </tr>
+      <div class="card-header">
+        <div class="media-content">
+          <h3 class="text-center font-weight-bold text-uppercase py-4">{{pageData.tableName}}</h3>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div id="table">
+          <table class="table table-responsive-md table-dark text-center" id="contentToConvert">
+            <thead class="thead">
+              <tr>
+                <th  *ngFor="let d of pageData.tableHead" class="text-center">{{d}}</th>
+                <th class="text-center add">
+                  <a>
+                    <span class="icon is-rounded">
+                      <i class="fa fa-plus"></i>
+                    </span>
+                    Add {{pageData.tableName}}
+                  </a>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="tbody">
+              <tr *ngFor="let p of products">
+                <td class="text-center">{{p.name}}</td>
+                <td class="text-center">{{p.recordStatus}}</td>
+                <td class="text-center">{{p.description}}</td>
+                <td class="text-center">{{p.category}}</td>
+                <td class="text-center">{{p.unitPrice}}</td>
+                <td class="text-center"> {{p.inStock}}</td>
+                <td class="text-center">
+                  <a class="button is-small is-dark">Edit</a>
+                  <a class="button is-small is-danger">Delete</a>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
