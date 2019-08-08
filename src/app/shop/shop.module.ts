@@ -11,6 +11,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ProductsComponent } from './products/products.component';
 import { ProductsSidebarComponent } from './products/products-sidebar/products-sidebar.component';
 import { ProductItemComponent } from './products/product-list/product-item/product-item.component';
+import { ProductMenuComponent } from './products/product-list/product-menu/product-menu.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductItemComponent } from './products/product-list/product-item/produ
     ProductListComponent,
     ProductsComponent,
     ProductsSidebarComponent,
-    ProductItemComponent],
+    ProductItemComponent,
+    ProductMenuComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,

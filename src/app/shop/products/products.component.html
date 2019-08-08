@@ -1,8 +1,10 @@
 <div class="columns">
-  <div class="column is-2">
+  <div class="column is-2-desktop is-hidden-mobile">
     <app-products-sidebar></app-products-sidebar>
   </div>
-  <div class="column is-10">
+  <div class="column is-10-desktop is-12-mobile is-12-tablet">
+    <div class="inner-products">
+      <app-product-menu></app-product-menu>
     <app-product-list [products]="products"></app-product-list>
 
     <!-- PAGINATION -->
@@ -25,6 +27,7 @@
           </li>
         </ul>
       </div>
+    </div>
     </div>
   </div>
 </div>

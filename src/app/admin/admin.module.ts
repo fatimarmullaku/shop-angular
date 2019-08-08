@@ -24,7 +24,7 @@ import {PublishersComponent} from './products/publishers/publishers.component';
     CustomersComponent,
     TablesDComponent,
     PlatformsComponent,
-    PublishersComponent
+    PublishersComponent,
   ],
   imports: [
     CommonModule,
