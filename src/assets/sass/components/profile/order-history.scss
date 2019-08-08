@@ -1,41 +1,77 @@
-/* Dropdown Button */
-.dropdown {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+body{
+  background: #000;
 }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-table;
+.main-content{
+  border: 1px solid map_get($ucx-colors, deep-orange);
+  border-radius: 6px;
+  margin:0 auto;
+
+  .order-history-screen{
+    .history-items {
+      background-color: map_get($ucx-colors, dark-gray);
+      margin-bottom: 30px;
+
+      .purchase-info-wrapper{
+        background: rgb(255,126,63);
+        background: linear-gradient(90deg, rgba(255,126,63,0.5755251929873512) 0%, rgba(255,90,9,0.7884103470489758) 50%, rgba(255,126,63,1) 100%);
+
+        .purchase-info{
+          font-family: $baseFont;
+          font-size: 1.2rem;
+          text-align: center;
+          color: map_get($ucx-colors, dark);
+        }
+      }
+      .inner-box {
+        background: map_get($ucx-colors, dark-gray);
+        border: 1px solid map_get($ucx-colors, deep-orange);
+        color: map_get($ucx-colors, deep-orange);
+      }
+      .media-wrapper{
+        .media{
+          border: 1px solid map_get($ucx-colors, deep-orange);
+          border-radius: 6px;
+          padding: 10px;
+          .image-left{
+            img{
+              height:250px;
+              width:auto;
+            }
+          }
+          .media-content{
+
+            h1{
+              color: map_get($ucx-colors, deep-orange);
+            }
+            .game-information{
+              p{
+                color: map-get($ucx-colors,light-gray);
+              }
+            }
+            .order-history-button-container{
+              .order-history-button{
+                line-height: 0;
+                font-size: 0.8rem;
+                font-weight: 600;
+                margin-top: 20px;
+                outline: none;
+                border-color: map-get($ucx-colors, deep-orange);
+                background-color: transparent;
+                color: map-get($ucx-colors,light-gray);
+                transition: all 0.5s;
+                padding: 20px 40px;
+                border-radius: 500px;
+
+                &:hover {
+                  background-color: map-get($ucx-colors, deep-orange);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
 }
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: inline-table;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
