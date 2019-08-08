@@ -1,6 +1,6 @@
-<div class="my-cart">
+<a [routerLink]="['./products/', item.id]" class="my-cart">
   <div class="image">
     <img [src]="item.image" alt="">
   </div>
   <h4>{{ item.title }}</h4>
-</div>
+</a>
