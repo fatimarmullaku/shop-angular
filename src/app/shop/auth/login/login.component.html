@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="auth-content login-screen">
+  <div class="auth-form-header">
+    <img src="assets/img/ucx-white-logo.svg" alt="">
+    <h4>Sign in to UCXMarket</h4>
+    <span>Enter your email and password below</span>
+  </div>
+
+  <form action="">
+    <div class="field">
+      <div class="control">
+        <input type="text" class="input auth-input" placeholder="Username or Email">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <input type="text" class="input auth-input" placeholder="Password">
+      </div>
+    </div>
+
+    <div>
+      <button class="auth-button">Sign in</button>
+    </div>
+  </form>
+
+  <div class="auth-form-footer">
+    <div class="forgot-password-link">
+      <a [routerLink]="['/auth', 'forgot-password']">Forgot Password?</a>
+    </div>
+
+    <div class="register-account-link">
+      <p class="paragraph">Don't have an account yet?<a [routerLink]="['/auth', 'register']">Sign up</a></p>
+    </div>
+  </div>
+</div>

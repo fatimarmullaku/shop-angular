@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-new-password',
-  templateUrl: './new-password.component.html',
-  styleUrls: ['./new-password.component.scss']
+  templateUrl: './new-password.component.html'
 })
 export class NewPasswordComponent implements OnInit {
 

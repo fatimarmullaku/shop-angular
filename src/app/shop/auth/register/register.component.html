@@ -1,1 +1,55 @@
-<p>register works!</p>
+<div class="auth-content register-screen">
+  <div class="auth-form-header">
+    <img src="assets/img/ucx-white-logo.svg" alt="">
+    <h4>Create an Account</h4>
+    <span>Sign up to UCXMarket</span>
+  </div>
+
+  <form action="">
+    <div class="field">
+      <div class="control">
+        <input type="text" class="input auth-input" placeholder="First Name">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <input type="text" class="input auth-input" placeholder="Last Name">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <input type="text" class="input auth-input" placeholder="Username">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <input type="text" class="input auth-input" placeholder="Email">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <input type="text" class="input auth-input" placeholder="Password">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <input type="text" class="input auth-input" placeholder="Confirm Password">
+      </div>
+    </div>
+
+    <div>
+      <button class="auth-button">Sign up</button>
+    </div>
+  </form>
+
+  <div class="auth-form-footer">
+    <div class="login-link">
+      <p class="paragraph">Already a member?<a [routerLink]="['/auth']">Sign in</a></p>
+    </div>
+  </div>
+</div>
