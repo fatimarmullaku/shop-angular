@@ -8,6 +8,7 @@ import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 import {NewPasswordComponent} from './auth/new-password/new-password.component';
+import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 
 const routes: Routes = [
   {
@@ -31,20 +32,31 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent
-  },
-  {
-    path: 'new-password/:token',
-    component: NewPasswordComponent
+    path: 'auth',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent
+      },
+      {
+        path: 'new-password/:token',
+        component: NewPasswordComponent
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/auth/login'
+      }
+    ]
   }
 ];
 

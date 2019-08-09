@@ -15,6 +15,7 @@ import { ProductMenuComponent } from './products/product-list/product-menu/produ
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductReviewsComponent } from './products/product-detail/product-reviews/product-reviews.component';
 import { ProductGalleryComponent } from './products/product-detail/product-gallery/product-gallery.component';
+import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductGalleryComponent } from './products/product-detail/product-galle
     ProductMenuComponent,
     ProductDetailComponent,
     ProductReviewsComponent,
-    ProductGalleryComponent],
+    ProductGalleryComponent,
+    AuthLayoutComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,
