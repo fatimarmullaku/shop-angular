@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {ProductService} from '../../../../shared/services/product.service';
 
 @Component({
   selector: 'app-product-gallery',
@@ -8,15 +9,17 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProductGalleryComponent implements OnInit {
 
-  image = '';
+  image;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) {
   }
 
   ngOnInit() {
-    if (history.state.data) {
-      this.image = history.state.data.image;
-    }
+    this.activatedRoute.parent.params.subscribe(res => {
+      if (res.id) {
+        this.image = this.productService.getProduct(res.id).image;
+      }
+    });
   }
 
 }

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ProductService} from '../../../../shared/services/product.service';
+import {ProductRatingModel} from '../../../../shared/models/product-rating.model';
 
 @Component({
   selector: 'app-product-reviews',
@@ -7,13 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductReviewsComponent implements OnInit {
 
-  reviews: any[];
+  rating: ProductRatingModel;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) {
+  }
 
   ngOnInit() {
-    if (history.state.data) {
-      this.reviews = history.state.data.reviews;
-    }
+    this.activatedRoute.parent.params.subscribe(res => {
+      if (res.id) {
+        this.rating = this.productService.getProduct(res.id).rating;
+      }
+    });
   }
+
+  getRating(): {stars: number, half: boolean} {
+    return {
+      stars: Math.floor(this.rating.rated),
+      half: this.rating.rated - Math.floor(this.rating.rated) > 0
+    };
+  }
+
 }

@@ -1,39 +1,28 @@
 <div class="product-view">
-  <div class="review-panel">
+  <div class="review-panel" *ngIf="rating">
 
     <div class="main-rating">
       <h3>PRODUCT RATING</h3>
       <div class="stars">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star-half"></i>
+        <i *ngFor="let i of [].constructor(getRating().stars)" class="fa fa-star"></i>
+        <i *ngIf="getRating().half" class="fa fa-star-half"></i>
       </div>
-      <span>Rated <small>4,5/5</small> out of <small>29</small> reviews</span>
+      <span>Rated <small>{{ rating.rated }}/{{ rating.totalRating }}</small> out of <small>{{ rating.totalReviews }}</small> reviews</span>
       <span class="add-review"><i class="fa fa-plus"></i>Add review</span>
     </div>
 
-    <div *ngIf="reviews">
-      <div class="customer-rating" *ngFor="let review of reviews">
-        <div class="content">
-          <div class="customer-rating-header">
-            <span class="customer-name">{{ review.name }}</span>
-            <small>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </small>
-          </div>
-          <p class="rating-content">
-            {{ review.description }}
-          </p>
+    <div class="customer-rating" *ngFor="let review of rating.reviews">
+      <div class="content">
+        <div class="customer-rating-header">
+          <span class="customer-name">{{ review.name }}</span>
+          <small>
+            <i *ngFor="let i of [].constructor(review.stars)" class="fa fa-star"></i>
+          </small>
         </div>
-
+        <p class="rating-content">
+          {{ review.description }}
+        </p>
       </div>
-
     </div>
 
   </div>

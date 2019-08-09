@@ -1,4 +1,4 @@
-import {ProductReviewModel} from './product-review.model';
+import {ProductRatingModel} from './product-rating.model';
 
 export class ProductModel {
   id: number;
@@ -8,7 +8,7 @@ export class ProductModel {
   price: number;
   description: string;
   platform: string;
-  reviews: ProductReviewModel[];
+  rating: ProductRatingModel;
 
   isInStock(): boolean {
     // if (this.stock > 0) {

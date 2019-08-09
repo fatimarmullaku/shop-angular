@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProductModel} from '../../../shared/models/product.model';
+import {ProductService} from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,42 +9,19 @@ import {Router} from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product = {
-    id: '1',
-    title: 'Mortal combat',
-    stock: 'In Stock',
-    price: '$65.25',
-    description: 'The all new Custom Character Variations give you unprecedented control to customize the fighters and make them your own The new graphics engine showcasing every skull-shattering, eye-popping moment, brings you so close to the fight you can feel it And featuring a roster of new and returning Klassic Fighters, Mortal Kombat\'s best in class cinematic story mode continues the epic saga over 25 years in the making\n',
-    image: '/assets/img/mortal-kombat.jpg',
-    platform: 'PS',
-    reviews: [
-      {
-        name: 'John doe',
-        stars: 2,
-        description: 'Lorem ipsum'
-      },
-      {
-        name: 'John doe',
-        stars: 2,
-        description: 'Lorem ipsum'
-      },
-      {
-        name: 'John doe',
-        stars: 2,
-        description: 'Lorem ipsum'
-      },
-      {
-        name: 'John doe',
-        stars: 2,
-        description: 'Lorem ipsum'
-      }
-    ]
-  };
+  product: ProductModel;
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+              private activatedRoute: ActivatedRoute,
+              private productService: ProductService) {
   }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(res => {
+      if (res.id) {
+        this.product = this.productService.getProduct(res.id);
+      }
+    });
   }
 
   onProductsLinkClick(type: string) {
