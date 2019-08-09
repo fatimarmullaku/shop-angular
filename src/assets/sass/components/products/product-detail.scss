@@ -1,8 +1,7 @@
 
 .product-details-container {
   position: relative;
-  background-color: map-get($ucx-colors, dark);
-  min-height: 100vh;
+  min-height: calc(100vh - 140px);
 
   .columns{
     margin-left: 0;
@@ -13,6 +12,8 @@
     position: relative;
     padding-right: 0;
     padding-left: 0;
+    height: 100%;
+    max-height: calc(100vh - 130px);
 
     .product-panel-wrapper{
       border: 1px solid map-get($ucx-colors,deep-orange);
@@ -24,14 +25,17 @@
         align-items: center;
         text-align: center;
         position: relative;
+        height: calc(100vh - 250px);
 
         img{
-          max-width: 400px;
+          height: calc(100vh - 300px);
         }
 
         .review-panel{
-          overflow-y: scroll;
-          max-height:100vh;
+          overflow-y:auto;
+          height: 100%;
+          width: 100%;
+          max-height: calc(100vh - 250px);
           color: map-get($ucx-colors,light-gray);
           background-color: map-get($ucx-colors,dark-gray);
           padding:20px 40px;
@@ -127,11 +131,13 @@
   }
 
   .product-info-panel{
-    height: 100%;
+    height: calc(100vh - 200px);
     position: relative;
     background: map-get($ucx-colors, dark-gray);;
 
     .inner-panel{
+
+      overflow-y:auto;
       height: 100%;
 
       .product-info-header {

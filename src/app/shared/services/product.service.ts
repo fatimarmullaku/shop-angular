@@ -18,7 +18,7 @@ export class ProductService {
     const product1 = new ProductModel();
     product1.id = 1;
     product1.description = 'Lorem ipsum';
-    product1.image = '/assets/img/My-Cart/first-version/1.png';
+    product1.image = '/assets/img/mortal-kombat.jpg';
     product1.platform = 'PC';
     product1.price = 20;
     product1.stock = 2;
