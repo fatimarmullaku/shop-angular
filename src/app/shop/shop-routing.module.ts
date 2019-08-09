@@ -9,6 +9,7 @@ import {RegisterComponent} from './auth/register/register.component';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 import {NewPasswordComponent} from './auth/new-password/new-password.component';
 import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
+import {LogoutComponent} from './auth/logout/logout.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'logout',
+        component: LogoutComponent
       },
       {
         path: 'register',

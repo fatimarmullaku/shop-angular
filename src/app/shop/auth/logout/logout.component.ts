@@ -3,24 +3,20 @@ import {UserService} from '../../../shared/services/user.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html'
+  selector: 'app-logout',
+  templateUrl: './logout.component.html'
 })
-export class LoginComponent implements OnInit {
+export class LogoutComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
-  }
-
-  onSignInClick(event: any) {
-    event.preventDefault();
-
-    this.userService.loggedIn = true;
+    this.userService.loggedIn = false;
 
     setTimeout(() => {
       this.router.navigateByUrl('/');
-    }, 2000);
+    }, 1000);
   }
+
 }

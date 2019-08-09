@@ -16,6 +16,7 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { ProductReviewsComponent } from './products/product-detail/product-reviews/product-reviews.component';
 import { ProductGalleryComponent } from './products/product-detail/product-gallery/product-gallery.component';
 import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
     ProductDetailComponent,
     ProductReviewsComponent,
     ProductGalleryComponent,
-    AuthLayoutComponent],
+    AuthLayoutComponent,
+    LogoutComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,
