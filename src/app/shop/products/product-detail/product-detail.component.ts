@@ -24,12 +24,4 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  onProductsLinkClick(type: string) {
-    if (type === 'reviews') {
-      this.router.navigateByUrl('/products/' + this.product.id + '/reviews', {state: {data: this.product}});
-    } else {
-      this.router.navigateByUrl('/products/' + this.product.id, {state: {data: this.product}});
-    }
-  }
-
 }

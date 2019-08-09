@@ -4,6 +4,10 @@ import {ProductsComponent} from './products/products.component';
 import {ProductDetailComponent} from './products/product-detail/product-detail.component';
 import {ProductReviewsComponent} from './products/product-detail/product-reviews/product-reviews.component';
 import {ProductGalleryComponent} from './products/product-detail/product-gallery/product-gallery.component';
+import {LoginComponent} from './auth/login/login.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
+import {NewPasswordComponent} from './auth/new-password/new-password.component';
 
 const routes: Routes = [
   {
@@ -25,6 +29,22 @@ const routes: Routes = [
         component: ProductReviewsComponent
       }
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
+  {
+    path: 'new-password/:token',
+    component: NewPasswordComponent
   }
 ];
 

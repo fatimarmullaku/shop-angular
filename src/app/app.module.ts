@@ -13,6 +13,7 @@ import {
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SharedModule} from './shared/shared.module';
 import {ProductService} from './shared/services/product.service';
+import {UserService} from './shared/services/user.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {ProductService} from './shared/services/product.service';
     MatCardModule,
     BrowserAnimationsModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

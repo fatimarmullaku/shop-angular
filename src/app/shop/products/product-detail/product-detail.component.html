@@ -10,8 +10,8 @@
         <div class="panel-actions">
 
           <div class="left-actions">
-            <a (click)="onProductsLinkClick('gallery')"><i class='far fa-image'></i></a>
-            <a (click)="onProductsLinkClick('reviews')"><i class="fa fa-star-o"></i></a>
+            <a [routerLink]="['./']" routerLinkActive="active"><i class='far fa-image'></i></a>
+            <a [routerLink]="['./reviews']" routerLinkActive="active"><i class="fa fa-star-o"></i></a>
           </div>
 
           <div class="right-actions">

@@ -1,8 +1,9 @@
 <div class="header">
-  <div class="image-container">
+  <div class="image-container" [routerLink]="['/']">
     <img class="header-logo" src="assets/img/logo-ucx-wix.png" alt="logo">
   </div>
   <div>
-    <a href="" class="log-out-button">Log Out</a>
+    <a *ngIf="!isLoggedIn()" [routerLink]="['/login']" class="log-out-button">Log In</a>
+    <a *ngIf="isLoggedIn()" [routerLink]="['/logout']" class="log-out-button">Log Out</a>
   </div>
 </div>
