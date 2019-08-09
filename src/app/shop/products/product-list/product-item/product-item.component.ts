@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ProductModel} from '../../../../shared/models/product.model';
 
 @Component({
   selector: '[app-product-item]',
@@ -8,7 +9,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ProductItemComponent implements OnInit {
 
   @Input()
-  item: any;
+  item: ProductModel;
 
   constructor() { }
 
