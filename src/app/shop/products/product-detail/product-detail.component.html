@@ -35,7 +35,7 @@
           <div class="product-info-body">
             <div class="product-name-instock">
               <h3 class="product-name">{{ product.title }}</h3>
-              <h5>{{ product.stock }}</h5>
+              <h5>{{ product.isInStock() ? 'In Stock (' + product.stock + ')' : 'Out of stock' }}</h5>
             </div>
             <p class="product-description">{{ product.description }}</p>
 
