@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  pageData = {
+    tableName : 'Products',
+    tableHead : ['Name','Record Status','Description','Category','Unit Price','inStock'],
+  };
   products = [
     {  id: 1 ,
-      name: 'Mortal 11' ,
+      name: 'Mortal Kombat 11' ,
       unitPrice: '29.00',
       inStock: '7',
       recordStatus : 'ACTIVE',

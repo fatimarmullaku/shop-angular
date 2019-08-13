@@ -30,6 +30,9 @@ import {UserService} from './shared/services/user.service';
     MatListModule,
     MatCardModule,
     BrowserAnimationsModule,
+
+
+
   ],
   providers: [ProductService, UserService],
   bootstrap: [AppComponent]
