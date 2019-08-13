@@ -12,6 +12,7 @@ import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
 import { TablesDComponent } from '../shared/tables-d/tables-d.component';
 import {PlatformsComponent} from './products/platforms/platforms.component';
 import {PublishersComponent} from './products/publishers/publishers.component';
+import {DeleteModalComponent} from './delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {PublishersComponent} from './products/publishers/publishers.component';
     TablesDComponent,
     PlatformsComponent,
     PublishersComponent,
+    DeleteModalComponent
   ],
   imports: [
     CommonModule,
