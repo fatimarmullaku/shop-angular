@@ -1,0 +1,37 @@
+<div class="navbar-item has-dropdown is-hoverable">
+  <a href="" class="navbar-link" style="background: none">Publishers</a>
+
+  <div class="navbar-dropdown publisher-dropdown" style="margin-left: -20px">
+    <div class="columns navbar-item is-mobile is-multiline publisher-column-container">
+
+      <div *ngFor="let topSixPublisher of topSixPublishers" class="column is-4-desktop is-4-mobile dropdown-publisher-container">
+        <img [src]='topSixPublisher.imageSrc'>
+      </div>
+
+
+
+
+<!--      <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--        <img src="assets/img/activision-dd.png"  alt="">-->
+<!--      </div>-->
+<!--      <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--        <img src="assets/img/sega-dd.png" alt="">-->
+<!--      </div>-->
+<!--      <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--        <img src="assets/img/ea-dd.png" alt="">-->
+<!--      </div>-->
+<!--      <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--        <img src="assets/img/rockstar-dd.png" alt="">-->
+<!--      </div>-->
+<!--      <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--        <img src="assets/img/ubisoft-dd.png" alt="">-->
+<!--      </div>-->
+<!--      <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--        <img src="assets/img/netherrealm-dd.png" alt="">-->
+<!--      </div>-->
+    </div>
+    <div class="navbar-item">
+      <a href="#" class="see-more-publishers">See more..</a>
+    </div>
+  </div>
+</div>
