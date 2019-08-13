@@ -14,6 +14,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SharedModule} from './shared/shared.module';
 import {ProductService} from './shared/services/product.service';
 import {UserService} from './shared/services/user.service';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,8 @@ import {UserService} from './shared/services/user.service';
     MatListModule,
     MatCardModule,
     BrowserAnimationsModule,
-
-
-
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService, UserService],
   bootstrap: [AppComponent]

@@ -17,6 +17,8 @@ import { ProductReviewsComponent } from './products/product-detail/product-revie
 import { ProductGalleryComponent } from './products/product-detail/product-gallery/product-gallery.component';
 import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
 import { LogoutComponent } from './auth/logout/logout.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { LogoutComponent } from './auth/logout/logout.component';
   imports: [
     CommonModule,
     ShopRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     SharedModule,
 
   ]

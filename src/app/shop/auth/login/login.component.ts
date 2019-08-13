@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../shared/services/user.service';
 import {Router} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,34 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) {
+  loginForm: FormGroup;
+
+  constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
   }
 
-  onSignInClick(event: any) {
-    event.preventDefault();
+  get f() {
+    return this.loginForm.controls;
+  }
 
-    this.userService.loggedIn = true;
+  onLoginFormSubmit() {
+    if (this.loginForm.valid) {
 
-    setTimeout(() => {
-      this.router.navigateByUrl('/');
-    }, 2000);
+      this.userService.login(this.f.email.value, this.f.password.value)
+        .then(() => {
+          this.router.navigateByUrl('/');
+        })
+        .catch(() => {
+          alert('failed login');
+        });
+    } else {
+      alert('form not valid');
+    }
   }
 }

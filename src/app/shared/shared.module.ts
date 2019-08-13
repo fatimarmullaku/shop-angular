@@ -4,6 +4,7 @@ import { MinComponent } from './layout/min/min.component';
 import { BaseComponent } from './layout/base/base.component';
 import {RouterModule} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [MinComponent, BaseComponent, HeaderComponent],
@@ -12,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule
   ]
 })
