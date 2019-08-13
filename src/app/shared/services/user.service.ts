@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {UserRegisterModel} from '../models/user-register.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class UserService {
       }, 2000);
     }));
     // return this.httpClient.post('/auth/login', { email, password});
+  }
+
+  register(payload: UserRegisterModel) {
+    return this.httpClient.post<UserRegisterModel>('http://157.230.109.179:8080/shop/v1/customers', payload);
   }
 }

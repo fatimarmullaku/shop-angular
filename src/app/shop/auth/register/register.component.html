@@ -5,47 +5,41 @@
     <span>Sign up to UCXMarket</span>
   </div>
 
-<!--  <form action="">-->
+  <form [formGroup]="registerForm" (submit)="onRegisterSubmit()">
     <div class="field">
       <div class="control">
-        <input type="text" class="input auth-input" placeholder="First Name">
+        <input type="text" formControlName="first_name" class="input auth-input" placeholder="First Name">
       </div>
     </div>
 
     <div class="field">
       <div class="control">
-        <input type="text" class="input auth-input" placeholder="Last Name">
+        <input type="text" formControlName="last_name" class="input auth-input" placeholder="Last Name">
       </div>
     </div>
 
     <div class="field">
       <div class="control">
-        <input type="text" class="input auth-input" placeholder="Username">
+        <input type="text" formControlName="email" class="input auth-input" placeholder="Email">
       </div>
     </div>
 
     <div class="field">
       <div class="control">
-        <input type="text" class="input auth-input" placeholder="Email">
+        <input type="text" formControlName="password" class="input auth-input" placeholder="Password">
       </div>
     </div>
 
     <div class="field">
       <div class="control">
-        <input type="text" class="input auth-input" placeholder="Password">
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <input type="text" class="input auth-input" placeholder="Confirm Password">
+        <input type="text" formControlName="confirm_password" class="input auth-input" placeholder="Confirm Password">
       </div>
     </div>
 
     <div>
       <button class="auth-button">Sign up</button>
     </div>
-<!--  </form>-->
+  </form>
 
   <div class="auth-form-footer">
     <div class="login-link">
