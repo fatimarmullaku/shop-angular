@@ -15,7 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap';
 import {PlatformsComponent} from './products/platforms/platforms.component';
 import {PublishersComponent} from './products/publishers/publishers.component';
-import {DeleteModalComponent} from './delete-modal/delete-modal.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import {DeleteModalComponent} from './delete-modal/delete-modal.component';
     TablesDComponent,
     PlatformsComponent,
     PublishersComponent,
-    DeleteModalComponent
+    SidebarComponent,
   ],
   imports: [
     ReactiveFormsModule,

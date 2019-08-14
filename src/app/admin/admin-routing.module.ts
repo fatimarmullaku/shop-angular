@@ -7,6 +7,7 @@ import {ProductsComponent} from './products/products.component';
 import {RolesComponent} from './users/roles/roles.component';
 import {CustomersComponent} from './customers/customers.component';
 import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
+import {PlatformsComponent} from './products/platforms/platforms.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
       {path: 'orders', component: OrdersComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'users', component: UsersComponent},
-      {path: 'roles', component: RolesComponent}
+      {path: 'roles', component: RolesComponent},
+      {path: 'platforms', component: PlatformsComponent},
     ]
   }
 ];

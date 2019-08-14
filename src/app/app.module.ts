@@ -16,6 +16,7 @@ import {ProductService} from './shared/services/product.service';
 import {UserService} from './shared/services/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ModalModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatListModule,
     MatCardModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [ProductService, UserService],
   bootstrap: [AppComponent]

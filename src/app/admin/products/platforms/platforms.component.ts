@@ -5,10 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './platforms.component.html'
 })
 export class PlatformsComponent implements OnInit {
+  public example: any;
 
   constructor() { }
 
   ngOnInit() {
+    this.example = "something";
   }
 
 }
