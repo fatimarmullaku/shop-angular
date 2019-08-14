@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProductsService} from './products.service';
+import {ProductsModel} from './products.model';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-products',
@@ -6,66 +11,97 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  pageData = {
-    tableName : 'Products',
-    tableHead : ['Name','Record Status','Description','Category','Unit Price','inStock'],
-  };
-  products = [
-    {  id: 1 ,
-      name: 'Mortal Kombat 11' ,
-      unitPrice: '29.00',
-      inStock: '7',
-      recordStatus : 'ACTIVE',
-      description: 'Most popular game on UCX',
-      category: 'PS4'
-    },
-    {  id: 2 ,
-      name: 'Fifa 2019' ,
-      unitPrice: '17.00',
-      inStock: '4',
-      recordStatus : 'INACTIVE',
-      description: 'Most popular game on UCX',
-      category: 'XBOX'
-    },
-    {  id: 3 ,
-      name: 'Teken' ,
-      unitPrice: '29.00',
-      inStock: '7',
-      recordStatus : 'INACTIVE',
-      description: 'Most popular game on UCX',
-      category: 'PS4'
-    },
-    {  id: 4 ,
-      name: 'PES 2018' ,
-      unitPrice: '26.00',
-      inStock: '10',
-      recordStatus : 'ACTIVE',
-      description: 'Most popular game on UCX',
-      category: 'XBOX'
-    },
-    {  id: 5 ,
-      name: 'Need for speed rivals' ,
-      unitPrice: '49.00',
-      inStock: '15',
-      recordStatus : 'ACTIVE',
-      description: 'Most popular game on UCX',
-      category: 'XBOX'
-    },
-
-    {  id: 6 ,
-      name: 'Star Wars' ,
-      unitPrice: '49.00',
-      inStock: '15',
-      recordStatus : 'ACTIVE',
-      description: 'Ultimate edition',
-      category: 'XBOX'
-    },
-  ];
+  productId;
+  productsList: any;
+  productsForm: FormGroup;
+  updateForm: FormGroup;
 
 
-  constructor() { }
+
+  constructor(private productsService: ProductsService,
+              private modalService: NgbModal,
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
+    this.productsService.getAllProducts().subscribe((data: any) => {
+      this.productsList = data;
+      console.log(this.productsList);
+    });
+
+    this.productsForm = this.formBuilder.group({
+      id: [],
+      name: [''],
+      unitPrice: [''],
+      inStock: [''],
+      // category:[''],
+      createDateTime: [''],
+      updateDateTime: [''],
+      deletedDateTime: [''],
+      description: [''],
+      version: ['']
+    });
+
   }
+
+
+  onSubmit() {
+    const values = this.productsForm.value;
+    this.productsService.registerProduct(values).subscribe(
+      get => {
+        this.productsService.getAllProducts().subscribe((data: any) => {
+          this.productsList = data;
+        });
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
+
+  }
+
+  onDelete() {
+    this.productsService.deleteProduct(this.productId).subscribe(
+      get => {
+        this.productsService.getAllProducts().subscribe((data: any) => {
+          this.productsList = data;
+        });
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
+    console.log(this.productId);
+  }
+
+
+  open(deleteModal, id) {
+    this.modalService.open(deleteModal);
+    this.productId = id;
+    console.log(this.productId);
+  }
+
+
+  openBackDropCustomClass(content) {
+    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+  }
+
+  openWindowCustomClass(content) {
+    this.modalService.open(content, { windowClass: 'dark-modal' });
+  }
+
+  openSm(content) {
+    this.modalService.open(content, { size: 'sm' });
+  }
+
+  openLg(content) {
+    this.modalService.open(content, { size: 'lg' });
+  }
+
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
+  }
+
+
 
 }
