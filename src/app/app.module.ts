@@ -16,10 +16,9 @@ import {ProductService} from './shared/services/product.service';
 import {UserService} from './shared/services/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
-
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

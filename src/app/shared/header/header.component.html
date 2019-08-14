@@ -1,9 +1,102 @@
-<div class="header">
-  <div class="image-container" [routerLink]="['/']">
-    <img class="header-logo" src="assets/img/logo-ucx-wix.png" alt="logo">
+<!--<div class="header">-->
+<!--  <div class="image-container" [routerLink]="['/']">-->
+<!--    <img class="header-logo" src="assets/img/logo-ucx-wix.png" alt="logo">-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <a *ngIf="!isLoggedIn()" [routerLink]="['/auth/login']" class="log-out-button">Log In</a>-->
+<!--    <a *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']" class="log-out-button">Log Out</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+<div class="header uses-flex">
+  <!-- HEADER TOP STARTS HERE -->
+  <div class="header-top uses-flex between-space">
+    <a href="home.html">
+      <div class="image-container" [routerLink]="['/']">
+        <!--                <img src="{{imageSRC}}logo-ucx-wix.png" alt="logo" class="header-logo">-->
+        <img src="assets/img/ucx-logo-desktop.png" alt="logo" class="header-logo is-hidden-mobile">
+        <img src="assets/img/ucx-logo-mobile.png" alt="logo" class="header-logo is-hidden-desktop">
+      </div>
+    </a>
+    <div class="auth-buttons is-hidden-mobile">
+<!--      -->
+<!--      <button class="log-out-button">Sign up</button>-->
+<!--      <button class="log-out-button">Login</button>-->
+
+
+      <a *ngIf="!isLoggedIn()" [routerLink]="['/auth/login']" class="log-out-button">Log In</a>
+      <a *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']" class="log-out-button">Log Out</a>
+    </div>
+    <div class="hamburger-menu-container is-hidden-tablet">
+      <button>
+        <i class="fa"></i>
+      </button>
+    </div>
   </div>
-  <div>
-    <a *ngIf="!isLoggedIn()" [routerLink]="['/auth/login']" class="log-out-button">Log In</a>
-    <a *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']" class="log-out-button">Log Out</a>
+  <!--------------------------------HEADER 2---------------------------------->
+  <div class="header-bottom uses-flex">
+    <nav class="navbar navbar-container" role="navigation" aria-label="main navigation">
+      <a href="index.html" class="navbar-item">Home</a>
+      <a href="" class="navbar-item">Accesories</a>
+      <a href="" class="navbar-item">News</a>
+      <!------------------------------------PUBLISHER DROPDOWN----------------------------------------->
+<!--      <div class="navbar-item has-dropdown is-hoverable">-->
+<!--        <a href="" class="navbar-link" style="background: none">Publishers</a>-->
+
+<!--        <div class="navbar-dropdown publisher-dropdown" style="margin-left: -20px">-->
+<!--          <div class="columns navbar-item is-mobile is-multiline publisher-column-container">-->
+<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--              <img src="assets/img/activision-dd.png"  alt="">-->
+<!--            </div>-->
+<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--              <img src="assets/img/sega-dd.png" alt="">-->
+<!--            </div>-->
+<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--              <img src="assets/img/ea-dd.png" alt="">-->
+<!--            </div>-->
+<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--              <img src="assets/img/rockstar-dd.png" alt="">-->
+<!--            </div>-->
+<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--              <img src="assets/img/ubisoft-dd.png" alt="">-->
+<!--            </div>-->
+<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
+<!--              <img src="assets/img/netherrealm-dd.png" alt="">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="navbar-item">-->
+<!--            <a href="#" class="see-more-publishers">See more..</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+      <app-publisher-dropdown></app-publisher-dropdown>
+      <!-------------------------------MORE DROPDOWN--------------------------------->
+      <div class="navbar-item has-dropdown is-hoverable" >
+
+        <a class="navbar-link" style="background: none">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>
+      <a href="" class="navbar-item is-hidden-tablet">Sign up</a>
+      <a href="" class="navbar-item is-hidden-tablet">Log in</a>
+    </nav>
   </div>
 </div>
