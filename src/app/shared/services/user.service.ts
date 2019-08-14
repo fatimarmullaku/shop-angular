@@ -27,6 +27,6 @@ export class UserService {
   }
 
   register(payload: UserRegisterModel) {
-    return this.httpClient.post<UserRegisterModel>('http://157.230.109.179:8080/shop/v1/customers', payload);
+    return this.httpClient.post<UserRegisterModel>(ENDPOINTS.customers.createCustomer, payload);
   }
 }
