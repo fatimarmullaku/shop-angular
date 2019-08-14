@@ -1,1 +1,92 @@
-<p>users works!</p>
+<div class="insert-modal">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Users</h4>
+      <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="close" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="usersForm">
+        <label for="email"> First Name </label>
+        <input class="form-control"
+               formControlName="email"
+               type="text">
+        <label for="password">Last Name </label>
+        <input class="form-control"
+               id="password"
+               formControlName="password"
+               type="text">
+        <label for="isVerified">Email</label>
+        <input class="checkbox" formControlName="isVerified"
+               required
+               type="email">
+        <label for="recordStatus">Username</label>
+        <input class="form-control"
+               formControlName="recordStatus"
+               type="text">
+
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary" type="submit"> Add</button>
+          <button (click)="modal.close('Close click')" class="btn btn-outline-primary" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+</div>
+
+
+
+<!--container-->
+<div class="container">
+  <div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Users</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <div class="row">
+        </div>
+
+        <span class="table-add float-right mb-3 mr-2">
+            <a class="text-success">
+              <i class="fas fa-plus"  (click)="open(content)"></i>
+            </a>
+          </span>
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Email</th>
+            <th class="text-center">Record Status</th>
+            <th class="text-center">Create Date Time</th>
+            <th class="text-center">Update Date Time</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Version</th>
+          </tr>
+          <tr *ngFor="let user of usersList">
+            <td> {{user.email }}  </td>
+            <td> {{user.recordStatus}} </td>
+            <td> {{user.createDateTime}} </td>
+            <td> {{user.updateDateTime}} </td>
+            <td> {{user.description}} </td>
+            <td> {{user.version}} </td>
+            <td>
+              <i class="fas fa-edit fa-lg" style="color: #3679c5" (click)="openUpdate(updateModal, user.id, user.email, user.recordStatus, user.createDateTime, user.description, user.version, user.updateDateTime)"></i>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-danger" (click)="open(deleteModal, user.id)">Remove</button>
+            </td>
+          </tr>
+        </table>
+      //pagination here
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
