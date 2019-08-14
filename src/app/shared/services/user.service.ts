@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {UserRegisterModel} from '../models/user-register.model';
+import {ENDPOINTS} from '../constants/api.constants';
 
 @Injectable({
   providedIn: 'root'

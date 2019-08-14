@@ -24,4 +24,18 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  isWishlisted(): boolean {
+    return this.productService.getProductInWishlist(this.product.id);
+  }
+
+  toggleWishlist() {
+    if (this.isWishlisted()) {
+      this.productService.deleteFromWishlist(this.product.id);
+      this.product.isWishlisted = false;
+    } else {
+      this.productService.addToWishlist(this.product.id);
+      this.product.isWishlisted = true;
+    }
+  }
+
 }

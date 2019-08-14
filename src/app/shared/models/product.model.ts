@@ -10,6 +10,8 @@ export class ProductModel {
   platform: string;
   rating: ProductRatingModel;
 
+  isWishlisted = false;
+
   isInStock(): boolean {
     // if (this.stock > 0) {
     //   return true;

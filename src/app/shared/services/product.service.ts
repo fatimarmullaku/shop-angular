@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ProductModel} from '../models/product.model';
 import {ProductReviewModel} from '../models/product-review.model';
 import {ProductRatingModel} from '../models/product-rating.model';
+import {StorageService} from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProductService {
 
   products: ProductModel[] = [];
 
-  constructor() {
+  constructor(private storageService: StorageService) {
     this.fetchProducts();
   }
 
@@ -45,11 +46,53 @@ export class ProductService {
   }
 
   getProduct(id: number): ProductModel {
-    const product = this.products.filter(item => item.id == id);
-    if (product) {
-      return product[0];
+    const products = this.products.filter(item => item.id == id);
+    if (products) {
+      const product = products[0];
+      product.isWishlisted = this.getProductInWishlist(product.id);
+      return product;
     }
 
     return null;
+  }
+
+  // get wishlist product
+  getProductInWishlist(id: number): boolean {
+    const wishlist = this.storageService.get('wishlist');
+    if (wishlist) {
+      return JSON.parse(wishlist).filter(item => item == id).length > 0;
+    } else {
+      return false;
+    }
+  }
+
+  // add to wishlist
+  addToWishlist(id: number) {
+    const wishlist = this.storageService.get('wishlist');
+    if (wishlist) {
+      const wishlistArray = JSON.parse(wishlist);
+      if (wishlistArray.filter(item => item == id).length > 0) {
+        return;
+      } else {
+        wishlistArray.push(id);
+        this.storageService.set('wishlist', JSON.stringify(wishlistArray));
+      }
+    } else {
+        this.storageService.set('wishlist', JSON.stringify([id]));
+    }
+  }
+
+  // delete from wishlist
+  deleteFromWishlist(id: number) {
+    const wishlist = this.storageService.get('wishlist');
+    if (wishlist) {
+      const wishlistArray = JSON.parse(wishlist).filter(item => item != id);
+      this.storageService.set('wishlist', JSON.stringify(wishlistArray));
+    }
+  }
+
+  // clear wishlist
+  clearWishList() {
+    this.storageService.delete('wishlist');
   }
 }

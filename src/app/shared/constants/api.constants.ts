@@ -1,11 +1,17 @@
-export const DEV_ENV = 'http://157.230.109.179:8080/api/v1';
-export const PROD_ENV = '';
+import {environment} from '../../../environments/environment';
 
-export const ENDPOINT_PREFIX = DEV_ENV;
+const AUTH = {
+  login: environment.apiHost + '/auth/login',
+  register: environment.apiHost + '/auth/register',
+};
 
-export const CUSTOMERS_ENDPOINT = ENDPOINT_PREFIX + '/customers';
-export const AUTH_ENDPOINT = ENDPOINT_PREFIX + '/auth'; // TO BE CREATED
-export const PRODUCTS_ENDPOINT = ENDPOINT_PREFIX + '/products'; // TO BE CHANGED
-export const FILE_UPLOAD_ENDPOINT = ENDPOINT_PREFIX + '/upload';
+const PRODUCTS = {
+  getAll: environment.apiHost + '/products',
+  getProduct: environment.apiHost + '/products/{id}'
+};
 
+export const ENDPOINTS = {
+  auth: AUTH,
+  products: PRODUCTS
+};
 

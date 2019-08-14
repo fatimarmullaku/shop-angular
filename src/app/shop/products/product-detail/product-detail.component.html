@@ -15,8 +15,9 @@
             <a [routerLink]="['./reviews']" routerLinkActive="active"><i class="fa fa-star-o"></i></a>
           </div>
 
-          <div class="right-actions">
-            <i class='far fa-heart'></i>
+          <div class="right-actions" (click)="toggleWishlist()">
+            <i *ngIf="!product.isWishlisted" class='far fa-heart'></i>
+            <i *ngIf="product.isWishlisted" class='fas fa-heart'></i>
           </div>
 
         </div>
