@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
         .subscribe((res) => {
           this.userService.login(payload.user.email, payload.user.password)
             .then(() => {
-              this.router.navigateByUrl('./sign-up-success');
+              this.router.navigateByUrl('auth/sign-up-success');
             })
             .catch((err) => {
               console.error(err);
