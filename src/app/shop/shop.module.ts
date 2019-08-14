@@ -19,6 +19,7 @@ import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { SignUpSuccessComponent } from './auth/sign-up-success/sign-up-success.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {HttpClientModule} from '@angular/common/http';
     ProductReviewsComponent,
     ProductGalleryComponent,
     AuthLayoutComponent,
-    LogoutComponent],
+    LogoutComponent,
+    SignUpSuccessComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,
