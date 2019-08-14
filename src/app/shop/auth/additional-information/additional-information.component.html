@@ -1,0 +1,73 @@
+
+<div class="columns">
+  <div class="column">
+    <div class="additional-information-wrap">
+      <div class="additional-information-screen">
+        <div class="auth-form-header">
+          <img src="assets/img/ucx-logo-mobile.png" alt="">
+          <h4>Additional Information</h4>
+          <span>Enter your additional information.</span>
+        </div>
+<!--        <form action="" class="form">-->
+          <h3 class="title is-5 static-titles">Phone Numbers</h3>
+          <div id="box-phone">
+            <div class="columns ">
+              <div class="column is-5">
+                <label>Mobile</label><br>
+                <input type="text" class="input" placeholder="xxx xxx xxx" >
+              </div>
+              <div class="column is-5">
+                <label>Home</label><br>
+                <input type="text" class="input" placeholder="xxx xxx xxx">
+              </div>
+              <div class="column is-2 delete-phone-number">
+                <label></label><br>
+                <button class="button is-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+          <button id="addphone" class="button add-field-button" (click)="doStuff()" >Add Field</button>
+          <br>
+          <h3 class="title is-5 static-titles">Addresses</h3>
+          <div id="box-address">
+            <div class="columns">
+              <div class="column is-2">
+                <label class="label">Country</label>
+                <input type="text" class="input" value="Kosovo">
+              </div>
+
+              <div class="column is-2">
+                <label class="label">City</label>
+                <input type="text" class="input" value="Prishtina">
+              </div>
+
+              <div class="column is-2">
+                <label class="label">Zip code</label>
+                <input type="text" class="input" value="10000">
+              </div>
+
+              <div class="column is-4">
+                <label class="label">Street</label>
+                <input type="text" class="input" value="Rr. Holger Petersen">
+              </div>
+              <div class="column is-2 delete-phone-number">
+                <label class="label"></label><br>
+                <button class="button is-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+          <button id="addaddress" class="button add-field-button" (click)="doStuff()">Add Field</button>
+
+          <div>
+            <button class="auth-button">Send</button>
+          </div>
+<!--        </form>-->
+        <div class="auth-form-footer">
+          <div class="register-account-link">
+            <p>Back to <a href="login.html">Sign in</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

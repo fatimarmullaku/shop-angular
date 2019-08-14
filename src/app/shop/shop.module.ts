@@ -20,6 +20,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { SignUpSuccessComponent } from './auth/sign-up-success/sign-up-success.component';
+import { AdditionalInformationComponent } from './auth/additional-information/additional-information.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SignUpSuccessComponent } from './auth/sign-up-success/sign-up-success.c
     ProductGalleryComponent,
     AuthLayoutComponent,
     LogoutComponent,
-    SignUpSuccessComponent],
+    SignUpSuccessComponent,
+    AdditionalInformationComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,

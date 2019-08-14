@@ -11,6 +11,8 @@ import {NewPasswordComponent} from './auth/new-password/new-password.component';
 import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 import {LogoutComponent} from './auth/logout/logout.component';
 import {SignUpSuccessComponent} from './auth/sign-up-success/sign-up-success.component';
+import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
+
 
 const routes: Routes = [
   {
@@ -67,6 +69,10 @@ const routes: Routes = [
         redirectTo: '/auth/login'
       }
     ]
+  },
+  {
+    path: 'additional-information',
+    component: AdditionalInformationComponent
   }
 ];
 
