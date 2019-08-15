@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class PaginationComponent implements OnInit {
   }
 
   currentPage = 0;
-  lastPageIndex = 7;
+  lastPageIndex = 1;
   totalItems: number;
   pageSize = 9;
 
