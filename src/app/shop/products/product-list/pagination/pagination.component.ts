@@ -12,7 +12,7 @@ export class PaginationComponent implements OnInit {
   }
 
   currentPage = 0;
-  lastPageIndex = 1;
+  lastPageIndex = 2;
   totalItems: number;
   pageSize = 9;
 

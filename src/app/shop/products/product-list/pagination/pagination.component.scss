@@ -5,9 +5,13 @@
 .selected {
   background: #FF5A09;
   color: white !important;
-  border-color: transparent;
+
 }
 
 .hidden {
 visibility: hidden;
+}
+
+.pagination-default {
+  border-color:#ec7f37;
 }
