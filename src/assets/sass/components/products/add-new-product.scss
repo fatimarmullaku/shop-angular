@@ -1,0 +1,94 @@
+.add-new-product-container{
+  position: relative;
+  height: 100%;
+
+  .add-new-product-wrapper{
+    background-color: map-get($ucx-colors,dark-gray);
+    border: 1px solid map-get($ucx-colors,deep-orange);
+    @include desktop{
+      width: 65%;
+    }
+    width: 90%;
+    border-radius: 6px;
+    margin: 30px  auto;
+
+    min-height: calc(100vh - 140px);
+
+    .title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 2px solid map-get($ucx-colors,border-color);
+
+      h2{
+        font-family: $titleFont;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        padding: 0 20px;
+        color: map-get($ucx-colors,light-orange);
+      }
+    }
+
+    .columns{
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 5px;
+
+      .product-view-panel {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        height: calc(100vh - 250px);
+        .image-upload-container{
+          width: 270px;
+          height: 335px;
+          border: 2px dotted #FF5A09;
+          border-radius: 9px;
+          margin-top: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .upload-image{
+            cursor: pointer;
+            position:absolute;
+            z-index: 99;
+            opacity: 0;
+          }
+          i{
+            font-size: 50px;
+          }
+          .upload-image:hover + i{
+            color: map_get($ucx-colors,deep-orange);
+            font-size: 80px;
+            transition: 1s;
+          }
+        }
+        .file-label{
+          margin: 0 auto;
+        }
+
+        img {
+          max-width: 300px;
+        }
+      }
+
+      .product-info-panel{
+        padding: 15px;
+        .select,select{
+          width: 100%;
+        }
+        .checkbox{
+          margin-right: 30px;
+          input{
+            margin-right: 5px;
+          }
+        }
+        .save-cancel-buttons{
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

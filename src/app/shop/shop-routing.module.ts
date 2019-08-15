@@ -11,6 +11,7 @@ import {NewPasswordComponent} from './auth/new-password/new-password.component';
 import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 import {LogoutComponent} from './auth/logout/logout.component';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
+import {AddNewProductComponent} from "./newproduct/add-new-product/add-new-product.component";
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
     path: 'auth/additional-information',
     component: AdditionalInformationComponent
   },
+  {
+    path: 'add-new-product',
+    component: AddNewProductComponent
+  }
 ];
 
 @NgModule({
