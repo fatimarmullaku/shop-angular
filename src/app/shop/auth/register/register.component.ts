@@ -53,10 +53,9 @@ export class RegisterComponent implements OnInit {
       this.userService.register(payload)
         .subscribe((res) => {
           this.userService.login(payload.user.email, payload.user.password)
-            .then(() => {
+            .subscribe(r => {
               this.isRegistered = true;
-            })
-            .catch((err) => {
+            }, (err) => {
               console.error(err);
             });
         }, (err) => {

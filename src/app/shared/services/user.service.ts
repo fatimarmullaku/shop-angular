@@ -17,13 +17,7 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return new Promise(((resolve, reject) => {
-      setTimeout(() => {
-        this.loggedIn = true;
-        resolve('ok');
-      }, 2000);
-    }));
-    // return this.httpClient.post('/auth/login', { email, password});
+    return this.httpClient.post(ENDPOINTS.auth.login, {email, password});
   }
 
   register(payload: UserRegisterModel) {
