@@ -11,7 +11,9 @@ const PRODUCTS = {
 };
 
 const CUSTOMERS = {
-    getAll: environment.apiHost + '/customers',
+  getAll: environment.apiHost + '/customers',
+  getCustomer: environment.apiHost + '/customers/{id}',
+  createCustomer: environment.apiHost + 'customers'
 };
 
 export const ENDPOINTS = {
