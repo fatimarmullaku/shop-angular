@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
         password: this.f.password.value
       };
       this.userService.login(payload.email, payload.password).subscribe(res => {
-
+          this.router.navigateByUrl('/');
         },
-        err => {
-
+        (err) => {
+          console.error(err);
         });
     } else {
       alert('form not valid');
