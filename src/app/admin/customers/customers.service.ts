@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {ENDPOINTS} from "../../shared/constants/api.constants";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {ENDPOINTS} from '../../shared/constants/api.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomersService {
-readonly getAll = ENDPOINTS.customers.getAll;
-  constructor(private http: HttpClient ) {}
+  readonly getAll = ENDPOINTS.customers.getAll;
+
+  constructor(private http: HttpClient) {
+  }
 
 
   getAllCustomers() {
@@ -23,7 +25,7 @@ readonly getAll = ENDPOINTS.customers.getAll;
   }
 
   updateCustomer(data) {
-    return this.http.put( this.getAll + '/', data);
+    return this.http.put(this.getAll + '/', data);
   }
 
 

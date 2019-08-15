@@ -48,6 +48,8 @@ export class CustomersComponent implements OnInit {
       version: [''],
     });
 
+    console.log(this.updateForm)
+
   }
 
   onSubmit() {
