@@ -12,6 +12,7 @@ export class AddNewProductComponent implements OnInit {
   }
 
   url = '';
+  fileChosen = '';
   onSelectFile(event: any) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
@@ -22,5 +23,6 @@ export class AddNewProductComponent implements OnInit {
         this.url = reader.result.toString();
       }
     }
+     this.fileChosen = 'none';
   }
 }

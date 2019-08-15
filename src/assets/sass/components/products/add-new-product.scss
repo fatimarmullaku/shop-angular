@@ -39,9 +39,13 @@
       .product-view-panel {
         display: flex;
         justify-content: center;
+        align-items: baseline;
         position: relative;
         height: calc(100vh - 250px);
         .image-upload-container{
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
           width: 270px;
           height: 335px;
           border: 2px dotted #FF5A09;
@@ -58,6 +62,8 @@
           }
           i{
             font-size: 50px;
+            //display: var(fileChosen);
+
           }
           .upload-image:hover + i{
             color: map_get($ucx-colors,deep-orange);
