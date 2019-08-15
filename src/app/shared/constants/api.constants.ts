@@ -3,6 +3,8 @@ import {environment} from '../../../environments/environment';
 const AUTH = {
   login: environment.apiHost + '/auth/login',
   register: environment.apiHost + '/auth/register',
+  forgotPassword: environment.apiHost + 'auth/forgot-password',
+  newPassword: environment.apiHost + 'auth/new-password'
 };
 
 const PRODUCTS = {

@@ -27,6 +27,6 @@ export class UserService {
   }
 
   register(payload: UserRegisterModel) {
-    return this.httpClient.post<UserRegisterModel>(ENDPOINTS.customers.createCustomer, payload);
+    return this.httpClient.post<UserRegisterModel>(ENDPOINTS.auth.register, payload);
   }
 }
