@@ -1,49 +1,68 @@
 <div class="auth-content register-screen">
-  <div class="auth-form-header">
-    <img src="assets/img/ucx-logo-desktop.png" alt="">
-    <h4>Create an Account</h4>
-    <span>Sign up to UCXMarket</span>
+
+  <div *ngIf="!isRegistered; else registered">
+    <div class="auth-form-header">
+      <img src="assets/img/ucx-logo-desktop.png" alt="">
+      <h4>Create an Account</h4>
+      <span>Sign up to UCXMarket</span>
+    </div>
+
+    <form [formGroup]="registerForm" (submit)="onRegisterSubmit()">
+      <div class="field">
+        <div class="control">
+          <input type="text" formControlName="first_name" class="input auth-input" placeholder="First Name">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="text" formControlName="last_name" class="input auth-input" placeholder="Last Name">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="text" formControlName="email" class="input auth-input" placeholder="Email">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="text" formControlName="password" class="input auth-input" placeholder="Password">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="text" formControlName="confirm_password" class="input auth-input" placeholder="Confirm Password">
+        </div>
+      </div>
+
+      <div>
+        <button class="auth-button">Sign up</button>
+      </div>
+    </form>
+
+    <div class="auth-form-footer">
+      <div class="login-link">
+        <p class="paragraph">Already a member?<a [routerLink]="['/auth']">Sign in</a></p>
+      </div>
+    </div>
   </div>
 
-  <form [formGroup]="registerForm" (submit)="onRegisterSubmit()">
-    <div class="field">
-      <div class="control">
-        <input type="text" formControlName="first_name" class="input auth-input" placeholder="First Name">
+  <ng-template #registered>
+    <div class="auth-content login-screen">
+      <div class="auth-form-header">
+        <img src="assets/img/ucx-white-logo.svg" alt="">
+        <h4>You've been successfully signed up to UCXGaming.</h4>
+      </div>
+      <div>
+        <button class="auth-button" [routerLink]="'/auth/additional-information'">Add additional infos</button>
+      </div>
+      <div>
+        <button class="auth-button" [routerLink]="'/'">Go to Home Page</button>
       </div>
     </div>
+  </ng-template>
 
-    <div class="field">
-      <div class="control">
-        <input type="text" formControlName="last_name" class="input auth-input" placeholder="Last Name">
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <input type="text" formControlName="email" class="input auth-input" placeholder="Email">
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <input type="text" formControlName="password" class="input auth-input" placeholder="Password">
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <input type="text" formControlName="confirm_password" class="input auth-input" placeholder="Confirm Password">
-      </div>
-    </div>
-
-    <div>
-      <button class="auth-button">Sign up</button>
-    </div>
-  </form>
-
-  <div class="auth-form-footer">
-    <div class="login-link">
-      <p class="paragraph">Already a member?<a [routerLink]="['/auth']">Sign in</a></p>
-    </div>
-  </div>
 </div>

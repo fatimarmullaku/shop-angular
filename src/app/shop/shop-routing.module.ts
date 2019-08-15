@@ -10,9 +10,7 @@ import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.co
 import {NewPasswordComponent} from './auth/new-password/new-password.component';
 import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 import {LogoutComponent} from './auth/logout/logout.component';
-import {SignUpSuccessComponent} from './auth/sign-up-success/sign-up-success.component';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
-
 
 const routes: Routes = [
   {
@@ -52,10 +50,6 @@ const routes: Routes = [
         component: RegisterComponent
       },
       {
-        path: 'sign-up-success',
-        component: SignUpSuccessComponent
-      },
-      {
         path: 'forgot-password',
         component: ForgotPasswordComponent
       },
@@ -71,9 +65,9 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'additional-information',
+    path: 'auth/additional-information',
     component: AdditionalInformationComponent
-  }
+  },
 ];
 
 @NgModule({

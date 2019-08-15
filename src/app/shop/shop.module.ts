@@ -19,7 +19,6 @@ import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { SignUpSuccessComponent } from './auth/sign-up-success/sign-up-success.component';
 import { AdditionalInformationComponent } from './auth/additional-information/additional-information.component';
 
 @NgModule({
@@ -38,7 +37,6 @@ import { AdditionalInformationComponent } from './auth/additional-information/ad
     ProductGalleryComponent,
     AuthLayoutComponent,
     LogoutComponent,
-    SignUpSuccessComponent,
     AdditionalInformationComponent],
   imports: [
     CommonModule,
