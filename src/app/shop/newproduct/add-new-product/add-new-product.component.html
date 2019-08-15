@@ -1,0 +1,72 @@
+<app-header></app-header>
+
+<div class="add-new-product-container">
+  <div class="add-new-product-wrapper">
+    <div class="title">
+      <h2>Add new product</h2>
+    </div>
+    <div class="columns">
+      <div class="column is-two-fifths">
+        <div class="product-view-panel">
+<!--          <form action="">-->
+            <div class="image-upload-container">
+              <img [src]="url">
+              <input type="file" class="upload-image" (change)="onSelectFile($event)">
+              <i class="fas fa-camera"></i>
+            </div>
+<!--          </form>-->
+        </div>
+      </div>
+      <div class="column">
+        <div class="product-info-panel">
+<!--          <form action="">-->
+            <label class="label">Name</label>
+            <input type="text" class="input" value="">
+            <label class="label">Unit Price</label>
+            <input type="number" class="input" value="">
+            <label class="label">In Stock</label>
+            <input type="number" class="input" value="">
+            <label class="label">Platform</label>
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox" name="foobar">
+                XBOX
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="foobar" checked>
+                Play Station
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="foobar" checked>
+                Windows
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="foobar" checked>
+                Nintendo
+              </label>
+            </div>
+
+            <label class="label">Publisher</label>
+            <div class="select">
+              <select>
+                <option>Rockstar Games</option>
+                <option>Activision</option>
+                <option>Valve</option>
+                <option value="">Other</option>
+              </select>
+            </div>
+            <label class="label">Publisher Name</label>
+            <input type="text" class="input" value="">
+            <div class="save-cancel-buttons field is-grouped is-grouped-right" >
+              <button class="button is-primary save-button">Save</button>
+              <button class="button">Cancel</button>
+            </div>
+<!--          </form>-->
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
