@@ -4,6 +4,10 @@
 
 .selected {
   background: #FF5A09;
-  color: white;
+  color: white !important;
   border-color: transparent;
+}
+
+.hidden {
+visibility: hidden;
 }

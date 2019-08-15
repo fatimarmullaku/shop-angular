@@ -1,0 +1,71 @@
+<div class="columns">
+  <div class="column">
+    <div class="additional-information-wrap">
+      <div class="additional-information-screen">
+        <div class="auth-form-header">
+          <img src="assets/img/ucx-logo-mobile.png" alt="">
+          <h4>Additional Information</h4>
+          <span>Enter your additional information.</span>
+        </div>
+        <form [formGroup]="informationForm" class="form" (submit)="onSubmit($event)">
+          <h3 class="title is-5 static-titles">Phone Numbers</h3>
+          <div id="box-phone">
+            <div formArrayName="phoneNumbers" *ngFor="let _ of informationForm.get('phoneNumbers').controls; let i = index;">
+              <div class="columns" [formGroupName]="i">
+                <div class="column is-5">
+                  <label>Mobile</label><br>
+                  <input formControlName="mobile" type="text" class="input" placeholder="xxx xxx xxx">
+                </div>
+                <div class="column is-5">
+                  <label>Home</label><br>
+                  <input formControlName="home" type="text" class="input" placeholder="xxx xxx xxx">
+                </div>
+                <div class="column is-2 delete-phone-number" *ngIf="i != 0">
+                  <label></label><br>
+                  <button class="button is-danger" (click)="onPhoneDelete($event, i)">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="addphone" class="button add-field-button" (click)="onAddPhoneNumber($event)">Add phone number</button>
+          <br>
+          <h3 class="title is-5 static-titles">Addresses</h3>
+          <div id="box-address">
+            <div formArrayName="addresses" *ngFor="let _ of informationForm.get('addresses').controls; let i = index;">
+              <div class="columns" [formGroupName]="i">
+                <div class="column is-2">
+                  <label class="label">Country</label>
+                  <input type="text" class="input" formControlName="country">
+                </div>
+
+                <div class="column is-2">
+                  <label class="label">City</label>
+                  <input type="text" class="input" formControlName="city">
+                </div>
+
+                <div class="column is-2">
+                  <label class="label">Zip code</label>
+                  <input type="text" class="input" formControlName="zipCode">
+                </div>
+
+                <div class="column is-4">
+                  <label class="label">Street</label>
+                  <input type="text" class="input" formControlName="street">
+                </div>
+                <div class="column is-2 delete-phone-number" *ngIf="i != 0">
+                  <label class="label"></label><br>
+                  <button class="button is-danger" (click)="onAddressDelete($event, i)">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="addaddress" class="button add-field-button" (click)="onAddAddress($event)">Add address</button>
+
+          <div>
+            <button class="auth-button">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
