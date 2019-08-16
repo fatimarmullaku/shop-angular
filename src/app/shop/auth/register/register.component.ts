@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../shared/services/user.service';
 import {UserRegisterModel} from '../../../shared/models/user-register.model';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +10,9 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  isRegistered = false;
 
-  constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder) {
+  constructor(private userService: UserService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -53,10 +53,9 @@ export class RegisterComponent implements OnInit {
       this.userService.register(payload)
         .subscribe((res) => {
           this.userService.login(payload.user.email, payload.user.password)
-            .then(() => {
-              this.router.navigateByUrl('/');
-            })
-            .catch((err) => {
+            .subscribe(r => {
+              this.isRegistered = true;
+            }, (err) => {
               console.error(err);
             });
         }, (err) => {
