@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-list-pagination',
@@ -12,14 +12,18 @@ export class PaginationComponent implements OnInit {
   }
 
   currentPage = 1;
-  lastPageIndex = 3;
+  lastPageIndex = 2;
+  @Input()
   totalItems: number;
+  @Input()
   pageSize = 9;
 
   left = 1;
   mid = 2;
   right = 3;
+
   ngOnInit() {
+    // this.lastPageIndex = Math.ceil(this.totalItems / this.pageSize);
   }
 
   log(as) {
@@ -31,19 +35,26 @@ export class PaginationComponent implements OnInit {
 
   changePage(page: number) {
     if (page >= 1 && page <= this.lastPageIndex) {
-    this.currentPage = page;
+      this.currentPage = page;
+     /* this.router.navigate(
+        [],
+        {
+          relativeTo: ActivatedRoute,
+          queryParams: {size: this.pageSize, page: this.pageSize},
+          queryParamsHandling: 'merge', // remove to replace all query params by provided
+        });*/
     }
     if (this.currentPage === 1) {
       this.left = 1;
       this.mid = 2;
       this.right = 3;
     } else if (this.currentPage === this.lastPageIndex) {
-      this.left = this.lastPageIndex - 2  ;
-      this.mid = this.lastPageIndex - 1 ;
-      this.right = this.lastPageIndex   ;
+      this.left = this.lastPageIndex - 2;
+      this.mid = this.lastPageIndex - 1;
+      this.right = this.lastPageIndex;
     } else {
-      this.left = this.currentPage - 1 ;
-      this.mid = this.currentPage     ;
+      this.left = this.currentPage - 1;
+      this.mid = this.currentPage;
       this.right = this.currentPage + 1;
     }
 
