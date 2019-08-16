@@ -14,7 +14,7 @@ export class BaseStorageService {
   getElementInStorage(id: number, key: LocalStorageKey): boolean {
     const element = this.storageService.get(key);
     if (element) {
-      return JSON.parse(element).filter(item => item == id).length > 0;
+      return JSON.parse(element).filter(item => item === id).length > 0;
     } else {
       return false;
     }
