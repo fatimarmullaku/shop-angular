@@ -20,31 +20,67 @@ export class ProductService {
     const product1 = new ProductModel();
     product1.id = 1;
     product1.description = 'Lorem ipsum';
-    product1.image = '/assets/img/My-Cart/first-version/1.png';
+    product1.image = '/assets/img/injustice-cover.jpg';
     product1.platform = 'PC';
     product1.price = 20;
     product1.stock = 2;
-    product1.title = 'Mortal Combat';
-
+    product1.title = 'Injustice 2';
     const product1Rating = new ProductRatingModel();
     product1Rating.rated = 3.5;
     product1Rating.totalReviews = 49;
-
     const product1Review = new ProductReviewModel();
     product1Review.id = 1;
     product1Review.description = 'Test review description';
     product1Review.stars = 2;
     product1Review.name = 'John Doe';
     product1Rating.reviews = [product1Review];
-
     product1.rating = product1Rating;
+    this.products.push(product1);
+    const product2 = new ProductModel();
 
-    this.products = [product1];
+    product2.id = 2;
+    product2.description = 'Lorem ipsum';
+    product2.image = '/assets/img/cod-cover.jpg';
+    product2.platform = 'PC';
+    product2.price = 20;
+    product2.stock = 2;
+    product2.title = 'Call of Du2y Modern Warfare';
+    const product2Rating = new ProductRatingModel();
+    product2Rating.rated = 4.5;
+    product2Rating.totalReviews = 49;
+    const product2Review = new ProductReviewModel();
+    product2Review.id = 2;
+    product2Review.description = 'Test review description';
+    product2Review.stars = 2;
+    product2Review.name = 'John Doe';
+    product2Rating.reviews = [product2Review];
+    product2.rating = product2Rating;
+    this.products.push(product2);
+
+    const product3 = new ProductModel();
+    product3.id = 3;
+    product3.description = 'Lorem ipsum';
+    product3.image = '/assets/img/jump-force-cover.jpg';
+    product3.platform = 'PC';
+    product3.price = 20;
+    product3.stock = 2;
+    product3.title = 'Jump Force';
+    const product3Rating = new ProductRatingModel();
+    product3Rating.rated = 4.5;
+    product3Rating.totalReviews = 49;
+    const product3Review = new ProductReviewModel();
+    product3Review.id = 3;
+    product3Review.description = 'Test review description';
+    product3Review.stars = 2;
+    product3Review.name = 'John Doe';
+    product3Rating.reviews = [product3Review];
+    product3.rating = product3Rating;
+    this.products.push(product3);
   }
-
   getProducts(): ProductModel[] {
     return this.products;
   }
+
 
   getProduct(id: number): ProductModel {
     const products = this.products.filter(item => item.id == id);
