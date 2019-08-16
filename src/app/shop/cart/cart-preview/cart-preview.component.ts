@@ -24,7 +24,7 @@ export class CartPreviewComponent implements OnInit {
   }
 
   addQty(cartProduct: ProductCartModel) {
-    this.productService.changeProductCartQuantity(cartProduct.id, cartProduct.qty + 1);
+    this.productService.changeProductCartQuantity(cartProduct.id, cartProduct.qty +1 );
     this.cartProducts = this.productService.getProductsFromCart();
   }
 

@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="control">
-                  <input class="input is-rounded" type="number" value="1">
+                  <input class="input is-rounded" #input type="number" value="1" (keyup)="onKey($event, input.value)">
                 </div>
               </div>
 

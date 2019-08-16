@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="product-details-container">
+<div >
   <div class="column">
     <div>
       <h1 class="title-color">Your Shopping Cart</h1>
@@ -7,13 +7,13 @@
     <hr>
     <br>
     <div class="container main-container">
-      <div class="notification" *ngIf="cartProducts && cartProducts.length > 0">
+      <div *ngIf="cartProducts && cartProducts.length > 0">
         <div class="columns is-mobile" *ngFor="let item of cartProducts">
           <div class="column cart-items is-11">
-            <div class="columns is-vcentered">
+            <div class="cart-item-container columns is-vcentered">
               <div class="column is-2">
                 <div class="product-img">
-                  <img [src]="getProduct(item.id).image" alt="">
+                  <img class="radius-img" [src]="getProduct(item.id).image" alt="">
                 </div>
               </div>
               <div class="column is-3 product-info">
@@ -31,8 +31,13 @@
                   <span class="button is-small qty" (click)="subQty(item)"><strong>-</strong></span>
                 </div>
               </div>
-              <div class="column is-2 product-info">
+              <div class="column is-1 product-info">
+                <p>Price</p>
                 <h3><strong>{{ getProduct(item.id).price }} </strong></h3>
+              </div>
+              <div class="column is-1 product-info">
+                <p>Total price</p>
+                <h3><strong>{{ getProduct(item.id).price*item.qty }} </strong></h3>
               </div>
             </div>
           </div>

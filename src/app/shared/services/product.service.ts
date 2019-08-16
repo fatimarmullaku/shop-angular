@@ -93,7 +93,6 @@ export class ProductService {
     return null;
   }
 
-  // get wishlist product
   getProductInWishlist(id: number): boolean {
     const wishlist = this.storageService.get('wishlist');
     if (wishlist) {

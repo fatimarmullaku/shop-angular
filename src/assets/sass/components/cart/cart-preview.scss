@@ -1,6 +1,6 @@
 .notification{
-  background-color: #1f2833;
-  border: 1px solid #FF5A09;
+  //background-color: #1f2833;
+  //border: 1px solid #FF5A09;
 }
 
 .title-color{
@@ -11,7 +11,8 @@
 
 .cart-items {
   color: #FF5A09;
-  background-color: #3f4954;
+  //background-color: #3f4954;
+  background: map_get($ucx-colors,dark-gray);
   margin: 10px 0 30px 20px;
   border: 2px solid #FF5A09;
   border-radius: 20px;
@@ -64,7 +65,7 @@
   margin-left: 10px;
 
   a{
-    background-color: #3f4954;
+    //background-color: #3f4954;
 
     &:hover{
       background-color: #FF5A09;
@@ -98,4 +99,13 @@ hr{
 
 .product-info{
   text-align: center;
+}
+
+.radius-img{
+  border-radius: 10px;
+}
+
+.cart-item-container{
+  margin-top: -22px;
+  margin-left: -29px;
 }

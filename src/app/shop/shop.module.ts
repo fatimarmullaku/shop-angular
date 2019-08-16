@@ -17,7 +17,7 @@ import { ProductReviewsComponent } from './products/product-detail/product-revie
 import { ProductGalleryComponent } from './products/product-detail/product-gallery/product-gallery.component';
 import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
 import { LogoutComponent } from './auth/logout/logout.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AdditionalInformationComponent } from './auth/additional-information/additional-information.component';
 import { AddNewProductComponent } from './newproduct/add-new-product/add-new-product.component';
@@ -51,6 +51,7 @@ import { CartPreviewComponent } from './cart/cart-preview/cart-preview.component
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    FormsModule,
 
   ]
 })
