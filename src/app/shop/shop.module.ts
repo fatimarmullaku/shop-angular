@@ -21,6 +21,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AdditionalInformationComponent } from './auth/additional-information/additional-information.component';
 import { AddNewProductComponent } from './newproduct/add-new-product/add-new-product.component';
+import {PaginationComponent} from './products/product-list/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { AddNewProductComponent } from './newproduct/add-new-product/add-new-pro
     AuthLayoutComponent,
     LogoutComponent,
     AdditionalInformationComponent,
-    AddNewProductComponent],
+    AddNewProductComponent,
+    PaginationComponent
+  ],
   imports: [
     CommonModule,
     ShopRoutingModule,
