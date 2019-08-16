@@ -1,8 +1,8 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductModel} from '../../../shared/models/product.model';
 import {ProductService} from '../../../shared/services/product.service';
-import {FormControl} from "@angular/forms";
+import {CartService} from '../../../shared/services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,24 +11,19 @@ import {FormControl} from "@angular/forms";
 export class ProductDetailComponent implements OnInit {
 
   product: ProductModel;
-  qty: any;
 
   constructor(public router: Router,
               private activatedRoute: ActivatedRoute,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private cartService: CartService) {
   }
 
   ngOnInit() {
-
     this.activatedRoute.params.subscribe(res => {
       if (res.id) {
         this.product = this.productService.getProduct(res.id);
       }
     });
-  }
-
-  onKey(event, newValue){
-    this.qty = newValue;
   }
 
   isWishlisted(): boolean {
@@ -47,6 +42,7 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart(event: any) {
     event.preventDefault();
-    this.productService.addToCart(this.product.id,this.qty);
+
+    this.cartService.addToCart(this.product.id, 1);
   }
 }

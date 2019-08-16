@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../../shared/services/product.service';
 import {ProductModel} from '../../../shared/models/product.model';
 import {ProductCartModel} from '../../../shared/models/product-cart.model';
+import {CartService} from '../../../shared/services/cart.service';
 
 @Component({
   selector: 'app-cart-preview',
@@ -12,11 +13,11 @@ export class CartPreviewComponent implements OnInit {
   products: ProductModel[];
   cartProducts: ProductCartModel[];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
-    this.cartProducts = this.productService.getProductsFromCart();
+    this.cartProducts = this.cartService.getProductsFromCart();
   }
 
   getProduct(id: number): ProductModel {
@@ -24,8 +25,8 @@ export class CartPreviewComponent implements OnInit {
   }
 
   addQty(cartProduct: ProductCartModel) {
-    this.productService.changeProductCartQuantity(cartProduct.id, cartProduct.qty +1 );
-    this.cartProducts = this.productService.getProductsFromCart();
+    this.cartService.changeProductCartQuantity(cartProduct.id, cartProduct.qty + 1);
+    this.cartProducts = this.cartService.getProductsFromCart();
   }
 
   subQty(cartProduct: ProductCartModel) {
@@ -33,12 +34,12 @@ export class CartPreviewComponent implements OnInit {
       return;
     }
 
-    this.productService.changeProductCartQuantity(cartProduct.id, cartProduct.qty - 1);
-    this.cartProducts = this.productService.getProductsFromCart();
+    this.cartService.changeProductCartQuantity(cartProduct.id, cartProduct.qty - 1);
+    this.cartProducts = this.cartService.getProductsFromCart();
   }
 
   deleteFromCart(cartProduct: ProductCartModel) {
-    this.productService.deleteFromCart(cartProduct.id);
-    this.cartProducts = this.productService.getProductsFromCart();
+    this.cartService.deleteFromCart(cartProduct.id);
+    this.cartProducts = this.cartService.getProductsFromCart();
   }
 }
