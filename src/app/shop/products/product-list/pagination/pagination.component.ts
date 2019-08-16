@@ -11,8 +11,8 @@ export class PaginationComponent implements OnInit {
   constructor(private router: Router) {
   }
 
-  currentPage = 0;
-  lastPageIndex = 2;
+  currentPage = 1;
+  lastPageIndex = 3;
   totalItems: number;
   pageSize = 9;
 
@@ -30,21 +30,21 @@ export class PaginationComponent implements OnInit {
   }
 
   changePage(page: number) {
-    if (page >= 0 && page <= this.lastPageIndex) {
+    if (page >= 1 && page <= this.lastPageIndex) {
     this.currentPage = page;
     }
-    if (this.currentPage === 0) {
+    if (this.currentPage === 1) {
       this.left = 1;
       this.mid = 2;
       this.right = 3;
     } else if (this.currentPage === this.lastPageIndex) {
-      this.left = this.lastPageIndex - 2 + 1 ;
-      this.mid = this.lastPageIndex - 1 + 1;
-      this.right = this.lastPageIndex     + 1;
+      this.left = this.lastPageIndex - 2  ;
+      this.mid = this.lastPageIndex - 1 ;
+      this.right = this.lastPageIndex   ;
     } else {
-      this.left = this.currentPage - 1 + 1;
-      this.mid = this.currentPage     + 1;
-      this.right = this.currentPage + 1 + 1;
+      this.left = this.currentPage - 1 ;
+      this.mid = this.currentPage     ;
+      this.right = this.currentPage + 1;
     }
 
 
