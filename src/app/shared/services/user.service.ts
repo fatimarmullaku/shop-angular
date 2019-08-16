@@ -36,6 +36,6 @@ export class UserService {
   }
 
   logout(): void {
-    localStorage.removeItem('accessToken');
+    this.localStorage.delete('accessToken');
   }
 }
