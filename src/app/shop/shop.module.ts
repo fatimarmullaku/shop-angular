@@ -20,6 +20,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AdditionalInformationComponent } from './auth/additional-information/additional-information.component';
+import { AddNewProductComponent } from './newproduct/add-new-product/add-new-product.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AdditionalInformationComponent } from './auth/additional-information/ad
     ProductGalleryComponent,
     AuthLayoutComponent,
     LogoutComponent,
-    AdditionalInformationComponent],
+    AdditionalInformationComponent,
+    AddNewProductComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,
