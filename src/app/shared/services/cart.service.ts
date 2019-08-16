@@ -13,7 +13,7 @@ export class CartService {
   }
 
   getProductsFromCart(): ProductCartModel[] {
-    return this.baseStorage.getStorageOf(LocalStorageKey.CART);
+    return JSON.parse(this.baseStorage.getStorageOf(LocalStorageKey.CART));
   }
 
   addToCart(id: number, qty?: number): void {
