@@ -3,6 +3,7 @@ import {ProductModel} from '../models/product.model';
 import {ProductReviewModel} from '../models/product-review.model';
 import {ProductRatingModel} from '../models/product-rating.model';
 import {StorageService} from './storage.service';
+import {ProductCartModel} from '../models/product-cart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -94,5 +95,60 @@ export class ProductService {
   // clear wishlist
   clearWishList() {
     this.storageService.delete('wishlist');
+  }
+
+  getProductsFromCart(): ProductCartModel[] {
+    const storage = this.storageService.get('cart');
+    if (storage) {
+      return JSON.parse(storage);
+    } else {
+      return [];
+    }
+  }
+
+  addToCart(id: number, qty?: number): void {
+    let cart = this.getProductsFromCart();
+    if (!qty) {
+      qty = 1;
+    }
+
+    if (cart.filter(item => item.id == id).length > 0) {
+      // update quantity
+      cart = cart.map(item => {
+        if (item.id == id) {
+          item.qty += qty;
+        }
+
+        return item;
+      });
+    } else {
+      const newProductInCart = new ProductCartModel();
+      newProductInCart.id = id;
+      newProductInCart.qty = qty;
+      cart.push(newProductInCart);
+    }
+
+    // save
+    this.storageService.set('cart', JSON.stringify(cart));
+  }
+
+  deleteFromCart(id: number) {
+    const cart = this.getProductsFromCart().filter(item => item.id != id);
+
+    // save
+    this.storageService.set('cart', JSON.stringify(cart));
+  }
+
+  changeProductCartQuantity(id: number, quantity: number) {
+    const cart = this.getProductsFromCart().map(item => {
+      if (item.id == id) {
+        item.qty = quantity;
+      }
+
+      return item;
+    });
+
+    // save
+    this.storageService.set('cart', JSON.stringify(cart));
   }
 }

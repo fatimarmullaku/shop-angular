@@ -12,6 +12,7 @@ import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 import {LogoutComponent} from './auth/logout/logout.component';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
 import {AddNewProductComponent} from "./newproduct/add-new-product/add-new-product.component";
+import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path: 'add-new-product',
     component: AddNewProductComponent
+  },
+  {
+    path: 'cart',
+    component: CartPreviewComponent
   }
 ];
 

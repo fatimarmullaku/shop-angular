@@ -22,6 +22,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AdditionalInformationComponent } from './auth/additional-information/additional-information.component';
 import { AddNewProductComponent } from './newproduct/add-new-product/add-new-product.component';
 import {PaginationComponent} from './products/product-list/pagination/pagination.component';
+import { CartPreviewComponent } from './cart/cart-preview/cart-preview.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {PaginationComponent} from './products/product-list/pagination/pagination
     LogoutComponent,
     AdditionalInformationComponent,
     AddNewProductComponent,
-    PaginationComponent
+    PaginationComponent,
+    CartPreviewComponent
   ],
   imports: [
     CommonModule,

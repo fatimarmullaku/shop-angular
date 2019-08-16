@@ -38,4 +38,9 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
+  addToCart(event: any) {
+    event.preventDefault();
+
+    this.productService.addToCart(this.product.id, 1);
+  }
 }
