@@ -18,7 +18,6 @@ export class StorageService {
   // delete value by key
   delete(key: string): void {
     localStorage.removeItem(key);
-
   }
 
   // clear storage
