@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class PaginationComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   currentPage = 1;
@@ -36,13 +36,12 @@ export class PaginationComponent implements OnInit {
   changePage(page: number) {
     if (page >= 1 && page <= this.lastPageIndex) {
       this.currentPage = page;
-     /* this.router.navigate(
+      this.router.navigate(
         [],
         {
-          relativeTo: ActivatedRoute,
-          queryParams: {size: this.pageSize, page: this.pageSize},
-          queryParamsHandling: 'merge', // remove to replace all query params by provided
-        });*/
+          relativeTo: this.activatedRoute,
+          queryParams: {size: this.pageSize, page: this.pageSize}
+        });
     }
     if (this.currentPage === 1) {
       this.left = 1;
