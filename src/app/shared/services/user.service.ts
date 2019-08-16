@@ -23,7 +23,7 @@ export class UserService {
     return this.httpClient.post<any>(ENDPOINTS.auth.login, {email, password})
       .pipe(map(user => {
         if (user && user.accessToken) {
-          this.localStorage.set('accessToken', JSON.stringify(user.accessToken.valueOf()));
+          this.localStorage.set('accessToken', user.accessToken);
           this.loggedIn = true;
         }
 
