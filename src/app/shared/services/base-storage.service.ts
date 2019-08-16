@@ -23,6 +23,7 @@ export class BaseStorageService {
   // Gets the storage which contains the given key
   getStorageOf(key: LocalStorageKey) {
     const storage = this.storageService.get(key);
+    console.log(storage)
     if (storage) {
       return JSON.parse(storage);
     } else {
