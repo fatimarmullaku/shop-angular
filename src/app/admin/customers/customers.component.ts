@@ -118,7 +118,7 @@ export class CustomersComponent implements OnInit {
     this.updateForm.controls[' description '].setValue(description);
     this.updateForm.controls[' version '].setValue(version);
 
-    console.log(this.updateForm.value);
+
   }
 
  openModalf(content, customerId) {
