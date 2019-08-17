@@ -6,7 +6,7 @@ import {ENDPOINTS} from '../../shared/constants/api.constants';
   providedIn: 'root'
 })
 export class CustomersService {
-  readonly rootUrl = 'localhost:3000';
+  readonly rootUrl = 'http://localhost:3000';
 
   // readonly getAll = ENDPOINTS.customers.getAll;
   constructor(private http: HttpClient) {
