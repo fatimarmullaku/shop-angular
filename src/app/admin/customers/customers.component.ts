@@ -10,6 +10,10 @@ import {HttpErrorResponse} from '@angular/common/http';
   styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent implements OnInit {
+  deleteModal = false;
+  updateModal = false;
+  insertModal = false;
+
   customersList: any;
   customersForm: FormGroup;
   customerId: number;
@@ -29,7 +33,7 @@ export class CustomersComponent implements OnInit {
     this.customersForm = this.formBuilder.group({
       id: [],
       email: [''],
-      phoneNumber: [''],
+      phoneNumbers: [''],
       recordStatus: [''],
       createDateTime: [''],
       updateDateTime: [''],
@@ -40,13 +44,15 @@ export class CustomersComponent implements OnInit {
 
     this.updateForm = this.formBuilder.group({
       email: [''],
-      phoneNumber: [''],
+      phoneNumbers: [''],
       recordStatus: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
       description: [''],
       version: [''],
     });
+
+    console.log(this.updateForm);
 
   }
 
@@ -63,26 +69,25 @@ export class CustomersComponent implements OnInit {
       }
     );
 
-  }
-
-  open(deleteModal, id) {
-    this.modalService.open(deleteModal);
-    this.customerId = id;
+    this.insertModal = false;
 
   }
+
+
 
   onDelete() {
     this.customersService.deleteCostumer(this.customerId).subscribe(
       get => {
         this.customersService.getAllCustomers().subscribe((data: any) => {
-          this.customerId = data.result;
+          this.customerId = data;
         });
       },
       (err: HttpErrorResponse) => {
         console.log(err);
       }
     );
-    console.log(this.customerId);
+    this.toggleModal();
+
   }
 
   onUpdate() {
@@ -97,21 +102,28 @@ export class CustomersComponent implements OnInit {
         console.log(err);
       }
     );
-    console.log(values);
+    this.updateModal = false;
   }
 
-  openUpdate(updateModal, id: number,
-             email: string,
-             phoneNumber: string,
-             recordStatus: boolean,
-             updateDateTime: Date,
-             deletedDateTime: Date,
-             description: string,
-             version: number) {
-    this.modalService.open(updateModal);
+  openInsert() {
+    console.log('insert is called');
+    this.insertModal = true;
+    console.log('from open insert', this.insertModal);
+  }
+
+  openUpdate(
+    id: number,
+    email: string,
+    phoneNumbers: number,
+    recordStatus: boolean,
+    updateDateTime: Date,
+    deletedDateTime: Date,
+    description: string,
+    version: number) {
+    this.updateModal = true;
     this.customerId = id;
     this.updateForm.controls[' email '].setValue(email);
-    this.updateForm.controls[' phoneNumber '].setValue(phoneNumber);
+    this.updateForm.controls[' phoneNumbers '].setValue(phoneNumbers);
     this.updateForm.controls[' recordStatus '].setValue(recordStatus);
     this.updateForm.controls[' updateDateTime '].setValue(updateDateTime);
     this.updateForm.controls[' deletedDateTime '].setValue(deletedDateTime);
@@ -119,10 +131,31 @@ export class CustomersComponent implements OnInit {
     this.updateForm.controls[' version '].setValue(version);
 
 
+<<<<<<< HEAD
+=======
+    console.log(this.updateForm.value);
+>>>>>>> admin-dashboard
   }
 
- openModalf(content, customerId) {
-    this.modalService.open(content);
- }
+
+  closeUpdateModal() {
+    this.updateModal = !this.updateModal;
+  }
+
+  closeInsertModal() {
+    this.insertModal = !this.insertModal;
+  }
+
+  // in background close modal
+  toggleModal() {
+    this.deleteModal = !this.deleteModal;
+  }
+
+  openDelete(cid) {
+    this.deleteModal = true;
+    this.customerId = cid;
+    console.log(this.customerId);
+  }
+
 
 }

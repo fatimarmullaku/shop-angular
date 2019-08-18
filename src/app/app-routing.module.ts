@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardBaseComponent} from './admin/layout/base/dashboard-base.component';
 import {BaseComponent} from './shared/layout/base/base.component';
-import {MinComponent} from "./shared/layout/min/min.component";
+import {MinComponent} from './shared/layout/min/min.component';
 
 const routes: Routes = [
 
