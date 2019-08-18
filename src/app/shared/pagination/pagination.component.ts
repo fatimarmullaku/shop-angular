@@ -12,11 +12,11 @@ export class PaginationComponent implements OnInit {
   }
 
   currentPage = 1;
-  lastPageIndex = 2;
+  lastPageIndex = 6;
   @Input()
   totalItems: number;
   @Input()
-  pageSize = 9;
+  pageSize: number;
 
   left = 1;
   mid = 2;
@@ -40,7 +40,7 @@ export class PaginationComponent implements OnInit {
         [],
         {
           relativeTo: this.activatedRoute,
-          queryParams: {size: this.pageSize, page: this.pageSize}
+          queryParams: {size: this.pageSize, page: this.currentPage}
         });
     }
     if (this.currentPage === 1) {
