@@ -8,21 +8,21 @@ export class AddNewProductComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
   url = '';
   fileChosen = '';
+
+  ngOnInit() {
+  }
   onSelectFile(event: any) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+      let reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.url = reader.result.toString();
-      }
+      };
     }
-     this.fileChosen = 'none';
+    this.fileChosen = 'none';
   }
 }

@@ -7,25 +7,29 @@ import {ENDPOINTS} from '../../shared/constants/api.constants';
 })
 export class CustomersService {
   readonly getAll = ENDPOINTS.customers.getAll;
+  readonly myAPI = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {
   }
 
 
   getAllCustomers() {
-    return this.http.get(this.getAll);
+    return this.http.get(this.myAPI + '/customers');
   }
 
-  registerCustomer(data) {
-    return this.http.post(this.getAll + '/', data);
+  registerCustomer(values) {
+    console.log('from service', values);
+    return this.http.post(this.myAPI + '/', values);
   }
 
   deleteCostumer(id) {
-    return this.http.delete(this.getAll + '/', id);
+    console.log('from service', id);
+    return this.http.delete(this.myAPI + '/customers/' + id);
   }
 
   updateCustomer(data) {
-    return this.http.put(this.getAll + '/', data);
+    console.log('from service', data);
+    return this.http.put(this.myAPI + '/', data);
   }
 
 

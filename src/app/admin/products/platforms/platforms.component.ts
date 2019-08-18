@@ -10,7 +10,7 @@ export class PlatformsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.example = "something";
+    this.example = 'something';
   }
 
 }

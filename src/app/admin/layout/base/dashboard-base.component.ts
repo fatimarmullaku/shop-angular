@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard-base.component.html'
 })
 export class DashboardBaseComponent {
-  constructor(  ) {} 
+  constructor(  ) {}
 
 
 }
