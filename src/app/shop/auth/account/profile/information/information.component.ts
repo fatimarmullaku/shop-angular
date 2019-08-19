@@ -39,7 +39,7 @@ export class InformationComponent implements OnInit {
 
   createAddress(): FormGroup {
     return this.formBuilder.group({
-      country: new FormControl(''),
+      country: this.customer.addresses,
       city: new FormControl(''),
       zipCode: new FormControl(''),
       street: new FormControl('')

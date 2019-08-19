@@ -58,11 +58,11 @@
 <!--          <form [formGroup]="informationForm" class="form" (submit)="onSubmit($event)">-->
             <h3 class="title is-5 static-titles">Phone Numbers</h3>
             <div id="box-phone">
-              <div formArrayName="phoneNumbers" *ngFor="let _ of informationForm.get('phoneNumbers')['controls']; let i = index;">
+              <div formArrayName="phoneNumbers" *ngFor="let phoneNumberi of informationForm.get('phoneNumbers')['controls']; let i = index;">
                 <div class="columns" [formGroupName]="i">
                   <div class="column is-5">
                     <label>Mobile</label><br>
-                    <input formControlName="mobile" type="text" class="input" placeholder="xxx xxx xxx">
+                    <input formControlName="mobile" type="text" class="input" placeholder="xxx xxx xxx" value="{{i}}.{{phoneNumberi.mobile}}">
                   </div>
                   <div class="column is-5">
                     <label>Home</label><br>
