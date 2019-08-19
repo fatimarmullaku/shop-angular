@@ -6,52 +6,34 @@ import {ENDPOINTS} from '../../shared/constants/api.constants';
   providedIn: 'root'
 })
 export class CustomersService {
-<<<<<<< HEAD
-  readonly rootUrl = 'http://localhost:3000';
+
+
 
   // readonly getAll = ENDPOINTS.customers.getAll;
-=======
-  readonly getAll = ENDPOINTS.customers.getAll;
-  readonly myAPI = 'http://localhost:3000';
+  readonly rootUrl = 'http://localhost:3000';
 
->>>>>>> admin-dashboard
   constructor(private http: HttpClient) {
   }
 
 
   getAllCustomers() {
-<<<<<<< HEAD
     return this.http.get(this.rootUrl + '/customers');
-  }
-
-  registerCustomer(data) {
-    return this.http.post(this.rootUrl + '/', data);
-  }
-
-  deleteCostumer(id) {
-    return this.http.delete(this.rootUrl + '/', id);
-  }
-
-  updateCustomer(data) {
-    return this.http.put(this.rootUrl + '/', data);
-=======
-    return this.http.get(this.myAPI + '/customers');
   }
 
   registerCustomer(values) {
     console.log('from service', values);
-    return this.http.post(this.myAPI + '/', values);
+    return this.http.post(this.rootUrl + '/', values);
   }
 
   deleteCostumer(id) {
     console.log('from service', id);
-    return this.http.delete(this.myAPI + '/customers/' + id);
+    return this.http.delete(this.rootUrl + '/customers/' + id);
   }
 
   updateCustomer(data) {
     console.log('from service', data);
-    return this.http.put(this.myAPI + '/', data);
->>>>>>> admin-dashboard
+    return this.http.put(this.rootUrl + '/', data);
+
   }
 
 

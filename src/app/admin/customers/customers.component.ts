@@ -130,11 +130,6 @@ export class CustomersComponent implements OnInit {
     this.updateForm.controls[' description '].setValue(description);
     this.updateForm.controls[' version '].setValue(version);
 
-
-<<<<<<< HEAD
-=======
-    console.log(this.updateForm.value);
->>>>>>> admin-dashboard
   }
 
 
