@@ -40,7 +40,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     MatListModule,
     MatSidenavModule,
     MatIconModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
 
   ]
 })

@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ProductModel} from '../models/product.model';
 import {ProductReviewModel} from '../models/product-review.model';
 import {ProductRatingModel} from '../models/product-rating.model';
 import {StorageService} from './storage.service';
-import {ProductCartModel} from '../models/product-cart.model';
+import {BaseStorageService} from './base-storage.service';
+import {LocalStorageKey} from '../constants/local-storage-key';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ProductService {
 
   products: ProductModel[] = [];
 
-  constructor(private storageService: StorageService) {
+  constructor(private storageService: StorageService, private baseStorage: BaseStorageService) {
     this.fetchProducts();
   }
 
@@ -59,12 +60,7 @@ export class ProductService {
 
   // get wishlist product
   getProductInWishlist(id: number): boolean {
-    const wishlist = this.storageService.get('wishlist');
-    if (wishlist) {
-      return JSON.parse(wishlist).filter(item => item == id).length > 0;
-    } else {
-      return false;
-    }
+    return this.baseStorage.getElementInStorage(id, LocalStorageKey.WISHLIST);
   }
 
   // add to wishlist
@@ -79,76 +75,19 @@ export class ProductService {
         this.storageService.set('wishlist', JSON.stringify(wishlistArray));
       }
     } else {
-        this.storageService.set('wishlist', JSON.stringify([id]));
+      this.storageService.set('wishlist', JSON.stringify([id]));
     }
   }
 
   // delete from wishlist
   deleteFromWishlist(id: number) {
-    const wishlist = this.storageService.get('wishlist');
-    if (wishlist) {
-      const wishlistArray = JSON.parse(wishlist).filter(item => item != id);
-      this.storageService.set('wishlist', JSON.stringify(wishlistArray));
-    }
+    this.baseStorage.deleteElementInStorage(id, LocalStorageKey.WISHLIST);
   }
 
   // clear wishlist
   clearWishList() {
-    this.storageService.delete('wishlist');
+    this.baseStorage.clearStorageOf(LocalStorageKey.WISHLIST);
   }
 
-  getProductsFromCart(): ProductCartModel[] {
-    const storage = this.storageService.get('cart');
-    if (storage) {
-      return JSON.parse(storage);
-    } else {
-      return [];
-    }
-  }
 
-  addToCart(id: number, qty?: number): void {
-    let cart = this.getProductsFromCart();
-    if (!qty) {
-      qty = 1;
-    }
-
-    if (cart.filter(item => item.id == id).length > 0) {
-      // update quantity
-      cart = cart.map(item => {
-        if (item.id == id) {
-          item.qty += qty;
-        }
-
-        return item;
-      });
-    } else {
-      const newProductInCart = new ProductCartModel();
-      newProductInCart.id = id;
-      newProductInCart.qty = qty;
-      cart.push(newProductInCart);
-    }
-
-    // save
-    this.storageService.set('cart', JSON.stringify(cart));
-  }
-
-  deleteFromCart(id: number) {
-    const cart = this.getProductsFromCart().filter(item => item.id != id);
-
-    // save
-    this.storageService.set('cart', JSON.stringify(cart));
-  }
-
-  changeProductCartQuantity(id: number, quantity: number) {
-    const cart = this.getProductsFromCart().map(item => {
-      if (item.id == id) {
-        item.qty = quantity;
-      }
-
-      return item;
-    });
-
-    // save
-    this.storageService.set('cart', JSON.stringify(cart));
-  }
 }
