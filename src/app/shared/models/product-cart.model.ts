@@ -4,4 +4,5 @@ export class ProductCartModel {
   id: number;
   qty: number;
   product: ProductModel;
+  isInStock: boolean;
 }

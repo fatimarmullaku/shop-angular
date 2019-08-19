@@ -35,7 +35,7 @@ export class BaseStorageService {
   deleteElementInStorage(id: number, key: LocalStorageKey) {
     const element = this.storageService.get(key);
     if (element) {
-      const keyArray = JSON.parse(element).filter(item => item != id);
+      const keyArray = JSON.parse(element).filter(item => item.id != id);
       this.storageService.set(key, JSON.stringify(keyArray));
     }
   }
