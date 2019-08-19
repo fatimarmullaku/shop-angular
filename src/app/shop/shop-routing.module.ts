@@ -13,6 +13,10 @@ import {LogoutComponent} from './auth/logout/logout.component';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
 import {AddNewProductComponent} from "./newproduct/add-new-product/add-new-product.component";
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
+import {ProfileComponent} from './auth/account/profile/profile.component';
+import {InformationComponent} from './auth/account/profile/information/information.component';
+import {ChangeEmailComponent} from './auth/account/profile/change-email/change-email.component';
+import {ChangePasswordComponent} from './auth/account/profile/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -63,6 +67,24 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: '/auth/login'
+      }
+    ]
+  },
+  {
+    path: 'auth/account/profile',
+    component: ProfileComponent,
+    children: [
+      {
+        path: 'information',
+        component: InformationComponent
+      },
+      {
+        path: 'change-email',
+        component: ChangeEmailComponent
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent
       }
     ]
   },

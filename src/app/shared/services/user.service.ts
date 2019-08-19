@@ -4,11 +4,15 @@ import {UserRegisterModel} from '../models/user-register.model';
 import {ENDPOINTS} from '../constants/api.constants';
 import {map} from 'rxjs/operators';
 import {StorageService} from './storage.service';
+import {UserModel} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  users: UserModel;
+
+
 
   loggedIn = false;
 
