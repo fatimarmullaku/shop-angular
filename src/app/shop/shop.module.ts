@@ -19,6 +19,8 @@ import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {AngularMaterialModuleCollapse} from '../shared/products-modules';
 
 @NgModule({
   declarations: [
@@ -35,13 +37,17 @@ import {HttpClientModule} from '@angular/common/http';
     ProductReviewsComponent,
     ProductGalleryComponent,
     AuthLayoutComponent,
-    LogoutComponent],
+    LogoutComponent,
+    ],
   imports: [
     CommonModule,
     ShopRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    NgbModule,
+    AngularMaterialModuleCollapse
+
 
   ]
 })
