@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProductModel} from '../../../shared/models/product.model';
 import {ProductService} from '../../../shared/services/product.service';
 import {CartService} from '../../../shared/services/cart.service';
+import {WishListService} from '../../../shared/services/wish-list.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,6 +16,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(public router: Router,
               private activatedRoute: ActivatedRoute,
               private productService: ProductService,
+              private wishListService: WishListService,
               private cartService: CartService) {
   }
 
@@ -27,15 +29,15 @@ export class ProductDetailComponent implements OnInit {
   }
 
   isWishlisted(): boolean {
-    return this.productService.getProductInWishlist(this.product.id);
+    return this.wishListService.getProductInWishlist(this.product.id);
   }
 
   toggleWishlist() {
     if (this.isWishlisted()) {
-      this.productService.deleteFromWishlist(this.product.id);
+      this.wishListService.deleteFromWishlist(this.product.id);
       this.product.isWishlisted = false;
     } else {
-      this.productService.addToWishlist(this.product.id);
+      this.wishListService.addToWishlist(this.product.id);
       this.product.isWishlisted = true;
     }
   }

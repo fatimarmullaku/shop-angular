@@ -4,7 +4,7 @@ import {ProductReviewModel} from '../models/product-review.model';
 import {ProductRatingModel} from '../models/product-rating.model';
 import {StorageService} from './storage.service';
 import {BaseStorageService} from './base-storage.service';
-import {LocalStorageKey} from '../constants/local-storage-key';
+import {WishListService} from './wish-list.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ProductService {
 
   products: ProductModel[] = [];
 
-  constructor(private storageService: StorageService, private baseStorage: BaseStorageService) {
+  constructor(private storageService: StorageService, private baseStorage: BaseStorageService, private wishListService: WishListService) {
     this.fetchProducts();
   }
 
@@ -51,42 +51,11 @@ export class ProductService {
     const products = this.products.filter(item => item.id == id);
     if (products) {
       const product = products[0];
-      product.isWishlisted = this.getProductInWishlist(product.id);
+      product.isWishlisted = this.wishListService.getProductInWishlist(product.id);
       return product;
     }
 
     return null;
-  }
-
-  // get wishlist product
-  getProductInWishlist(id: number): boolean {
-    return this.baseStorage.getElementInStorage(id, LocalStorageKey.WISHLIST);
-  }
-
-  // add to wishlist
-  addToWishlist(id: number) {
-    const wishlist = this.storageService.get('wishlist');
-    if (wishlist) {
-      const wishlistArray = JSON.parse(wishlist);
-      if (wishlistArray.filter(item => item == id).length > 0) {
-        return;
-      } else {
-        wishlistArray.push(id);
-        this.storageService.set('wishlist', JSON.stringify(wishlistArray));
-      }
-    } else {
-      this.storageService.set('wishlist', JSON.stringify([id]));
-    }
-  }
-
-  // delete from wishlist
-  deleteFromWishlist(id: number) {
-    this.baseStorage.deleteElementInStorage(id, LocalStorageKey.WISHLIST);
-  }
-
-  // clear wishlist
-  clearWishList() {
-    this.baseStorage.clearStorageOf(LocalStorageKey.WISHLIST);
   }
 
 
