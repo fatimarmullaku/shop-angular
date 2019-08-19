@@ -36,7 +36,7 @@ export class BaseStorageService {
     const element = this.storageService.get(key);
     if (element) {
       const keyArray = JSON.parse(element).filter(item => item != id);
-      this.storageService.set(key, JSON.stringify(keyArray));
+      this.setStorage(key, keyArray);
     }
   }
 
