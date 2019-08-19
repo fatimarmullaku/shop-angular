@@ -1,4 +1,5 @@
 import {ProductRatingModel} from './product-rating.model';
+import {PublisherModel} from "./publisher.model";
 
 export class ProductModel {
   id: number;
