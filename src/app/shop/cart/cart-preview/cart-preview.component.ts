@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../shared/services/product.service';
 import {ProductModel} from '../../../shared/models/product.model';
 import {ProductCartModel} from '../../../shared/models/product-cart.model';
@@ -13,7 +13,8 @@ export class CartPreviewComponent implements OnInit {
   products: ProductModel[];
   cartProducts: ProductCartModel[];
 
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(private productService: ProductService, private cartService: CartService) {
+  }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
@@ -41,5 +42,9 @@ export class CartPreviewComponent implements OnInit {
   deleteFromCart(cartProduct: ProductCartModel) {
     this.cartService.deleteFromCart(cartProduct.id);
     this.cartProducts = this.cartService.getProductsFromCart();
+  }
+
+  isProductInStock(product: ProductModel): boolean {
+    return ProductModel.isInStock(product);
   }
 }
