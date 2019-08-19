@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductModel} from "../../shared/models/product.model";
 import {ProductService} from "../../shared/services/product.service";
+;
+
 
 @Component({
   selector: 'app-wishlist',
@@ -8,7 +10,7 @@ import {ProductService} from "../../shared/services/product.service";
 })
 export class WishlistComponent implements OnInit {
 
-  items: ProductModel;
+  products: ProductModel[];
 
 
   constructor(private productService: ProductService) { }
