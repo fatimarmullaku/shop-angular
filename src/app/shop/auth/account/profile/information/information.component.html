@@ -62,7 +62,7 @@
                 <div class="columns" [formGroupName]="i">
                   <div class="column is-5">
                     <label>Mobile</label><br>
-                    <input formControlName="mobile" type="text" class="input" placeholder="xxx xxx xxx" value="{{i}}.{{phoneNumberi.mobile}}">
+                    <input formControlName="mobile" type="text" class="input" placeholder="xxx xxx xxx" value="{{informationForm.get('phoneNumbers')[i].mobile}}">
                   </div>
                   <div class="column is-5">
                     <label>Home</label><br>
