@@ -9,6 +9,8 @@ import {ProductService} from '../../../shared/services/product.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
+
+  @Input()
   products: ProductModel[];
   productsList: any;
 
