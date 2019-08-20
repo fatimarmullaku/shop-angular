@@ -19,6 +19,7 @@ export class InformationComponent implements OnInit {
   customerAddresses: AddressModel[];
   phones: FormArray;
   addresses: FormArray;
+  firstName: FormControl;
   constructor(private formBuilder: FormBuilder,
               public router: Router,
               private activatedRoute: ActivatedRoute,
@@ -29,6 +30,7 @@ export class InformationComponent implements OnInit {
     this.customer = this.customerService.getCustomer(1);
 
     this.informationForm = this.formBuilder.group({
+      firstName: new FormControl(''),
       phoneNumbers: this.formBuilder.array([]),
       addresses: this.formBuilder.array([])
     });
@@ -79,7 +81,7 @@ export class InformationComponent implements OnInit {
 
   onPhoneDelete(event: any, index: number) {
     event.preventDefault();
-    if(this.customerPhoneNumbers[index]) {
+    if (this.customerPhoneNumbers[index]) {
       this.customerPhoneNumbers = this.customerPhoneNumbers.filter(item => item.mobile != this.customerPhoneNumbers[index].mobile);
     }
     this.phones.removeAt(index);
@@ -89,6 +91,9 @@ export class InformationComponent implements OnInit {
   onAddressDelete(event: any, index: number) {
     event.preventDefault();
 
+    if (this.customerAddresses[index]) {
+      this.customerAddresses = this.customerAddresses.filter(item => item.street != this.customerAddresses[index].street);
+    }
     this.addresses.removeAt(index);
   }
 

@@ -36,7 +36,14 @@ export class CustomerService {
     firstAddress.city = 'Prishtine';
     firstAddress.zipCode = 10000;
     firstAddress.street = 'Bajram Kelmendi';
-    customer1.addresses = [firstAddress];
+
+    const secAddress = new AddressModel();
+
+    secAddress.country = 'shqiperi';
+    secAddress.city = 'tirana';
+    secAddress.zipCode = 10000;
+    secAddress.street = 'rruga b';
+    customer1.addresses = [firstAddress, secAddress];
 
     this.customers = [customer1];
   }
