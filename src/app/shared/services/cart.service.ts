@@ -2,14 +2,14 @@ import {ProductCartModel} from '../models/product-cart.model';
 import {BaseStorageService} from './base-storage.service';
 import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../constants/local-storage-key';
-import {ProductService} from './product.service';
+import {ProductService} from "./product.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor(private baseStorage: BaseStorageService, private productService: ProductService) {
+  constructor(private baseStorage: BaseStorageService,private productService: ProductService) {
 
   }
 
@@ -37,6 +37,8 @@ export class CartService {
       newProductInCart.id = id;
       newProductInCart.qty = qty;
       newProductInCart.product = this.productService.getProduct(id);
+      newProductInCart.isInStock = this.productService.getProduct(id).isInStock();
+
       cart.push(newProductInCart);
     }
 
@@ -44,8 +46,9 @@ export class CartService {
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
   }
 
-  deleteFromCart(id: number) {
-    this.baseStorage.deleteElementInStorage(id, LocalStorageKey.CART);
+  deleteFromCart(id: number) : any{
+    this.baseStorage.deleteElementInStorage(id,LocalStorageKey.CART);
+    this.getProductsFromCart();
   }
 
   changeProductCartQuantity(id: number, quantity: number) {
