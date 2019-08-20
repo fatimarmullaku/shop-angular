@@ -14,9 +14,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
 import {ProductService} from './shared/services/product.service';
 import {UserService} from './shared/services/user.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap';
+import {TokenInterceptor} from './shared/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,15 @@ import {ModalModule} from 'ngx-bootstrap';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [ProductService, UserService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    ProductService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

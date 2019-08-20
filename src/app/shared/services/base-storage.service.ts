@@ -50,8 +50,17 @@ export class BaseStorageService {
     this.storageService.flush();
   }
 
-  setStorage(key: LocalStorageKey, stringifiedValue: any) {
-    this.storageService.set(key, JSON.stringify(stringifiedValue));
+  /*
+  TODO:
+   Check if sent stringifiedValue is already a string.
+   Example: another boolean optional parameter isStringified which changes the control flow
+  */
+  setStorage(key: LocalStorageKey, stringifiedValue: any, isStringified?: boolean) {
+    if (isStringified) {
+      this.storageService.set(key, stringifiedValue);
+    } else {
+      this.storageService.set(key, JSON.stringify(stringifiedValue));
+    }
   }
 
 }

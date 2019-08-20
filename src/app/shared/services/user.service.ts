@@ -3,7 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {UserRegisterModel} from '../models/user-register.model';
 import {ENDPOINTS} from '../constants/api.constants';
 import {map} from 'rxjs/operators';
-import {StorageService} from './storage.service';
+import {TokenModel} from '../models/token.model';
+import {BaseStorageService} from './base-storage.service';
+import {LocalStorageKey} from '../constants/local-storage-key';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class UserService {
 
   loggedIn = false;
 
-  constructor(private httpClient: HttpClient, private localStorage: StorageService) {
+  constructor(private httpClient: HttpClient, private baseStorage: BaseStorageService) {
   }
 
   isLoggedIn(): boolean {
@@ -20,10 +22,10 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return this.httpClient.post<any>(ENDPOINTS.auth.login, {email, password})
+    return this.httpClient.post<TokenModel>(ENDPOINTS.auth.login, {email, password})
       .pipe(map(user => {
         if (user && user.accessToken) {
-          this.localStorage.set('accessToken', user.accessToken);
+          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken);
           this.loggedIn = true;
         }
 
@@ -36,6 +38,6 @@ export class UserService {
   }
 
   logout(): void {
-    this.localStorage.delete('accessToken');
+    this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
   }
 }
