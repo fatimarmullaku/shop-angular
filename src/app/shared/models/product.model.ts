@@ -13,6 +13,10 @@ export class ProductModel {
 
   isWishlisted = false;
 
+  static isInStock(product: ProductModel): boolean {
+    return product.stock > 0;
+  }
+
   isInStock(): boolean {
     // if (this.stock > 0) {
     //   return true;
@@ -21,4 +25,6 @@ export class ProductModel {
     // }
     return this.stock > 0;
   }
+
+
 }

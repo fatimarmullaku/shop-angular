@@ -11,7 +11,8 @@ export class ProductListComponent implements OnInit {
   @Input()
   products: ProductModel[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
