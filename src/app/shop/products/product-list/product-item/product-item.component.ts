@@ -3,6 +3,8 @@ import {ProductModel} from '../../../../shared/models/product.model';
 import {ProductService} from "../../../../shared/services/product.service";
 import {CartService} from "../../../../shared/services/cart.service";
 import {ActivatedRoute} from "@angular/router";
+import {ProductWishlistModel} from "../../../../shared/models/product-wishlist.model";
+import {WishlistService} from "../../../../shared/services/wishlist.service";
 
 @Component({
   selector: '[app-product-item]',
@@ -14,11 +16,13 @@ export class ProductItemComponent implements OnInit {
 
   @Input()
   item: ProductModel;
+  wishlistProduct: ProductWishlistModel;
 
 
 
   constructor(private activatedRoute: ActivatedRoute,
               private productService: ProductService,
+              private wishlistService: WishlistService,
               private cartService: CartService) { }
 
   ngOnInit() {
@@ -26,15 +30,15 @@ export class ProductItemComponent implements OnInit {
   }
 
   isWishlisted(): boolean {
-    return this.productService.getProductInWishlist(this.item.id);
+    return this.wishlistService.getProductInWishlist(this.item.id);
   }
 
   toggleWishlist() {
     if (this.isWishlisted()) {
-      this.productService.deleteFromWishlist(this.item.id);
+      this.wishlistService.deleteFromWishlist(this.item.id);
       this.item.isWishlisted = false;
     } else {
-      this.productService.addToWishlist(this.item.id);
+      this.wishlistService.addToWishlist(this.item.id);
       this.item.isWishlisted = true;
     }
   }
