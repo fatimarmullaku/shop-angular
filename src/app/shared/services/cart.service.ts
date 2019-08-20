@@ -3,18 +3,20 @@ import {BaseStorageService} from './base-storage.service';
 import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {ProductService} from "./product.service";
+import {BehaviorSubject, ReplaySubject, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  cartSubject = new ReplaySubject(1);
 
-  constructor(private baseStorage: BaseStorageService,private productService: ProductService) {
-
-  }
+  constructor(private baseStorage: BaseStorageService,private productService: ProductService) {}
 
   getProductsFromCart(): ProductCartModel[] {
-    return this.baseStorage.getStorageOf(LocalStorageKey.CART);
+    let carts = this.baseStorage.getStorageOf(LocalStorageKey.CART);
+    this.cartSubject.next(carts);
+    return carts;
   }
 
   addToCart(id: number, qty?: number): void {
@@ -41,9 +43,12 @@ export class CartService {
 
       cart.push(newProductInCart);
     }
-    //vlaqko thire headerin kallxoj qe e kom ndru karten
-    // save
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
+    this.cartSubject.next(cart);
+  }
+
+  getCartDataFromSubject() {
+    return this.cartSubject.asObservable();
   }
 
   deleteFromCart(id: number) : any{
@@ -59,14 +64,7 @@ export class CartService {
 
       return item;
     });
-
     // save
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
-  }
-
-
-  getAllCartItems(){
-    const storage = localStorage.getItem(LocalStorageKey.CART);
-
   }
 }

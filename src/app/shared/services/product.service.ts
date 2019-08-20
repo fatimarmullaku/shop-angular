@@ -40,7 +40,33 @@ export class ProductService {
 
     product1.rating = product1Rating;
 
-    this.products = [product1];
+    this.products.push(product1);
+
+
+
+    const product2 = new ProductModel();
+    product2.id = 2;
+    product2.description = 'Lorem ipsum';
+    product2.image = '/assets/img/My-Cart/first-version/1.png';
+    product2.platform = 'PC';
+    product2.price = 20;
+    product2.stock = 2;
+    product2.title = 'Mortal Combat';
+
+    const product2Rating = new ProductRatingModel();
+    product2Rating.rated = 3.5;
+    product2Rating.totalReviews = 49;
+
+    const product2Review = new ProductReviewModel();
+    product2Review.id = 2;
+    product2Review.description = 'Test review description';
+    product2Review.stars = 2;
+    product2Review.name = 'John Doe';
+    product2Rating.reviews = [product2Review];
+
+    product2.rating = product2Rating;
+
+    this.products.push(product2);
   }
 
   getProducts(): ProductModel[] {
