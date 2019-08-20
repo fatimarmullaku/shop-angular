@@ -2,10 +2,10 @@
 <div class="container">
   <div class="checkout-steps">
     <div class="step-buttons no-hover">
-      <a href="checkout.html" class="button is-rounded is-hovered">1</a>
-      <a href="shipping.html" class="button is-rounded is-hovered">2</a>
-      <a href="verification.html" class="button is-rounded is-hovered">3</a>
-      <a href="payment-methods.html" class="button is-rounded is-hovered">4</a>
+      <a class="button is-rounded is-hovered" href="checkout.html">1</a>
+      <a class="button is-rounded is-hovered" href="shipping.html">2</a>
+      <a class="button is-rounded is-hovered" href="verification.html">3</a>
+      <a class="button is-rounded is-hovered" href="payment-methods.html">4</a>
     </div>
   </div>
   <div class="sub-info">
@@ -24,7 +24,7 @@
     <div class="columns is-mobile is-multiline">
       <div class="column is-6-desktop is-12-mobile profile">
         <div class="profile-info">
-          <img src="assets/img/scorpion.jpg" alt="profile-img" class="is-rounded">
+          <img alt="profile-img" class="is-rounded" src="assets/img/scorpion.jpg">
           <h3>Checkout as</h3>
           <h3>Pashtriga</h3>
           <a href="#">Switch account?</a>
@@ -35,15 +35,15 @@
         <div class="profile-inputs">
           <div class="control">
             <label class="checkout-label">First Name</label>
-            <input type="text" class="input" placeholder="First Name">
+            <input class="input" placeholder="First Name" type="text">
           </div>
           <div class="control">
             <label class="checkout-label">Last Name</label>
-            <input type="text" class="input" placeholder="Last Name">
+            <input class="input" placeholder="Last Name" type="text">
           </div>
           <div class="control">
             <label class="checkout-label">Email</label>
-            <input type="text" class="input" placeholder="Email address">
+            <input class="input" placeholder="Email address" type="text">
           </div>
         </div>
       </div>
@@ -53,10 +53,10 @@
   <!--  Back and Next buttons    -->
   <div class="columns back-next-buttons is-mobile">
     <div class="column is-6-desktop is-6-mobile left-button">
-      <a href="products-list.html" class="button is-medium">Cancel</a>
+      <a class="button is-medium" href="products-list.html">Cancel</a>
     </div>
     <div class="column is-6-desktop is-6-mobile right-button">
-      <a href="verification.html" class="button is-medium">Next   </a>
+      <a class="button is-medium" routerLink="/shipping">Next</a>
     </div>
   </div>
 </div>
