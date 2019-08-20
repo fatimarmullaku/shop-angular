@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerService} from '../../../../../shared/services/customer.service';
 import {CustomerModel} from 'src/app/shared/models/customer.model';
 import {UserModel} from '../../../../../shared/models/user.model';
+import {PhoneNumberModel} from '../../../../../shared/models/phoneNumber.model';
+import {AddressModel} from '../../../../../shared/models/address.model';
 
 @Component({
   selector: 'app-information',
@@ -13,9 +15,10 @@ export class InformationComponent implements OnInit {
   informationForm: FormGroup;
   user: UserModel;
   customer: CustomerModel;
+  customerPhoneNumbers: PhoneNumberModel[];
+  customerAddresses: AddressModel[];
   phones: FormArray;
   addresses: FormArray;
-
   constructor(private formBuilder: FormBuilder,
               public router: Router,
               private activatedRoute: ActivatedRoute,
@@ -24,10 +27,26 @@ export class InformationComponent implements OnInit {
 
   ngOnInit() {
     this.customer = this.customerService.getCustomer(1);
+
     this.informationForm = this.formBuilder.group({
-      phoneNumbers: this.formBuilder.array([this.createPhoneNumber()]),
-      addresses: this.formBuilder.array([this.createAddress()])
+      phoneNumbers: this.formBuilder.array([]),
+      addresses: this.formBuilder.array([])
     });
+
+    this.customerPhoneNumbers = this.customer.phoneNumbers;
+    this.customerAddresses = this.customer.addresses;
+
+    const currentContactFormArray = this.informationForm.get('phoneNumbers') as FormArray;
+    const currentAddressFormArray = this.informationForm.get('addresses') as FormArray;
+
+    for (const phoneNumber of this.customerPhoneNumbers) {
+      const newPhoneNumberGroup = this.createPhoneNumber();
+      currentContactFormArray.push(newPhoneNumberGroup);
+    }
+    for (const address of this.customerAddresses) {
+      const newAddressGroup = this.createAddress();
+      currentAddressFormArray.push(newAddressGroup);
+    }
   }
 
   createPhoneNumber(): FormGroup {
@@ -60,8 +79,11 @@ export class InformationComponent implements OnInit {
 
   onPhoneDelete(event: any, index: number) {
     event.preventDefault();
-
+    if(this.customerPhoneNumbers[index]) {
+      this.customerPhoneNumbers = this.customerPhoneNumbers.filter(item => item.mobile != this.customerPhoneNumbers[index].mobile);
+    }
     this.phones.removeAt(index);
+    console.log(this.customerPhoneNumbers);
   }
 
   onAddressDelete(event: any, index: number) {

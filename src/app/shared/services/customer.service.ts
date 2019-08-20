@@ -22,10 +22,13 @@ export class CustomerService {
     customer1.lastName = 'Doe';
 
     const firstPhoneNumber = new PhoneNumberModel();
+    const secPhoneNumber = new PhoneNumberModel();
 
     firstPhoneNumber.home = '+38342655';
     firstPhoneNumber.mobile = '+24896226';
-    customer1.phoneNumbers = [firstPhoneNumber];
+    secPhoneNumber.home = '+38344458485';
+    secPhoneNumber.mobile = '+37744258852';
+    customer1.phoneNumbers = [firstPhoneNumber, secPhoneNumber];
 
     const firstAddress = new AddressModel();
 
