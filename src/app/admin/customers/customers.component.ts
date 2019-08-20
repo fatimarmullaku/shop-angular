@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomersService} from './customers.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpErrorResponse} from '@angular/common/http';
+import {CustomerModel} from './customer.model';
 
 @Component({
   selector: 'app-costumers',
@@ -19,6 +20,7 @@ export class CustomersComponent implements OnInit {
   customerId: number;
   updateForm: FormGroup;
 
+
   constructor(private customersService: CustomersService,
               private formBuilder: FormBuilder,
               private modalService: NgbModal) {
@@ -32,7 +34,7 @@ export class CustomersComponent implements OnInit {
 
     this.customersForm = this.formBuilder.group({
       id: [],
-      email: [''],
+      email: ['', Validators.required],
       phoneNumbers: [''],
       recordStatus: [''],
       createDateTime: [''],
@@ -44,12 +46,12 @@ export class CustomersComponent implements OnInit {
 
     this.updateForm = this.formBuilder.group({
       email: [''],
-      phoneNumbers: [''],
+      phoneNumbers: [],
       recordStatus: [''],
-      updateDateTime: [''],
-      deletedDateTime: [''],
+      updateDateTime: [],
+      deletedDateTime: [],
       description: [''],
-      version: [''],
+      version: [],
     });
 
     console.log(this.updateForm);
@@ -57,7 +59,8 @@ export class CustomersComponent implements OnInit {
   }
 
   onSubmit() {
-    const values = this.customersForm.value;
+    const values = this.customersForm.value[1];
+    console.log('on Submit', values);
     this.customersService.registerCustomer(values).subscribe(
       get => {
         this.customersService.getAllCustomers().subscribe((data: any) => {
@@ -68,11 +71,8 @@ export class CustomersComponent implements OnInit {
         console.log(err);
       }
     );
-
     this.insertModal = false;
-
   }
-
 
 
   onDelete() {
@@ -112,36 +112,36 @@ export class CustomersComponent implements OnInit {
   }
 
   openUpdate(
-    id: number,
-    email: string,
-    phoneNumbers: number,
-    recordStatus: boolean,
-    updateDateTime: Date,
-    deletedDateTime: Date,
-    description: string,
+    id,
+    email,
+    phoneNumbers,
+    recordStatus,
+    updateDateTime,
+    deletedDateTime,
+    description,
     version: number) {
-    this.updateModal = true;
     this.customerId = id;
-    this.updateForm.controls[' email '].setValue(email);
-    this.updateForm.controls[' phoneNumbers '].setValue(phoneNumbers);
-    this.updateForm.controls[' recordStatus '].setValue(recordStatus);
-    this.updateForm.controls[' updateDateTime '].setValue(updateDateTime);
-    this.updateForm.controls[' deletedDateTime '].setValue(deletedDateTime);
-    this.updateForm.controls[' description '].setValue(description);
-    this.updateForm.controls[' version '].setValue(version);
+    this.updateModal = true;
+    this.updateForm.controls.email.setValue(email);
+    this.updateForm.controls.phoneNumbers.setValue(phoneNumbers);
+    this.updateForm.controls.recordStatus.setValue(recordStatus);
+    this.updateForm.controls.updateDateTime.setValue(updateDateTime);
+    this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
+    this.updateForm.controls.description.setValue(description);
+    this.updateForm.controls.version.setValue(version);
 
   }
 
-
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
+    this.updateForm.reset();
   }
 
   closeInsertModal() {
     this.insertModal = !this.insertModal;
+    this.customersForm.reset();
   }
 
-  // in background close modal
   toggleModal() {
     this.deleteModal = !this.deleteModal;
   }
