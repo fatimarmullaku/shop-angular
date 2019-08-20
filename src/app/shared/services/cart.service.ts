@@ -41,7 +41,7 @@ export class CartService {
 
       cart.push(newProductInCart);
     }
-
+    //vlaqko thire headerin kallxoj qe e kom ndru karten
     // save
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
   }
@@ -62,5 +62,11 @@ export class CartService {
 
     // save
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
+  }
+
+
+  getAllCartItems(){
+    const storage = localStorage.getItem(LocalStorageKey.CART);
+
   }
 }

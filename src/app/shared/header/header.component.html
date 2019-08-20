@@ -26,6 +26,7 @@
               <div class="column is-4 item-desc">
                 <a href="#"><h6><strong>{{item.product.title}}</strong></h6></a>
                 <h6>{{item.product.platform}}</h6>
+                <h6>{{item.product.price}}$</h6>
               </div>
               <div class="column is-4 has-text-right">
                 <a href="#" (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>
@@ -55,11 +56,7 @@
         </div>
       </div>
     </div>
-
-
-
-
-
+                                  <!-- End of header right buttons   -->
     <div class="hamburger-menu-container is-hidden-tablet">
       <button>
         <i class="fa"></i>

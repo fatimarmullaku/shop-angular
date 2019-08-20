@@ -5,6 +5,7 @@ import {CartService} from "../services/cart.service";
 import {CartPreviewComponent} from "../../shop/cart/cart-preview/cart-preview.component";
 import {ProductModel} from "../models/product.model";
 import {ProductService} from "../services/product.service";
+import {LocalStorageKey} from "../constants/local-storage-key";
 
 
 @Component({
@@ -22,8 +23,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.productService.getProducts();
-    this.cartProducts = this.cartService.getProductsFromCart();  }
+    this.cartProducts = this.cartService.getProductsFromCart();
 
+  }
 
 
   isLoggedIn(): boolean {
@@ -32,10 +34,14 @@ export class HeaderComponent implements OnInit {
 
   toggleClass(){
       this.status = !this.status;
+
+
   }
 
   toggleClass2(){
     this.status2 = !this.status2;
   }
+
+  //funksionni qe une jom tu e ngu carten
 
 }

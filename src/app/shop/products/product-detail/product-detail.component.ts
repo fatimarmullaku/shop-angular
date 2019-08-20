@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductModel} from '../../../shared/models/product.model';
 import {ProductService} from '../../../shared/services/product.service';
 import {CartService} from '../../../shared/services/cart.service';
+import {LocalStorageKey} from "../../../shared/constants/local-storage-key";
 
 @Component({
   selector: 'app-product-detail',
@@ -39,10 +40,11 @@ export class ProductDetailComponent implements OnInit {
       this.product.isWishlisted = true;
     }
   }
-
   addToCart(event: any) {
     event.preventDefault();
 
+
     this.cartService.addToCart(this.product.id, 1);
+
   }
 }

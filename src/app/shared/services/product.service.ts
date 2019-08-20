@@ -89,5 +89,4 @@ export class ProductService {
     this.baseStorage.clearStorageOf(LocalStorageKey.WISHLIST);
   }
 
-
 }

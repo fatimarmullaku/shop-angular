@@ -23,6 +23,7 @@ import { AdditionalInformationComponent } from './auth/additional-information/ad
 import { AddNewProductComponent } from './newproduct/add-new-product/add-new-product.component';
 import {PaginationComponent} from '../shared/pagination/pagination.component';
 import { CartPreviewComponent } from './cart/cart-preview/cart-preview.component';
+import { AccountInfoComponent } from './cart/account-info/account-info.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { CartPreviewComponent } from './cart/cart-preview/cart-preview.component
     AdditionalInformationComponent,
     AddNewProductComponent,
     PaginationComponent,
-    CartPreviewComponent
+    CartPreviewComponent,
+    AccountInfoComponent,
+    AccountInfoComponent
   ],
   imports: [
     CommonModule,
