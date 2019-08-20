@@ -5,6 +5,8 @@ import {ProductRatingModel} from '../models/product-rating.model';
 import {StorageService} from './storage.service';
 import {BaseStorageService} from './base-storage.service';
 import {LocalStorageKey} from '../constants/local-storage-key';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,10 @@ export class ProductService {
 
   products: ProductModel[] = [];
 
-  constructor(private storageService: StorageService, private baseStorage: BaseStorageService) {
+  constructor(private storageService: StorageService,
+              private baseStorage: BaseStorageService,
+              private http: HttpClient,
+              private router: Router) {
     this.fetchProducts();
   }
 
@@ -144,5 +149,12 @@ export class ProductService {
     this.baseStorage.clearStorageOf(LocalStorageKey.WISHLIST);
   }
 
+  getProductsPaged(size: number, page: number, sort?: string) {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      .set('sort', sort);
+    return this.http.get(this.router.url + '/paged', {params});
+  }
 
 }
