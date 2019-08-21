@@ -29,6 +29,9 @@ import { SliderComponent } from './products/product-list/slider/slider.component
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
 import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
 import {VerificationComponent} from './cart/verification/verification.component';
+import { CashMethodComponent } from './cart/cash-method/cash-method.component';
+import { CreditcardMethodComponent } from './cart/creditcard-method/creditcard-method.component';
+import { PaypalMethodComponent } from './cart/paypal-method/paypal-method.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import {VerificationComponent} from './cart/verification/verification.component'
     SliderComponent,
     VerificationComponent,
     PaymentMethodsComponent,
+    CashMethodComponent,
+    CreditcardMethodComponent,
+    PaypalMethodComponent,
   ],
   imports: [
     CommonModule,

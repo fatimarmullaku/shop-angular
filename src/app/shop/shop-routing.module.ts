@@ -18,6 +18,9 @@ import {ShippingComponent} from './cart/shipping/shipping.component';
 import {AccountInfoComponent} from './cart/account-info/account-info.component';
 import {VerificationComponent} from './cart/verification/verification.component';
 import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
+import {CashMethodComponent} from './cart/cash-method/cash-method.component';
+import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
+import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
 
 const routes: Routes = [
   {
@@ -98,6 +101,18 @@ const routes: Routes = [
   {
     path: 'payment-methods',
     component: PaymentMethodsComponent
+  },
+  {
+    path: 'paypal-method',
+    component: PaypalMethodComponent
+  },
+  {
+    path: 'creditcard-method',
+    component: CreditcardMethodComponent
+  },
+  {
+    path: 'cash-method',
+    component: CashMethodComponent
   },
   {
     path: 'wish-list',
