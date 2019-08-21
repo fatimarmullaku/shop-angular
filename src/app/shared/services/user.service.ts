@@ -28,23 +28,13 @@ export class UserService {
         email,
         password
       }
-    })
-      .pipe(map(user => {
-        if (user) {
-          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, 'test', true);
+    }).pipe(map(user => {
+        if (user && user.accessToken) {
+          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
         }
 
         return user;
       }));
-    /* return this.httpClient.post<TokenModel>(ENDPOINTS.auth.login, {email, password})
-      .pipe(map(user => {
-        if (user && user.accessToken) {
-          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken);
-          this.loggedIn = true;
-        }
-
-        return user;
-      }));*/
   }
 
   register(payload: UserRegisterModel) {

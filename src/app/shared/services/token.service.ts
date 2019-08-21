@@ -17,7 +17,7 @@ export class TokenService {
   * TODO: Implement method/function that gets Token from local storage.
   */
   getToken(): string {
-    return this.baseStorage.getStorageOf(LocalStorageKey.ACCESS_TOKEN);
+    return this.baseStorage.getStorageOf(LocalStorageKey.ACCESS_TOKEN, true);
   }
 
   // FIXME: Do not get token from local storage. Check if token exists in local storage.
