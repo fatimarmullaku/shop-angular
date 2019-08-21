@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProductModel} from '../../../shared/models/product.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ProductService} from '../../../shared/services/product.service';
-import {ProductListService} from './product-list.service';
+import {PaginationService} from '../../../shared/pagination/pagination.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,19 +16,19 @@ export class ProductListComponent implements OnInit {
   currentPage: number;
 
   constructor(private productService: ProductService,
-              private productListService: ProductListService) {
+              private paginationService: PaginationService) {
   }
 
   ngOnInit() {
-    this.productListService.currentPage.subscribe(currentPage => this.currentPage = currentPage);
+    this.paginationService.currentPage.subscribe(currentPage => this.currentPage = currentPage);
     this.getProductsPaged();
   }
 
 // hard-coded 9
   getProductsPaged() {
-    this.productService.getProductsPaged(1, this.currentPage - 1).subscribe((data: any) => {
+    this.productService.getProductsPaged(2, this.currentPage - 1).subscribe((data: any) => {
       this.productsList = data.content;
-      this.productListService.changeTotalPages(data.totalPages);
+      this.paginationService.changeTotalPages(data.totalPages);
     });
   }
 

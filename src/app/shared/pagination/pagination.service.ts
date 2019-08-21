@@ -1,17 +1,17 @@
 import {Injectable, Input} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {ProductService} from '../../../shared/services/product.service';
-import {ProductModel} from '../../../shared/models/product.model';
+import {ProductService} from '../services/product.service';
+import {ProductModel} from '../models/product.model';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductListService {
-  private totalPagesSource = new BehaviorSubject(1);
+export class PaginationService {
+  private totalPagesSource = new BehaviorSubject(6);
   totalPages = this.totalPagesSource.asObservable();
 
-  private pageSource = new BehaviorSubject(3);
+  private pageSource = new BehaviorSubject(1);
   currentPage = this.pageSource.asObservable();
 
   constructor(private productService: ProductService) {

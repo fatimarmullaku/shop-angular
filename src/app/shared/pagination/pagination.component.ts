@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductListService} from '../../shop/products/product-list/product-list.service';
+import {PaginationService} from './pagination.service';
 
 @Component({
   selector: 'app-product-list-pagination',
@@ -9,10 +9,9 @@ import {ProductListService} from '../../shop/products/product-list/product-list.
 })
 export class PaginationComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private paginationService: PaginationService) {
   }
-  @Input()
-  service: any;
   currentPage: number;
   totalPages = 6;
 
@@ -22,13 +21,13 @@ export class PaginationComponent implements OnInit {
   right = 3;
 
   ngOnInit() {
-    this.service.currentPage.subscribe(currentPage => this.currentPage = currentPage);
-    this.service.totalPages.subscribe(totalPages => this.totalPages = totalPages);
+    this.paginationService.currentPage.subscribe(currentPage => this.currentPage = currentPage);
+    this.paginationService.totalPages.subscribe(totalPages => this.totalPages = totalPages);
   }
 
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
-      this.service.changePage(page);
+      this.paginationService.changePage(page);
       //   this.router.navigate(
       //     [],
       //     {

@@ -16,6 +16,7 @@ import {ModalModule} from 'ngx-bootstrap';
 import {PlatformsComponent} from './products/platforms/platforms.component';
 import {PublishersComponent} from './products/publishers/publishers.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import {CategoriesComponent} from "./categories/categories.component";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     PlatformsComponent,
     PublishersComponent,
     SidebarComponent,
+    CategoriesComponent
   ],
   imports: [
     ReactiveFormsModule,
