@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="edit-account">
+  <div class="columns">
+    <div class="column is-2 side-menu-parent">
+
+      <div class="side-menu">
+        <aside class="menu edit-profile-menu">
+          <p class="menu-label">Account information</p>
+          <ul class="menu-list">
+            <li>
+              <a [routerLink]="['./information']">Profile information</a>
+              <ul>
+                <li>
+                  <a>Change account settings</a>
+                  <ul>
+                    <li><a [routerLink]="['./change-email']">Change email</a></li>
+                    <li><a [routerLink]="['./change-password']">Change password</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="order-history.html">Order History</a></li>
+          </ul>
+        </aside>
+      </div>
+
+    </div>
+    <div class="column">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

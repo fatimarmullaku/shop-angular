@@ -24,9 +24,13 @@ import { AddNewProductComponent } from './newproduct/add-new-product/add-new-pro
 import {PaginationComponent} from '../shared/pagination/pagination.component';
 import { CartPreviewComponent } from './cart/cart-preview/cart-preview.component';
 import { AccountInfoComponent } from './cart/account-info/account-info.component';
-import {ShippingComponent} from "./cart/shipping/shipping.component";
+import {ShippingComponent} from './cart/shipping/shipping.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { SliderComponent } from './products/product-list/slider/slider.component';
+import { ProfileComponent } from './auth/account/profile/profile.component';
+import { InformationComponent } from './auth/account/profile/information/information.component';
+import { ChangeEmailComponent } from './auth/account/profile/change-email/change-email.component';
+import { ChangePasswordComponent } from './auth/account/profile/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,11 @@ import { SliderComponent } from './products/product-list/slider/slider.component
     AccountInfoComponent,
     ShippingComponent,
     WishlistComponent,
-    SliderComponent
+    SliderComponent,
+    ProfileComponent,
+    InformationComponent,
+    ChangeEmailComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,

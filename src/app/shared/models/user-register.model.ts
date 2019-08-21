@@ -1,8 +1,7 @@
+import {UserModel} from './user.model';
+
 export class UserRegisterModel {
   name: string;
   email: string;
-  user: {
-    email: string;
-    password: string;
-  };
+  user: UserModel;
 }
