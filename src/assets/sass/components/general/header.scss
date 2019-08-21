@@ -7,14 +7,15 @@
   font-size: 14px;
   color: map_get($ucx-colors, deep-orange);
   cursor: pointer;
+
   &:hover {
     background: map_get($ucx-colors, deep-orange);
     color: white;
   }
 }
 
-.active{
-  display:block;
+.active {
+  display: block;
 }
 
 
@@ -28,17 +29,18 @@
   }
 
   .header-top {
-    .dropdown-cart{
+    .dropdown-cart {
     }
 
     .right-buttons {
       margin-right: 20px;
       margin-top: 20px;
 
-      @include mobile{
+      @include mobile {
         display: flex;
         flex-direction: row;
       }
+
       a.sign-up-button {
         &:hover {
           background-color: map_get($ucx-colors, light-gray);
@@ -48,6 +50,7 @@
       .user-button, .cart-button {
         border: none;
         background-color: transparent;
+
         i {
           color: white;
         }
@@ -63,15 +66,21 @@
 
         .dropdown-cart-item {
           width: 350px;
-          @include mobile{
+          @include mobile {
             width: 250px;
           }
 
 
         }
 
+        .item-picture {
+          width: 30%;
+        }
+
         .item-desc {
           display: block;
+          width: 70%;
+
           a {
             color: #0a0a0a;
           }
