@@ -3,7 +3,8 @@ import {BaseStorageService} from './base-storage.service';
 import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {ProductService} from "./product.service";
-import {BehaviorSubject, ReplaySubject, Subject} from "rxjs";
+import {BehaviorSubject, Observable, ReplaySubject, Subject} from "rxjs";
+import {CartPreviewComponent} from "../../shop/cart/cart-preview/cart-preview.component";
 
 @Injectable({
   providedIn: 'root'
@@ -51,9 +52,10 @@ export class CartService {
     return this.cartSubject.asObservable();
   }
 
-  deleteFromCart(id: number) : any{
+  deleteFromCart(id: number){
     this.baseStorage.deleteElementInStorage(id,LocalStorageKey.CART);
     this.getProductsFromCart();
+    // window.location.reload();
   }
 
   changeProductCartQuantity(id: number, quantity: number) {
@@ -67,4 +69,5 @@ export class CartService {
     // save
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
   }
+
 }

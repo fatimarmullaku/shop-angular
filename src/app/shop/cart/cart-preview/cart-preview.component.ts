@@ -26,8 +26,10 @@ export class CartPreviewComponent implements OnInit {
   }
 
   addQty(cartProduct: ProductCartModel) {
+    debugger;
     this.cartService.changeProductCartQuantity(cartProduct.id, cartProduct.qty + 1);
     this.cartProducts = this.cartService.getProductsFromCart();
+    // this.cartService.
   }
 
   subQty(cartProduct: ProductCartModel) {

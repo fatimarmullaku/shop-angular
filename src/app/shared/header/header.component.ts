@@ -6,6 +6,7 @@ import {CartPreviewComponent} from "../../shop/cart/cart-preview/cart-preview.co
 import {ProductModel} from "../models/product.model";
 import {ProductService} from "../services/product.service";
 import {BaseStorageService} from "../services/base-storage.service";
+import {debug} from "util";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   products: ProductModel[];
   cartProducts: ProductCartModel[];
-  cartQty: number;
+  cartQty = 0;
   status: boolean = false;
   status2: boolean = false;
 
@@ -35,12 +36,11 @@ export class HeaderComponent implements OnInit {
     this.cartService.getCartDataFromSubject().subscribe(
       result => {
         if (result) {
-          if(this.cartProducts.length == 0){
-            this.cartQty = 0;
-          }
-              for(var i=0;i<this.cartProducts.length;i++){
-                this.cartQty = result[i].qty;
-              }
+          this.cartQty = 0;
+            const carts = result as Array<ProductCartModel>;
+            carts.forEach(item => {
+              this.cartQty += item.qty;
+            })
           }
       }
     );
