@@ -11,9 +11,10 @@ import {NewPasswordComponent} from './auth/new-password/new-password.component';
 import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 import {LogoutComponent} from './auth/logout/logout.component';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
-import {AddNewProductComponent} from "./newproduct/add-new-product/add-new-product.component";
+import {AddNewProductComponent} from './newproduct/add-new-product/add-new-product.component';
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
-import {WishlistComponent} from "./wishlist/wishlist.component";
+import {WishlistComponent} from './wishlist/wishlist.component';
+import {ShippingComponent} from './cart/shipping/shipping.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,10 @@ const routes: Routes = [
   {
     path: 'wish-list',
     component: WishlistComponent
+  },
+  {
+    path: 'shipping',
+    component: ShippingComponent
   }
 ];
 

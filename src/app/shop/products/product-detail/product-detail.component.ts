@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProductModel} from '../../../shared/models/product.model';
 import {ProductService} from '../../../shared/services/product.service';
 import {CartService} from '../../../shared/services/cart.service';
-import {WishlistService} from "../../../shared/services/wishlist.service";
+import {WishlistService} from '../../../shared/services/wishlist.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,7 +12,6 @@ import {WishlistService} from "../../../shared/services/wishlist.service";
 export class ProductDetailComponent implements OnInit {
 
   product: ProductModel;
-
 
   constructor(public router: Router,
               private activatedRoute: ActivatedRoute,
@@ -47,5 +46,6 @@ export class ProductDetailComponent implements OnInit {
     event.preventDefault();
 
     this.cartService.addToCart(this.product.id, 1);
+
   }
 }
