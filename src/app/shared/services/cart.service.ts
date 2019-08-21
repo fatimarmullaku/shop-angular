@@ -2,9 +2,8 @@ import {ProductCartModel} from '../models/product-cart.model';
 import {BaseStorageService} from './base-storage.service';
 import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../constants/local-storage-key';
-import {ProductService} from "./product.service";
-import {BehaviorSubject, Observable, ReplaySubject, Subject} from "rxjs";
-import {CartPreviewComponent} from "../../shop/cart/cart-preview/cart-preview.component";
+import {ProductService} from './product.service';
+import {ReplaySubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,8 @@ import {CartPreviewComponent} from "../../shop/cart/cart-preview/cart-preview.co
 export class CartService {
   cartSubject = new ReplaySubject(1);
 
-  constructor(private baseStorage: BaseStorageService,private productService: ProductService) {}
+  constructor(private baseStorage: BaseStorageService, private productService: ProductService) {
+  }
 
   getProductsFromCart(): ProductCartModel[] {
     let carts = this.baseStorage.getStorageOf(LocalStorageKey.CART);
@@ -52,8 +52,8 @@ export class CartService {
     return this.cartSubject.asObservable();
   }
 
-  deleteFromCart(id: number){
-    this.baseStorage.deleteElementInStorage(id,LocalStorageKey.CART);
+  deleteFromCart(id: number) {
+    this.baseStorage.deleteElementInStorage(id, LocalStorageKey.CART);
     this.getProductsFromCart();
     // window.location.reload();
   }
