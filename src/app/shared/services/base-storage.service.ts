@@ -40,6 +40,15 @@ export class BaseStorageService {
     }
   }
 
+  deleteWishlistInStorage(id: number, key: LocalStorageKey) {
+    const element = this.storageService.get(key);
+    if (element) {
+      const keyArray = JSON.parse(element).filter(item => item != id);
+      this.storageService.set(key, JSON.stringify(keyArray));
+    }
+  }
+
+
   // Clears the storage which contains the given key
   clearStorageOf(key: LocalStorageKey) {
     this.storageService.delete(key);

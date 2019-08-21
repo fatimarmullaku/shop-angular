@@ -44,6 +44,6 @@ export class WishlistService {
 
   // delete from wishlist
   deleteFromWishlist(id: number) {
-    this.baseStorage.deleteElementInStorage(id, LocalStorageKey.WISHLIST);
+    this.baseStorage.deleteWishlistInStorage(id, LocalStorageKey.WISHLIST);
   }
 }
