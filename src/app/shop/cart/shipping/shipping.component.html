@@ -42,39 +42,39 @@
               </div>
             </div>
             <div class="column is-7 is-padded shipping-form-container">
-              <form [formGroup]="shippingForm" class="form" (submit)="onSubmit($event)">
-                <h3 class="title is-5 static-titles">Addresses</h3>
-                <div id="box-address">
-                  <div formArrayName="addresses" *ngFor="let _ of informationForm.get('addresses')['controls']; let i = index;">
-                    <div class="columns" [formGroupName]="i">
-                      <div class="column is-2">
-                        <label class="label">Country</label>
-                        <input type="text" class="input" formControlName="country">
-                      </div>
+              <form [formGroup]="shippingFormGroup" class="form" (submit)="onSubmit($event)">
+                <div *ngIf="customerAddresses">
+                  <h3 class="title is-5 static-titles">Addresses</h3>
+                  <div id="box-address">
+                    <div formArrayName="addresses" *ngFor="let _ of shippingFormGroup.get('addresses')['controls']; let i = index;">
+                      <div class="columns" [formGroupName]="i">
+                        <div class="column is-2">
+                          <label class="label">Country</label>
+                          <input type="text" class="input" formControlName="country" value="{{customerAddresses[i] ? customerAddresses[i].country : ''}}">
+                        </div>
 
-                      <div class="column is-2">
-                        <label class="label">City</label>
-                        <input type="text" class="input" formControlName="city">
-                      </div>
+                        <div class="column is-2">
+                          <label class="label">City</label>
+                          <input type="text" class="input" formControlName="city" value="{{customerAddresses[i] ? customerAddresses[i].city : ''}}">
+                        </div>
 
-                      <div class="column is-2">
-                        <label class="label">Zip code</label>
-                        <input type="text" class="input" formControlName="zipCode">
-                      </div>
+                        <div class="column is-2">
+                          <label class="label">Zip code</label>
+                          <input type="text" class="input" formControlName="zipCode" value="{{customerAddresses[i] ? customerAddresses[i].zipCode : ''}}">
+                        </div>
 
-                      <div class="column is-4">
-                        <label class="label">Street</label>
-                        <input type="text" class="input" formControlName="street">
-                      </div>
-                      <div class="column is-2 delete-phone-number" *ngIf="i != 0">
-                        <label class="label"></label><br>
-                        <button class="button is-danger" (click)="onAddressDelete($event, i)">Delete</button>
+                        <div class="column is-4">
+                          <label class="label">Street</label>
+                          <input type="text" class="input" formControlName="street" value="{{customerAddresses[i] ? customerAddresses[i].street : ''}}">
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <button id="addaddress" class="button add-field-button" (click)="onAddAddress($event)">Add address</button>
               </form>
+
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
           </div>
 
           <div class="column is-6-desktop is-6-mobile has-text-right ">
-            <a class="nav-buttons-shipping button" routerLink="/"><span>Next</span></a>
+            <a class="nav-buttons-shipping button" routerLink="/" (click)="onSubmit($event)"><span>Next</span></a>
           </div>
         </div>
       </div>
