@@ -10,7 +10,7 @@ import {HeaderComponent} from "../../../shared/header/header.component";
 })
 export class ShippingComponent implements OnInit {
 
-  // shippingForm: FormGroup;
+  shippingForm: FormGroup;
   constructor(private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit() {
