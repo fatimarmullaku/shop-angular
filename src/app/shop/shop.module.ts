@@ -23,7 +23,6 @@ import { AdditionalInformationComponent } from './auth/additional-information/ad
 import { AddNewProductComponent } from './newproduct/add-new-product/add-new-product.component';
 import {PaginationComponent} from '../shared/pagination/pagination.component';
 import { CartPreviewComponent } from './cart/cart-preview/cart-preview.component';
-import {ShippingComponent} from "./cart/shipping/shipping.component";
 
 @NgModule({
   declarations: [
@@ -45,7 +44,6 @@ import {ShippingComponent} from "./cart/shipping/shipping.component";
     AddNewProductComponent,
     PaginationComponent,
     CartPreviewComponent,
-    ShippingComponent
   ],
   imports: [
     CommonModule,

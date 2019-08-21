@@ -13,7 +13,6 @@ import {LogoutComponent} from './auth/logout/logout.component';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
 import {AddNewProductComponent} from "./newproduct/add-new-product/add-new-product.component";
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
-import {ShippingComponent} from "./cart/shipping/shipping.component";
 
 const routes: Routes = [
   {
@@ -79,10 +78,7 @@ const routes: Routes = [
     path: 'cart',
     component: CartPreviewComponent
   },
-  {
-    path: 'shipping',
-    component: ShippingComponent
-  }
+
 ];
 
 @NgModule({
