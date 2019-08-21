@@ -13,6 +13,7 @@ export class ProductDetailComponent implements OnInit {
 
   product: ProductModel;
 
+
   constructor(public router: Router,
               private activatedRoute: ActivatedRoute,
               private productService: ProductService,
@@ -44,6 +45,7 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart(event: any) {
     event.preventDefault();
+
 
     this.cartService.addToCart(this.product.id, 1);
 

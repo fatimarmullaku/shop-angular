@@ -22,10 +22,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
 import {AddNewProductComponent} from './newproduct/add-new-product/add-new-product.component';
 import {PaginationComponent} from '../shared/pagination/pagination.component';
-import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
-import {WishlistComponent} from './wishlist/wishlist.component';
-import {SliderComponent} from './products/product-list/slider/slider.component';
+import { AccountInfoComponent } from './cart/account-info/account-info.component';
 import {ShippingComponent} from './cart/shipping/shipping.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { SliderComponent } from './products/product-list/slider/slider.component';
+import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
 
 @NgModule({
   declarations: [
@@ -47,9 +48,12 @@ import {ShippingComponent} from './cart/shipping/shipping.component';
     AddNewProductComponent,
     PaginationComponent,
     CartPreviewComponent,
+    AccountInfoComponent,
+    ShippingComponent,
     WishlistComponent,
     SliderComponent,
-    ShippingComponent
+    VerificationComponent,
+    PaymentMethodsComponent,
   ],
   imports: [
     CommonModule,

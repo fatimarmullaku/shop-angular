@@ -15,6 +15,9 @@ import {AddNewProductComponent} from './newproduct/add-new-product/add-new-produ
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
 import {WishlistComponent} from './wishlist/wishlist.component';
 import {ShippingComponent} from './cart/shipping/shipping.component';
+import {AccountInfoComponent} from './cart/account-info/account-info.component';
+import {VerificationComponent} from './cart/verification/verification.component';
+import {PaymentMethodsComponent} from "./cart/payment-methods/payment-methods.component";
 
 const routes: Routes = [
   {
@@ -81,12 +84,24 @@ const routes: Routes = [
     component: CartPreviewComponent
   },
   {
-    path: 'wish-list',
-    component: WishlistComponent
+    path: 'account-info',
+    component: AccountInfoComponent
   },
   {
     path: 'shipping',
     component: ShippingComponent
+  },
+  {
+    path: 'verification',
+    component: VerificationComponent
+  },
+  {
+    path: 'payment-methods',
+    component: PaymentMethodsComponent
+  },
+  {
+    path: 'wish-list',
+    component: WishlistComponent
   }
 ];
 
