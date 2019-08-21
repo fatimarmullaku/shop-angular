@@ -6,8 +6,8 @@
     </div>
     <hr>
     <br>
-    <div class="container main-container">
-      <div class="notification" *ngIf="cartProducts && cartProducts.length > 0">
+    <div class="container main-container-checkout" *ngIf="cartProducts && cartProducts.length > 0">
+<!--      <div class="" >-->
         <div class="columns is-mobile" *ngFor="let item of cartProducts">
           <div class="column cart-items is-11">
             <div class="columns is-vcentered">
@@ -17,22 +17,22 @@
                 </div>
               </div>
               <div class="column is-3 product-info">
-                <h3><strong>{{ item.product.title }}</strong></h3>
+                <h1>{{ item.product.title }}</h1>
                 <p>{{ item.product.description }}</p>
               </div>
               <div class="column is-2 product-info">
-                <h2><strong>{{ isProductInStock(item.product) ? 'Available' : 'Out of stock' }} </strong></h2>
+                <h2>{{ item.isInStock ? 'Available': 'Out of stock' }} </h2>
               </div>
               <div class="column is-3">
                 <br>
-                <h2><strong>{{ item.qty }}</strong></h2>
+                <h2>{{ item.qty }}</h2>
                 <div class="buttons">
                   <span class="button is-small qty" (click)="addQty(item)"><strong>+</strong></span>
                   <span class="button is-small qty" (click)="subQty(item)"><strong>-</strong></span>
                 </div>
               </div>
               <div class="column is-2 product-info">
-                <h3><strong>{{ item.product.price }} </strong></h3>
+                <h1>{{ item.product.price }} </h1>
               </div>
             </div>
           </div>
@@ -55,10 +55,10 @@
             <h2>Subtotal: XXXXXX.XX</h2>
           </div>
           <div class="column is-4 right-link">
-            <a href="checkout.html">Proceed to Checkout</a>
+            <a routerLink="/shipping" >Proceed to Checkout</a>
           </div>
         </div>
-      </div>
+<!--      </div>-->
     </div>
   </div>
 </div>

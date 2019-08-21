@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductModel} from '../../../shared/models/product.model';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import {ProductService} from '../../../shared/services/product.service';
 
 @Component({
@@ -9,6 +8,8 @@ import {ProductService} from '../../../shared/services/product.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
+
+  @Input()
   products: ProductModel[];
   productsList: any;
 
