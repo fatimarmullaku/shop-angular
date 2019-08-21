@@ -11,11 +11,13 @@ import {NewPasswordComponent} from './auth/new-password/new-password.component';
 import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 import {LogoutComponent} from './auth/logout/logout.component';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
-import {AddNewProductComponent} from "./newproduct/add-new-product/add-new-product.component";
+import {AddNewProductComponent} from './newproduct/add-new-product/add-new-product.component';
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
-import {AccountInfoComponent} from "./cart/account-info/account-info.component";
-import {ShippingComponent} from "./cart/shipping/shipping.component";
-import {WishlistComponent} from "./wishlist/wishlist.component";
+import {AccountInfoComponent} from './cart/account-info/account-info.component';
+import {ShippingComponent} from './cart/shipping/shipping.component';
+import {WishlistComponent} from './wishlist/wishlist.component';
+import {VerificationComponent} from './cart/verification/verification.component';
+import {PaymentMethodsComponent} from "./cart/payment-methods/payment-methods.component";
 
 const routes: Routes = [
   {
@@ -90,9 +92,17 @@ const routes: Routes = [
     component: ShippingComponent
   },
   {
+    path: 'verification',
+    component: VerificationComponent
+  },
+  {
+    path: 'payment-methods',
+    component: PaymentMethodsComponent
+  },
+  {
     path: 'wish-list',
     component: WishlistComponent
-  },
+  }
 ];
 
 @NgModule({

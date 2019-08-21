@@ -24,9 +24,11 @@ import { AddNewProductComponent } from './newproduct/add-new-product/add-new-pro
 import {PaginationComponent} from '../shared/pagination/pagination.component';
 import { CartPreviewComponent } from './cart/cart-preview/cart-preview.component';
 import { AccountInfoComponent } from './cart/account-info/account-info.component';
-import {ShippingComponent} from "./cart/shipping/shipping.component";
+import {ShippingComponent} from './cart/shipping/shipping.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { SliderComponent } from './products/product-list/slider/slider.component';
+import { VerificationComponent } from './cart/verification/verification.component';
+import { PaymentMethodsComponent } from './cart/payment-methods/payment-methods.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { SliderComponent } from './products/product-list/slider/slider.component
     AccountInfoComponent,
     ShippingComponent,
     WishlistComponent,
-    SliderComponent
+    SliderComponent,
+    VerificationComponent,
+    PaymentMethodsComponent
   ],
   imports: [
     CommonModule,
