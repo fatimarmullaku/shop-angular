@@ -116,7 +116,7 @@ const routes: Routes = [
     component: CashMethodComponent
   },
   {
-    path: 'success-screen',
+    path: 'cart/success-screen',
     component: SuccessScreenComponent
   },
   {
