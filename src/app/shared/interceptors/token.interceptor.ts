@@ -11,31 +11,20 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    const request = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.tokenService.getToken()}`
-      }
-    });
-    return next.handle(request);
+    return next.handle(this.handleHeader(req));
   }
 
-  addHeader(req: HttpRequest<any>) {
-    return req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.tokenService.getToken()}`
-      }
-    });
-  }
-
-  removeHeader(req: HttpRequest<any>) {
-    return req.clone({
-      headers: req.headers.delete('test')
-    });
-  }
-
-  handleHeader(req: HttpRequest<any>) {
-    // TODO: Include addHeader and removeHeader cases
+  private handleHeader(req: HttpRequest<any>) {
+    if (req.headers.has('X_SKIP_TOKEN')) {
+      req.headers.delete('X_SKIP_TOKEN');
+      return req;
+    } else {
+      return req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.tokenService.getToken()}`
+        }
+      });
+    }
   }
 
 }
