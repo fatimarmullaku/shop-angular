@@ -11,11 +11,14 @@ import {MatListModule, MatToolbarModule, MatSidenavModule, MatIconModule} from '
 import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
 import {TablesDComponent} from '../shared/tables-d/tables-d.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap';
 import {PlatformsComponent} from './products/platforms/platforms.component';
 import {PublishersComponent} from './products/publishers/publishers.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { CategoriesComponent } from './categories/categories.component';
+import {CategoriesFilterPipe} from './categories/categories-filter.pipe';
+import {CustomersFPipe} from './customers/customers-f.pipe';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,12 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     PlatformsComponent,
     PublishersComponent,
     SidebarComponent,
+    CategoriesComponent,
+    CategoriesFilterPipe,
+    CustomersFPipe
   ],
   imports: [
+    FormsModule,
     ReactiveFormsModule,
     NgbModule,
     CommonModule,
@@ -41,6 +48,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     MatSidenavModule,
     MatIconModule,
     ModalModule.forRoot(),
+
 
   ]
 })
