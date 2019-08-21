@@ -55,6 +55,5 @@ export class ShippingComponent implements OnInit {
   onSubmit(event: any) {
     event.preventDefault();
     console.log(this.customerAddresses[0]);
-
   }
 }

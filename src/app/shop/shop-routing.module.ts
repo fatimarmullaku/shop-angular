@@ -87,31 +87,31 @@ const routes: Routes = [
     component: CartPreviewComponent
   },
   {
-    path: 'account-info',
+    path: 'cart/account-info',
     component: AccountInfoComponent
   },
   {
-    path: 'shipping',
+    path: 'cart/shipping',
     component: ShippingComponent
   },
   {
-    path: 'verification',
+    path: 'cart/verification',
     component: VerificationComponent
   },
   {
-    path: 'payment-methods',
+    path: 'cart/payment-methods',
     component: PaymentMethodsComponent
   },
   {
-    path: 'paypal-method',
+    path: 'cart/paypal-method',
     component: PaypalMethodComponent
   },
   {
-    path: 'creditcard-method',
+    path: 'cart/creditcard-method',
     component: CreditcardMethodComponent
   },
   {
-    path: 'cash-method',
+    path: 'cart/cash-method',
     component: CashMethodComponent
   },
   {

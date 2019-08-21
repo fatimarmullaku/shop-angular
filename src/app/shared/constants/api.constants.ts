@@ -16,9 +16,14 @@ const CUSTOMERS = {
     getAll: environment.apiHost + '/customers',
 };
 
+const PURCHASES = {
+    addToCart: environment.apiHost + '/purchases/lineitems',
+    buy: environment.apiHost + '/purchases'
+}
 export const ENDPOINTS = {
   auth: AUTH,
   products: PRODUCTS,
-  customers: CUSTOMERS
+  customers: CUSTOMERS,
+  purchases: PURCHASES
 };
 

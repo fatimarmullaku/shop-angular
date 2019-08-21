@@ -12,4 +12,8 @@ export class PaypalMethodComponent implements OnInit {
   ngOnInit() {
   }
 
+  buy(event): any{
+
+  }
+
 }
