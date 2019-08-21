@@ -48,7 +48,9 @@
       .user-button, .cart-button {
         border: none;
         background-color: transparent;
-        color: white;
+        i {
+          color: white;
+        }
 
         span.cart-nr {
           color: map_get($ucx-colors, deep-orange);
