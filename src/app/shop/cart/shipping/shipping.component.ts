@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-shipping',
-  templateUrl: './shipping.component.html',
-  styleUrls: ['./shipping.component.scss']
+  templateUrl: './shipping.component.html'
 })
 export class ShippingComponent implements OnInit {
 
