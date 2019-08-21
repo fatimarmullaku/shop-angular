@@ -38,7 +38,7 @@ export class ProductListComponent implements OnInit {
       this.productsList.forEach(product => {
         const obj = new ProductModel();
 
-        obj.id = product.i;
+        obj.id = 1;
         obj.description = 'Lorem ipsumlmlml';
         obj.image = '/assets/img/bf4-cover.jpg';
         obj.platform = 'PC';
