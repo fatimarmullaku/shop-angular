@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {CartService} from "../../../shared/services/cart.service";
 
 @Component({
   selector: 'app-verification',
@@ -6,10 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class VerificationComponent implements OnInit {
 
-  constructor() {
+
+  constructor(private cartService:CartService) {
   }
 
   ngOnInit() {
+    this.cartService.getProductsFromCart();
   }
 
 }

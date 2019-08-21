@@ -18,6 +18,10 @@ import {ShippingComponent} from './cart/shipping/shipping.component';
 import {AccountInfoComponent} from './cart/account-info/account-info.component';
 import {VerificationComponent} from './cart/verification/verification.component';
 import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
+import {CashMethodComponent} from './cart/cash-method/cash-method.component';
+import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
+import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
+import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
 
 const routes: Routes = [
   {
@@ -84,20 +88,36 @@ const routes: Routes = [
     component: CartPreviewComponent
   },
   {
-    path: 'account-info',
+    path: 'cart/account-info',
     component: AccountInfoComponent
   },
   {
-    path: 'shipping',
+    path: 'cart/shipping',
     component: ShippingComponent
   },
   {
-    path: 'verification',
+    path: 'cart/verification',
     component: VerificationComponent
   },
   {
-    path: 'payment-methods',
+    path: 'cart/payment-methods',
     component: PaymentMethodsComponent
+  },
+  {
+    path: 'cart/paypal-method',
+    component: PaypalMethodComponent
+  },
+  {
+    path: 'cart/creditcard-method',
+    component: CreditcardMethodComponent
+  },
+  {
+    path: 'cart/cash-method',
+    component: CashMethodComponent
+  },
+  {
+    path: 'cart/success-screen',
+    component: SuccessScreenComponent
   },
   {
     path: 'wish-list',

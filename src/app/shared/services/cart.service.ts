@@ -70,4 +70,13 @@ export class CartService {
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
   }
 
+  generateTotalPrice(): number{
+    const array = this.getProductsFromCart();
+    let totalPrice = 0;
+    array.forEach(item =>{
+      totalPrice += item.product.price;
+    });
+    return totalPrice.valueOf();
+  }
+
 }
