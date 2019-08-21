@@ -17,7 +17,7 @@ import {WishlistComponent} from './wishlist/wishlist.component';
 import {ShippingComponent} from './cart/shipping/shipping.component';
 import {AccountInfoComponent} from './cart/account-info/account-info.component';
 import {VerificationComponent} from './cart/verification/verification.component';
-import {PaymentMethodsComponent} from "./cart/payment-methods/payment-methods.component";
+import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
 
 const routes: Routes = [
   {
