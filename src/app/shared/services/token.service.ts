@@ -7,8 +7,10 @@ import {JwtHelperService} from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class TokenService {
+  private jwtHelper: JwtHelperService;
 
-  constructor(private baseStorage: BaseStorageService, private jwtHelper: JwtHelperService) {
+  constructor(private baseStorage: BaseStorageService) {
+    this.jwtHelper = new JwtHelperService();
   }
 
   /*

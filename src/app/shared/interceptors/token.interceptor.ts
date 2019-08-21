@@ -16,8 +16,9 @@ export class TokenInterceptor implements HttpInterceptor {
 
   private handleHeader(req: HttpRequest<any>) {
     if (req.headers.has('X_SKIP_TOKEN')) {
-      req.headers.delete('X_SKIP_TOKEN');
-      return req;
+      return req.clone({
+        headers: req.headers.delete('X_SKIP_TOKEN')
+      });
     } else {
       return req.clone({
         setHeaders: {
@@ -26,5 +27,4 @@ export class TokenInterceptor implements HttpInterceptor {
       });
     }
   }
-
 }
