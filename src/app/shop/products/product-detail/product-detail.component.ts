@@ -4,6 +4,7 @@ import {ProductModel} from '../../../shared/models/product.model';
 import {ProductService} from '../../../shared/services/product.service';
 import {CartService} from '../../../shared/services/cart.service';
 import {LocalStorageKey} from "../../../shared/constants/local-storage-key";
+import {WishlistService} from "../../../shared/services/wishlist.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -16,7 +17,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(public router: Router,
               private activatedRoute: ActivatedRoute,
               private productService: ProductService,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private wishlistService: WishlistService) {
   }
 
   ngOnInit() {
@@ -28,23 +30,22 @@ export class ProductDetailComponent implements OnInit {
   }
 
   isWishlisted(): boolean {
-    return this.productService.getProductInWishlist(this.product.id);
+    return this.wishlistService.getProductInWishlist(this.product.id);
   }
 
   toggleWishlist() {
     if (this.isWishlisted()) {
-      this.productService.deleteFromWishlist(this.product.id);
+      this.wishlistService.deleteFromWishlist(this.product.id);
       this.product.isWishlisted = false;
     } else {
-      this.productService.addToWishlist(this.product.id);
+      this.wishlistService.addToWishlist(this.product.id);
       this.product.isWishlisted = true;
     }
   }
+
   addToCart(event: any) {
     event.preventDefault();
 
-
     this.cartService.addToCart(this.product.id, 1);
-
   }
 }

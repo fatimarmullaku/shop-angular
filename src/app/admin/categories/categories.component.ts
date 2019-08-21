@@ -1,41 +1,40 @@
 import {Component, OnInit} from '@angular/core';
-import {CustomersService} from './customers.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpErrorResponse} from '@angular/common/http';
-import {CustomerModel} from './customer.model';
+import {CategoriesService} from './categories.service';
+
+
 
 @Component({
-  selector: 'app-costumers',
-  templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss']
+  selector: 'app-categories',
+  templateUrl: './categories.component.html',
+  styleUrls: ['./categories.component.scss']
 })
-export class CustomersComponent implements OnInit {
+export class CategoriesComponent implements OnInit {
   deleteModal = false;
   updateModal = false;
   insertModal = false;
 
-  customersList: any;
-  customersForm: FormGroup;
-  customerId: number;
+  categoriesList: any;
+  form: FormGroup;
+  cid: number;
   updateForm: FormGroup;
 
 
-  constructor(private customersService: CustomersService,
+  constructor(private categoriesService: CategoriesService,
               private formBuilder: FormBuilder,
-              private modalService: NgbModal) {
+               ) {
   }
 
   ngOnInit() {
-    this.customersService.getAllCustomers().subscribe((data: any) => {
-      this.customersList = data;
-      console.log(this.customersList);
+    this.categoriesService.getAllCategoies().subscribe((data: any) => {
+      this.categoriesList = data;
+      console.log(this.categoriesList);
     });
 
-    this.customersForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       id: [],
-      email: ['', Validators.required],
-      phoneNumbers: [''],
+      name: [''],
       recordStatus: [''],
       createDateTime: [''],
       updateDateTime: [''],
@@ -45,8 +44,7 @@ export class CustomersComponent implements OnInit {
     });
 
     this.updateForm = this.formBuilder.group({
-      email: [''],
-      phoneNumbers: [],
+      name: [''],
       recordStatus: [''],
       updateDateTime: [],
       deletedDateTime: [],
@@ -59,27 +57,29 @@ export class CustomersComponent implements OnInit {
   }
 
   onSubmit() {
-    const values = this.customersForm.value[1];
+    const values = this.form.value[1];
     console.log('on Submit', values);
-    this.customersService.registerCustomer(values).subscribe(
+    this.categoriesService.registerCategory(values).subscribe(
       get => {
-        this.customersService.getAllCustomers().subscribe((data: any) => {
-          this.customersList = data;
+        this.categoriesService.getAllCategoies().subscribe((data: any) => {
+          this.categoriesList = data;
         });
       },
       (err: HttpErrorResponse) => {
         console.log(err);
       }
     );
+
     this.insertModal = false;
+
   }
 
 
   onDelete() {
-    this.customersService.deleteCostumer(this.customerId).subscribe(
+    this.categoriesService.deleteCategory(this.cid).subscribe(
       get => {
-        this.customersService.getAllCustomers().subscribe((data: any) => {
-          this.customerId = data;
+        this.categoriesService.getAllCategoies().subscribe((data: any) => {
+          this.categoriesList = data;
         });
       },
       (err: HttpErrorResponse) => {
@@ -92,10 +92,10 @@ export class CustomersComponent implements OnInit {
 
   onUpdate() {
     const values = this.updateForm.value;
-    this.customersService.updateCustomer(values).subscribe(
+    this.categoriesService.updateCategory(values).subscribe(
       get => {
-        this.customersService.getAllCustomers().subscribe((data: any) => {
-          this.customersList = data;
+        this.categoriesService.getAllCategoies().subscribe((data: any) => {
+          this.categoriesList = data;
         });
       },
       (err: HttpErrorResponse) => {
@@ -113,17 +113,15 @@ export class CustomersComponent implements OnInit {
 
   openUpdate(
     id,
-    email,
-    phoneNumbers,
+    name,
     recordStatus,
     updateDateTime,
     deletedDateTime,
     description,
     version: number) {
-    this.customerId = id;
+    this.cid = id;
     this.updateModal = true;
-    this.updateForm.controls.email.setValue(email);
-    this.updateForm.controls.phoneNumbers.setValue(phoneNumbers);
+    this.updateForm.controls.name.setValue(name);
     this.updateForm.controls.recordStatus.setValue(recordStatus);
     this.updateForm.controls.updateDateTime.setValue(updateDateTime);
     this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
@@ -132,24 +130,31 @@ export class CustomersComponent implements OnInit {
 
   }
 
+
+
+
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
+    this.form.reset();
     this.updateForm.reset();
   }
 
   closeInsertModal() {
     this.insertModal = !this.insertModal;
-    this.customersForm.reset();
+    this.form.reset();
+    this.updateForm.reset();
   }
 
   toggleModal() {
     this.deleteModal = !this.deleteModal;
+    this.form.reset();
+    this.updateForm.reset();
   }
 
   openDelete(cid) {
     this.deleteModal = true;
-    this.customerId = cid;
-    console.log(this.customerId);
+    this.cid = cid;
+    console.log(this.cid);
   }
 
 

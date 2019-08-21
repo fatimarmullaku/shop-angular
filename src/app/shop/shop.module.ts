@@ -25,6 +25,8 @@ import {PaginationComponent} from '../shared/pagination/pagination.component';
 import { CartPreviewComponent } from './cart/cart-preview/cart-preview.component';
 import { AccountInfoComponent } from './cart/account-info/account-info.component';
 import {ShippingComponent} from "./cart/shipping/shipping.component";
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { SliderComponent } from './products/product-list/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import {ShippingComponent} from "./cart/shipping/shipping.component";
     PaginationComponent,
     CartPreviewComponent,
     AccountInfoComponent,
-    ShippingComponent
+    ShippingComponent,
+    WishlistComponent,
+    SliderComponent
   ],
   imports: [
     CommonModule,
