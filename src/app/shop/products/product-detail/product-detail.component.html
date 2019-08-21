@@ -1,80 +1,58 @@
 <app-header></app-header>
 <div class="product-details-container">
-
   <div class="columns is-vcentered">
-
     <div class="column product-panel">
       <div class="product-panel-wrapper">
-
         <router-outlet></router-outlet>
-
         <div class="panel-actions">
-
           <div class="left-actions">
             <a [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class='far fa-image'></i></a>
             <a [routerLink]="['./reviews']" routerLinkActive="active"><i class="fa fa-star-o"></i></a>
           </div>
-
           <div class="right-actions" (click)="toggleWishlist()">
             <i *ngIf="!product.isWishlisted" class='far fa-heart'></i>
             <i *ngIf="product.isWishlisted" class='fas fa-heart'></i>
           </div>
-
         </div>
-
       </div>
     </div>
-
     <div class="column is-three-fifths" *ngIf="product">
       <div class="product-info-panel">
-
         <div class="inner-panel">
-
           <div class="product-info-header">
             <h2>{{ product.platform }}</h2>
           </div>
-
           <div class="product-info-body">
             <div class="product-name-instock">
               <h3 class="product-name">{{ product.title }}</h3>
               <h5>{{ product.isInStock() ? 'In Stock (' + product.stock + ')' : 'Out of stock' }}</h5>
             </div>
             <p class="product-description">{{ product.description }}</p>
-
             <div class="product-controls">
-
               <div class="product-price">
                 <div class="heading">
                   Price
                 </div>
-
                 <div class="value">
                   {{ product.price }}
                 </div>
               </div>
-
               <div class="product-quantity">
                 <div class="heading">
                   Quantity
                 </div>
-
                 <div class="control">
                   <input class="input is-rounded" type="number" value="1">
                 </div>
               </div>
-
               <div class="add-to-cart">
                 <div class="heading is-vhidden">Add to cart</div>
                 <button class="button" (click)="addToCart($event)">Add to cart</button>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
-
   </div>
-
 </div>

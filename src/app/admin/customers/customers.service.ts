@@ -8,14 +8,14 @@ import {ENDPOINTS} from '../../shared/constants/api.constants';
 export class CustomersService {
 
   // readonly getAll = ENDPOINTS.customers.getAll;
-  readonly rootUrl = 'http://localhost:3000';
+  readonly rootUrl = 'http://localhost:8080/shop/v1/customers';
 
   constructor(private http: HttpClient) {
   }
 
 
   getAllCustomers() {
-    return this.http.get(this.rootUrl + '/customers');
+    return this.http.get(this.rootUrl + '/allCustomers');
   }
 
   registerCustomer(values) {

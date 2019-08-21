@@ -1,10 +1,11 @@
 body{
-  //background: #000;
+  background: #000;
 }
 .main-box {
   border: 1px solid map_get($ucx-colors,deep-orange);
   background: map_get($ucx-colors,dark-gray);
-  margin-top: 30px;
+
+  margin: 50px;
   @include mobile{
     margin: 10px 10px;
   }
