@@ -23,7 +23,7 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return this.restService.publicRequest(HttpRequestMethod.POST, ENDPOINTS.auth.login, {
+    return this.restService.request(HttpRequestMethod.POST, ENDPOINTS.auth.login, {
       body: {
         email,
         password
