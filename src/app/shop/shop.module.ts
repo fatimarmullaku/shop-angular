@@ -27,6 +27,8 @@ import {ShippingComponent} from './cart/shipping/shipping.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { SliderComponent } from './products/product-list/slider/slider.component';
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
+import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
+import {VerificationComponent} from './cart/verification/verification.component';
 
 @NgModule({
   declarations: [
