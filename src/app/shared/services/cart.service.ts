@@ -78,5 +78,4 @@ export class CartService {
     });
     return totalPrice.valueOf();
   }
-
 }
