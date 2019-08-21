@@ -26,66 +26,29 @@
         <div class="shipping-total">
           <i class="fa fa-credit-card fa-3x"></i>
           <h3>ORDER TOTAL</h3>
-          <h2 class="title" id="title">342,20$</h2>
-          <h3>3 Products Ordered</h3>
+          <h2 class="title" id="title">{{this.cartService.generateTotalPrice().toFixed(2)}}</h2>
+          <h3>{{this.cartService.getProductsFromCart().length}} products are ordered</h3>
         </div>
       </div>
 
       <div class="column is-8-desktop is-12-mobile shipping-parent-infos">
-        <div class="columns is-mobile shipping-infos">
+        <div class="columns is-mobile shipping-infos" *ngFor="let item of this.cartService.getProductsFromCart(); let i = index;">
           <div class="column is-6-desktop is-6-mobile">
             <div class="shipping-delivery-content">
-              <span><h3>Shipping</h3></span>
-              <span><h5>Delivery</h5></span>
+              <span><h3>{{item.product.title}}</h3></span>
+              <span><h5>{{item.product.platform}}</h5></span>
             </div>
           </div>
           <div class="column is-3-desktop is-3-mobile">
             <div class="quantity">
-              <span><h3>QTY</h3></span>
-              <span><h5>1</h5></span>
+              <span><h3>Quantity</h3></span>
+              <span><h5>{{item.qty}}</h5></span>
             </div>
           </div>
           <div class="column is-3-desktop is-3-mobile">
             <div class="order-price">
-              <span><h5>FREE</h5></span>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-mobile shipping-infos">
-          <div class="column is-6-desktop is-6-mobile">
-            <div class="shipping-delivery-content">
-              <span><h3>Shipping</h3></span>
-              <span><h5>Delivery</h5></span>
-            </div>
-          </div>
-          <div class="column is-3-desktop is-3-mobile">
-            <div class="quantity">
-              <span><h3>QTY</h3></span>
-              <span><h5>1</h5></span>
-            </div>
-          </div>
-          <div class="column is-3-desktop is-3-mobile">
-            <div class="order-price">
-              <span><h5>FREE</h5></span>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-mobile shipping-infos">
-          <div class="column is-6-desktop is-6-mobile">
-            <div class="shipping-delivery-content">
-              <span><h3>Shipping</h3></span>
-              <span><h5>Delivery</h5></span>
-            </div>
-          </div>
-          <div class="column is-3-desktop is-3-mobile">
-            <div class="quantity">
-              <span> <h3>QTY</h3></span>
-              <span><h5>1</h5></span>
-            </div>
-          </div>
-          <div class="column is-3-desktop is-3-mobile">
-            <div class="order-price">
-              <span><h5>FREE</h5></span>
+              <span><h3>Unit Price</h3></span>
+              <span><h5>{{item.product.price}}</h5></span>
             </div>
           </div>
         </div>
