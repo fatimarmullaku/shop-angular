@@ -1,7 +1,7 @@
 <!-- PAGINATION -->
 <div class="block pg">
   <div class="pagination">
-    <ng-template [ngIf]="lastPageIndex>=3" [ngIfElse]="lowerThanFourPages">
+    <ng-template [ngIf]="totalPages>=3" [ngIfElse]="lowerThanFourPages">
       <nav class="pagination" role="navigation" aria-label="pagination">
         <a class="pagination-previous pagination-default log-out-button" (click)="changePage(currentPage - 1)" >Previous</a>
         <a class="pagination-next pagination-default log-out-button" (click)="changePage(currentPage + 1)">Next page</a>
@@ -25,7 +25,7 @@
             <span class="pagination-ellipsis" [class.hidden]="">&hellip;</span>
           </li>
           <li>
-            <a class="pagination-link pagination-default" aria-label="Goto page " (click)="changePage(lastPageIndex)"  [class.selected]="currentPage==lastPageIndex">{{lastPageIndex}}</a>
+            <a class="pagination-link pagination-default" aria-label="Goto page " (click)="changePage(totalPages)" [class.selected]="currentPage==totalPages">{{totalPages}}</a>
           </li>
         </ul>
       </nav>
@@ -40,7 +40,7 @@
         <a class="pagination-previous pagination-default log-out-button" title="This is the first page" (click)="changePage(currentPage - 1)">Previous</a>
         <a class="pagination-next pagination-default log-out-button" (click)="changePage(currentPage + 1)">Next page</a>
         <ul class="pagination-list">
-          <li  *ngFor="let dummy of ' '.repeat(lastPageIndex).split(''), let x = index" class="pagination-link pagination-default"
+          <li *ngFor="let dummy of ' '.repeat(totalPages).split(''), let x = index" class="pagination-link pagination-default"
               routerLink="/../../../app"
               aria-label="Page 1" aria-current="page" (click)="changePage(x+1)" [class.selected]="currentPage==x+1" >
             <a >{{x+1}}</a>

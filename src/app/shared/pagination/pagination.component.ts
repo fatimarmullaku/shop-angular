@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ProductListService} from '../../shop/products/product-list/product-list.service';
 
 @Component({
   selector: 'app-product-list-pagination',
@@ -8,49 +9,42 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class PaginationComponent implements OnInit {
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router) {
   }
+  @Input()
+  service: any;
+  currentPage: number;
+  totalPages = 6;
 
-  currentPage = 1;
-  lastPageIndex = 6;
-  @Input()
-  totalItems: number;
-  @Input()
-  pageSize: number;
 
   left = 1;
   mid = 2;
   right = 3;
 
   ngOnInit() {
-    // this.lastPageIndex = Math.ceil(this.totalItems / this.pageSize);
-  }
-
-  log(as) {
-    console.log(as);
-  }
-
-  initPaginationVars() {
+    this.service.currentPage.subscribe(currentPage => this.currentPage = currentPage);
+    this.service.totalPages.subscribe(totalPages => this.totalPages = totalPages);
   }
 
   changePage(page: number) {
-    if (page >= 1 && page <= this.lastPageIndex) {
-      this.currentPage = page;
-      this.router.navigate(
-        [],
-        {
-          relativeTo: this.activatedRoute,
-          queryParams: {size: this.pageSize, page: this.currentPage}
-        });
+    if (page >= 1 && page <= this.totalPages) {
+      this.service.changePage(page);
+      //   this.router.navigate(
+      //     [],
+      //     {
+      //       relativeTo: this.activatedRoute,
+      //       queryParams: {size: this.pageSize, page: this.currentPage}
+      //     });
+      console.log(this.currentPage);
     }
     if (this.currentPage === 1) {
       this.left = 1;
       this.mid = 2;
       this.right = 3;
-    } else if (this.currentPage === this.lastPageIndex) {
-      this.left = this.lastPageIndex - 2;
-      this.mid = this.lastPageIndex - 1;
-      this.right = this.lastPageIndex;
+    } else if (this.currentPage === this.totalPages) {
+      this.left = this.totalPages - 2;
+      this.mid = this.totalPages - 1;
+      this.right = this.totalPages;
     } else {
       this.left = this.currentPage - 1;
       this.mid = this.currentPage;

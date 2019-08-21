@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CategoriesService} from './categories.service';
+import {CategoreisModel} from "./categoreis.model";
 
 
 
@@ -15,7 +16,7 @@ export class CategoriesComponent implements OnInit {
   updateModal = false;
   insertModal = false;
 
-  categoriesList: any;
+  categoriesList: CategoreisModel;
   form: FormGroup;
   cid: number;
   updateForm: FormGroup;

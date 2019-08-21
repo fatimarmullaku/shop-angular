@@ -6,7 +6,7 @@ import {StorageService} from './storage.service';
 import {BaseStorageService} from './base-storage.service';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +50,7 @@ export class ProductService {
     product2.platform = 'PC';
     product2.price = 20;
     product2.stock = 2;
-    product2.title = "Assassin's Creed Black Flag";
+    product2.title = 'Assassin\'s Creed Black Flag';
     const product2Rating = new ProductRatingModel();
     product2Rating.rated = 4.5;
     product2Rating.totalReviews = 49;
@@ -103,6 +103,7 @@ export class ProductService {
     product4.rating = product4Rating;
     this.products.push(product4);
   }
+
   getProducts(): ProductModel[] {
     return this.products;
   }
@@ -152,9 +153,8 @@ export class ProductService {
   getProductsPaged(size: number, page: number, sort?: string) {
     const params = new HttpParams()
       .set('page', page.toString())
-      .set('size', size.toString())
-      .set('sort', sort);
-    return this.http.get(this.router.url + '/paged', {params});
+      .set('size', size.toString());
+    return this.http.get('localhost:8080/api/v1/products/paged', {params});
   }
 
 }
