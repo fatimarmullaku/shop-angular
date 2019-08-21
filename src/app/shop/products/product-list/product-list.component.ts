@@ -26,10 +26,9 @@ export class ProductListComponent implements OnInit {
 
 // hard-coded 9
   getProductsPaged() {
-    this.productService.getProductsPaged(9, this.currentPage - 1).subscribe((data: any) => {
+    this.productService.getProductsPaged(1, this.currentPage - 1).subscribe((data: any) => {
       this.productsList = data.content;
-      this.productListService.changeTotalItems(data.totalPages);
-      console.log(this.productsList);
+      this.productListService.changeTotalPages(data.totalPages);
     });
   }
 

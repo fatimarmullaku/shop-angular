@@ -8,15 +8,10 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class ProductListService {
-  lastPageIndex = 6;
-  pageSize: number;
-  products: ProductModel[];
-  productsList: any;
-
   private totalPagesSource = new BehaviorSubject(1);
   totalPages = this.totalPagesSource.asObservable();
 
-  private pageSource = new BehaviorSubject(1);
+  private pageSource = new BehaviorSubject(3);
   currentPage = this.pageSource.asObservable();
 
   constructor(private productService: ProductService) {
@@ -28,7 +23,7 @@ export class ProductListService {
   }
 
 
-  changeTotalItems(totalItems: number) {
-    this.pageSource.next(totalItems);
+  changeTotalPages(totalpages: number) {
+    this.totalPagesSource.next(totalpages);
   }
 }
