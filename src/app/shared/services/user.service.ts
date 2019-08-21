@@ -23,28 +23,18 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return this.restService.publicRequest(HttpRequestMethod.POST, ENDPOINTS.auth.login, {
+    return this.restService.request(HttpRequestMethod.POST, ENDPOINTS.auth.login, {
       body: {
         email,
         password
       }
-    })
-      .pipe(map(user => {
-        if (user) {
-          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, 'test', true);
+    }).pipe(map(user => {
+        if (user && user.accessToken) {
+          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
         }
 
         return user;
       }));
-    /* return this.httpClient.post<TokenModel>(ENDPOINTS.auth.login, {email, password})
-      .pipe(map(user => {
-        if (user && user.accessToken) {
-          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken);
-          this.loggedIn = true;
-        }
-
-        return user;
-      }));*/
   }
 
   register(payload: UserRegisterModel) {

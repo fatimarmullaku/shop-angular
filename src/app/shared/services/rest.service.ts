@@ -13,11 +13,20 @@ export class RestService {
   /*
   * TODO: Request with token
   * */
+
   // request(method, url, parameters[body, url, etc]
+  request(method: HttpRequestMethod, url: string, options?: {
+    params?: any
+    body?: any
+    headers?: any
+  }) {
+    return this.httpClient.request<any>(method, url, options);
+  }
 
   /*
   * TODO: Request without token (public)
   * */
+
   // request(method, url, parameters[body, url, etc]
   publicRequest(method: HttpRequestMethod, url: string, options?: {
     params?: any
