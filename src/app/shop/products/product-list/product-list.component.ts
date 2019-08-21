@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
       this.productsList = data.content;
       this.paginationService.changeTotalPages(data.totalPages);
     });
-  }
 
+  }
 
 }

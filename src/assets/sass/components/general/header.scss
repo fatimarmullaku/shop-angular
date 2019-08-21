@@ -1,72 +1,95 @@
-//.header {
-//  padding: 15px;
-//  text-align: center;
-//  background-color: map-get($ucx-colors,dark-gray);
-//  color: white;
-//  font-size: 20px;
-//  border: 1px solid black;
-//  height: 65px;
-//  display: flex;
-//  flex-direction: row;
-//  justify-content: space-between;
-//  margin-bottom: 20px;
-//
-//  .header-logo {
-//    ////height: 100%;
-//    //margin-top: -15px;
-//    ////height:   50px;
-//    ////width: 100px;
-//    //width: 50%;
-//    height: 110%;
-//    width: 200px;
-//  }
-//}
-//
-//.log-out-button {
-//  background: transparent;
-//  padding: 5px 10px;
-//  border: 1px solid map-get($ucx-colors,light-orange);
-//  border-radius: 5px;
-//  margin: 0;
-//  font-size: 14px;
-//  color: map-get($ucx-colors,light-orange);
-//
-//  &:hover {
-//    background: map-get($ucx-colors,light-orange);
-//    color: white;
-//  }
-//}
-
-
 .log-out-button {
   background: transparent;
   padding: 10px 25px;
-  border: 1px solid map_get($ucx-colors,deep-orange);
+  border: 1px solid map_get($ucx-colors, deep-orange);
   border-radius: 5px;
   margin-right: 10px;
   font-size: 14px;
-  color: map_get($ucx-colors,deep-orange);
+  color: map_get($ucx-colors, deep-orange);
   cursor: pointer;
   &:hover {
-    background: map_get($ucx-colors,deep-orange);
+    background: map_get($ucx-colors, deep-orange);
     color: white;
   }
 }
+
+.active{
+  display:block;
+}
+
+
 .header {
+  margin-bottom: 20px;
   flex-direction: column;
-  background: rgb(0,0,0);
+  background: rgb(0, 0, 0);
   background: linear-gradient(225deg, #2d0b1e 0%, #2d0b1e 39%, #4e1319 35%, #4e1319 49%, #6f1b13 44%, #6f1b13 58%, #8f240e 54%, #8f240e 68%, #b02c08 67%, #b02c08 78%, #d13403 68%, #d13403 100%);
-  @include mobile{
+  @include mobile {
     background: linear-gradient(225deg, #2d0b1e 11%, #2d0b1e 24%, #4e1319 13%, #4e1319 47%, #6f1b13 21%, #6f1b13 65%, #8f240e 56%, #8f240e 77%, #b02c08 72%, #b02c08 86%, #d13403 77%, #d13403 100%);
   }
+
   .header-top {
+    .dropdown-cart{
+    }
+
+    .right-buttons {
+      margin-right: 20px;
+      margin-top: 20px;
+
+      @include mobile{
+        display: flex;
+        flex-direction: row;
+      }
+      a.sign-up-button {
+        &:hover {
+          background-color: map_get($ucx-colors, light-gray);
+        }
+      }
+
+      .user-button, .cart-button {
+        border: none;
+        background-color: transparent;
+        color: white;
+
+        span.cart-nr {
+          color: map_get($ucx-colors, deep-orange);
+          margin-left: 5px;
+        }
+      }
+
+      .dropdown-menu {
+        z-index: 90;
+
+        .dropdown-cart-item {
+          width: 350px;
+          @include mobile{
+            width: 250px;
+          }
+
+
+        }
+
+        .item-desc {
+          display: block;
+          a {
+            color: #0a0a0a;
+          }
+
+          a:hover {
+            color: map_get($ucx-colors, deep-orange);
+          }
+        }
+      }
+    }
+
     height: 60px;
     align-items: center;
+
     .image-container {
       .header-logo {
-        @include mobile{
+        @include mobile {
           margin-left: 3px;
           margin-top: 9px;
+          margin-bottom: 0;
         }
         height: 100%;
         width: 180px;
@@ -74,45 +97,54 @@
         margin-top: 60px;
       }
     }
+
     .header-middle-side {
       padding: 20px;
     }
+
     .header-right-side {
       padding-right: 10px;
     }
   }
+
   .header-bottom {
     justify-content: center;
+
     nav {
       width: 100%;
       justify-content: center;
       color: black;
-      @include desktop{
-        background: transparent ;
+      @include desktop {
+        background: transparent;
       }
-      @include mobile{
+      @include mobile {
         margin-top: -20px;
       }
-      .navbar-dropdown a{
+
+      .navbar-dropdown a {
         color: black;
       }
+
       a {
         color: pink;
-        @include mobile{
+        @include mobile {
           color: black;
         }
         padding-right: 80px;
         border: 3px solid transparent;
+
         &:hover {
           background: none;
           color: black;
         }
       }
-      a.see-more-publishers{
+
+      a.see-more-publishers {
         color: black;
         border: none;
       }
     }
+
     @include mobile {
       height: calc(100vh - 60px);
       display: none;
@@ -123,9 +155,19 @@
         display: block;
       }
     }
+
+    .more-navbar {
+
+      a:nth-child(8) {
+        padding-right: 0;
+        margin-right: 0;
+      }
+    }
   }
+
   .hamburger-menu-container {
     margin-right: 15px;
+
     button {
       outline: none !important;
       cursor: pointer;
@@ -133,52 +175,62 @@
       background: none;
       border: none;
       color: #fff;
+
       i:before {
         content: "\f0c9";
       }
     }
   }
+
   &.active {
     .header-bottom {
       display: block;
     }
+
     .hamburger-menu-container i:before {
       content: "\f00d";
     }
   }
 }
+
 /* HELPER CLASSES BELOW: */
 .uses-flex {
   display: flex;
 }
+
 .between-space {
   justify-content: space-between;
 }
-.publisher-dropdown{
+
+.publisher-dropdown {
   width: 368px;
   cursor: pointer;
-  @include mobile{
+  @include mobile {
     .navbar-item {
       padding-left: 2.5rem;
       padding-right: 0.5rem;
       padding-bottom: 1rem;
     }
   }
-  .publisher-column-container{
-    @include mobile{
+
+  .publisher-column-container {
+    @include mobile {
       margin: -20px;
     }
-    .dropdown-publisher-container{
+
+    .dropdown-publisher-container {
       width: 100px;
       height: 100px;
       border: 1px solid black;
       margin: 10px;
       padding: 0px;
       text-align: center;
-      &:hover{
-        background: map_get($ucx-colors,light-gray);
+
+      &:hover {
+        background: map_get($ucx-colors, light-gray);
       }
-      img{
+
+      img {
         margin-top: 5px;
         height: 90px;
         width: 90px;
@@ -186,11 +238,13 @@
     }
   }
 }
-.navbar-item img{
+
+.navbar-item img {
   text-align: center;
   max-height: 300px;
   max-width: 300px;
 }
+
 .navbar-link:not(.is-arrowless)::after {
   border-color: #3273dc;
   margin-top: -0.375em;

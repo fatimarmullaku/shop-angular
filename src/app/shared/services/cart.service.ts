@@ -3,18 +3,21 @@ import {BaseStorageService} from './base-storage.service';
 import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {ProductService} from './product.service';
+import {ReplaySubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  cartSubject = new ReplaySubject(1);
 
   constructor(private baseStorage: BaseStorageService, private productService: ProductService) {
-
   }
 
   getProductsFromCart(): ProductCartModel[] {
-    return this.baseStorage.getStorageOf(LocalStorageKey.CART);
+    let carts = this.baseStorage.getStorageOf(LocalStorageKey.CART);
+    this.cartSubject.next(carts);
+    return carts;
   }
 
   addToCart(id: number, qty?: number): void {
@@ -37,15 +40,22 @@ export class CartService {
       newProductInCart.id = id;
       newProductInCart.qty = qty;
       newProductInCart.product = this.productService.getProduct(id);
+      newProductInCart.isInStock = this.productService.getProduct(id).isInStock();
+
       cart.push(newProductInCart);
     }
-
-    // save
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
+    this.cartSubject.next(cart);
+  }
+
+  getCartDataFromSubject() {
+    return this.cartSubject.asObservable();
   }
 
   deleteFromCart(id: number) {
     this.baseStorage.deleteElementInStorage(id, LocalStorageKey.CART);
+    this.getProductsFromCart();
+    // window.location.reload();
   }
 
   changeProductCartQuantity(id: number, quantity: number) {
@@ -56,8 +66,8 @@ export class CartService {
 
       return item;
     });
-
     // save
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
   }
+
 }
