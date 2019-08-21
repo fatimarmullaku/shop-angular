@@ -21,6 +21,7 @@ import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.co
 import {CashMethodComponent} from './cart/cash-method/cash-method.component';
 import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
 import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
+import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
 
 const routes: Routes = [
   {
@@ -113,6 +114,10 @@ const routes: Routes = [
   {
     path: 'cart/cash-method',
     component: CashMethodComponent
+  },
+  {
+    path: 'success-screen',
+    component: SuccessScreenComponent
   },
   {
     path: 'wish-list',

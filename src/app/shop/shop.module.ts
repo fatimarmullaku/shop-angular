@@ -32,6 +32,7 @@ import {VerificationComponent} from './cart/verification/verification.component'
 import { CashMethodComponent } from './cart/cash-method/cash-method.component';
 import { CreditcardMethodComponent } from './cart/creditcard-method/creditcard-method.component';
 import { PaypalMethodComponent } from './cart/paypal-method/paypal-method.component';
+import { SuccessScreenComponent } from './cart/success-screen/success-screen.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { PaypalMethodComponent } from './cart/paypal-method/paypal-method.compon
     CashMethodComponent,
     CreditcardMethodComponent,
     PaypalMethodComponent,
+    SuccessScreenComponent,
   ],
   imports: [
     CommonModule,
