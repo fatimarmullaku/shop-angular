@@ -1,4 +1,6 @@
 export class CustomerModel {
+  id: number;
+  name: string;
   email: string;
   phoneNumbers: number;
   recordStatus: string;
