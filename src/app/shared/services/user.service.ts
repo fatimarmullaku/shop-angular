@@ -34,7 +34,7 @@ export class UserService {
             this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
           }
           if (user.customerId) {
-            this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.accessToken, true);
+            this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.customerId, true);
           }
         }
         if (user.customerId) {
