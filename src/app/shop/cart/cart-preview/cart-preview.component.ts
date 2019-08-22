@@ -68,7 +68,7 @@ export class CartPreviewComponent implements OnInit {
   }
 
   isLoginModalActive(): any {
-    const element = this.storageService.get(LocalStorageKey.ACCES_TOKEN);
+    const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
     if(element == null){
       this.isModalActive = true;
     }

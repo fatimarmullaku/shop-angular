@@ -1,6 +1,6 @@
 import {ProductCartModel} from './product-cart.model';
 
 export class PurchaseModel {
-  customerId: number;
+  currentCustomerId: number;
   cartitems: ProductCartModel[];
 }
