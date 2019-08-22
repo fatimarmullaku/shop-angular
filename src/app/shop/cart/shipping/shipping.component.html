@@ -42,37 +42,49 @@
               </div>
             </div>
             <div class="column is-7 is-padded shipping-form-container">
-              <form [formGroup]="shippingFormGroup" class="form" (submit)="onSubmit($event)">
+              <form (submit)="onSubmit($event)" [formGroup]="shippingFormGroup" class="form">
                 <div *ngIf="customerAddresses">
                   <h3 class="title is-5 static-titles">Addresses</h3>
                   <div id="box-address">
-                    <div formArrayName="addresses" *ngFor="let _ of shippingFormGroup.get('addresses')['controls']; let i = index;">
-                      <div class="columns" [formGroupName]="i">
-                        <div class="column is-2">
+                    <div *ngFor="let _ of shippingFormGroup.get('addresses')['controls']; let i = index;"
+                         formArrayName="addresses">
+                      <div [formGroupName]="i" class="columns">
+                        <div class="column is-1" style="margin-top: 10px">
+                          <label class="label" style="visibility: hidden">sada</label>
+                          <input  #radioAddress name="customRadio" value="{{'radio' + i}}" type="radio" (click)="getRadioValue(radioAddress.value)">
+                        </div>
+                        <div class="column is-3">
                           <label class="label">Country</label>
-                          <input type="text" class="input" formControlName="country" value="{{customerAddresses[i] ? customerAddresses[i].country : ''}}">
+                          <input class="input" formControlName="country" type="text"
+                                 value="{{customerAddresses[i] ? customerAddresses[i].country : ''}}">
                         </div>
 
-                        <div class="column is-2">
+                        <div class="column is-3">
                           <label class="label">City</label>
-                          <input type="text" class="input" formControlName="city" value="{{customerAddresses[i] ? customerAddresses[i].city : ''}}">
+                          <input class="input" formControlName="city" type="text"
+                                 value="{{customerAddresses[i] ? customerAddresses[i].city : ''}}">
                         </div>
 
                         <div class="column is-2">
                           <label class="label">Zip code</label>
-                          <input type="text" class="input" formControlName="zipCode" value="{{customerAddresses[i] ? customerAddresses[i].zipCode : ''}}">
+                          <input class="input" formControlName="zipCode" type="text"
+                                 value="{{customerAddresses[i] ? customerAddresses[i].zipCode : ''}}">
                         </div>
 
-                        <div class="column is-4">
+                        <div class="column is-3">
                           <label class="label">Street</label>
-                          <input type="text" class="input" formControlName="street" value="{{customerAddresses[i] ? customerAddresses[i].street : ''}}">
+                          <input class="input" formControlName="street" type="text"
+                                 value="{{customerAddresses[i] ? customerAddresses[i].street : ''}}">
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <button id="addaddress" class="button add-field-button" (click)="onAddAddress($event)">Add address</button>
+                <div class="add-addresses-container-btn column has-text-centered">
+                  <button (click)="onAddAddress($event); clicked = true" [disabled]="clicked" class="button add-field-button no-float"
+                          id="addaddress">Add address
+                  </button>
+                </div>
               </form>
 
             </div>
@@ -83,11 +95,12 @@
             <a class="nav-buttons-shipping button" routerLink="/cart"><span>Previous</span></a>
           </div>
           <div class="column is-6-desktop is-6-mobile has-text-right ">
-            <a class="nav-buttons-shipping button" routerLink="/cart/verification" (click)="onSubmit($event)"><span>Next</span></a>
+            <button (click)="onSubmit($event); " [disabled]="nextClicked" class="nav-buttons-shipping button"
+               routerLink="/cart/verification" ><span>Next</span></button>
           </div>
         </div>
       </div>
     </div>
-
   </section>
 </div>
+
