@@ -111,7 +111,7 @@ export class CategoriesComponent implements OnInit {
   onUpdate() {
     const values = this.updateForm.value;
     console.log(values);
-    this.categoriesService.updateCategory(values, this.cid).subscribe(
+    this.categoriesService.updateCategory(values).subscribe(
       get => {
         this.categoriesService.getAllCategories().subscribe((data: any) => {
           this.categoriesList = data;
