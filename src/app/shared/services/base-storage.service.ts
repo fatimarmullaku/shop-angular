@@ -21,10 +21,13 @@ export class BaseStorageService {
   }
 
   // Gets the storage which contains the given key
-  getStorageOf(key: LocalStorageKey) {
+  getStorageOf(key: LocalStorageKey, isStringified?: boolean) {
     const storage = this.storageService.get(key);
     console.log(storage);
     if (storage) {
+      if (isStringified) {
+        return storage;
+      }
       return JSON.parse(storage);
     } else {
       return [];
@@ -50,8 +53,17 @@ export class BaseStorageService {
     this.storageService.flush();
   }
 
-  setStorage(key: LocalStorageKey, stringifiedValue: any) {
-    this.storageService.set(key, JSON.stringify(stringifiedValue));
+  /*
+  TODO:
+   Check if sent stringifiedValue is already a string.
+   Example: another boolean optional parameter isStringified which changes the control flow
+  */
+  setStorage(key: LocalStorageKey, stringifiedValue: any, isStringified?: boolean) {
+    if (isStringified) {
+      this.storageService.set(key, stringifiedValue);
+    } else {
+      this.storageService.set(key, JSON.stringify(stringifiedValue));
+    }
   }
 
 }
