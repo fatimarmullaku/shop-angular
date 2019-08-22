@@ -26,7 +26,8 @@ export class PurchaseService {
   buy(): any {
     // const purchaseObject = new PurchaseModel();
     // purchaseObject.customerId = customerId will be return from user.service
-    // purchaseObject.invoiceId = this.cartService.getProductsFromCart();
+    // localStorage.get('customerId');
+    // purchaseObject.cartItems = this.cartService.getProductsFromCart();
 
     /*
           we call buy method which is in purchaseController server-side;

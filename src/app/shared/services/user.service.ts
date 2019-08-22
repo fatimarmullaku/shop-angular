@@ -30,6 +30,9 @@ export class UserService {
           this.localStorage.set('accessToken', user.accessToken);
           this.loggedIn = true;
         }
+        if (user.customerId) {
+          this.localStorage.set('customerId', user.customerId);
+        }
 
         return user;
       }));
