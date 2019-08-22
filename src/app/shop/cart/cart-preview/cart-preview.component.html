@@ -52,7 +52,12 @@
             <h2>Subtotal: {{this.cartService.generateTotalPrice().toFixed(2)}}$</h2>
           </div>
           <div class="column is-4 right-link">
-            <a (click)="isLoginModalActive()">Proceed to Checkout</a>
+            <div *ngIf="showRoute">
+              <a routerLink="/cart/shipping">Proceed to Checkout</a>
+            </div>
+            <div *ngIf="!showRoute">
+              <a (click)="isLoginModalActive()">Proceed to Checkout</a>
+            </div>
           </div>
         </div>
 <!--      </div>-->
@@ -100,7 +105,6 @@
                 </div>
               </div>
             </div>
-
           </section>
         </div>
       </div>

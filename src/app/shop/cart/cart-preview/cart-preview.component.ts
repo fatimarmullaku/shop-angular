@@ -9,6 +9,7 @@ import {StorageService} from "../../../shared/services/storage.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../shared/services/user.service";
 import {Router} from "@angular/router";
+import {debug} from "util";
 
 @Component({
   selector: 'app-cart-preview',
@@ -22,6 +23,7 @@ export class CartPreviewComponent implements OnInit {
   products: ProductModel[];
   cartProducts: ProductCartModel[];
   isModalActive : boolean = false;
+  showRoute : boolean = true;
 
   constructor(private productService: ProductService,
               private cartService: CartService,
@@ -38,6 +40,11 @@ export class CartPreviewComponent implements OnInit {
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', Validators.required),
     });
+
+    const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
+    if(element == null){
+      this.showRoute = false;
+    }
   }
 
   getProduct(id: number): ProductModel {
@@ -68,9 +75,12 @@ export class CartPreviewComponent implements OnInit {
   }
 
   isLoginModalActive(): boolean {
-    const element = this.storageService.get(LocalStorageKey.ACCES_TOKEN);
+    const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
     if(element == null){
       this.isModalActive = true;
+    }
+    if(element != null){
+      this.isModalActive = false;
     }
     return this.isModalActive;
   }
@@ -99,6 +109,10 @@ export class CartPreviewComponent implements OnInit {
     } else {
       alert('form not valid');
     }
+  }
+
+  continueShipping(){
+    this.router.navigateByUrl('/cart/shipping');
   }
 
 }

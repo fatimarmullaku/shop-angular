@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {CartService} from "../../../shared/services/cart.service";
+import {PurchaseService} from "../../../shared/services/purchase.service";
 
 @Component({
   selector: 'app-paypal-method',
@@ -6,14 +8,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PaypalMethodComponent implements OnInit {
 
-  constructor() {
+
+
+  constructor(private cartService : CartService,private purchaseService: PurchaseService) {
   }
 
   ngOnInit() {
   }
 
-  buy(event): any{
-
+  buy(): any{
+    this.purchaseService.buy();
   }
 
 }
