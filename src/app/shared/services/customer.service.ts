@@ -1,9 +1,12 @@
 import {Injectable} from '@angular/core';
 import {CustomerModel} from '../models/customer.model';
-import {StorageService} from './storage.service';
 import {BaseStorageService} from './base-storage.service';
 import {PhoneNumberModel} from '../models/phoneNumber.model';
 import {AddressModel} from '../models/address.model';
+import {RestService} from './rest.service';
+import {LocalStorageKey} from '../constants/local-storage-key';
+import {HttpRequestMethod} from '../constants/http-request.method';
+import {ENDPOINTS} from '../constants/api.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ import {AddressModel} from '../models/address.model';
 export class CustomerService {
   customers: CustomerModel [];
 
-  constructor(private storageService: StorageService, private baseStorage: BaseStorageService) {
+  constructor(private baseStorage: BaseStorageService, private restService: RestService) {
     this.fetchCustomers();
   }
 
@@ -60,5 +63,10 @@ export class CustomerService {
     }
 
     return null;
+  }
+
+  getCustomerFromServer() {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + '/${customerId}');
   }
 }
