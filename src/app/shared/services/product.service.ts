@@ -6,7 +6,7 @@ import {StorageService} from './storage.service';
 import {BaseStorageService} from './base-storage.service';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +50,7 @@ export class ProductService {
     product2.platform = 'PC';
     product2.price = 20;
     product2.stock = 2;
-    product2.title = "Assassin's Creed Black Flag";
+    product2.title = 'Assassin\'s Creed Black Flag';
     const product2Rating = new ProductRatingModel();
     product2Rating.rated = 4.5;
     product2Rating.totalReviews = 49;
@@ -103,6 +103,7 @@ export class ProductService {
     product4.rating = product4Rating;
     this.products.push(product4);
   }
+
   getProducts(): ProductModel[] {
     return this.products;
   }
@@ -118,31 +119,6 @@ export class ProductService {
 
     return null;
   }
-
-  // getProductInWishlist(id: number): boolean {
-  //   return this.baseStorage.getElementInStorage(id, LocalStorageKey.WISHLIST);
-  // }
-
-  // add to wishlist
-  // addToWishlist(id: number) {
-  //   const wishlist = this.storageService.get('wishlist');
-  //   if (wishlist) {
-  //     const wishlistArray = JSON.parse(wishlist);
-  //     if (wishlistArray.filter(item => item == id).length > 0) {
-  //       return;
-  //     } else {
-  //       wishlistArray.push(id);
-  //       this.storageService.set('wishlist', JSON.stringify(wishlistArray));
-  //     }
-  //   } else {
-  //     this.storageService.set('wishlist', JSON.stringify([id]));
-  //   }
-  // }
-  //
-  // // delete from wishlist
-  // deleteFromWishlist(id: number) {
-  //   this.baseStorage.deleteElementInStorage(id, LocalStorageKey.WISHLIST);
-  // }
 
   // clear wishlist
   clearWishList() {
