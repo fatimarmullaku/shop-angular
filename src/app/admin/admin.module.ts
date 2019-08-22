@@ -17,6 +17,7 @@ import {PlatformsComponent} from './products/platforms/platforms.component';
 import {PublishersComponent} from './products/publishers/publishers.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import {CategoriesComponent} from "./categories/categories.component";
+import {ShopModule} from "../shop/shop.module";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {CategoriesComponent} from "./categories/categories.component";
     MatSidenavModule,
     MatIconModule,
     ModalModule.forRoot(),
+    ShopModule,
 
   ]
 })

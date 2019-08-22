@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,13 @@ export class CategoriesService {
 
   }
 
+  getCategoriesPaged(size: number, page: number, sort?: string) {
+    const qParams = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
 
+    const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
+    return this.http.get(this.rootUrl + '/categories/paged', {headers, params: qParams});
+  }
 
 }

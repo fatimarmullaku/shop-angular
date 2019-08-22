@@ -65,6 +65,9 @@ import { SuccessScreenComponent } from './cart/success-screen/success-screen.com
     PaypalMethodComponent,
     SuccessScreenComponent,
   ],
+  exports: [
+    PaginationComponent
+  ],
   imports: [
     CommonModule,
     ShopRoutingModule,

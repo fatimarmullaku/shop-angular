@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CategoriesService} from './categories.service';
-import {CategoreisModel} from "./categoreis.model";
-
+import {CategoreisModel} from './categoreis.model';
+import {PaginationService} from '../../shared/pagination/pagination.service';
 
 
 @Component({
@@ -16,6 +16,8 @@ export class CategoriesComponent implements OnInit {
   updateModal = false;
   insertModal = false;
 
+  currentPage: number;
+
   categoriesList: CategoreisModel;
   form: FormGroup;
   cid: number;
@@ -24,14 +26,16 @@ export class CategoriesComponent implements OnInit {
 
   constructor(private categoriesService: CategoriesService,
               private formBuilder: FormBuilder,
-               ) {
+              private paginationService: PaginationService
+  ) {
   }
 
   ngOnInit() {
-    this.categoriesService.getAllCategoies().subscribe((data: any) => {
-      this.categoriesList = data;
-      console.log(this.categoriesList);
+    this.paginationService.currentPage.subscribe(currentPage => {
+      this.currentPage = currentPage;
+      this.getCategoriesPaged();
     });
+
 
     this.form = this.formBuilder.group({
       id: [],
@@ -54,8 +58,17 @@ export class CategoriesComponent implements OnInit {
     });
 
     console.log(this.updateForm);
-
   }
+
+
+  // hard-coded size
+  getCategoriesPaged() {
+    this.categoriesService.getCategoriesPaged(2, this.currentPage - 1).subscribe((data: any) => {
+      this.categoriesList = data.content;
+      this.paginationService.changeTotalPages(data.totalPages);
+    });
+  }
+
 
   onSubmit() {
     const values = this.form.value[1];
@@ -130,8 +143,6 @@ export class CategoriesComponent implements OnInit {
     this.updateForm.controls.version.setValue(version);
 
   }
-
-
 
 
   closeUpdateModal() {
