@@ -5,28 +5,28 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductsService {
-  readonly rootUrl = 'http://localhost:8080/shop/v1/products';
+  readonly rootUrl = 'http://localhost:8080/api/v1/products/';
 
 
   constructor(private http: HttpClient) {
   }
 
-
   getAllProducts() {
-    return this.http.get(this.rootUrl + '/allProducts');
+    return this.http.get(this.rootUrl + 'allActive');
 
   }
 
   registerProduct(data) {
-    return this.http.post(this.rootUrl + '/', data);
+    return this.http.post(this.rootUrl , data);
   }
 
   deleteProduct(id) {
-    return this.http.delete(this.rootUrl + '/Delete?id=' + id);
+    return this.http.delete(this.rootUrl +id);
   }
 
-  updateProduct(data) {
-    return this.http.put(this.rootUrl + '/', data);
+  updateProduct(data, id) {
+    console.log('from service', data, id)
+    return this.http.put(this.rootUrl + id, data);
   }
 
 
