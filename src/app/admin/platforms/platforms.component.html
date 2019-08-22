@@ -21,7 +21,7 @@
             <th>Version</th>
             <th> </th>
           </tr>
-          <tr *ngFor="let c of categoriesList | pipeFilteer:filter">
+          <tr *ngFor="let c of platformsList | pipeFilteer:filter">
             <td>{{c.name}}</td>
             <td>{{c.recordStatus}}</td>
             <td>{{c.createDateTime}}</td>

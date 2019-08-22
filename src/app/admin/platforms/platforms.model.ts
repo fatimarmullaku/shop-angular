@@ -1,4 +1,4 @@
-export class CategoreisModel {
+export class PlatformsModel {
   name: string;
   recordStatus: string;
   createDateTime: Date;

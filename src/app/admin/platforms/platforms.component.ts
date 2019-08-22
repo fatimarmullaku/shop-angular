@@ -1,36 +1,36 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
-import {CategoriesService} from './categories.service';
+import {PlatformsService} from './platforms.service';
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
 
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+  selector: 'app-platforms',
+  templateUrl: './platforms.component.html',
+  styleUrls: ['./platforms.component.scss']
 })
-export class CategoriesComponent implements OnInit {
+export class PlatformsComponent implements OnInit {
   deleteModal = false;
   updateModal = false;
   insertModal = false;
   filter: string;
-  categoriesList: any;
+  platformsList: any;
   form: FormGroup;
   cid: number;
   updateForm: FormGroup;
 
 
-  constructor(private categoriesService: CategoriesService,
+  constructor(private platformsService: PlatformsService,
               private formBuilder: FormBuilder,
   ) {
   }
 
   ngOnInit() {
-    this.categoriesService.getAllCategories().subscribe((data: any) => {
-      this.categoriesList = data;
-      console.log(this.categoriesList);
+    this.platformsService.getAllPlatforms().subscribe((data: any) => {
+      this.platformsList = data;
+      console.log(this.platformsList);
     });
 
 
@@ -70,17 +70,17 @@ export class CategoriesComponent implements OnInit {
       const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
       const position = 10;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('categories.pdf');
+      pdf.save('platformsList.pdf');
     });
   }
 
   onSubmit() {
     const values = this.form.value;
     console.log('on Submit', values);
-    this.categoriesService.registerCategory(values).subscribe(
+    this.platformsService.registerPlatforms(values).subscribe(
       get => {
-        this.categoriesService.getAllCategories().subscribe((data: any) => {
-          this.categoriesList = data;
+        this.platformsService.getAllPlatforms().subscribe((data: any) => {
+          this.platformsList = data;
         });
       },
       (err: HttpErrorResponse) => {
@@ -94,10 +94,10 @@ export class CategoriesComponent implements OnInit {
 
 
   onDelete() {
-    this.categoriesService.deleteCategory(this.cid).subscribe(
+    this.platformsService.deletePlatform(this.cid).subscribe(
       get => {
-        this.categoriesService.getAllCategories().subscribe((data: any) => {
-          this.categoriesList = data;
+        this.platformsService.getAllPlatforms().subscribe((data: any) => {
+          this.platformsList = data;
         });
       },
       (err: HttpErrorResponse) => {
@@ -111,10 +111,10 @@ export class CategoriesComponent implements OnInit {
   onUpdate() {
     const values = this.updateForm.value;
     console.log(values);
-    this.categoriesService.updateCategory(values, this.cid).subscribe(
+    this.platformsService.updatePlatform(values, this.cid).subscribe(
       get => {
-        this.categoriesService.getAllCategories().subscribe((data: any) => {
-          this.categoriesList = data;
+        this.platformsService.getAllPlatforms().subscribe((data: any) => {
+          this.platformsList = data;
         });
       },
       (err: HttpErrorResponse) => {
