@@ -1,0 +1,19 @@
+<div [ngClass]="{ 'is-active' : deleteModal }" class="modal">
+  <div (click)="toggleModal()" class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Delete Customer</p>
+      <button (click)="toggleModal()" aria-label="close" class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      <p><strong>Are you sure you want to delete this Customer ?</strong></p>
+      <p>All information associated to this customer will be permanently deleted.
+        <br>
+        <span class="has-text-danger">This operation can not be undone!</span>
+    </section>
+    <footer class="modal-card-foot">
+      <button (click)="onDelete()" class="button is-danger">Delete</button>
+      <button (click)="toggleModal()" class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
