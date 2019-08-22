@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit {
   products: ProductModel[];
   productsList: any[];
   currentPage: number;
+  pageSize = 6;
 
   constructor(private productService: ProductService,
               private paginationService: PaginationService) {
@@ -31,7 +32,7 @@ export class ProductListComponent implements OnInit {
 
 // hard-coded 9
   getProductsPaged() {
-    this.productService.getProductsPaged(2, this.currentPage - 1).subscribe((data: any) => {
+    this.productService.getProductsPaged(this.pageSize, this.currentPage - 1).subscribe((data: any) => {
       this.productsList = data.content;
       this.paginationService.changeTotalPages(data.totalPages);
       this.products = [];

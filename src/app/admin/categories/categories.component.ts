@@ -17,7 +17,7 @@ export class CategoriesComponent implements OnInit {
   insertModal = false;
 
   currentPage: number;
-
+  pageSize = 8;
   categoriesList: CategoreisModel;
   form: FormGroup;
   cid: number;
@@ -63,7 +63,7 @@ export class CategoriesComponent implements OnInit {
 
   // hard-coded size
   getCategoriesPaged() {
-    this.categoriesService.getCategoriesPaged(2, this.currentPage - 1).subscribe((data: any) => {
+    this.categoriesService.getCategoriesPaged( this.pageSize , this.currentPage - 1).subscribe((data: any) => {
       this.categoriesList = data.content;
       this.paginationService.changeTotalPages(data.totalPages);
     });
