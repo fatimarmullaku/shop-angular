@@ -17,7 +17,7 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu-2" role="menu" >
           <div class="dropdown-content">
-            <div class="columns is-mobile dropdown-item dropdown-cart-item" *ngFor="let item of cartProducts">
+            <div class="columns is-mobile dropdown-item dropdown-cart-item" *ngFor="let item of this.cartService.getProductsFromCart()">
               <div class="column is-6">
                 <figure class="image is-64x64">
                   <img class="is-rounded" [src]="item.product.image">
