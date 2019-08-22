@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {UserRegisterModel} from '../models/user-register.model';
 import {ENDPOINTS} from '../constants/api.constants';
 import {BaseStorageService} from './base-storage.service';
@@ -36,9 +36,6 @@ export class UserService {
           if (user.customerId) {
             this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.customerId, true);
           }
-        }
-        if (user.customerId) {
-          this.localStorage.set('customerId', user.customerId);
         }
 
         return user;
