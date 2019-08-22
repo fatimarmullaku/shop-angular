@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerService} from '../../../../../shared/services/customer.service';
@@ -20,15 +20,22 @@ export class InformationComponent implements OnInit {
   phones: FormArray;
   addresses: FormArray;
   firstName: FormControl;
+
   constructor(private formBuilder: FormBuilder,
               public router: Router,
               private activatedRoute: ActivatedRoute,
               private customerService: CustomerService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.customer = this.customerService.getCustomer(1);
-
+    this.customerService.getCustomerFromServer().subscribe(res => {
+        console.log(res);
+      },
+      (error) => {
+        console.error(error);
+      });
     this.informationForm = this.formBuilder.group({
       firstName: new FormControl(''),
       phoneNumbers: this.formBuilder.array([]),
@@ -54,7 +61,7 @@ export class InformationComponent implements OnInit {
   createPhoneNumber(): FormGroup {
     return this.formBuilder.group({
       mobile: new FormControl(''),
-      home:  new FormControl('')
+      home: new FormControl('')
     });
   }
 

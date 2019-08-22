@@ -7,6 +7,7 @@ import {RestService} from './rest.service';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +68,9 @@ export class CustomerService {
 
   getCustomerFromServer() {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + '/${customerId}');
+    return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + '/1')
+      .pipe(map(user => {
+        return user;
+      }));
   }
 }

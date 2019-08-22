@@ -22,6 +22,7 @@ import {CashMethodComponent} from './cart/cash-method/cash-method.component';
 import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
 import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
 import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
+import {InformationComponent} from './auth/account/profile/information/information.component';
 
 const routes: Routes = [
   {
@@ -78,6 +79,10 @@ const routes: Routes = [
   {
     path: 'auth/additional-information',
     component: AdditionalInformationComponent
+  },
+  {
+    path: 'auth/information',
+    component: InformationComponent
   },
   {
     path: 'add-new-product',
