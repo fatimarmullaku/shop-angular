@@ -4,6 +4,7 @@ import {CustomerModel} from '../../../shared/models/customer.model';
 import {AddressModel} from '../../../shared/models/address.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerService} from '../../../shared/services/customer.service';
+import {add} from "ngx-bootstrap/chronos";
 
 @Component({
   selector: 'app-shipping',
@@ -14,6 +15,9 @@ export class ShippingComponent implements OnInit {
   customer: CustomerModel;
   customerAddresses: AddressModel[];
   addresses: FormArray;
+  clicked = false;
+  nextClicked = true;
+
   constructor(private formBuilder: FormBuilder,
               public router: Router,
               private activatedRoute: ActivatedRoute,
@@ -54,6 +58,18 @@ export class ShippingComponent implements OnInit {
 
   onSubmit(event: any) {
     event.preventDefault();
-    console.log(this.customerAddresses[0]);
+
+    console.log(this.shippingFormGroup.getRawValue());
+
+  }
+
+  getRadioValue(value: any){
+     if(value == 'radio0'){
+       console.log(this.shippingFormGroup.getRawValue());
+       this.nextClicked = false;
+     }else if(value == 'radio1'){
+       console.log(this.shippingFormGroup.getRawValue());
+       this.nextClicked = false;
+     }
   }
 }
