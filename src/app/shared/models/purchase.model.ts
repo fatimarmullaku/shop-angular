@@ -1,5 +1,6 @@
-export class PurchaseModel {
+import {ProductCartModel} from './product-cart.model';
 
+export class PurchaseModel {
   customerId: number;
-  invoiceId: number;
+  cartitems: ProductCartModel[];
 }
