@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomersService} from './customers.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
+import {CustomerModel} from './customer.model';
 
 @Component({
   selector: 'app-costumers',
@@ -11,50 +11,68 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class CustomersComponent implements OnInit {
   deleteModal = false;
+  filter: string;
   updateModal = false;
   insertModal = false;
-
-  customersList: any;
+  customersList: CustomerModel[];
   customersForm: FormGroup;
+  addressesArray: FormArray;
+  phoneNumbersArray: FormArray;
   customerId: number;
   updateForm: FormGroup;
 
+
   constructor(private customersService: CustomersService,
-              private formBuilder: FormBuilder,
-              private modalService: NgbModal) {
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.customersService.getAllCustomers().subscribe((data: any) => {
+    this.customersService.getAllCustomers().subscribe((data: CustomerModel[]) => {
       this.customersList = data;
       console.log(this.customersList);
     });
 
-    this.customersForm = this.formBuilder.group({
-      id: [],
-      email: [''],
-      phoneNumbers: [''],
+    this.customersForm = this.fb.group({
+      id: new FormControl(),
+      email: new FormControl('', Validators.required),
+      phoneNumbers: this.fb.array([]),
+      addresses: this.fb.array([]),
       recordStatus: [''],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
       description: [''],
-      version: [''],
+      version: ['']
     });
+    this.addressesArray = this.customersForm.get('addresses') as FormArray;
+    this.phoneNumbersArray = this.customersForm.get('phoneNumbers') as FormArray;
+    this.addressesArray.push(this.fb.group({
+      city: '',
+      country: '',
+      street: '',
+      zip_code: ''
+    }));
+    this.phoneNumbersArray.push(this.fb.group({
+      phoneNumber: ''
+    }));
 
-    this.updateForm = this.formBuilder.group({
+
+    this.updateForm = this.fb.group({
       email: [''],
-      phoneNumbers: [''],
+      phoneNumbers: [],
       recordStatus: [''],
-      updateDateTime: [''],
-      deletedDateTime: [''],
+      updateDateTime: [],
+      deletedDateTime: [],
       description: [''],
-      version: [''],
+      version: [],
+      address: [],
+
     });
 
     console.log(this.updateForm);
 
   }
+
 
   onSubmit() {
     const values = this.customersForm.value;
@@ -68,11 +86,8 @@ export class CustomersComponent implements OnInit {
         console.log(err);
       }
     );
-
     this.insertModal = false;
-
   }
-
 
 
   onDelete() {
@@ -91,8 +106,8 @@ export class CustomersComponent implements OnInit {
   }
 
   onUpdate() {
-    const values = this.updateForm.value;
-    this.customersService.updateCustomer(values).subscribe(
+    const values = this.customersForm.value;
+    this.customersService.updateCustomer(values, this.customerId).subscribe(
       get => {
         this.customersService.getAllCustomers().subscribe((data: any) => {
           this.customersList = data;
@@ -112,36 +127,36 @@ export class CustomersComponent implements OnInit {
   }
 
   openUpdate(
-    id: number,
-    email: string,
-    phoneNumbers: number,
-    recordStatus: boolean,
-    updateDateTime: Date,
-    deletedDateTime: Date,
-    description: string,
+    id,
+    email,
+    phoneNumbers,
+    recordStatus,
+    updateDateTime,
+    deletedDateTime,
+    description,
     version: number) {
-    this.updateModal = true;
     this.customerId = id;
-    this.updateForm.controls[' email '].setValue(email);
-    this.updateForm.controls[' phoneNumbers '].setValue(phoneNumbers);
-    this.updateForm.controls[' recordStatus '].setValue(recordStatus);
-    this.updateForm.controls[' updateDateTime '].setValue(updateDateTime);
-    this.updateForm.controls[' deletedDateTime '].setValue(deletedDateTime);
-    this.updateForm.controls[' description '].setValue(description);
-    this.updateForm.controls[' version '].setValue(version);
+    this.updateModal = true;
+    this.customersForm.controls.email.setValue(email);
+    this.customersForm.controls.phoneNumbers.setValue(phoneNumbers);
+    this.customersForm.controls.recordStatus.setValue(recordStatus);
+    this.customersForm.controls.updateDateTime.setValue(updateDateTime);
+    this.customersForm.controls.deletedDateTime.setValue(deletedDateTime);
+    this.customersForm.controls.description.setValue(description);
+    this.customersForm.controls.version.setValue(version);
 
   }
 
-
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
+    this.updateForm.reset();
   }
 
   closeInsertModal() {
     this.insertModal = !this.insertModal;
+    this.customersForm.reset();
   }
 
-  // in background close modal
   toggleModal() {
     this.deleteModal = !this.deleteModal;
   }
@@ -151,6 +166,12 @@ export class CustomersComponent implements OnInit {
     this.customerId = cid;
     console.log(this.customerId);
   }
+
+  transformNumber(phoneNumbers: any) {
+    return phoneNumbers.map(item => item.phoneNumber);
+  }
+
+
 
 
 }
