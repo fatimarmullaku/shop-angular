@@ -1,22 +1,21 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserRegisterModel} from '../models/user-register.model';
 import {ENDPOINTS} from '../constants/api.constants';
+import {BaseStorageService} from './base-storage.service';
+import {LocalStorageKey} from '../constants/local-storage-key';
+import {RestService} from './rest.service';
+import {HttpRequestMethod} from '../constants/http-request.method';
 import {map} from 'rxjs/operators';
-import {StorageService} from './storage.service';
-import {UserModel} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  users: UserModel;
-
-
 
   loggedIn = false;
 
-  constructor(private httpClient: HttpClient, private localStorage: StorageService) {
+  constructor(private httpClient: HttpClient, private restService: RestService, private baseStorage: BaseStorageService) {
   }
 
   isLoggedIn(): boolean {
@@ -24,11 +23,19 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return this.httpClient.post<any>(ENDPOINTS.auth.login, {email, password})
-      .pipe(map(user => {
-        if (user && user.accessToken) {
-          this.localStorage.set('accessToken', user.accessToken);
-          this.loggedIn = true;
+    return this.restService.publicRequest(HttpRequestMethod.POST, ENDPOINTS.auth.login, {
+      body: {
+        email,
+        password
+      }
+    }).pipe(map(user => {
+        if (user) {
+          if (user.accessToken) {
+            this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
+          }
+          if (user.customerId) {
+            this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.accessToken, true);
+          }
         }
 
         return user;
@@ -40,6 +47,6 @@ export class UserService {
   }
 
   logout(): void {
-    this.localStorage.delete('accessToken');
+    this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
   }
 }
