@@ -40,6 +40,7 @@ export class BaseStorageService {
     }
   }
 
+
   // Clears the storage which contains the given key
   clearStorageOf(key: LocalStorageKey) {
     this.storageService.delete(key);
