@@ -29,8 +29,13 @@ export class UserService {
         password
       }
     }).pipe(map(user => {
-        if (user && user.accessToken) {
-          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
+        if (user) {
+          if (user.accessToken) {
+            this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
+          }
+          if (user.customerId) {
+            this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.accessToken, true);
+          }
         }
 
         return user;
