@@ -67,7 +67,7 @@ export class CartPreviewComponent implements OnInit {
     return ProductModel.isInStock(product);
   }
 
-  isLoginModalActive(): boolean {
+  isLoginModalActive(): any {
     const element = this.storageService.get(LocalStorageKey.ACCES_TOKEN);
     if(element == null){
       this.isModalActive = true;
@@ -99,6 +99,10 @@ export class CartPreviewComponent implements OnInit {
     } else {
       alert('form not valid');
     }
+  }
+
+  continueShipping(){
+    this.router.navigateByUrl('/cart/shipping');
   }
 
 }
