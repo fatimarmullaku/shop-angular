@@ -24,7 +24,15 @@ export class CategoriesComponent implements OnInit {
   constructor(private categoriesService: CategoriesService,
               private formBuilder: FormBuilder,
                ) {
+    this.createForm();
   }
+
+    createForm() {
+    this.form = this.formBuilder.group({
+        name: ['', Validators.required],
+      recordStatus: ['', Validators.required]
+    });
+    }
 
   ngOnInit() {
     this.categoriesService.getAllCategoies().subscribe((data: any) => {
