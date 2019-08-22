@@ -16,9 +16,7 @@ import {ModalModule} from 'ngx-bootstrap';
 import {PlatformsComponent} from './products/platforms/platforms.component';
 import {PublishersComponent} from './products/publishers/publishers.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { CategoriesComponent } from './categories/categories.component';
-import {CategoriesFilterPipe} from './categories/categories-filter.pipe';
-import {CustomersFPipe} from './customers/customers-f.pipe';
+
 
 @NgModule({
   declarations: [
@@ -33,9 +31,6 @@ import {CustomersFPipe} from './customers/customers-f.pipe';
     PlatformsComponent,
     PublishersComponent,
     SidebarComponent,
-    CategoriesComponent,
-    CategoriesFilterPipe,
-    CustomersFPipe
   ],
   imports: [
     FormsModule,
