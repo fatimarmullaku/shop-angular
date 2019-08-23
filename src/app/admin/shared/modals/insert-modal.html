@@ -1,0 +1,42 @@
+<div [ngClass]="{ 'is-active' : insertModal }" class="modal">
+  <div (click)="closeInsertModal()" class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Insert Customer</p>
+      <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (ngSubmit)="onSubmit( )" [formGroup]="customersForm">
+        <input class="form-control"
+               placeholder="Email"
+               formControlName="email"
+               type="text">
+        <div class="columns">
+          <div class="column">
+            <input class="form-control"
+                   placeholder="Phone Number 1"
+                   formControlName="phoneNumbers"
+                   type="text">
+          </div>
+          <div class="column">
+            <input class="form-control"
+                   placeholder="Phone Number 2"
+                   formControlName="phoneNumbers"
+                   type="text">
+          </div>
+        </div>
+        <input class="form-control" formControlName="recordStatus"
+               placeholder="Record Status"
+               required
+               type="email">
+        <div class="control">
+          <textarea class="textarea" placeholder="Add your description here! "></textarea>
+        </div>
+      </form>
+    </section>
+    <footer class="modal-card-foot">
+      <button (click)="onSubmit()" class="button is-danger">Submit</button>
+      <button (click)="closeInsertModal()" class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
