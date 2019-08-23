@@ -14,7 +14,7 @@ export class CategoriesService {
   }
 
 
-  getAllCategoies() {
+  getAllCategories() {
     return this.http.get(this.rootUrl + '/categories');
   }
 

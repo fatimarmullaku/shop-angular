@@ -1,5 +1,6 @@
 export enum LocalStorageKey {
   WISHLIST = 'wishlist',
   CART = 'cart',
-  ACCES_TOKEN = 'accesToken'
+  ACCESS_TOKEN = 'accessToken',
+  CUSTOMER_ID = 'customerId'
 }

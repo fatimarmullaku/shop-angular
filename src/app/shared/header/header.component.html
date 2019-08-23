@@ -17,7 +17,7 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu-2" role="menu" >
           <div class="dropdown-content">
-            <div class="columns is-mobile dropdown-item dropdown-cart-item" *ngFor="let item of cartProducts">
+            <div class="columns is-mobile dropdown-item dropdown-cart-item" *ngFor="let item of this.cartService.getProductsFromCart()">
               <div class="column item-picture is-6">
                 <figure class="image is-64x64">
                   <img class="is-rounded" [src]="item.product.image">
@@ -51,8 +51,13 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-            <a href="#" class="dropdown-item sign-up-button">Sign Up</a>
-            <a href="#" class="dropdown-item sign-up-button">Login</a>
+            <div *ngIf="!this.isLoggedIn()" >
+            <a routerLink="/auth/register" class="dropdown-item sign-up-button">Sign Up</a>
+            <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
+            </div>
+            <div *ngIf="this.isLoggedIn()" >
+            <a href="#" class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
+            </div>
           </div>
         </div>
       </div>
