@@ -68,7 +68,7 @@ export class CustomerService {
 
   getCustomerFromServer() {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + '/1')
+    return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + `/${customerId}`)
       .pipe(map(user => {
         return user;
       }));
