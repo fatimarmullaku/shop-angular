@@ -12,13 +12,15 @@ import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
 import {TablesDComponent} from '../shared/tables-d/tables-d.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ModalModule} from 'ngx-bootstrap';
-import {PlatformsComponent} from './products/platforms/platforms.component';
+import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
 import {PublishersComponent} from './products/publishers/publishers.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { CategoriesComponent } from './categories/categories.component';
-import {CategoriesFilterPipe} from './categories/categories-filter.pipe';
+import {PlatformsFilterPipe} from './platforms/platforms-filter.pipe';
 import {CustomersFPipe} from './customers/customers-f.pipe';
+import {PlatformsComponent} from './platforms/platforms.component';
+import { BrandsComponent } from './brands/brands.component';
+import {BrandsFilterPipe} from './brands/brands-filter.pipe';
+import {DateFilterPipe} from './customers/date-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,16 @@ import {CustomersFPipe} from './customers/customers-f.pipe';
     HomeComponent,
     CustomersComponent,
     TablesDComponent,
-    PlatformsComponent,
     PublishersComponent,
     SidebarComponent,
-    CategoriesComponent,
-    CategoriesFilterPipe,
-    CustomersFPipe
+    PlatformsFilterPipe,
+    CustomersFPipe,
+    PlatformsComponent,
+    BrandsComponent,
+    BrandsFilterPipe,
+    DateFilterPipe,
+
+
   ],
   imports: [
     FormsModule,
@@ -48,7 +54,7 @@ import {CustomersFPipe} from './customers/customers-f.pipe';
     MatSidenavModule,
     MatIconModule,
     ModalModule.forRoot(),
-
+    BsDatepickerModule.forRoot()
 
   ]
 })
