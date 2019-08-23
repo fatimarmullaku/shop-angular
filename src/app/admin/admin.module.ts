@@ -20,7 +20,6 @@ import {CustomersFPipe} from './customers/customers-f.pipe';
 import {PlatformsComponent} from './platforms/platforms.component';
 import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
-import {DateFilterPipe} from './customers/date-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import {DateFilterPipe} from './customers/date-filter.pipe';
     PlatformsComponent,
     BrandsComponent,
     BrandsFilterPipe,
-    DateFilterPipe,
 
 
   ],

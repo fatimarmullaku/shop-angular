@@ -4,7 +4,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {HttpErrorResponse} from '@angular/common/http';
 import {CustomerModel} from './customer.model';
 import html2canvas from 'html2canvas';
-import * as jspdf from '../brands/brands.component';
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'app-costumers',

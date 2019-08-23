@@ -29,7 +29,7 @@
             <th>Version</th>
             <th> </th>
           </tr>
-          <tr *ngFor="let c of customersList  | dateFilter: datePicker | pipeFilteer: searchPicker">
+          <tr *ngFor="let c of customersList | pipeFilteer: searchPicker">
             <td>{{c.name}}</td>
             <td>{{c.email}}</td>
             <td>{{transformNumber(c.phoneNumbers) }}</td>
