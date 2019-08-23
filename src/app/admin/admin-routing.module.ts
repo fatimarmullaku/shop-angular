@@ -22,8 +22,7 @@ const routes: Routes = [
       {path: 'users', component: UsersComponent},
       {path: 'roles', component: RolesComponent},
       {path: 'platforms', component: PlatformsComponent},
-      {path: 'categories', component: CategoriesComponent},
-
+      {path: 'categories', component: CategoriesComponent}
     ]
   }
 ];

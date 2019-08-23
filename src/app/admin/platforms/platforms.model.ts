@@ -1,10 +1,9 @@
-export class RolesModel {
-  id: number;
+export class PlatformsModel {
   name: string;
-  roleDescription: string;
   recordStatus: string;
   createDateTime: Date;
   updateDateTime: Date;
+  deletedDateTime: Date;
   description: string;
-  version: bigint;
+  version: number;
 }
