@@ -22,16 +22,13 @@ export class CustomerService {
   fetchCustomers(): void {
     const customer1 = new CustomerModel();
     customer1.id = 1;
-    customer1.firstName = 'John';
-    customer1.lastName = 'Doe';
+    customer1.name = 'John Doe';
 
     const firstPhoneNumber = new PhoneNumberModel();
     const secPhoneNumber = new PhoneNumberModel();
 
-    firstPhoneNumber.home = '+38342655';
-    firstPhoneNumber.mobile = '+24896226';
-    secPhoneNumber.home = '+38344458485';
-    secPhoneNumber.mobile = '+37744258852';
+    firstPhoneNumber.phoneNumber = '+38342655';
+    secPhoneNumber.phoneNumber = '+38344458485';
     customer1.phoneNumbers = [firstPhoneNumber, secPhoneNumber];
 
     const firstAddress = new AddressModel();

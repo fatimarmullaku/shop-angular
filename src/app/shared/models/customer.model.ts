@@ -5,8 +5,7 @@ import {AddressModel} from './address.model';
 
 export class CustomerModel {
   id: number;
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
   phoneNumbers: PhoneNumberModel[];
   addresses: AddressModel [];

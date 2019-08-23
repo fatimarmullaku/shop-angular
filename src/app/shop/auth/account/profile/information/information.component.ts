@@ -19,7 +19,6 @@ export class InformationComponent implements OnInit {
   customerAddresses: AddressModel[];
   phones: FormArray;
   addresses: FormArray;
-  firstName: FormControl;
 
   constructor(private formBuilder: FormBuilder,
               public router: Router,
@@ -29,34 +28,32 @@ export class InformationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.customer = this.customerService.getCustomer(1);
-    this.customerService.getCustomerFromServer().subscribe(res => {
-        console.log(res);
-      },
-      (error) => {
-        console.error(error);
-      });
+    this.customerService.getCustomerFromServer().subscribe(data => {
+      this.customer = data;
+      this.customerAddresses = this.customer.addresses;
+      this.customerPhoneNumbers = this.customer.phoneNumbers;
+      console.log( 'Updated customer addresses', this.customerAddresses);
+      console.log('Updated customer phoneNumbers', this.customerPhoneNumbers);
+
+      const currentContactFormArray = this.informationForm.get('phoneNumbers') as FormArray;
+      const currentAddressFormArray = this.informationForm.get('addresses') as FormArray;
+
+      for (const phoneNumber of this.customerPhoneNumbers) {
+        const newPhoneNumberGroup = this.createPhoneNumber();
+        currentContactFormArray.push(newPhoneNumberGroup);
+      }
+      for (const address of this.customerAddresses) {
+        const newAddressGroup = this.createAddress();
+        currentAddressFormArray.push(newAddressGroup);
+      }
+    });
+
     this.informationForm = this.formBuilder.group({
-      firstName: new FormControl(''),
       phoneNumbers: this.formBuilder.array([]),
       addresses: this.formBuilder.array([])
     });
-
-    this.customerPhoneNumbers = this.customer.phoneNumbers;
-    this.customerAddresses = this.customer.addresses;
-
-    const currentContactFormArray = this.informationForm.get('phoneNumbers') as FormArray;
-    const currentAddressFormArray = this.informationForm.get('addresses') as FormArray;
-
-    for (const phoneNumber of this.customerPhoneNumbers) {
-      const newPhoneNumberGroup = this.createPhoneNumber();
-      currentContactFormArray.push(newPhoneNumberGroup);
-    }
-    for (const address of this.customerAddresses) {
-      const newAddressGroup = this.createAddress();
-      currentAddressFormArray.push(newAddressGroup);
-    }
   }
+
 
   createPhoneNumber(): FormGroup {
     return this.formBuilder.group({
@@ -67,7 +64,7 @@ export class InformationComponent implements OnInit {
 
   createAddress(): FormGroup {
     return this.formBuilder.group({
-      country: this.customer.addresses,
+      country: new FormControl(''),
       city: new FormControl(''),
       zipCode: new FormControl(''),
       street: new FormControl('')
@@ -89,7 +86,9 @@ export class InformationComponent implements OnInit {
   onPhoneDelete(event: any, index: number) {
     event.preventDefault();
     if (this.customerPhoneNumbers[index]) {
-      this.customerPhoneNumbers = this.customerPhoneNumbers.filter(item => item.mobile != this.customerPhoneNumbers[index].mobile);
+      this.customerPhoneNumbers =
+      this.customerPhoneNumbers.filter(
+      item => item.phoneNumber != this.customerPhoneNumbers[index].phoneNumber);
     }
     this.phones.removeAt(index);
     console.log(this.customerPhoneNumbers);
