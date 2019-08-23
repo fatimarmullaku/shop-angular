@@ -3,12 +3,14 @@
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Categories</h3>
     <div class="card-body">
       <div class="table-editable" id="table">
+
+        <input type="text" class="form-control"  placeholder="search category" name="search" [(ngModel)]="filter" >
             <span class="table-add float-right mb-3 mr-2">
                 <a>
                 <i (click)="openInsert()" class="fas fa-plus"></i>
                 </a>
             </span>
-        <table class="table table-bordered table-responsive-md table-striped text-center">
+        <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
           <tr>
             <th>Name</th>
             <th>Record Status</th>
@@ -19,7 +21,7 @@
             <th>Version</th>
             <th> </th>
           </tr>
-          <tr *ngFor="let c of categoriesList">
+          <tr *ngFor="let c of platformsList | pipeFilteer:filter">
             <td>{{c.name}}</td>
             <td>{{c.recordStatus}}</td>
             <td>{{c.createDateTime}}</td>
@@ -44,6 +46,7 @@
             </td>
           </tr>
         </table>
+        <button type="button"  class="btn btn-outline-secondary btnPDF" (click)="captureScreen()">PDF</button>
       </div>
       <app-product-list-pagination></app-product-list-pagination>
     </div>

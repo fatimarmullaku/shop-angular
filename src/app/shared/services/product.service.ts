@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class ProductService {
 
-  rootUrl = 'http://localhost:8080/api/v1/products'
+  rootUrl = 'http://localhost:8080/api/v1/products';
   products: ProductModel[] = [];
 
   constructor(private storageService: StorageService,
@@ -121,31 +121,6 @@ export class ProductService {
     return null;
   }
 
-  // getProductInWishlist(id: number): boolean {
-  //   return this.baseStorage.getElementInStorage(id, LocalStorageKey.WISHLIST);
-  // }
-
-  // add to wishlist
-  // addToWishlist(id: number) {
-  //   const wishlist = this.storageService.get('wishlist');
-  //   if (wishlist) {
-  //     const wishlistArray = JSON.parse(wishlist);
-  //     if (wishlistArray.filter(item => item == id).length > 0) {
-  //       return;
-  //     } else {
-  //       wishlistArray.push(id);
-  //       this.storageService.set('wishlist', JSON.stringify(wishlistArray));
-  //     }
-  //   } else {
-  //     this.storageService.set('wishlist', JSON.stringify([id]));
-  //   }
-  // }
-  //
-  // // delete from wishlist
-  // deleteFromWishlist(id: number) {
-  //   this.baseStorage.deleteElementInStorage(id, LocalStorageKey.WISHLIST);
-  // }
-
   // clear wishlist
   clearWishList() {
     this.baseStorage.clearStorageOf(LocalStorageKey.WISHLIST);
@@ -156,7 +131,7 @@ export class ProductService {
       .set('page', page.toString())
       .set('size', size.toString());
 
-    const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
+    const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
     return this.http.get(this.rootUrl + '/paged', {headers, params: qParams});
   }
 

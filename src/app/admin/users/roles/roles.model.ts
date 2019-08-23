@@ -7,5 +7,4 @@ export class RolesModel {
   updateDateTime: Date;
   description: string;
   version: bigint;
-
 }

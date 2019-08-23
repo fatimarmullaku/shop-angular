@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="column is-2 product-info">
-                <h1>{{ item.product.price }} </h1>
+                <h1>{{ item.product.price * item.qty}} $ </h1>
               </div>
             </div>
           </div>
@@ -46,19 +46,69 @@
         <!--       buttons     -->
         <div class="columns cart-items-footer">
           <div class="column is-4 left-link">
-            <a href="login.html">
-              <span><i class="fas fa-arrow-left"></i></span>
-              Continue Shopping
-            </a>
+            <a routerLink="/">Continue Shopping</a>
           </div>
           <div class="column is-4 subtotal">
             <h2>Subtotal: {{this.cartService.generateTotalPrice().toFixed(2)}}$</h2>
           </div>
           <div class="column is-4 right-link">
-            <a routerLink="/cart/shipping">Proceed to Checkout</a>
+            <div *ngIf="showRoute">
+              <a routerLink="/cart/shipping">Proceed to Checkout</a>
+            </div>
+            <div *ngIf="!showRoute">
+              <a (click)="isLoginModalActive()">Proceed to Checkout</a>
+            </div>
           </div>
         </div>
 <!--      </div>-->
+                                              <!--  Login/Register Modal    -->
+      <div class="modal" [ngClass]="{'is-active':isModalActive}">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Sign in to UCXGaming</p>
+            <button class="delete" aria-label="close" (click)="removeActiveClass()"></button>
+          </header>
+          <section class="modal-card-body">
+            <div class="auth-content login-screen">
+              <div class="auth-form-header">
+                <img src="assets/img/ucx-white-logo.svg" alt="">
+                <h4>Sign in to UCXMarket</h4>
+                <span>Enter your email and password below</span>
+              </div>
+
+              <form [formGroup]="loginForm" (submit)="onLoginFormSubmit()">
+                <div class="field">
+                  <div class="control">
+                    <input type="text" [formControlName]="'email'" class="input auth-input" placeholder="Username or Email">
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="control">
+                    <input type="text" [formControlName]="'password'" class="input auth-input" placeholder="Password">
+                  </div>
+                </div>
+
+                <div>
+                  <button class="auth-button">Sign in</button>
+                </div>
+              </form>
+
+              <div class="auth-form-footer">
+                <div class="forgot-password-link">
+                  <a [routerLink]="['/auth', 'forgot-password']">Forgot Password?</a>
+                </div>
+
+                <div class="register-account-link">
+                  <p class="paragraph">Don't have an account yet?<a [routerLink]="['/auth', 'register']">Sign up</a></p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+                                      <!--        End of Login/Register Modal            -->
     </div>
   </div>
 </div>

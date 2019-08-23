@@ -1,65 +1,70 @@
 <div class="container">
   <div class="card">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Users</h3>
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Brands </h3>
     <div class="card-body">
       <div class="table-editable" id="table">
-            <span class="table-add float-right mb-3 mr-2">
+        <div class="columns">
+          <div class="column">
+          <input type="text" class="form-control searchBrand" placeholder="search brand" name="search" [(ngModel)]="filter">
+          </div>
+          <div class="column">
+            date here
+          </div>
+        </div>
+        <span class="table-add float-right mb-3 mr-2">
                 <a>
                 <i (click)="openInsert()" class="fas fa-plus"></i>
                 </a>
             </span>
-        <table class="table table-bordered table-responsive-md table-striped text-center">
+        <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
           <tr>
-            <th>Email</th>
+            <th>Name</th>
             <th>Record Status</th>
             <th>Create Time</th>
             <th>Update Time</th>
             <th>Delete Time</th>
             <th>Description</th>
-            <th>Is Verified</th>
             <th>Version</th>
-            <th> </th>
+            <th></th>
           </tr>
-          <tr *ngFor="let u of usersList">
-            <td>{{u.email}}</td>
-            <td>{{u.recordStatus}}</td>
-            <td>{{u.createDateTime}}</td>
-            <td>{{u.updateDateTime}}</td>
-            <td>{{u.deletedDateTime}}</td>
-            <td>{{u.description}}</td>
-            <td>{{u.isVerified}}</td>
-            <td>{{u.version}}</td>
+          <tr *ngFor="let b of brandsList | pipeFilteer:filter">
+            <td>{{b.name}}</td>
+            <td>{{b.recordStatus}}</td>
+            <td>{{b.createDateTime | date:'dd-MM-yyyy'}}</td>
+            <td>{{b.updateDateTime | date:'dd-MM-yyyy'}}</td>
+            <td>{{b.deletedDateTime | date:'dd-MM-yyyy'}}</td>
+            <td>{{b.description}}</td>
+            <td>{{b.version}}</td>
             <td>
               <a>
                 <i
                   (click)="openUpdate(
-                u.id,
-                u.email,
-                u.recordStatus,
-                u.updateDateTime,
-                u.deletedDateTime,
-                u.description,
-                u.isVerified,
-                u.version) "
+                b.id,
+                b.name,
+                b.recordStatus,
+                b.updateDateTime,
+                b.deletedDateTime,
+                b.description,
+                b.version) "
                   class="far fa-edit"></i>
               </a>
-              <i (click)="openDelete(u.id)" class="fa fa-trash" aria-hidden="true"></i>
+              <i (click)="openDelete(b.id)" class="fa fa-trash" aria-hidden="true"></i>
             </td>
           </tr>
         </table>
+        <button type="button" class="btn btn-outline-secondary btnPDF" (click)="captureScreen()">PDF</button>
       </div>
     </div>
   </div>
-
   <div [ngClass]="{ 'is-active' : deleteModal }" class="modal">
     <div (click)="toggleModal()" class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Delete User</p>
+        <p class="modal-card-title">Delete Brand</p>
         <button (click)="toggleModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
-        <p><strong>Are you sure you want to delete this User ?</strong></p>
+        <p><strong>Are you sure you want to delete this Brand ?</strong></p>
         <p>All information associated to this customer will be permanently deleted.
           <br>
           <span class="has-text-danger">This operation can not be undone!</span>
@@ -76,29 +81,21 @@
     <div (click)="closeUpdateModal()" class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Update Category</p>
-        <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
+        <p class="modal-card-title">Update Brands </p>
+          <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
         <form (ngSubmit)="onSubmit( )" [formGroup]="updateForm">
-          <input class="form-control" formControlName="email"
-                 placeholder="Email"
-                 required
-                 type="text">
-          <input class="form-control" formControlName="recordStatus"
-                 placeholder="Record Status"
+          <input class="form-control" formControlName="name"
+                 placeholder="Name"
                  required
                  type="text">
           <div class="field">
             <label class="label">Description</label>
             <div class="control">
-              <textarea class="textarea" placeholder="Textarea"></textarea>
+              <textarea formControlName="description" class="textarea" placeholder="Textarea"></textarea>
             </div>
           </div>
-          <input class="form-control" formControlName="isVerified"
-                 placeholder="Is Verified"
-                 required
-                 type="text">
         </form>
       </section>
       <footer class="modal-card-foot">
@@ -107,31 +104,22 @@
       </footer>
     </div>
   </div>
-
-
   <div [ngClass]="{ 'is-active' : insertModal }" class="modal">
     <div (click)="closeInsertModal()" class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Insert User</p>
-        <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
+        <p class="modal-card-title">Insert Brand </p>
+          <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
         <form (ngSubmit)="onSubmit( )" [formGroup]="form">
-          <input class="form-control" formControlName="email"
-                 placeholder="Email"
-                 required
-                 type="email">
-          <input class="form-control" formControlName="recordStatus"
-                 placeholder="Record Status"
-                 required
-                 type="text">
-          <input class="form-control" formControlName="isVerified"
-                 placeholder="Is Verified"
+          <input class="form-control" formControlName="name"
+                 placeholder="Name"
                  required
                  type="text">
           <div class="control">
-            <textarea class="textarea" placeholder="Add your description here! "></textarea>
+            <textarea formControlName="description" class="textarea"
+                      placeholder="Add your description here! "></textarea>
           </div>
         </form>
       </section>

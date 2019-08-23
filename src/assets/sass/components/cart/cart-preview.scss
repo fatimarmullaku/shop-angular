@@ -59,6 +59,9 @@
 
 .right-link, .subtotal, .left-link {
   text-align: center;
+  a {
+    color: map_get($ucx-colors, deep-orange);
+  }
 }
 
 .cancel-item{
