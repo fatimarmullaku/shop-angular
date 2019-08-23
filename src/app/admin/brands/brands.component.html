@@ -30,9 +30,9 @@
           <tr *ngFor="let b of brandsList | pipeFilteer:filter">
             <td>{{b.name}}</td>
             <td>{{b.recordStatus}}</td>
-            <td>{{b.createDateTime}}</td>
-            <td>{{b.updateDateTime}}</td>
-            <td>{{b.deletedDateTime}}</td>
+            <td>{{b.createDateTime | date:'dd-MM-yyyy'}}</td>
+            <td>{{b.updateDateTime | date:'dd-MM-yyyy'}}</td>
+            <td>{{b.deletedDateTime | date:'dd-MM-yyyy'}}</td>
             <td>{{b.description}}</td>
             <td>{{b.version}}</td>
             <td>

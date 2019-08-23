@@ -1,3 +1,51 @@
-.searchBrand {
+
+.modal {
+  margin-left: 70px;
+}
+
+
+
+
+.fa-trash {
+  margin-top: 2px;
+  margin-left: 10px;
+  font-size: 24px;
+
+  &:hover {
+    cursor: pointer ;
+    color:#ff2600;
+  }
+}
+
+.fa-edit {
+  font-size: 22px;
+  color:black;
+
+  &:hover{
+    color:#ff2600;
+  }
+}
+
+.fa-plus {
+  &:hover{
+    color:#ff2600;
+  }
+}
+
+.myinput {
+  border: 0px solid;
+  border-color:white;
+  color: #CCC;
+
+  &:focus {
+    outline:thin dotted !important;
+  }
+
+
+}
+
+
+.searchCustomer {
   width:300px;
 }
+
