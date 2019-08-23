@@ -36,12 +36,11 @@
     <!-- Personal Information starts here -->
     <p class="title is-4 static-titles">Personal information</p>
 
-<!--    <form>-->
     <form [formGroup]="informationForm" class="form" (submit)="onSubmit($event)">
       <div class="columns">
         <div class="column">
           <label class="label">Name</label>
-          <input type="text" class="input" value="{{customer.name}}">
+          <input type="text" class="input" formControlName="name" value="{{customer.name}}">
         </div>
 
       </div>
@@ -49,19 +48,17 @@
       <div class="columns">
         <div class="column">
 
-
-<!--          <form [formGroup]="informationForm" class="form" (submit)="onSubmit($event)">-->
             <h3 class="title is-5 static-titles">Phone Numbers</h3>
             <div id="box-phone">
               <div formArrayName="phoneNumbers" *ngFor="let _ of informationForm.get('phoneNumbers')['controls']; let i = index;">
                 <div class="columns" [formGroupName]="i">
                   <div class="column is-10">
                     <label>Phone Number</label><br>
-                    <input formControlName="home" type="text" class="input" placeholder="xxx xxx xxx" value="{{customerPhoneNumbers[i] ? customerPhoneNumbers[i].phoneNumber : ''}}">
+                    <input formControlName="phoneNumber" type="text" class="input" placeholder="xxx xxx xxx" value="{{customerPhoneNumbers[i] ? customerPhoneNumbers[i].phoneNumber : ''}}">
                   </div>
                   <div class="column is-2 delete-phone-number" *ngIf="i != 0">
                     <label></label><br>
-<!--                    <button class="button is-danger" (click)="onPhoneDelete($event, i)">Delete</button>-->
+                    <button class="button is-danger" (click)="onPhoneDelete($event, i)">Delete</button>
                   </div>
                 </div>
               </div>
@@ -100,9 +97,6 @@
             </div>
             <button id="addaddress" class="button add-field-button" (click)="onAddAddress($event)">Add address</button>
 
-<!--          </form>-->
-
-
         </div>
       </div>
 
@@ -112,7 +106,6 @@
         <button class="button is-primary save-button">Save</button>
         <button class="button">Cancel</button>
       </div>
-<!--    </form>-->
     </form>
   </div>
 
