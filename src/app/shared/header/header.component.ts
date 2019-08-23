@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/user.service';
 import {ProductCartModel} from "../models/product-cart.model";
 import {CartService} from "../services/cart.service";
-import {CartPreviewComponent} from "../../shop/cart/cart-preview/cart-preview.component";
 import {ProductModel} from "../models/product.model";
 import {ProductService} from "../services/product.service";
 import {BaseStorageService} from "../services/base-storage.service";
-import {debug} from "util";
+import {LocalStorageKey} from "../constants/local-storage-key";
+import {StorageService} from "../services/storage.service";
 
 
 @Component({
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService,
               private cartService: CartService,
               private productService: ProductService,
-              private baseStorage: BaseStorageService) { }
+              private storageService: StorageService) { }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
@@ -46,16 +46,20 @@ export class HeaderComponent implements OnInit {
     );
   }
 
-
-  isLoggedIn(): boolean {
-    return this.userService.isLoggedIn();
-  }
-
   toggleClass(){
       this.status = !this.status;
   }
 
   toggleClass2(){
     this.status2 = !this.status2;
+  }
+
+  isLoggedIn(): boolean{
+    const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
+    let isLogedIn = false;
+    if(element != null){
+      isLogedIn = !isLogedIn;
+    }
+    return isLogedIn;
   }
 }
