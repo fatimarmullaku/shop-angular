@@ -1,12 +1,12 @@
 <app-header></app-header>
 <div>
   <div class="column">
-    <div>
+    <div *ngIf="cartProducts && cartProducts.length > 0">
       <h1 class="title-color">Your Shopping Cart</h1>
+      <hr>
     </div>
-    <hr>
     <br>
-    <div class="container main-container-checkout" *ngIf="cartProducts && cartProducts.length > 0">
+    <div class="container main-container-checkout" *ngIf="cartProducts && cartProducts.length > 0; else emptyCart">
 <!--      <div class="" >-->
         <div class="columns is-mobile" *ngFor="let item of cartProducts">
           <div class="column cart-items is-11">
@@ -118,3 +118,11 @@
     </div>
   </div>
 </div>
+
+<ng-template #emptyCart>
+  <div class="emptyWishlist">
+    <h1>Your cart is empty!</h1>
+    <h3>Explore more and add some items</h3>
+    <button routerLink="/" class="startShopping">START SHOPPING</button>
+  </div>
+</ng-template>

@@ -13,6 +13,7 @@ import {ProductWishlistModel} from "../../../shared/models/product-wishlist.mode
 export class ProductDetailComponent implements OnInit {
 
   product: ProductModel;
+  quantity: number;
 
   constructor(public router: Router,
               private activatedRoute: ActivatedRoute,
@@ -28,6 +29,8 @@ export class ProductDetailComponent implements OnInit {
       }
     });
   }
+
+  getQuantity(event) { this.quantity = event.target.value;}
 
   isWishlisted(): boolean {
     return this.wishlistService.getProductInWishlist(this.product.id);
@@ -54,7 +57,7 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart(event: any) {
     event.preventDefault();
-    this.cartService.addToCart(this.product.id, 1);
+    this.cartService.addToCart(this.product.id, Number(this.quantity));
 
   }
 }
