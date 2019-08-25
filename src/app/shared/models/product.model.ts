@@ -26,5 +26,7 @@ export class ProductModel {
     return this.stock > 0;
   }
 
+  ///asd
+
 
 }
