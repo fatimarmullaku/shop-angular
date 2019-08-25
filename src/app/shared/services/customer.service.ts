@@ -7,7 +7,6 @@ import {RestService} from './rest.service';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
-import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -16,7 +15,9 @@ import {HttpClient} from '@angular/common/http';
 export class CustomerService {
   customers: CustomerModel [];
 
-  constructor(private baseStorage: BaseStorageService, private restService: RestService, private http: HttpClient) {
+  constructor(private baseStorage: BaseStorageService,
+              private restService: RestService,
+              private http: HttpClient) {
     this.fetchCustomers();
   }
 
@@ -30,7 +31,7 @@ export class CustomerService {
 
     firstPhoneNumber.phoneNumber = '+38342655';
     secPhoneNumber.phoneNumber = '+38344458485';
-    customer1.phoneNumbers = [firstPhoneNumber, secPhoneNumber];
+    customer1.phones = [firstPhoneNumber, secPhoneNumber];
 
     const firstAddress = new AddressModel();
 
@@ -64,23 +65,21 @@ export class CustomerService {
     return null;
   }
 
-  getCustomerFromServer() {
-    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + `/${customerId}`)
-      .pipe(map(user => {
-        return user;
-      }));
-  }
+  // getCustomerFromServer() {
+  //   const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+  //   return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + `/${customerId}`)
+  //     .pipe(map(user => {
+  //       return user;
+  //     }));
+  // }
 
   updateCustomer(data) {
-    return this.http.put('http://localhost:8080/api/v1/customers/2', {name: 'jehonaaaa'});
+    return  this.http.put('http://localhost:8080/api/v1/customers/2', {name : 'jehona'});
   }
 
   updateCusometWithRestService(data) {
-    return this.restService.publicRequest(HttpRequestMethod.PUT, ENDPOINTS.customers.updateCustomer + '/${customerId}',{
-      body: {
-        name : 'jehonaaaa'
-      }
+    return this.restService.publicRequest(HttpRequestMethod.PUT, ENDPOINTS.customers.updateCustomer + '/2', {
+      body: data
     });
   }
 }

@@ -7,10 +7,10 @@
           <h4>Additional Information</h4>
           <span>Enter your additional information.</span>
         </div>
-        <form [formGroup]="informationForm" class="form" (submit)="onSubmit($event)">
+        <form [formGroup]="informationForm" class="form" (submit)="onSubmit()">
           <h3 class="title is-5 static-titles">Phone Numbers</h3>
           <div id="box-phone">
-            <div formArrayName="phoneNumbers" *ngFor="let _ of informationForm.get('phoneNumbers')['controls']; let i = index;">
+            <div formArrayName="phones" *ngFor="let _ of informationForm.get('phones')['controls']; let i = index;">
               <div class="columns" [formGroupName]="i">
                 <div class="column is-5">
                   <label>Phone Number</label><br>

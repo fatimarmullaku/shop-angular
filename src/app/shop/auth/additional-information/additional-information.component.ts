@@ -16,7 +16,7 @@ export class AdditionalInformationComponent implements OnInit {
 
   ngOnInit() {
     this.informationForm = this.formBuilder.group({
-      phoneNumbers: this.formBuilder.array([this.createPhoneNumber()]),
+      phones: this.formBuilder.array([this.createPhoneNumber()]),
       addresses: this.formBuilder.array([this.createAddress()])
     });
   }
@@ -38,7 +38,7 @@ export class AdditionalInformationComponent implements OnInit {
 
   onAddPhoneNumber(event: any) {
     event.preventDefault();
-    this.phones = this.informationForm.get('phoneNumbers') as FormArray;
+    this.phones = this.informationForm.get('phones') as FormArray;
     this.phones.push(this.createPhoneNumber());
   }
 
