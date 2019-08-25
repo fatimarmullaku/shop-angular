@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {ProductService} from './product.service';
 import {ReplaySubject} from 'rxjs';
+import {ProductModel} from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,9 @@ export class CartService {
       newProductInCart.id = id;
       newProductInCart.qty = qty;
       newProductInCart.product = this.productService.getProduct(id);
-      newProductInCart.isInStock = this.productService.getProduct(id).isInStock();
+      // newProductInCart.isInStock = this.productService.getProduct(id).isInStock();
+      const prodModel = this.productService.getProduct(id);
+      newProductInCart.isInStock = ProductModel.isInStock(prodModel);
 
       cart.push(newProductInCart);
     }
@@ -70,12 +73,12 @@ export class CartService {
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
   }
 
-  generateTotalPrice(): number{
+  generateTotalPrice(): number {
     const array = this.getProductsFromCart();
-    let totalPrice = 0;
-    array.forEach(item =>{
-      totalPrice += item.product.price * item.qty;
+    const tempTotal = [];
+    array.forEach(value => {
+      tempTotal.push(value.product.unitPrice * value.qty);
     });
-    return totalPrice.valueOf();
+    return tempTotal.reduce((previousValue, currentValue) => previousValue + currentValue);
   }
 }

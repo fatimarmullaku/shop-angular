@@ -1,20 +1,20 @@
-<a [routerLink]="['./products/', product.id]" class="my-cart">
+<a [routerLink]="['./products/', item.id]" class="my-cart">
   <div class="image">
-    <img [src]="product.image" alt="">
+    <img [src]="item.fileName" alt="">
   </div>
 </a>
   <div style="border: 1px solid orange;padding-bottom: 2px;background: orange">
     <div class="game-info-home">
-      <h4>{{ product.title }}</h4>
-      <h4>Price: {{ product.price }} $</h4>
+      <h4>{{ item.name }}</h4>
+      <h4>Price: {{ item.unitPrice }} $</h4>
     </div>
     <div class="columns" >
       <div class="column is-2-desktop" (click)="addToCart($event)">
         <i class="fab fa-opencart"></i>
       </div>
       <div class="column is-2-desktop" (click)="toggleWishlist()">
-        <i *ngIf="!product.isWishlisted" class='far fa-heart'></i>
-        <i *ngIf="product.isWishlisted" class='fas fa-heart'></i>
+        <i *ngIf="!item.isWishlisted" class='far fa-heart'></i>
+        <i *ngIf="item.isWishlisted" class='fas fa-heart'></i>
       </div>
       <div class="column is-7-desktop">
       </div>

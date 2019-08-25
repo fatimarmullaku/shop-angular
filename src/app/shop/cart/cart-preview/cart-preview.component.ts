@@ -3,13 +3,11 @@ import {ProductService} from '../../../shared/services/product.service';
 import {ProductModel} from '../../../shared/models/product.model';
 import {ProductCartModel} from '../../../shared/models/product-cart.model';
 import {CartService} from '../../../shared/services/cart.service';
-import {BaseStorageService} from "../../../shared/services/base-storage.service";
-import {LocalStorageKey} from "../../../shared/constants/local-storage-key";
-import {StorageService} from "../../../shared/services/storage.service";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../shared/services/user.service";
-import {Router} from "@angular/router";
-import {debug} from "util";
+import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
+import {StorageService} from '../../../shared/services/storage.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../../shared/services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart-preview',
@@ -22,15 +20,20 @@ export class CartPreviewComponent implements OnInit {
 
   products: ProductModel[];
   cartProducts: ProductCartModel[];
-  isModalActive : boolean = false;
-  showRoute : boolean = true;
+  isModalActive: boolean = false;
+  showRoute: boolean = true;
 
   constructor(private productService: ProductService,
               private cartService: CartService,
-              private storageService : StorageService,
+              private storageService: StorageService,
               private userService: UserService,
               private router: Router,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder) {
+  }
+
+  get form() {
+    return this.loginForm.controls;
+  }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
@@ -42,7 +45,7 @@ export class CartPreviewComponent implements OnInit {
     });
 
     const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
-    if(element == null){
+    if (element == null) {
       this.showRoute = false;
     }
   }
@@ -76,23 +79,18 @@ export class CartPreviewComponent implements OnInit {
 
   isLoginModalActive(): boolean {
     const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
-    if(element == null){
+    if (element == null) {
       this.isModalActive = true;
     }
-    if(element != null){
+    if (element != null) {
       this.isModalActive = false;
     }
     return this.isModalActive;
   }
 
-  removeActiveClass(){
+  removeActiveClass() {
     this.isModalActive = !this.isModalActive;
   }
-
-  get form() {
-    return this.loginForm.controls;
-  }
-
 
   onLoginFormSubmit() {
     if (this.loginForm.valid) {
@@ -111,7 +109,7 @@ export class CartPreviewComponent implements OnInit {
     }
   }
 
-  continueShipping(){
+  continueShipping() {
     this.router.navigateByUrl('/cart/shipping');
   }
 

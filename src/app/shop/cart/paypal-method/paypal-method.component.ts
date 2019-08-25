@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../../../shared/services/cart.service';
 import {PurchaseService} from '../../../shared/services/purchase.service';
+import {BaseStorageService} from '../../../shared/services/base-storage.service';
+import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
 
 @Component({
   selector: 'app-paypal-method',
@@ -9,7 +11,8 @@ import {PurchaseService} from '../../../shared/services/purchase.service';
 export class PaypalMethodComponent implements OnInit {
 
 
-  constructor(private cartService: CartService, private purchaseService: PurchaseService) {
+  constructor(private cartService: CartService, private purchaseService: PurchaseService,
+              private baseStorage: BaseStorageService) {
   }
 
   ngOnInit() {
@@ -17,10 +20,10 @@ export class PaypalMethodComponent implements OnInit {
 
   buy() {
     this.purchaseService.buy().subscribe((res) => {
-        console.log(res);
+        this.baseStorage.clearStorageOf(LocalStorageKey.CART);
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       });
   }
 

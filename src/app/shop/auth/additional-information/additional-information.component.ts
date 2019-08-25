@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {UserService} from '../../../shared/services/user.service';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-additional-information',
   templateUrl: './additional-information.component.html'
@@ -10,7 +13,9 @@ export class AdditionalInformationComponent implements OnInit {
   phones: FormArray;
   addresses: FormArray;
 
-  constructor(private formBuilder: FormBuilder) { }
+
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private routerLink: Router) {
+  }
 
   ngOnInit() {
     this.informationForm = this.formBuilder.group({
@@ -21,8 +26,8 @@ export class AdditionalInformationComponent implements OnInit {
 
   createPhoneNumber(): FormGroup {
     return this.formBuilder.group({
-      mobile: new FormControl(''),
-      home:  new FormControl('')
+      // mobile: new FormControl(''),
+      phoneNumber: new FormControl('')
     });
   }
 
@@ -63,5 +68,11 @@ export class AdditionalInformationComponent implements OnInit {
     event.preventDefault();
 
     console.log(this.informationForm.getRawValue());
+    this.userService.addPhonesAndAddresses(this.informationForm.getRawValue()).subscribe((res) => {
+      console.log('RETURN FROM SERVER: ' + res);
+      this.routerLink.navigateByUrl('/');
+    }, (error) => {
+      console.error(error);
+    });
   }
 }

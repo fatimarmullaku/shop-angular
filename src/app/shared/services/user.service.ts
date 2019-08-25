@@ -7,7 +7,8 @@ import {LocalStorageKey} from '../constants/local-storage-key';
 import {RestService} from './rest.service';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {map} from 'rxjs/operators';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {getAbsoluteValue} from 'html2canvas/dist/types/css/types/length-percentage';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return this.restService.publicRequest(HttpRequestMethod.POST, ENDPOINTS.auth.login, {
+    return this.restService.publicRequest<any>(HttpRequestMethod.POST, ENDPOINTS.auth.login, {
       body: {
         email,
         password
@@ -53,6 +54,16 @@ export class UserService {
 
   logout(): void {
     this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
+    this.baseStorage.clearStorageOf(LocalStorageKey.CUSTOMER_ID);
     this.router.navigateByUrl('/auth/login');
+  }
+
+  addPhonesAndAddresses(payload: any) {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    return this.restService.publicRequest<any>(HttpRequestMethod.PUT,
+      ENDPOINTS.customers.updatePhonesAndAddresses + `/${customerId}`,
+      {
+      body: payload
+    });
   }
 }

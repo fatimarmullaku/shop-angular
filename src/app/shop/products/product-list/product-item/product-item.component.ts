@@ -15,7 +15,7 @@ export class ProductItemComponent implements OnInit {
 
 
   @Input()
-  product: ProductModel;
+  item: ProductModel;
 
   constructor(private activatedRoute: ActivatedRoute,
               private productService: ProductService,
@@ -23,26 +23,26 @@ export class ProductItemComponent implements OnInit {
               private cartService: CartService) { }
 
   ngOnInit() {
-      this.productService.getProduct(this.product.id);
+      this.productService.getProduct(this.item.id);
       this.wishlistService.getProductsFromWishlist();
   }
 
   isWishlisted(): boolean {
-    return this.wishlistService.getProductInWishlist(this.product.id);
+    return this.wishlistService.getProductInWishlist(this.item.id);
   }
 
   toggleWishlist() {
     if (this.isWishlisted()) {
-      this.wishlistService.deleteFromWishlist(this.product.id);
-      this.product.isWishlisted = false;
+      this.wishlistService.deleteFromWishlist(this.item.id);
+      this.item.isWishlisted = false;
     } else {
-      this.wishlistService.addToWishlist(this.product.id);
-      this.product.isWishlisted = true;
+      this.wishlistService.addToWishlist(this.item.id);
+      this.item.isWishlisted = true;
     }
   }
 
   addToCart(event: any) {
     event.preventDefault();
-    this.cartService.addToCart(this.product.id, 1);
+    this.cartService.addToCart(this.item.id, 1);
   }
 }

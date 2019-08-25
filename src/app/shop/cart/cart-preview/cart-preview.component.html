@@ -13,12 +13,12 @@
             <div class="columns is-vcentered">
               <div class="column is-2">
                 <div class="product-img">
-                  <img [src]="item.product.image" alt="">
+                  <img [src]="item.product.fileName" alt="">
                 </div>
               </div>
               <div class="column is-3 product-info">
-                <h1>{{ item.product.title }}</h1>
-                <p>{{ item.product.title }}</p>
+                <h1>{{ item.product.name }}</h1>
+                <p>{{ item.product.description }}</p>
               </div>
               <div class="column is-2 product-info">
                 <h2>{{ item.isInStock ? 'Available': 'Out of stock' }} </h2>
@@ -37,7 +37,7 @@
               </div>
               <div class="column is-2 product-info">
                 <label>Total price</label>
-                <h1>{{ item.product.price * item.qty}} $ </h1>
+                <h1>{{ item.product.unitPrice * item.qty}} $ </h1>
               </div>
             </div>
           </div>

@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
           this.userService.login(payload.user.email, payload.user.password)
             .subscribe(r => {
               this.isRegistered = true;
-              this.routerLink.navigateByUrl('/');
+              this.routerLink.navigateByUrl('/auth/additional-information');
 
             }, (err) => {
               console.error(err);
