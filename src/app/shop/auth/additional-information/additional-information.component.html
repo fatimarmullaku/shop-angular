@@ -12,13 +12,13 @@
           <div id="box-phone">
             <div formArrayName="phoneNumbers" *ngFor="let _ of informationForm.get('phoneNumbers')['controls']; let i = index;">
               <div class="columns" [formGroupName]="i">
-                <div class="column is-5">
+                <!--<div class="column is-5">
                   <label>Mobile</label><br>
-                  <input formControlName="mobile" type="text" class="input" placeholder="xxx xxx xxx">
-                </div>
-                <div class="column is-5">
-                  <label>Home</label><br>
-                  <input formControlName="home" type="text" class="input" placeholder="xxx xxx xxx">
+                  <input type="text" class="input" placeholder="xxx xxx xxx">
+                </div>-->
+                <div class="column is-10">
+                  <label>Phone Number</label><br>
+                  <input formControlName="phoneNumber" type="text" class="input" placeholder="xxx xxx xxx">
                 </div>
                 <div class="column is-2 delete-phone-number" *ngIf="i != 0">
                   <label></label><br>

@@ -14,6 +14,7 @@ const PRODUCTS = {
 
 const CUSTOMERS = {
     getAll: environment.apiHost + '/customers',
+    updatePhonesAndAddresses: environment.apiHost + '/customers'
 };
 
 const PURCHASES = {
