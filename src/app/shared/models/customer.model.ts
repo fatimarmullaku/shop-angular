@@ -7,6 +7,6 @@ export class CustomerModel {
   id: number;
   name: string;
   email: string;
-  phoneNumbers: PhoneNumberModel[];
+  phones: PhoneNumberModel[];
   addresses: AddressModel [];
 }

@@ -8,6 +8,7 @@ import {LocalStorageKey} from '../constants/local-storage-key';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
 import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -65,13 +66,13 @@ export class CustomerService {
     return null;
   }
 
-  // getCustomerFromServer() {
-  //   const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-  //   return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + `/${customerId}`)
-  //     .pipe(map(user => {
-  //       return user;
-  //     }));
-  // }
+  getCustomerFromServer() {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    return this.restService.publicRequest(HttpRequestMethod.GET, ENDPOINTS.customers.getById + `/${customerId}`)
+      .pipe(map(user => {
+        return user;
+      }));
+  }
 
   updateCustomer(data) {
     return  this.http.put('http://localhost:8080/api/v1/customers/2', {name : 'jehona'});

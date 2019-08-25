@@ -81,7 +81,7 @@ const routes: Routes = [
     component: AdditionalInformationComponent
   },
   {
-    path: 'auth/information',
+    path: 'auth/account/profile/information',
     component: InformationComponent
   },
   {
