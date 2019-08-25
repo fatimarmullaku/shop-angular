@@ -3,10 +3,10 @@ import {PublisherModel} from "./publisher.model";
 
 export class ProductModel {
   id: number;
-  title: string;
-  image: string;
-  stock: number;
-  price: number;
+  name: string;
+  fileName: string;
+  inStock: number;
+  unitPrice: number;
   description: string;
   platform: string;
   rating: ProductRatingModel;
@@ -14,7 +14,7 @@ export class ProductModel {
   isWishlisted = false;
 
   static isInStock(product: ProductModel): boolean {
-    return product.stock > 0;
+    return product.inStock > 0;
   }
 
   isInStock(): boolean {
@@ -23,7 +23,7 @@ export class ProductModel {
     // } else {
     //   return false;
     // }
-    return this.stock > 0;
+    return this.inStock > 0;
   }
 
 

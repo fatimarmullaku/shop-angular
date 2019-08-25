@@ -23,7 +23,6 @@ export class BaseStorageService {
   // Gets the storage which contains the given key
   getStorageOf(key: LocalStorageKey, isStringified?: boolean) {
     const storage = this.storageService.get(key);
-    console.log(storage);
     if (storage) {
       if (isStringified) {
         return storage;

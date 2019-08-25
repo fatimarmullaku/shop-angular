@@ -41,11 +41,11 @@ export class ProductListComponent implements OnInit {
 
         obj.id = product.id;
         obj.description = 'Lorem ipsumlmlml';
-        obj.image = product.fileName === null ? '/assets/img/bf4-cover.jpg' : 'assets/img/' + product.fileName;
+        obj.fileName = product.fileName === null ? '/assets/img/bf4-cover.jpg' : '/assets/img/' + product.fileName;
         obj.platform = 'PC';
-        obj.price = product.unitPrice;
-        obj.stock = 2;
-        obj.title = product.name;
+        obj.unitPrice = product.unitPrice;
+        obj.inStock = 2;
+        obj.name = product.name;
         const objRating = new ProductRatingModel();
         objRating.rated = 4.5;
         objRating.totalReviews = 49;

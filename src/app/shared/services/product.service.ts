@@ -29,6 +29,10 @@ export class ProductService {
 
     this.restService.publicRequest<ProductModel[]>(HttpRequestMethod.GET, ENDPOINTS.products.getAll).subscribe(res => {
         this.products = res;
+        this.products.forEach(value => {
+          const tempName = value.fileName;
+          value.fileName = '/assets/img/' + tempName;
+        });
       },
       (error) => {
         console.error(error);

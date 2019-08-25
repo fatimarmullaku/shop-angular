@@ -24,8 +24,8 @@
           </div>
           <div class="product-info-body">
             <div class="product-name-instock">
-              <h3 class="product-name">{{ product.title }}</h3>
-              <h5>{{ product.isInStock() ? 'In Stock (' + product.stock + ')' : 'Out of stock' }}</h5>
+              <h3 class="product-name">{{ product.name }}</h3>
+              <h5>{{ product.isInStock() ? 'In Stock (' + product.inStock + ')' : 'Out of stock' }}</h5>
             </div>
             <p class="product-description">{{ product.description }}</p>
             <div class="product-controls">
@@ -34,7 +34,7 @@
                   Price
                 </div>
                 <div class="value">
-                  {{ product.price }}
+                  {{ product.unitPrice }}
                 </div>
               </div>
               <div class="product-quantity">

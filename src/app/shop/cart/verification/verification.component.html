@@ -35,7 +35,7 @@
         <div class="columns is-mobile shipping-infos" *ngFor="let item of this.cartService.getProductsFromCart(); let i = index;">
           <div class="column is-6-desktop is-6-mobile">
             <div class="shipping-delivery-content">
-              <span><h3>{{item.product.title}}</h3></span>
+              <span><h3>{{item.product.name}}</h3></span>
               <span><h5>{{item.product.platform}}</h5></span>
             </div>
           </div>
@@ -48,7 +48,7 @@
           <div class="column is-3-desktop is-3-mobile">
             <div class="order-price">
               <span><h3>Unit Price</h3></span>
-              <span><h5>{{item.product.price}}</h5></span>
+              <span><h5>{{item.product.unitPrice}}</h5></span>
             </div>
           </div>
         </div>

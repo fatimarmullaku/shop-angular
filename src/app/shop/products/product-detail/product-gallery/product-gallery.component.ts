@@ -17,7 +17,7 @@ export class ProductGalleryComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.parent.params.subscribe(res => {
       if (res.id) {
-        this.image = this.productService.getProduct(res.id).image;
+        this.image = this.productService.getProduct(res.id).fileName;
       }
     });
   }

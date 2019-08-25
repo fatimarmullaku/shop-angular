@@ -73,12 +73,12 @@ export class CartService {
     this.baseStorage.setStorage(LocalStorageKey.CART, cart);
   }
 
-  generateTotalPrice(): number{
+  generateTotalPrice(): number {
     const array = this.getProductsFromCart();
-    let totalPrice = 0;
-    array.forEach(item =>{
-      totalPrice += item.product.price;
+    const tempTotal = [];
+    array.forEach(value => {
+      tempTotal.push(value.product.unitPrice * value.qty);
     });
-    return totalPrice.valueOf();
+    return tempTotal.reduce((previousValue, currentValue) => previousValue + currentValue);
   }
 }
