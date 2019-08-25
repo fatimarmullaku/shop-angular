@@ -3,6 +3,8 @@ import {CustomersService} from './customers.service';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CustomerModel} from './customer.model';
+import html2canvas from 'html2canvas';
+import * as jspdf from '../brands/brands.component';
 
 @Component({
   selector: 'app-costumers',
@@ -16,6 +18,8 @@ export class CustomersComponent implements OnInit {
   insertModal = false;
   customersList: CustomerModel[];
   customersForm: FormGroup;
+  datePicker: Date;
+  searchPicker:string;
   addressesArray: FormArray;
   phoneNumbersArray: FormArray;
   customerId: number;
@@ -27,7 +31,7 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.customersService.getAllCustomers().subscribe((data: CustomerModel[]) => {
+    this.customersService.getAllCustomers().subscribe((data: any) => {
       this.customersList = data;
       console.log(this.customersList);
     });
@@ -38,9 +42,9 @@ export class CustomersComponent implements OnInit {
       phoneNumbers: this.fb.array([]),
       addresses: this.fb.array([]),
       recordStatus: [''],
-      createDateTime: [''],
-      updateDateTime: [''],
-      deletedDateTime: [''],
+      createDateTime: [ ],
+      updateDateTime: [ ],
+      deletedDateTime: [ ],
       description: [''],
       version: ['']
     });
@@ -71,6 +75,22 @@ export class CustomersComponent implements OnInit {
 
     console.log(this.updateForm);
 
+  }
+
+  public captureScreen() {
+    const data = document.getElementById('contentToConvert');
+    html2canvas(data).then(canvas => {
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png');
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+      const position = 10;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('customers.pdf');
+    });
   }
 
 
