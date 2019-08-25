@@ -1,8 +1,7 @@
 
 .product-details-container {
   position: relative;
-  background-color: map-get($ucx-colors, dark);
-  min-height: 100vh;
+  min-height: calc(100vh - 140px);
 
   .columns{
     margin-left: 0;
@@ -13,6 +12,8 @@
     position: relative;
     padding-right: 0;
     padding-left: 0;
+    height: 100%;
+    max-height: calc(100vh - 130px);
 
     .product-panel-wrapper{
       border: 1px solid map-get($ucx-colors,deep-orange);
@@ -24,14 +25,21 @@
         align-items: center;
         text-align: center;
         position: relative;
+        height: calc(100vh - 250px);
 
-        img{
-          max-width: 400px;
+        .image-container{
+
+          img{
+            object-fit: contain;
+            max-height: calc(100vh - 250px);
+          }
         }
 
         .review-panel{
-          overflow-y: scroll;
-          max-height:100vh;
+          overflow-y:auto;
+          height: 100%;
+          width: 100%;
+          max-height: calc(100vh - 250px);
           color: map-get($ucx-colors,light-gray);
           background-color: map-get($ucx-colors,dark-gray);
           padding:20px 40px;
@@ -91,7 +99,7 @@
         border-top: 1px solid map-get($ucx-colors,deep-orange);
         background-color: map-get($ucx-colors,darkest-gray);
 
-        padding:10px 40px;
+        padding:5px 5px;
         display: flex;
         justify-content: space-between;
 
@@ -103,6 +111,10 @@
           &:active, :hover{
             color: map-get($ucx-colors, deep-orange);
           }
+        }
+
+        .left-actions{
+          display: flex;
         }
 
         .left-actions .fa-star-o{
@@ -127,11 +139,14 @@
   }
 
   .product-info-panel{
-    height: 100%;
+    height: calc(100vh - 180px);
+    max-height: calc(100vh - 130px);
     position: relative;
     background: map-get($ucx-colors, dark-gray);;
 
     .inner-panel{
+
+      overflow-y:auto;
       height: 100%;
 
       .product-info-header {
@@ -247,6 +262,3 @@
     }
   }
 }
-
-
-
