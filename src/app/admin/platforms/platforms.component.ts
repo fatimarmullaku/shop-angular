@@ -18,7 +18,7 @@ export class PlatformsComponent implements OnInit {
   filter: string;
   platformsList: any;
   form: FormGroup;
-  cid: number;
+  pid: number;
   updateForm: FormGroup;
 
 
@@ -35,7 +35,7 @@ export class PlatformsComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      id: [1],
+      id: [''],
       name: [''],
       recordStatus: [''],
       createDateTime: [''],
@@ -94,7 +94,7 @@ export class PlatformsComponent implements OnInit {
 
 
   onDelete() {
-    this.platformsService.deletePlatform(this.cid).subscribe(
+    this.platformsService.deletePlatform(this.pid).subscribe(
       get => {
         this.platformsService.getAllPlatforms().subscribe((data: any) => {
           this.platformsList = data;
@@ -111,7 +111,7 @@ export class PlatformsComponent implements OnInit {
   onUpdate() {
     const values = this.updateForm.value;
     console.log(values);
-    this.platformsService.updatePlatform(values, this.cid).subscribe(
+    this.platformsService.updatePlatform(values, this.pid).subscribe(
       get => {
         this.platformsService.getAllPlatforms().subscribe((data: any) => {
           this.platformsList = data;
@@ -138,7 +138,7 @@ export class PlatformsComponent implements OnInit {
     deletedDateTime,
     description,
     version: number) {
-    this.cid = id;
+    this.pid = id;
     this.updateModal = true;
     this.updateForm.controls.name.setValue(name);
     this.updateForm.controls.recordStatus.setValue(recordStatus);
@@ -167,10 +167,10 @@ export class PlatformsComponent implements OnInit {
     this.updateForm.reset();
   }
 
-  openDelete(cid) {
+  openDelete(pid) {
     this.deleteModal = true;
-    this.cid = cid;
-    console.log(this.cid);
+    this.pid = pid;
+    console.log(this.pid);
   }
 
 
