@@ -67,6 +67,9 @@ import {InformationComponent} from './auth/account/profile/information/informati
     SuccessScreenComponent,
     InformationComponent
   ],
+  exports: [
+    PaginationComponent
+  ],
   imports: [
     CommonModule,
     ShopRoutingModule,

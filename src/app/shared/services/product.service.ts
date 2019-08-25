@@ -5,7 +5,7 @@ import {ProductRatingModel} from '../models/product-rating.model';
 import {StorageService} from './storage.service';
 import {BaseStorageService} from './base-storage.service';
 import {LocalStorageKey} from '../constants/local-storage-key';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 })
 export class ProductService {
 
+  rootUrl = 'http://localhost:8080/api/v1/products';
   products: ProductModel[] = [];
 
   constructor(private storageService: StorageService,
@@ -126,11 +127,12 @@ export class ProductService {
   }
 
   getProductsPaged(size: number, page: number, sort?: string) {
-    const params = new HttpParams()
+    const qParams = new HttpParams()
       .set('page', page.toString())
-      .set('size', size.toString())
-      .set('sort', sort);
-    return this.http.get(this.router.url + '/paged', {params});
+      .set('size', size.toString());
+
+    const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
+    return this.http.get(this.rootUrl + '/paged', {headers, params: qParams});
   }
 
 }

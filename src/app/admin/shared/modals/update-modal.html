@@ -1,0 +1,49 @@
+<div [ngClass]="{ 'is-active' : updateModal }" class="modal">
+  <div (click)="closeUpdateModal()" class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Update Customer</p>
+      <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (ngSubmit)="onSubmit( )" [formGroup]="updateForm">
+        <input type="text"
+               formControlName="email"
+               class="form-control insert"
+               placeholder="email">
+        <div class="columns">
+          <div class="column">
+            <input class="form-control"
+                   placeholder="Phone Number 1"
+                   formControlName="phoneNumbers"
+                   type="text">
+          </div>
+          <div class="column">
+            <input class="form-control"
+                   placeholder="Phone Number 2"
+                   formControlName="phoneNumbers"
+                   type="text">
+          </div>
+        </div>
+        <input class="form-control" formControlName="recordStatus"
+               placeholder="Record Status"
+               required
+               type="email">
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Textarea"></textarea>
+          </div>
+        </div>
+        <input class="form-control"
+               placeholder="Version"
+               formControlName="version"
+               type="text">
+      </form>
+    </section>
+    <footer class="modal-card-foot">
+      <button (click)="onUpdate()" class="button is-danger">Update</button>
+      <button (click)="closeUpdateModal()" class="button">Cancel</button>
+    </footer>
+  </div>
+</div>

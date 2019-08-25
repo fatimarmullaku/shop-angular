@@ -1,40 +1,43 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {UsersService} from './users.service';
+import html2canvas from 'html2canvas';
 import {HttpErrorResponse} from '@angular/common/http';
+import {BrandsModel} from './brands.model';
+import {BrandsService} from './brands.service';
+import * as jspdf from 'jspdf';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-brands',
+  templateUrl: './brands.component.html',
+  styleUrls: ['./brands.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class BrandsComponent implements OnInit {
   deleteModal = false;
   updateModal = false;
   insertModal = false;
-
-  usersList: any;
+  filter: string;
+  brandsList: BrandsModel[];
   form: FormGroup;
-  uid: number;
+  bid: number;
   updateForm: FormGroup;
 
 
-  constructor(private usersService: UsersService,
+  constructor(private brandsService: BrandsService,
               private formBuilder: FormBuilder,
   ) {
   }
 
   ngOnInit() {
-    this.usersService.getAllUsers().subscribe((data: any) => {
-      this.usersList = data;
-      console.log(this.usersList);
+    this.brandsService.getAllBrands().subscribe((data: any) => {
+      this.brandsList = data;
+      console.log(this.brandsList);
     });
 
+
     this.form = this.formBuilder.group({
-      id: [],
-      email: [''],
+      id: [''],
+      name: [''],
       recordStatus: [''],
-      isVerified: [''],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
@@ -43,8 +46,7 @@ export class UsersComponent implements OnInit {
     });
 
     this.updateForm = this.formBuilder.group({
-      email: [''],
-      isVerified: [''],
+      name: [''],
       recordStatus: [''],
       updateDateTime: [],
       deletedDateTime: [],
@@ -56,13 +58,29 @@ export class UsersComponent implements OnInit {
 
   }
 
+  public captureScreen() {
+    const data = document.getElementById('contentToConvert');
+    html2canvas(data).then(canvas => {
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png');
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+      const position = 10;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('brandsList.pdf');
+    });
+  }
+
   onSubmit() {
     const values = this.form.value;
     console.log('on Submit', values);
-    this.usersService.registerUser(values).subscribe(
+    this.brandsService.registerBrand(values).subscribe(
       get => {
-        this.usersService.getAllUsers().subscribe((data: any) => {
-          this.usersList = data;
+        this.brandsService.getAllBrands().subscribe((data: any) => {
+          this.brandsList = data;
         });
       },
       (err: HttpErrorResponse) => {
@@ -76,10 +94,10 @@ export class UsersComponent implements OnInit {
 
 
   onDelete() {
-    this.usersService.deleteUser(this.uid).subscribe(
+    this.brandsService.deleteBrand(this.bid).subscribe(
       get => {
-        this.usersService.getAllUsers().subscribe((data: any) => {
-          this.usersList = data;
+        this.brandsService.getAllBrands().subscribe((data: any) => {
+          this.brandsList = data;
         });
       },
       (err: HttpErrorResponse) => {
@@ -92,10 +110,11 @@ export class UsersComponent implements OnInit {
 
   onUpdate() {
     const values = this.updateForm.value;
-    this.usersService.updateUser(values, this.uid).subscribe(
+    console.log(values);
+    this.brandsService.updateBrand(values, this.bid).subscribe(
       get => {
-        this.usersService.getAllUsers().subscribe((data: any) => {
-          this.usersList = data;
+        this.brandsService.getAllBrands().subscribe((data: any) => {
+          this.brandsList = data;
         });
       },
       (err: HttpErrorResponse) => {
@@ -113,17 +132,15 @@ export class UsersComponent implements OnInit {
 
   openUpdate(
     id,
-    isVerified,
-    email,
+    name,
     recordStatus,
     updateDateTime,
     deletedDateTime,
     description,
     version: number) {
-    this.uid = id;
+    this.bid = id;
     this.updateModal = true;
-    this.updateForm.controls.email.setValue(email);
-    this.updateForm.controls.isVerified.setValue(isVerified);
+    this.updateForm.controls.name.setValue(name);
     this.updateForm.controls.recordStatus.setValue(recordStatus);
     this.updateForm.controls.updateDateTime.setValue(updateDateTime);
     this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
@@ -134,7 +151,6 @@ export class UsersComponent implements OnInit {
 
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
-    ;
     this.updateForm.reset();
   }
 
@@ -147,9 +163,11 @@ export class UsersComponent implements OnInit {
     this.deleteModal = !this.deleteModal;
   }
 
-  openDelete(uid) {
+  openDelete(bid) {
     this.deleteModal = true;
-    this.uid = uid;
-    console.log('on Open Update', this.uid);
+    this.bid = bid;
+    console.log(this.bid);
   }
+
+
 }

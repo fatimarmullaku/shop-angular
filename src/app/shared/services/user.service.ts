@@ -7,6 +7,7 @@ import {LocalStorageKey} from '../constants/local-storage-key';
 import {RestService} from './rest.service';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {map} from 'rxjs/operators';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,10 @@ export class UserService {
 
   loggedIn = false;
 
-  constructor(private httpClient: HttpClient, private restService: RestService, private baseStorage: BaseStorageService) {
+  constructor(private httpClient: HttpClient,
+              private restService: RestService,
+              private baseStorage: BaseStorageService,
+              private router: Router) {
   }
 
   isLoggedIn(): boolean {
@@ -49,5 +53,6 @@ export class UserService {
 
   logout(): void {
     this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
+    this.router.navigateByUrl('/auth/login');
   }
 }
