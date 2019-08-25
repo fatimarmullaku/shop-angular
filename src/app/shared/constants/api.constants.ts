@@ -14,7 +14,8 @@ const PRODUCTS = {
 
 const CUSTOMERS = {
     getAll: environment.apiHost + '/customers',
-    getById: environment.apiHost + '/customers'
+    getById: environment.apiHost + '/customers',
+    updateCustomer: environment.apiHost + '/customers'
 };
 
 const PURCHASES = {

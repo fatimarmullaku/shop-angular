@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {CustomerService} from '../../../shared/services/customer.service';
 @Component({
   selector: 'app-additional-information',
   templateUrl: './additional-information.component.html'
@@ -10,7 +11,8 @@ export class AdditionalInformationComponent implements OnInit {
   phones: FormArray;
   addresses: FormArray;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private customerService: CustomerService) { }
 
   ngOnInit() {
     this.informationForm = this.formBuilder.group({
@@ -21,8 +23,7 @@ export class AdditionalInformationComponent implements OnInit {
 
   createPhoneNumber(): FormGroup {
     return this.formBuilder.group({
-      mobile: new FormControl(''),
-      home:  new FormControl('')
+      phoneNumber: new FormControl('')
     });
   }
 
@@ -59,9 +60,10 @@ export class AdditionalInformationComponent implements OnInit {
     this.addresses.removeAt(index);
   }
 
-  onSubmit(event: any) {
-    event.preventDefault();
+  onSubmit() {
 
     console.log(this.informationForm.getRawValue());
+    this.customerService.updateCusometWithRestService(this.informationForm.getRawValue());
+    this.customerService.updateCustomer(this.informationForm.getRawValue());
   }
 }

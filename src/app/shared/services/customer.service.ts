@@ -8,6 +8,7 @@ import {LocalStorageKey} from '../constants/local-storage-key';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
 import {map} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ import {map} from 'rxjs/operators';
 export class CustomerService {
   customers: CustomerModel [];
 
-  constructor(private baseStorage: BaseStorageService, private restService: RestService) {
+  constructor(private baseStorage: BaseStorageService, private restService: RestService, private http: HttpClient) {
     this.fetchCustomers();
   }
 
@@ -69,5 +70,17 @@ export class CustomerService {
       .pipe(map(user => {
         return user;
       }));
+  }
+
+  updateCustomer(data) {
+    return this.http.put('http://localhost:8080/api/v1/customers/2', {name: 'jehonaaaa'});
+  }
+
+  updateCusometWithRestService(data) {
+    return this.restService.publicRequest(HttpRequestMethod.PUT, ENDPOINTS.customers.updateCustomer + '/${customerId}',{
+      body: {
+        name : 'jehonaaaa'
+      }
+    });
   }
 }
