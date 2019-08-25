@@ -3,8 +3,8 @@ export class ProductsModel {
   name: string;
   unitPrice: bigint;
   inStock: number;
-  // category
-  // publicsher
+  platform: any;
+  brand: any;
   recordStatus: string;
   createDateTime: Date;
   updateDateTime: Date;
