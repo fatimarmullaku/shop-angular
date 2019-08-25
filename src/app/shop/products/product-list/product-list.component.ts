@@ -41,7 +41,7 @@ export class ProductListComponent implements OnInit {
 
         obj.id = 1;
         obj.description = 'Lorem ipsumlmlml';
-        obj.image = '/assets/img/bf4-cover.jpg';
+        obj.image = product.fileName === null ? '/assets/img/bf4-cover.jpg' : 'assets/img/' + product.fileName;
         obj.platform = 'PC';
         obj.price = product.unitPrice;
         obj.stock = 2;

@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {ProductModel} from '../models/product.model';
-import {ProductReviewModel} from '../models/product-review.model';
-import {ProductRatingModel} from '../models/product-rating.model';
 import {StorageService} from './storage.service';
 import {BaseStorageService} from './base-storage.service';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {RestService} from './rest.service';
+import {HttpRequestMethod} from '../constants/http-request.method';
+import {ENDPOINTS} from '../constants/api.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,21 @@ export class ProductService {
   constructor(private storageService: StorageService,
               private baseStorage: BaseStorageService,
               private http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private restService: RestService) {
     this.fetchProducts();
   }
 
   fetchProducts(): void {
-    const product1 = new ProductModel();
+
+    this.restService.publicRequest<ProductModel[]>(HttpRequestMethod.GET, ENDPOINTS.products.getAll).subscribe(res => {
+        this.products = res;
+      },
+      (error) => {
+        console.error(error);
+      });
+
+    /*const product1 = new ProductModel();
     product1.id = 1;
     product1.description = 'Lorem ipsum';
     product1.image = '/assets/img/bf4-cover.jpg';
@@ -102,7 +112,7 @@ export class ProductService {
     product4Review.name = 'John Doe';
     product4Rating.reviews = [product4Review];
     product4.rating = product4Rating;
-    this.products.push(product4);
+    this.products.push(product4);*/
   }
 
   getProducts(): ProductModel[] {
