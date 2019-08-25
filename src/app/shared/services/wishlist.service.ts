@@ -3,47 +3,52 @@ import {BaseStorageService} from './base-storage.service';
 import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../constants/local-storage-key';
 import {ProductService} from './product.service';
-import {ProductCartModel} from "../models/product-cart.model";
-import {ProductModel} from "../models/product.model";
-import {StorageService} from "./storage.service";
+import {ReplaySubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WishlistService {
+export class WishlistService{
+  wishlistSubject = new ReplaySubject(1);
 
-  constructor(private storageService:StorageService,
-              private baseStorage: BaseStorageService,
-              private productService: ProductService) {
-
+  constructor(private baseStorage: BaseStorageService, private productService: ProductService) {
   }
 
-  getProductsFromWishlist(): ProductCartModel[] {
-    return this.baseStorage.getStorageOf(LocalStorageKey.CART);
+  getProductsFromWishlist(): ProductWishlistModel[] {
+    let wishlists = this.baseStorage.getStorageOf(LocalStorageKey.WISHLIST);
+    this.wishlistSubject.next(wishlists);
+    return wishlists;
   }
 
   getProductInWishlist(id: number): boolean {
     return this.baseStorage.getElementInStorage(id, LocalStorageKey.WISHLIST);
   }
 
+  addToWishlist(id: number): void {
+    let wishlist = this.getProductsFromWishlist();
 
-  addToWishlist(id: number) {
-    const wishlist = this.storageService.get('wishlist');
-    if (wishlist) {
-      const wishlistArray = JSON.parse(wishlist);
-      if (wishlistArray.filter(item => item == id).length > 0) {
-        return;
-      } else {
-        wishlistArray.push(id);
-        this.storageService.set('wishlist', JSON.stringify(wishlistArray));
-      }
+    if (wishlist.filter(item => item.id == id).length > 0) {
+      wishlist = wishlist.map(item => {
+        return item;
+      });
     } else {
-      this.storageService.set('wishlist', JSON.stringify([id]));
+      const newProductInWishlist = new ProductWishlistModel();
+      newProductInWishlist.id = id;
+      newProductInWishlist.product = this.productService.getProduct(id);
+
+      wishlist.push(newProductInWishlist);
     }
+    this.baseStorage.setStorage(LocalStorageKey.WISHLIST, wishlist);
+    this.wishlistSubject.next(wishlist);
   }
 
-  // delete from wishlist
+  getWishlistDataFromSubject() {
+    return this.wishlistSubject.asObservable();
+  }
+
   deleteFromWishlist(id: number) {
     this.baseStorage.deleteElementInStorage(id, LocalStorageKey.WISHLIST);
+    this.getProductsFromWishlist();
   }
+
 }

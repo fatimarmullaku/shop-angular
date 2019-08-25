@@ -4,6 +4,7 @@ import {ProductModel} from '../../../shared/models/product.model';
 import {ProductService} from '../../../shared/services/product.service';
 import {CartService} from '../../../shared/services/cart.service';
 import {WishlistService} from '../../../shared/services/wishlist.service';
+import {ProductWishlistModel} from "../../../shared/models/product-wishlist.model";
 
 @Component({
   selector: 'app-product-detail',
@@ -12,7 +13,7 @@ import {WishlistService} from '../../../shared/services/wishlist.service';
 export class ProductDetailComponent implements OnInit {
 
   product: ProductModel;
-
+  quantity: number;
 
   constructor(public router: Router,
               private activatedRoute: ActivatedRoute,
@@ -29,6 +30,8 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  getQuantity(event) { this.quantity = event.target.value;}
+
   isWishlisted(): boolean {
     return this.wishlistService.getProductInWishlist(this.product.id);
   }
@@ -43,11 +46,18 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
+  // addToWishlist(){
+  //   this.wishlistService.addToWishlist(this.product.id);
+  //   this.product.isWishlisted = true;
+  // }
+  // deleteFromWishlist(){
+  //   this.wishlistService.deleteFromWishlist(this.product.id);
+  //   this.product.isWishlisted = true;
+  // }
+
   addToCart(event: any) {
     event.preventDefault();
-
-
-    this.cartService.addToCart(this.product.id, 1);
+    this.cartService.addToCart(this.product.id, Number(this.quantity));
 
   }
 }

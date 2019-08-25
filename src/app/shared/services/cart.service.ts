@@ -74,7 +74,7 @@ export class CartService {
     const array = this.getProductsFromCart();
     let totalPrice = 0;
     array.forEach(item =>{
-      totalPrice += item.product.price;
+      totalPrice += item.product.price * item.qty;
     });
     return totalPrice.valueOf();
   }

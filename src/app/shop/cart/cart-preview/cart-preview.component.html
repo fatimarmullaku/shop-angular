@@ -1,12 +1,12 @@
 <app-header></app-header>
 <div>
   <div class="column">
-    <div>
+    <div *ngIf="cartProducts && cartProducts.length > 0">
       <h1 class="title-color">Your Shopping Cart</h1>
+      <hr>
     </div>
-    <hr>
     <br>
-    <div class="container main-container-checkout" *ngIf="cartProducts && cartProducts.length > 0">
+    <div class="container main-container-checkout" *ngIf="cartProducts && cartProducts.length > 0; else emptyCart">
 <!--      <div class="" >-->
         <div class="columns is-mobile" *ngFor="let item of cartProducts">
           <div class="column cart-items is-11">
@@ -18,12 +18,12 @@
               </div>
               <div class="column is-3 product-info">
                 <h1>{{ item.product.title }}</h1>
-                <p>{{ item.product.description }}</p>
+                <p>{{ item.product.title }}</p>
               </div>
               <div class="column is-2 product-info">
                 <h2>{{ item.isInStock ? 'Available': 'Out of stock' }} </h2>
               </div>
-              <div class="column is-3">
+              <div class="column is-1">
                 <br>
                 <h2>{{ item.qty }}</h2>
                 <div class="buttons">
@@ -32,6 +32,11 @@
                 </div>
               </div>
               <div class="column is-2 product-info">
+                <label>Price</label>
+                <h1>{{ item.product.price}} $ </h1>
+              </div>
+              <div class="column is-2 product-info">
+                <label>Total price</label>
                 <h1>{{ item.product.price * item.qty}} $ </h1>
               </div>
             </div>
@@ -42,24 +47,25 @@
             </div>
           </div>
         </div>
-
-        <!--       buttons     -->
-        <div class="columns cart-items-footer">
-          <div class="column is-4 left-link">
-            <a routerLink="/">Continue Shopping</a>
+      <div class="columns cart-items-footer">
+        <div class="column is-4 left-link">
+          <a routerLink="/">Continue Shopping</a>
+        </div>
+        <div class="column is-4 subtotal">
+          <h2>Subtotal: {{this.cartService.generateTotalPrice().toFixed(2)}}$</h2>
+        </div>
+        <div class="column is-4 right-link">
+          <div *ngIf="showRoute">
+            <a routerLink="/cart/shipping">Proceed to Checkout</a>
           </div>
-          <div class="column is-4 subtotal">
-            <h2>Subtotal: {{this.cartService.generateTotalPrice().toFixed(2)}}$</h2>
-          </div>
-          <div class="column is-4 right-link">
-            <div *ngIf="showRoute">
-              <a routerLink="/cart/shipping">Proceed to Checkout</a>
-            </div>
-            <div *ngIf="!showRoute">
-              <a (click)="isLoginModalActive()">Proceed to Checkout</a>
-            </div>
+          <div *ngIf="!showRoute">
+            <a (click)="isLoginModalActive()">Proceed to Checkout</a>
           </div>
         </div>
+      </div>
+
+        <!--       buttons     -->
+
 <!--      </div>-->
                                               <!--  Login/Register Modal    -->
       <div class="modal" [ngClass]="{'is-active':isModalActive}">
@@ -112,3 +118,11 @@
     </div>
   </div>
 </div>
+
+<ng-template #emptyCart>
+  <div class="emptyWishlist">
+    <h1>Your cart is empty!</h1>
+    <h3>Explore more and add some items</h3>
+    <button routerLink="/" class="startShopping">START SHOPPING</button>
+  </div>
+</ng-template>

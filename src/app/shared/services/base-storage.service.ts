@@ -23,7 +23,7 @@ export class BaseStorageService {
   // Gets the storage which contains the given key
   getStorageOf(key: LocalStorageKey, isStringified?: boolean) {
     const storage = this.storageService.get(key);
-    console.log(storage);
+    // console.log(storage);
     if (storage) {
       if (isStringified) {
         return storage;
@@ -42,6 +42,7 @@ export class BaseStorageService {
       this.storageService.set(key, JSON.stringify(keyArray));
     }
   }
+
 
   // Clears the storage which contains the given key
   clearStorageOf(key: LocalStorageKey) {

@@ -98,3 +98,15 @@ label.checkout-label {
   border: 1px solid map_get($ucx-colors,deep-orange);
   border-radius: 5px;
 }
+.no-float{
+  float: none;
+}
+.add-addresses-container-btn{
+  width: 100%;
+  height: 100px;
+}
+
+#box-address{
+  margin-right: 25px;
+  margin-left: -25px;
+}

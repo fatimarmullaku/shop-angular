@@ -18,7 +18,7 @@
         <div class="dropdown-menu" id="dropdown-menu-2" role="menu" >
           <div class="dropdown-content">
             <div class="columns is-mobile dropdown-item dropdown-cart-item" *ngFor="let item of this.cartService.getProductsFromCart()">
-              <div class="column is-6">
+              <div class="column item-picture is-6">
                 <figure class="image is-64x64">
                   <img class="is-rounded" [src]="item.product.image">
                 </figure>
@@ -72,7 +72,7 @@
   <div class="header-bottom uses-flex">
     <nav class="navbar navbar-container" role="navigation" aria-label="main navigation">
       <a href="index.html" class="navbar-item">Home</a>
-      <a href="" class="navbar-item">Accesories</a>
+      <a routerLink="/wish-list" class="navbar-item">WishList</a>
       <a href="" class="navbar-item">News</a>
       <app-publisher-dropdown></app-publisher-dropdown>
       <div class="navbar-item has-dropdown is-hoverable">
