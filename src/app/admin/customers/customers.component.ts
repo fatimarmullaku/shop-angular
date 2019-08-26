@@ -4,7 +4,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {HttpErrorResponse} from '@angular/common/http';
 import {CustomerModel} from './customer.model';
 import html2canvas from 'html2canvas';
-import * as jspdf from '../brands/brands.component';
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'app-costumers',
@@ -19,7 +19,7 @@ export class CustomersComponent implements OnInit {
   customersList: CustomerModel[];
   customersForm: FormGroup;
   datePicker: Date;
-  searchPicker:string;
+  searchPicker: string;
   addressesArray: FormArray;
   phoneNumbersArray: FormArray;
   customerId: number;
@@ -31,20 +31,21 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.customersService.getAllCustomers().subscribe((data: any) => {
+    this.customersService.getAllCustomers().subscribe((data: CustomerModel[]) => {
       this.customersList = data;
-      console.log(this.customersList);
+      console.log('from ts', this.customersList);
     });
 
     this.customersForm = this.fb.group({
       id: new FormControl(),
+      name: [''],
       email: new FormControl('', Validators.required),
       phoneNumbers: this.fb.array([]),
       addresses: this.fb.array([]),
       recordStatus: [''],
-      createDateTime: [ ],
-      updateDateTime: [ ],
-      deletedDateTime: [ ],
+      createDateTime: [],
+      updateDateTime: [],
+      deletedDateTime: [],
       description: [''],
       version: ['']
     });
@@ -57,7 +58,7 @@ export class CustomersComponent implements OnInit {
       zip_code: ''
     }));
     this.phoneNumbersArray.push(this.fb.group({
-      phoneNumber: ''
+      phoneNumber:''
     }));
 
 
@@ -107,6 +108,7 @@ export class CustomersComponent implements OnInit {
       }
     );
     this.insertModal = false;
+    this.customersForm.reset();
   }
 
 
@@ -114,7 +116,7 @@ export class CustomersComponent implements OnInit {
     this.customersService.deleteCostumer(this.customerId).subscribe(
       get => {
         this.customersService.getAllCustomers().subscribe((data: any) => {
-          this.customerId = data;
+          this.customersList = data;
         });
       },
       (err: HttpErrorResponse) => {
@@ -138,6 +140,7 @@ export class CustomersComponent implements OnInit {
       }
     );
     this.updateModal = false;
+    this.customersForm.reset();
   }
 
   openInsert() {
@@ -149,7 +152,8 @@ export class CustomersComponent implements OnInit {
   openUpdate(
     id,
     email,
-    phoneNumbers,
+    name,
+    phoneNumber,
     recordStatus,
     updateDateTime,
     deletedDateTime,
@@ -158,7 +162,8 @@ export class CustomersComponent implements OnInit {
     this.customerId = id;
     this.updateModal = true;
     this.customersForm.controls.email.setValue(email);
-    this.customersForm.controls.phoneNumbers.setValue(phoneNumbers);
+    this.customersForm.controls.name.setValue(name);
+    this.customersForm.controls.phoneNumbers.setValue(phoneNumber);
     this.customersForm.controls.recordStatus.setValue(recordStatus);
     this.customersForm.controls.updateDateTime.setValue(updateDateTime);
     this.customersForm.controls.deletedDateTime.setValue(deletedDateTime);
@@ -191,7 +196,9 @@ export class CustomersComponent implements OnInit {
     return phoneNumbers.map(item => item.phoneNumber);
   }
 
-
+  transformCity(addresses: any) {
+    return addresses.map(item => item.city);
+  }
 
 
 }

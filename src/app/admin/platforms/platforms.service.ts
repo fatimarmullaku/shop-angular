@@ -14,7 +14,7 @@ export class PlatformsService {
   }
 
   getAllPlatforms() {
-    return this.http.get(this.rootUrl + '/allActive');
+    return this.http.get(this.rootUrl );
   }
 
   registerPlatforms(values) {

@@ -5,7 +5,7 @@
       <div class="table-editable" id="table">
         <div class="columns">
           <div class="column">
-            <input type="text" class="form-control searchCustomer"  placeholder="search user" name="search" [(ngModel)]="filter" >
+            <input type="text" class="form-control searchCustomer"  placeholder="search customer" name="search" [(ngModel)]="filter" >
           </div>
 <!--          <div class="column">-->
 <!--            <input class="form-control"  placeholder="filter by date "#dp="bsDatepicker" bsDatepicker [(ngModel)]="datePicker" [bsConfig]="{containerClass:'theme-blue'}">-->
@@ -20,6 +20,7 @@
           <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>City</th>
             <th>Phone Number</th>
             <th>Record Status</th>
             <th>Create Time</th>
@@ -28,10 +29,12 @@
             <th>Description</th>
             <th>Version</th>
             <th> </th>
+            <th> </th>
           </tr>
-          <tr *ngFor="let c of customersList  | dateFilter: datePicker | pipeFilteer: searchPicker">
+          <tr *ngFor="let c of customersList | pipeFilteer:filter  ">
             <td>{{c.name}}</td>
-            <td>{{c.email}}</td>
+            <td>{{c?.email}}</td>
+            <td>{{transformCity(c.addresses)}}</td>
             <td>{{transformNumber(c.phoneNumbers) }}</td>
             <td>{{c.recordStatus}}</td>
             <td>{{c.createDateTime | date:'dd-MM-yyyy'}}</td>
@@ -39,13 +42,15 @@
             <td>{{c.deletedDateTime| date:'dd-MM-yyyy'}}</td>
             <td>{{c.description}}</td>
             <td>{{c.version}}</td>
+            <td></td>
             <td>
               <a>
                 <i
                   (click)="openUpdate(
                 c.id,
                 c.email,
-                c.phoneNumbers,
+                c.phoneNumbers.phoneNumber,
+                c.addresses.city,
                 c.recordStatus,
                 c.updateDateTime,
                 c.deletedDateTime,
@@ -138,8 +143,8 @@
             </div>
           </div>
           <span> Record Status </span>
-          <input class="form-control" formControlName="recordStatus"
-                 type="email">
+          <input  class="form-control" formControlName="recordStatus"
+                 type="text">
           <span> Description </span>
           <div class="control">
             <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
