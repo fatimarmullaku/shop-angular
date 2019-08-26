@@ -1,8 +1,5 @@
-export class CustomerModel {
-  id: number;
+export class BrandsModel {
   name: string;
-  email: string;
-  phoneNumbers: number;
   recordStatus: string;
   createDateTime: Date;
   updateDateTime: Date;

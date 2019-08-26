@@ -3,22 +3,11 @@
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Customers</h3>
     <div class="card-body">
       <div class="table-editable" id="table">
-            <span class="table-add float-right mb-3 mr-2">
+        <input type="text" class="form-control"  placeholder="search user" name="search" [(ngModel)]="filter" >
+        <span class="table-add float-right mb-3 mr-2">
                 <a>
                 <i (click)="openInsert()" class="fas fa-plus"></i>
                 </a>
-
-<!--          <div class="field">-->
-<!--            <div class="control has-icons-left has-icons-right">-->
-<!--              <input class="input myinput" type="email" placeholder="Email input" value="hello@">-->
-<!--              <span class="icon is-small is-left">-->
-<!--                <i class="fas fa-envelope"></i>-->
-<!--              </span>-->
-<!--            </div>-->
-<!--          </div>-->
-
-
-
             </span>
         <table class="table table-bordered table-responsive-md table-striped text-center">
           <tr>
@@ -32,9 +21,9 @@
             <th>Version</th>
             <th> </th>
           </tr>
-          <tr *ngFor="let c of customersList">
+          <tr *ngFor="let c of customersList | pipeFilteer:filter">
             <td>{{c.email}}</td>
-            <td>{{c.phoneNumbers}}</td>
+            <td>{{transformNumber(c.phoneNumbers) }}</td>
             <td>{{c.recordStatus}}</td>
             <td>{{c.createDateTime}}</td>
             <td>{{c.updateDateTime}}</td>
@@ -62,7 +51,7 @@
       </div>
     </div>
   </div>
- 
+
   <div [ngClass]="{ 'is-active' : deleteModal }" class="modal">
     <div (click)="toggleModal()" class="modal-background"></div>
     <div class="modal-card">
@@ -84,51 +73,7 @@
   </div>
 
 
-  <div [ngClass]="{ 'is-active' : updateModal }" class="modal">
-    <div (click)="closeUpdateModal()" class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Update Customer</p>
-        <button (click)="toggleModal()" aria-label="close" class="delete"></button>
-      </header>
-      <section class="modal-card-body">
-        <form (ngSubmit)="onSubmit( )" [formGroup]="customersForm">
-              <div class="columns">
-              <div class="column">
-              <input class="form-control"
-                     placeholder="Phone Number 1"
-                     formControlName="phoneNumbers"
-                     type="text">
-            </div>
-            <div class="column">
-              <input class="form-control"
-                     placeholder="Phone Number 2"
-                     formControlName="phoneNumbers"
-                     type="text">
-            </div>
-          </div>
-          <input class="form-control" formControlName="recordStatus"
-                 placeholder="Record Status"
-                 required
-                 type="email">
-          <div class="field">
-            <label class="label">Description</label>
-            <div class="control">
-              <textarea class="textarea" placeholder="Textarea"></textarea>
-            </div>
-          </div>
-          <input class="form-control"
-                 placeholder="Version"
-                 formControlName="version"
-                 type="text">
-        </form>
-      </section>
-      <footer class="modal-card-foot">
-        <button (click)="onUpdate()" class="button is-danger">Update</button>
-        <button (click)="closeUpdateModal()" class="button">Cancel</button>
-      </footer>
-    </div>
-  </div>
+
 
 
   <div [ngClass]="{ 'is-active' : insertModal }" class="modal">
@@ -136,25 +81,40 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Insert Customer</p>
-        <button (click)="toggleModal()" aria-label="close" class="delete"></button>
+        <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
         <form (ngSubmit)="onSubmit( )" [formGroup]="customersForm">
-                <input class="form-control"
+          <input class="form-control"
                  placeholder="Email"
                  formControlName="email"
                  type="text">
-          <div class="columns">
-            <div class="column">
-              <input class="form-control"
-                     placeholder="Phone Number 1"
-                     formControlName="phoneNumbers"
+          <div formArrayName="addresses" *ngFor="let item of addressesArray['controls']; let i = index">
+            <div [formGroupName]="i">
+              <input class="form-control" formControlName="city"
+                     placeholder="City"
+                     required
+                     type="text">
+              <input class="form-control" formControlName="street"
+                     placeholder="Street"
+                     required
+                     type="text">
+              <input class="form-control" formControlName="country"
+                     placeholder="Country"
+                     required
+                     type="text">
+              <input class="form-control" formControlName="zip_code"
+                     placeholder="Zip Code"
+                     required
                      type="text">
             </div>
-            <div class="column">
-              <input class="form-control"
-                     placeholder="Phone Number 2"
-                     formControlName="phoneNumbers"
+          </div>
+
+          <div formArrayName="phoneNumbers" *ngFor="let item of phoneNumbersArray['controls']; let i = index">
+            <div [formGroupName]="i">
+              <input class="form-control" formControlName="phoneNumber"
+                     placeholder="Phone Number"
+                     required
                      type="text">
             </div>
           </div>
@@ -163,7 +123,7 @@
                  required
                  type="email">
           <div class="control">
-            <textarea class="textarea" placeholder="Add your description here! "></textarea>
+            <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
           </div>
         </form>
       </section>
@@ -173,6 +133,71 @@
       </footer>
     </div>
   </div>
+
+
+
+
+  <div [ngClass]="{ 'is-active' : updateModal }" class="modal">
+    <div (click)="closeUpdateModal()" class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Update Customer</p>
+        <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
+      </header>
+      <section class="modal-card-body">
+        <form (ngSubmit)="onUpdate( )" [formGroup]="customersForm">
+          <input class="form-control"
+                 placeholder="Email"
+                 formControlName="email"
+                 type="text">
+          <div formArrayName="addresses" *ngFor="let item of addressesArray['controls']; let i = index">
+            <div [formGroupName]="i">
+              <input class="form-control" formControlName="city"
+                     placeholder="City"
+                     required
+                     type="text">
+              <input class="form-control" formControlName="street"
+                     placeholder="Street"
+                     required
+                     type="text">
+              <input class="form-control" formControlName="country"
+                     placeholder="Country"
+                     required
+                     type="text">
+              <input class="form-control" formControlName="zip_code"
+                     placeholder="Zip Code"
+                     required
+                     type="text">
+            </div>
+          </div>
+
+          <div formArrayName="phoneNumbers" *ngFor="let item of phoneNumbersArray['controls']; let i = index">
+            <div [formGroupName]="i">
+              <input class="form-control" formControlName="phoneNumber"
+                     placeholder="Phone Number"
+                     required
+                     type="text">
+            </div>
+          </div>
+          <input class="form-control" formControlName="recordStatus"
+                 placeholder="Record Status"
+                 required
+                 type="email">
+          <div class="control">
+            <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
+          </div>
+        </form>
+      </section>
+      <footer class="modal-card-foot">
+        <button (click)="onUpdate()" class="button is-danger">Save</button>
+        <button (click)="closeUpdateModal()" class="button">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
+
+
+
 
 
 
