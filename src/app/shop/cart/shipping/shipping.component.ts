@@ -3,10 +3,11 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {CustomerModel} from '../../../shared/models/customer.model';
 import {AddressModel} from '../../../shared/models/address.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CustomerService} from '../../../shared/services/customer.service';
 import {HttpRequestMethod} from '../../../shared/constants/http-request.method';
 import {ENDPOINTS} from '../../../shared/constants/api.constants';
 import {RestService} from '../../../shared/services/rest.service';
+import {BaseStorageService} from '../../../shared/services/base-storage.service';
+import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
 
 @Component({
   selector: 'app-shipping',
@@ -19,56 +20,29 @@ export class ShippingComponent implements OnInit {
   addresses: FormArray;
   clicked = false;
   nextClicked = true;
+  clickedAddress: number;
 
   constructor(private formBuilder: FormBuilder,
               public router: Router,
               private restService: RestService,
               private activatedRoute: ActivatedRoute,
-              private customerService: CustomerService
+              private baseStorage: BaseStorageService
   ) {
   }
 
   ngOnInit() {
-    this.fetchCustomers();
-    this.shippingFormGroup = this.formBuilder.group({
-      addresses: this.formBuilder.array([])
+    this.fetchCustomer();
+    this.shippingFormGroup = new FormGroup({
+      addresses: new FormArray([])
     });
   }
 
-  fetchCustomers(): void {
-    /*const customer1 = new CustomerModel();
-    customer1.id = 1;
-    customer1.firstName = 'John';
-    customer1.lastName = 'Doe';
-
-    const firstPhoneNumber = new PhoneNumberModel();
-    const secPhoneNumber = new PhoneNumberModel();
-
-    firstPhoneNumber.home = '+38342655';
-    firstPhoneNumber.mobile = '+24896226';
-    secPhoneNumber.home = '+38344458485';
-    secPhoneNumber.mobile = '+37744258852';
-    customer1.phoneNumbers = [firstPhoneNumber, secPhoneNumber];
-
-    const firstAddress = new AddressModel();
-
-    firstAddress.country = 'Kosovo';
-    firstAddress.city = 'Prishtine';
-    firstAddress.zipCode = 10000;
-    firstAddress.street = 'Bajram Kelmendi';
-
-    // const secAddress = new AddressModel();
-    //
-    // secAddress.country = 'shqiperi';
-    // secAddress.city = 'tirana';
-    // secAddress.zipCode = 10000;
-    // secAddress.street = 'rruga b';
-    customer1.addresses = [firstAddress];
-
-    this.customers = [customer1];*/
+  fetchCustomer(): void {
     this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll)
       .subscribe((res) => {
-          this.customer = res.filter(item => item.id === 1)[0];
+          const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+          const tempId = +customerId;
+          this.customer = res.filter(item => item.id === tempId)[0];
           this.loadAdressesView();
         },
         error => {
@@ -76,12 +50,12 @@ export class ShippingComponent implements OnInit {
         });
   }
 
-  createAddress(): FormGroup {
+  createAddress(index?: number): FormGroup {
     return this.formBuilder.group({
-      country: this.customer.addresses,
-      city: new FormControl(''),
-      zipCode: new FormControl(''),
-      street: new FormControl('')
+      country: new FormControl(this.customer.addresses[index].country),
+      city: new FormControl(this.customer.addresses[index].city),
+      zipCode: new FormControl(this.customer.addresses[index].zipCode),
+      street: new FormControl(this.customer.addresses[index].street)
     });
   }
 
@@ -93,28 +67,36 @@ export class ShippingComponent implements OnInit {
 
   onSubmit(event: any) {
     event.preventDefault();
-
+    /*
+    * Create Address model.
+    * Bind the data from the selected address.
+    * *
+    * Create a local storage key.
+    * Stringify the json before sending it.
+    * */
     console.log(this.shippingFormGroup.getRawValue());
 
   }
 
   getRadioValue(value: any) {
-    if (value === 'radio0') {
-      console.log('VALUE OF RADIO: ', this.shippingFormGroup.getRawValue()[0]);
+      const temp = this.shippingFormGroup.get('addresses') as FormArray;
+      console.log('VALUE OF RADIO: ', temp.at(value).value);
       this.nextClicked = false;
-    } else if (value === 'radio1') {
-      console.log('VALUE OF RADIO 2: ', this.shippingFormGroup.getRawValue()[1]);
+
+    /*else if (value === 'radio1') {
+      console.log('VALUE OF RADIO 2: ', this.shippingFormGroup.getRawValue());
       this.nextClicked = false;
-    }
+    }*/
   }
 
   private loadAdressesView() {
     const currentAddressFormArray = this.shippingFormGroup.get('addresses') as FormArray;
     this.customerAddresses = this.customer.addresses;
-
+    let i = 0;
     for (const address of this.customerAddresses) {
-      const newAddressGroup = this.createAddress();
+      const newAddressGroup = this.createAddress(i);
       currentAddressFormArray.push(newAddressGroup);
+      i++;
     }
   }
 }
