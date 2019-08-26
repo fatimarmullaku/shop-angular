@@ -117,19 +117,34 @@
         <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
-        <form (ngSubmit)="onSubmit( )" [formGroup]="form">
+        <form (ngSubmit)="onSubmit( )" [formGroup]="form" novalidate>
           <input class="form-control" formControlName="name"
                  placeholder="Name"
                  required
                  type="name">
+          <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" class="alert alert-danger">
+            <div *ngIf="form.controls['name'].errors.required">
+              Name is required.
+            </div>
+          </div>
           <input class="form-control" formControlName="recordStatus"
                  placeholder="Record Status"
                  required
                  type="text">
+          <div *ngIf="form.controls['recordStatus'].invalid && (form.controls['recordStatus'].dirty || form.controls['name'].touched)" class="alert alert-danger">
+            <div *ngIf="form.controls['recordStatus'].errors.required">
+              Record Status is required.
+            </div>
+          </div>
           <input class="form-control" formControlName="roleDescription"
                  placeholder="Role Description"
                  required
                  type="text">
+          <div *ngIf="form.controls['roleDescription'].invalid && (form.controls['roleDescription'].dirty || form.controls['roleDescription'].touched)" class="alert alert-danger">
+            <div *ngIf="form.controls['roleDescription'].errors.required">
+              Role is required.
+            </div>
+          </div>
           <div class="control">
             <textarea class="textarea" placeholder="Add your description here! "></textarea>
           </div>
