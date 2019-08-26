@@ -1,0 +1,14 @@
+@import 'modules/shop-module/global/init';
+
+@import 'modules/shop-module/components/init';
+
+body {
+  background-color: black;
+}
+
+// todo remove
+//.test {
+//  @extend .columns;
+//  @extend .is-2;
+//  @extend .is-2;
+//}

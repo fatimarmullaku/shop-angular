@@ -6,14 +6,14 @@ import {UsersComponent} from './users/users.component';
 import {ProductsComponent} from './products/products.component';
 import {RolesComponent} from './users/roles/roles.component';
 import {CustomersComponent} from './customers/customers.component';
-import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
+import {AdminComponent} from './admin.component';
 import {PlatformsComponent} from './platforms/platforms.component';
 import {BrandsComponent} from './brands/brands.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardBaseComponent,
+    component: AdminComponent,
     children: [
       {path: '', component: HomeComponent},
       {path: 'customers', component: CustomersComponent},

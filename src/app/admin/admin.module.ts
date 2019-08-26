@@ -8,22 +8,21 @@ import {RolesComponent} from './users/roles/roles.component';
 import {UsersComponent} from './users/users.component';
 import {HomeComponent} from './home/home.component';
 import {MatListModule, MatToolbarModule, MatSidenavModule, MatIconModule} from '@angular/material';
-import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
+import {AdminComponent} from './admin.component';
 import {TablesDComponent} from '../shared/tables-d/tables-d.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import {PlatformsFilterPipe} from './platforms/platforms-filter.pipe';
 import {CustomersFPipe} from './customers/customers-f.pipe';
 import {PlatformsComponent} from './platforms/platforms.component';
 import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
-import {DateFilterPipe} from './customers/date-filter.pipe';
 
 @NgModule({
   declarations: [
-    DashboardBaseComponent,
+    AdminComponent,
     OrdersComponent,
     ProductsComponent,
     RolesComponent,
@@ -37,7 +36,6 @@ import {DateFilterPipe} from './customers/date-filter.pipe';
     PlatformsComponent,
     BrandsComponent,
     BrandsFilterPipe,
-    DateFilterPipe,
 
 
   ],
