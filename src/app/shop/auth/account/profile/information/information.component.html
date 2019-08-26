@@ -40,7 +40,7 @@
       <div class="columns">
         <div class="column">
           <label class="label">Name</label>
-          <input type="text" class="input" formControlName="name" value="{{customer.name}}">
+          <input type="text" class="input" value="{{customer.name}}">
         </div>
 
       </div>
@@ -50,7 +50,7 @@
 
             <h3 class="title is-5 static-titles">Phone Numbers</h3>
             <div id="box-phone">
-              <div formArrayName="phoneNumbers" *ngFor="let _ of informationForm.get('phoneNumbers')['controls']; let i = index;">
+              <div formArrayName="phoneNumbers" *ngFor="let _ of informationForm.get('phones')['controls']; let i = index;">
                 <div class="columns" [formGroupName]="i">
                   <div class="column is-10">
                     <label>Phone Number</label><br>

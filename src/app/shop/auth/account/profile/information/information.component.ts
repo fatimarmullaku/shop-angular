@@ -31,17 +31,17 @@ export class InformationComponent implements OnInit {
     this.customerService.getCustomerFromServer().subscribe(data => {
       this.customer = data;
       this.customerAddresses = this.customer.addresses;
-      this.customerPhoneNumbers = this.customer.phoneNumbers;
+      // this.customerPhoneNumbers = this.customer.phones;
       console.log( 'Updated customer addresses', this.customerAddresses);
       console.log('Updated customer phoneNumbers', this.customerPhoneNumbers);
 
-      const currentContactFormArray = this.informationForm.get('phoneNumbers') as FormArray;
+      const currentContactFormArray = this.informationForm.get('phones') as FormArray;
       const currentAddressFormArray = this.informationForm.get('addresses') as FormArray;
-
-      for (const phoneNumber of this.customerPhoneNumbers) {
-        const newPhoneNumberGroup = this.createPhoneNumber();
-        currentContactFormArray.push(newPhoneNumberGroup);
-      }
+      //
+      // for (const phoneNumber of this.customerPhoneNumbers) {
+      //   const newPhoneNumberGroup = this.createPhoneNumber();
+      //   currentContactFormArray.push(newPhoneNumberGroup);
+      // }
       for (const address of this.customerAddresses) {
         const newAddressGroup = this.createAddress();
         currentAddressFormArray.push(newAddressGroup);
@@ -49,7 +49,7 @@ export class InformationComponent implements OnInit {
     });
 
     this.informationForm = this.formBuilder.group({
-      phoneNumbers: this.formBuilder.array([]),
+      phones: this.formBuilder.array([]),
       addresses: this.formBuilder.array([])
     });
   }
