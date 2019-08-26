@@ -10,8 +10,8 @@
             <a [routerLink]="['./reviews']" routerLinkActive="active"><i class="fa fa-star-o"></i></a>
           </div>
           <div class="right-actions" (click)="toggleWishlist()">
-            <i *ngIf="!product.isWishlisted" class='far fa-heart'></i>
-            <i *ngIf="product.isWishlisted" class='fas fa-heart'></i>
+            <i *ngIf="!isWishlisted()" class='far fa-heart'></i>
+            <i *ngIf="isWishlisted()" class='fas fa-heart'></i>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
           <div class="product-info-body">
             <div class="product-name-instock">
               <h3 class="product-name">{{ product.name }}</h3>
-              <h5>{{ product.isInStock() ? 'In Stock (' + product.inStock + ')' : 'Out of stock' }}</h5>
+              <h5>{{ product.inStockState ? 'In Stock (' + product.inStock + ')' : 'Out of stock' }}</h5>
             </div>
             <p class="product-description">{{ product.description }}</p>
             <div class="product-controls">

@@ -4,7 +4,7 @@ import {ProductModel} from '../../../shared/models/product.model';
 import {ProductService} from '../../../shared/services/product.service';
 import {CartService} from '../../../shared/services/cart.service';
 import {WishlistService} from '../../../shared/services/wishlist.service';
-import {ProductWishlistModel} from "../../../shared/models/product-wishlist.model";
+import {ProductWishlistModel} from '../../../shared/models/product-wishlist.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -23,6 +23,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('THIS IS THE PRODUCT: ' + this.product);
     this.activatedRoute.params.subscribe(res => {
       if (res.id) {
         this.product = this.productService.getProduct(res.id);
@@ -30,7 +31,9 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  getQuantity(event) { this.quantity = event.target.value;}
+  getQuantity(event) {
+    this.quantity = event.target.value;
+  }
 
   isWishlisted(): boolean {
     return this.wishlistService.getProductInWishlist(this.product.id);
