@@ -66,7 +66,8 @@ import { SuccessScreenComponent } from './cart/success-screen/success-screen.com
     SuccessScreenComponent,
   ],
   exports: [
-    PaginationComponent
+    PaginationComponent,
+    CartPreviewComponent
   ],
   imports: [
     CommonModule,

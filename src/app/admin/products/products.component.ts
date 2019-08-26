@@ -3,6 +3,11 @@ import {ProductsService} from './products.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpErrorResponse} from '@angular/common/http';
+import {PlatformsService} from "../platforms/platforms.service";
+import {BrandsService} from "../brands/brands.service";
+import {PlatformsModel} from "../platforms/platforms.model";
+import {BrandsModel} from "../brands/brands.model";
+import {ProductsModel} from "./products.model";
 
 @Component({
   selector: 'app-products',
@@ -10,31 +15,51 @@ import {HttpErrorResponse} from '@angular/common/http';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  myTest= "enis";
   deleteModal = false;
   updateModal = false;
   insertModal = false;
-
+  platformList = PlatformsModel['']
+  brandsList = BrandsModel[''];
   productId: number;
-  productsList: any;
+  productsList: ProductsModel[];
   productsForm: FormGroup;
   updateForm: FormGroup;
+  platformObject : FormGroup;
+  brandObject: FormGroup;
 
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
-              private formBuilder: FormBuilder) {
+              private fb: FormBuilder,
+              private platformsService: PlatformsService,
+              private brandsService: BrandsService) {
   }
 
   ngOnInit() {
-    this.productsService.getAllProducts().subscribe((data: any) => {
+    this.productsService.getAllProducts().subscribe((data: ProductsModel[]) => {
       this.productsList = data;
       console.log(this.productsList);
     });
 
-    this.productsForm = this.formBuilder.group({
+    this.platformsService.getAllPlatforms().subscribe((data: any) => {
+      this.platformList = data;
+
+      console.log('from products func', data)
+
+    })
+    this.brandsService.getAllBrands().subscribe((data: any) => {
+      this.brandsList = data;
+    })
+
+    this.productsForm = this.fb.group({
       id: [],
       name: [''],
-      category: [''],
-      brand: [''],
+      platform: this.fb.group({
+        id:[]
+      }),
+      brand: this.fb.group({
+        id:[]
+      }),
       unitPrice: [],
       inStock: [],
       recordStatus: [''],
@@ -45,7 +70,11 @@ export class ProductsComponent implements OnInit {
       version: [0]
     });
 
-    this.updateForm = this.formBuilder.group({
+
+
+    console.log(this.productsForm.value)
+
+    this.updateForm = this.fb.group({
       name: [''],
       category: [''],
       brand: [''],
@@ -56,12 +85,11 @@ export class ProductsComponent implements OnInit {
       description: [''],
       version: ['']
     });
-
-    console.log(this.updateForm);
   }
 
   onSubmit() {
     const values = this.productsForm.value;
+    console.log(values)
     this.productsService.registerProduct(values).subscribe(
       get => {
         this.productsService.getAllProducts().subscribe((data: any) => {
@@ -96,14 +124,14 @@ export class ProductsComponent implements OnInit {
       }
     );
     this.toggleModal();
-    console.log('pitepite'+ this.productId);
+    console.log('pitepite' + this.productId);
   }
 
   openUpdate(
     id: number,
     name: string,
-    unitPrice: number,
-    inStock:number,
+    unitPrice: bigint,
+    inStock: number,
     recordStatus: string,
     updateDateTime: Date,
     deletedDateTime: Date,
@@ -157,4 +185,12 @@ export class ProductsComponent implements OnInit {
   toggleModal() {
     this.deleteModal = !this.deleteModal;
   }
+
+
+
+
+
+
+
+
 }

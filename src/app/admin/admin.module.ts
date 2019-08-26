@@ -16,9 +16,9 @@ import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import {PlatformsFilterPipe} from './platforms/platforms-filter.pipe';
 import {CustomersFPipe} from './customers/customers-f.pipe';
+import {PlatformsComponent} from './platforms/platforms.component';
 import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
-import {PlatformsComponent} from './platforms/platforms.component';
 
 @NgModule({
   declarations: [
