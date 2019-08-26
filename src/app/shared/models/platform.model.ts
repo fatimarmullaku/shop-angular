@@ -1,0 +1,3 @@
+class PlatformModel {
+  name: string;
+}

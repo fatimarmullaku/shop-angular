@@ -1,5 +1,4 @@
 import {ProductRatingModel} from './product-rating.model';
-import {PublisherModel} from "./publisher.model";
 
 export class ProductModel {
   id: number;
@@ -8,7 +7,7 @@ export class ProductModel {
   inStock: number;
   unitPrice: number;
   description: string;
-  platform: string;
+  platform: PlatformModel;
   rating: ProductRatingModel;
   inStockState = this.isInStock();
 
