@@ -117,15 +117,25 @@
         <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
-        <form (ngSubmit)="onSubmit( )" [formGroup]="form">
+        <form (ngSubmit)="onSubmit( )" [formGroup]="form" novalidate>
           <input class="form-control" formControlName="email"
                  placeholder="Email"
                  required
                  type="email">
+          <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" class="alert alert-danger">
+            <div *ngIf="form.controls['email'].errors.required">
+              Email is required.
+            </div>
+          </div>
           <input class="form-control" formControlName="recordStatus"
                  placeholder="Record Status"
                  required
                  type="text">
+          <div *ngIf="form.controls['recordStatus'].invalid && (form.controls['recordStatus'].dirty || form.controls['recordStatus'].touched)" class="alert alert-danger">
+            <div *ngIf="form.controls['recordStatus'].errors.required">
+              Record Status is required.
+            </div>
+          </div>
           <input class="form-control" formControlName="isVerified"
                  placeholder="Is Verified"
                  required
@@ -141,6 +151,7 @@
       </footer>
     </div>
   </div>
+</div>
 
 
 

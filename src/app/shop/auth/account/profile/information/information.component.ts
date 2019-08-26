@@ -27,7 +27,7 @@ export class InformationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.customer = this.customerService.getCustomer(1);
+    // this.customer = this.customerService.getCustomer(1);
 
     this.informationForm = this.formBuilder.group({
       firstName: new FormControl(''),
@@ -92,7 +92,8 @@ export class InformationComponent implements OnInit {
     event.preventDefault();
 
     if (this.customerAddresses[index]) {
-      this.customerAddresses = this.customerAddresses.filter(item => item.street != this.customerAddresses[index].street);
+      this.customerAddresses = this.customerAddresses.filter
+      (item => item.street !== this.customerAddresses[index].street);
     }
     this.addresses.removeAt(index);
   }

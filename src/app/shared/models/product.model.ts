@@ -10,6 +10,7 @@ export class ProductModel {
   description: string;
   platform: string;
   rating: ProductRatingModel;
+  inStockState = this.isInStock();
 
   isWishlisted = false;
 

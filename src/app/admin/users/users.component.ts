@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UsersService} from './users.service';
 import {HttpErrorResponse} from '@angular/common/http';
 
@@ -32,8 +32,8 @@ export class UsersComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       id: [],
-      email: [''],
-      recordStatus: [''],
+      email: ['', Validators.required ],
+      recordStatus: ['', Validators.required ],
       isVerified: [''],
       createDateTime: [''],
       updateDateTime: [''],

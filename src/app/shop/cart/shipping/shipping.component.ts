@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {CustomerModel} from '../../../shared/models/customer.model';
 import {AddressModel} from '../../../shared/models/address.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CustomerService} from '../../../shared/services/customer.service';
-import {add} from "ngx-bootstrap/chronos";
+import {HttpRequestMethod} from '../../../shared/constants/http-request.method';
+import {ENDPOINTS} from '../../../shared/constants/api.constants';
+import {RestService} from '../../../shared/services/rest.service';
+import {BaseStorageService} from '../../../shared/services/base-storage.service';
+import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
 
 @Component({
   selector: 'app-shipping',
@@ -17,36 +20,43 @@ export class ShippingComponent implements OnInit {
   addresses: FormArray;
   clicked = false;
   nextClicked = true;
+  selectedAddress: any;
 
   constructor(private formBuilder: FormBuilder,
               public router: Router,
+              private restService: RestService,
               private activatedRoute: ActivatedRoute,
-              private customerService: CustomerService
-  ) { }
-
-  ngOnInit() {
-    this.customer = this.customerService.getCustomer(1);
-
-    this.shippingFormGroup = this.formBuilder.group({
-      addresses: this.formBuilder.array([])
-    });
-
-    this.customerAddresses = this.customer.addresses;
-
-    const currentAddressFormArray = this.shippingFormGroup.get('addresses') as FormArray;
-
-    for (const address of this.customerAddresses) {
-      const newAddressGroup = this.createAddress();
-      currentAddressFormArray.push(newAddressGroup);
-    }
+              private baseStorage: BaseStorageService
+  ) {
   }
 
-  createAddress(): FormGroup {
+  ngOnInit() {
+    this.fetchCustomer();
+    this.shippingFormGroup = new FormGroup({
+      addresses: new FormArray([])
+    });
+  }
+
+  fetchCustomer(): void {
+    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll)
+      .subscribe((res) => {
+          const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+          const tempId = +customerId;
+          this.customer = res.filter(item => item.id === tempId)[0];
+          this.loadAdressesView();
+        },
+        error => {
+          console.error(error);
+        });
+  }
+
+  createAddress(index?: number): FormGroup {
     return this.formBuilder.group({
-      country: this.customer.addresses,
-      city: new FormControl(''),
-      zipCode: new FormControl(''),
-      street: new FormControl('')
+      id: new FormControl(this.customer.addresses[index].id),
+      country: new FormControl(this.customer.addresses[index].country),
+      city: new FormControl(this.customer.addresses[index].city),
+      zipCode: new FormControl(this.customer.addresses[index].zipCode),
+      street: new FormControl(this.customer.addresses[index].street)
     });
   }
 
@@ -58,18 +68,26 @@ export class ShippingComponent implements OnInit {
 
   onSubmit(event: any) {
     event.preventDefault();
-
-    console.log(this.shippingFormGroup.getRawValue());
-
+    const address = {
+      id: this.selectedAddress.id
+    };
+    this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, address);
   }
 
-  getRadioValue(value: any){
-     if(value == 'radio0'){
-       console.log(this.shippingFormGroup.getRawValue());
-       this.nextClicked = false;
-     }else if(value == 'radio1'){
-       console.log(this.shippingFormGroup.getRawValue());
-       this.nextClicked = false;
-     }
+  getRadioValue(value: any) {
+    const temp = this.shippingFormGroup.get('addresses') as FormArray;
+    this.selectedAddress = temp.at(value).value;
+    this.nextClicked = false;
+  }
+
+  private loadAdressesView() {
+    const currentAddressFormArray = this.shippingFormGroup.get('addresses') as FormArray;
+    this.customerAddresses = this.customer.addresses;
+    let i = 0;
+    for (const address of this.customerAddresses) {
+      const newAddressGroup = this.createAddress(i);
+      currentAddressFormArray.push(newAddressGroup);
+      i++;
+    }
   }
 }

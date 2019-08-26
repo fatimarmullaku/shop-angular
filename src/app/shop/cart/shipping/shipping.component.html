@@ -51,7 +51,7 @@
                       <div [formGroupName]="i" class="columns">
                         <div class="column is-1" style="margin-top: 10px">
                           <label class="label" style="visibility: hidden">sada</label>
-                          <input  #radioAddress name="customRadio" value="{{'radio' + i}}" type="radio" (click)="getRadioValue(radioAddress.value)">
+                          <input  #radioAddress name="customRadio" value="{{i}}" type="radio" (click)="getRadioValue(radioAddress.value)">
                         </div>
                         <div class="column is-3">
                           <label class="label">Country</label>
