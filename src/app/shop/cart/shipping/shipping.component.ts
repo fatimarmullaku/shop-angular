@@ -20,7 +20,7 @@ export class ShippingComponent implements OnInit {
   addresses: FormArray;
   clicked = false;
   nextClicked = true;
-  clickedAddress: number;
+  selectedAddress: any;
 
   constructor(private formBuilder: FormBuilder,
               public router: Router,
@@ -52,6 +52,7 @@ export class ShippingComponent implements OnInit {
 
   createAddress(index?: number): FormGroup {
     return this.formBuilder.group({
+      id: new FormControl(this.customer.addresses[index].id),
       country: new FormControl(this.customer.addresses[index].country),
       city: new FormControl(this.customer.addresses[index].city),
       zipCode: new FormControl(this.customer.addresses[index].zipCode),
@@ -67,26 +68,16 @@ export class ShippingComponent implements OnInit {
 
   onSubmit(event: any) {
     event.preventDefault();
-    /*
-    * Create Address model.
-    * Bind the data from the selected address.
-    * *
-    * Create a local storage key.
-    * Stringify the json before sending it.
-    * */
-    console.log(this.shippingFormGroup.getRawValue());
-
+    const address = {
+      id: this.selectedAddress.id
+    };
+    this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, address);
   }
 
   getRadioValue(value: any) {
-      const temp = this.shippingFormGroup.get('addresses') as FormArray;
-      console.log('VALUE OF RADIO: ', temp.at(value).value);
-      this.nextClicked = false;
-
-    /*else if (value === 'radio1') {
-      console.log('VALUE OF RADIO 2: ', this.shippingFormGroup.getRawValue());
-      this.nextClicked = false;
-    }*/
+    const temp = this.shippingFormGroup.get('addresses') as FormArray;
+    this.selectedAddress = temp.at(value).value;
+    this.nextClicked = false;
   }
 
   private loadAdressesView() {
