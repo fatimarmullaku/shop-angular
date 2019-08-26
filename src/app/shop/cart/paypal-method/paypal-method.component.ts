@@ -21,6 +21,7 @@ export class PaypalMethodComponent implements OnInit {
   buy() {
     this.purchaseService.buy().subscribe((res) => {
         this.baseStorage.clearStorageOf(LocalStorageKey.CART);
+        this.baseStorage.clearStorageOf(LocalStorageKey.SHIPPING_ADDRESS_ID);
       },
       (error) => {
         console.error(error);
