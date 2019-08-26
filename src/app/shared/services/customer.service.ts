@@ -7,6 +7,7 @@ import {AddressModel} from '../models/address.model';
 import {RestService} from './rest.service';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
+import {LocalStorageKey} from '../constants/local-storage-key';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class CustomerService {
               private baseStorage: BaseStorageService,
               private restService: RestService) {
     this.fetchCustomerById(1);
-    // this.fetchCustomers();
+    this.fetchCustomers();
   }
 
   fetchCustomers(): void {
@@ -82,7 +83,10 @@ export class CustomerService {
   }
 
   fetchCustomerById(customerId: number) {
-    this.restService.publicRequest<CustomerModel>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + '/' + this.baseStorage.getStorageOf('customerId', true))
-      .subscribe(customerModel => this.customers = [customerModel]);
+    this.restService.publicRequest<CustomerModel>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + '/' + this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true))
+      .subscribe(customerModel => {
+        this.customers = [customerModel];
+        console.log(this.customers);
+      });
   }
 }

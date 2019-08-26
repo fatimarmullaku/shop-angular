@@ -4,11 +4,8 @@
 
 export const environment = {
   production: false,
-<<<<<<< Updated upstream
   apiHost: 'http://localhost:8080/api/v1'
-=======
-  apiHost: 'localhost:8080/api/v1/'
->>>>>>> Stashed changes
+
 };
 
 /*

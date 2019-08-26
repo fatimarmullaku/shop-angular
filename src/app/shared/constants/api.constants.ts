@@ -7,7 +7,7 @@ const AUTH = {
   newPassword: environment.apiHost + 'auth/new-password'
 };
 const PRODUCTS = {
-  getAll: environment.apiHost + 'products',
+  getAll: environment.apiHost + '/products',
   getProduct: environment.apiHost + '/products/{id}'
 };
 
