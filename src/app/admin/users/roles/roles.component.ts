@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 import {RolesService} from './roles.service';
 
@@ -31,9 +31,9 @@ export class RolesComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       id: [],
-      name: [''],
-      roleDescription: [''],
-      recordStatus: [''],
+      name:  ['', Validators.required ],
+      roleDescription: ['', Validators.required ],
+      recordStatus: ['', Validators.required ],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
