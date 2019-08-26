@@ -11,6 +11,6 @@ export class CustomerModel {
   deletedDateTime: Date;
   description: string;
   version: number;
-  addresses: AddressesModel[];
-  phoneNumbers: PhoneModel[];
+  addresses: AddressesModel;
+  phoneNumbers: PhoneModel;
 }

@@ -13,7 +13,6 @@ import {TablesDComponent} from '../shared/tables-d/tables-d.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
-import {PublishersComponent} from './products/publishers/publishers.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import {PlatformsFilterPipe} from './platforms/platforms-filter.pipe';
 import {CustomersFPipe} from './customers/customers-f.pipe';
@@ -32,7 +31,6 @@ import {DateFilterPipe} from './customers/date-filter.pipe';
     HomeComponent,
     CustomersComponent,
     TablesDComponent,
-    PublishersComponent,
     SidebarComponent,
     PlatformsFilterPipe,
     CustomersFPipe,

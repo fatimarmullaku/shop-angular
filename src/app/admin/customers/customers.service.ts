@@ -15,7 +15,7 @@ export class CustomersService {
 
 
   getAllCustomers() {
-    return this.http.get(this.rootUrl);
+    return this.http.get(this.rootUrl + 'allActive');
   }
 
   registerCustomer(values) {
@@ -29,7 +29,7 @@ export class CustomersService {
   }
 
   updateCustomer(data, id) {
-    console.log('from service', data);
+    console.log('update from service', data);
     return this.http.put(this.rootUrl + id, data);
   }
 
