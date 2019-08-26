@@ -17,6 +17,7 @@ import {UserService} from './shared/services/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap';
+import {AdminModule} from "./admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {ModalModule} from 'ngx-bootstrap';
     HttpClientModule,
     BrowserModule,
     SharedModule,
+    AdminModule,
     AppRoutingModule,
     MatSidenavModule,
     MatToolbarModule,
