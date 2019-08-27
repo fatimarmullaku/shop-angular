@@ -203,13 +203,13 @@ export class ProductsComponent implements OnInit {
     this.selectedFile2 = event.target.files[0];
     console.log(this.selectedFile2);
   }
-  // onFileUpdate() {
-  //   const payload = new FormData();
-  //   payload.append('productId', this.productId.toString());
-  //   payload.append('files', this.selectedFile, this.selectedFile.name);
-  //   this.productsService.uploadFiles(payload);
-  //   this.updateModal = false;
-  // }
+  onFileUpdate() {
+    const payload = new FormData();
+    payload.append('productId', this.productId.toString());
+    payload.append('files', this.selectedFile, this.selectedFile.name);
+    this.productsService.uploadFiles(payload);
+    this.updateModal = false;
+  }
 
   openInsert() {
     console.log('insert is called');
