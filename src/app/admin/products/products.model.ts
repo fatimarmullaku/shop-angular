@@ -1,7 +1,9 @@
-import {PlatformsModel} from "../platforms/platforms.model";
-import {BrandsModel} from "../brands/brands.model";
+import {PlatformsModel} from '../platforms/platforms.model';
+import {BrandsModel} from '../brands/brands.model';
 
 export class ProductsModel {
+  platform: PlatformsModel;
+  brand: BrandsModel;
   id: number;
   name: string;
   unitPrice: bigint;
@@ -12,6 +14,4 @@ export class ProductsModel {
   deletedDateTime: Date;
   description: string;
   version: number;
-  platform: PlatformsModel;
-  brand: BrandsModel;
 }

@@ -25,15 +25,15 @@ export class ProductsComponent implements OnInit {
   productsForm: FormGroup;
   updateForm: FormGroup;
   fileForm: FormGroup;
-  platformObject: FormGroup;
-  brandObject: FormGroup;
-  pName: string;
   filePId;
   name = 'Angular';
   image: File;
-  resData: any;
   selectedFile = null;
   selectedFile2 = null;
+  resData: any;
+  platformObject: FormGroup;
+  brandObject: FormGroup;
+  pName: string;
 
 
   constructor(private productsService: ProductsService,
@@ -44,7 +44,6 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.fileForm = this.fb.group({
       files: [],
     });
@@ -82,7 +81,6 @@ export class ProductsComponent implements OnInit {
     });
 
 
-    console.log(this.productsForm.value)
 
     this.updateForm = this.fb.group({
       name: [''],
@@ -101,6 +99,13 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  getCurrenPid() {
+    this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
+      this.filePId = data;
+    });
+  }
+
+
   onAddProduct() {
     const values = this.productsForm.value;
     console.log(values)
@@ -115,12 +120,6 @@ export class ProductsComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-
-  getCurrenPid() {
-    this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
-      this.filePId = data;
-    });
   }
 
   onFileSelected(event) {
@@ -220,7 +219,6 @@ export class ProductsComponent implements OnInit {
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
     this.updateForm.reset();
-    this.fileForm.reset();
   }
 
   closeInsertModal() {
