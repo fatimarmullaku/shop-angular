@@ -1,31 +1,43 @@
 <div class="panel panel-default panel-order">
+
+
   <div class="panel-heading">
     <strong>Order history</strong>
-    <div class="btn-group pull-right">
-      <div class="btn-group">
-        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-          Filter history <i class="fa fa-filter"></i>
-        </button>
-      </div>
-    </div>
   </div>
 
-  <div class="panel-body">
-    <div class="row"*ngFor="let d of data">
-      <div class="col-md-1"><img src="assets/img/My-Cart/tick.png" class="media-object img-thumbnail"></div>
-      <div class="col-md-11">
-        <div class="row">
-          <div class="col-md-12">
+
+  <br>
+  <br>
+  <div class="panel-body columns is-multiline overflow-auto">
+    <div class="row column columns is-10-desktop is-offset-1-desktop" *ngFor="let d of data">
+
+      <div class="columns column is-1-desktop is-vcentered"><img src="assets/img/My-Cart/tick.png" class="media-object img-thumbnail"></div>
+      <div class="column is-11">
+        <div class="columns row">
+          <div class="column is-12">
             <span><strong>Order Id: 122334</strong></span><br>
             <span class=""><strong>Customer ID: 321425</strong></span><br>
             <span class=""><strong>Total Amount: 324.00$</strong></span><br>
           </div>
-          <div class="col-md-12">
-            order made on:{{currentDate | date:'yyyy-MM-dd'}}, {{ now | date:'HH:mm'}} by <a href="#">{{ d.customer}} </a>
+          <div class="column is-12 alert-dark">
+            order made on: {{currentDate | date:'yyyy-MM-dd'}} , {{ now | date:'HH:mm'}} by <a
+            href="#"> {{ d.customer}} </a>
           </div>
         </div>
       </div>
+      <mat-expansion-panel class="column is-offset-1">
+        <mat-expansion-panel-header>
+          Products purchased
+        </mat-expansion-panel-header>
+
+        <div >
+
+        </div>
+      </mat-expansion-panel>
     </div>
   </div>
+
 </div>
+
+
 
