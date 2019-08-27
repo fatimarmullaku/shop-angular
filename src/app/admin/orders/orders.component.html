@@ -11,16 +11,16 @@
   </div>
 
   <div class="panel-body">
-    <div class="row">
+    <div class="row"*ngFor="let d of data">
       <div class="col-md-1"><img src="assets/img/My-Cart/tick.png" class="media-object img-thumbnail"></div>
       <div class="col-md-11">
         <div class="row">
           <div class="col-md-12">
-            <span><strong>Order name</strong></span> <span class="label label-info">Group name</span><br>
+            <span><strong>{{ d.customer }} bought {{ d.title}}</strong></span> <span class="label label-info">Group name</span><br>
             Quantity : 2, cost: $323.13 <br>
           </div>
           <div class="col-md-12">
-            order made on: 05/31/2019 by <a href="#">Drilon Gashi </a>
+            order made on:{{currentDate | date:'yyyy-MM-dd'}}, {{ now | date:'HH:mm'}} by <a href="#">{{ d.customer}} </a>
           </div>
         </div>
       </div>
