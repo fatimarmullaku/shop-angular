@@ -10,9 +10,9 @@ import {ENDPOINTS} from '../../shared/constants/api.constants';
 })
 export class ProductUploadComponent implements OnInit {
 
-  myUrl = 'http://localhost:8080/api/v1/products/withimage';
+  myUrl = '';
   productForm: FormGroup;
-  fileChosen: any;
+  fileChosen: File;
 
   constructor(private formBuilder: FormBuilder,
               private restService: RestService,
@@ -33,6 +33,7 @@ export class ProductUploadComponent implements OnInit {
 
   onSelectFile(event: any) {
     event.preventDefault();
+    console.log(event.target.files[0]);
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
 
@@ -53,9 +54,9 @@ export class ProductUploadComponent implements OnInit {
 
     const payload = {
       name: this.form.name.value,
-    unitPrice: this.form.unitPrice.value,
-    inStock: this.form.inStock.value
-  };
+      unitPrice: this.form.unitPrice.value,
+      inStock: this.form.inStock.value
+    };
     console.log(payload);
     const stringifiedPayload = JSON.stringify(payload);
     console.log('STRINGIFIED PAYLOAD', stringifiedPayload);
@@ -64,9 +65,9 @@ export class ProductUploadComponent implements OnInit {
     formData.forEach(value => {
       console.log(value);
     });
-    this.httpClient.post<any>(this.myUrl, formData).subscribe((res) => {
-      console.log('RESULT', res);
-    },
+    this.httpClient.post<any>(ENDPOINTS.products.getAll + '/withimage', formData).subscribe((res) => {
+        console.log('RESULT', res);
+      },
       (error) => {
         console.log('ERROR', error);
       });

@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
             const carts = result as Array<ProductCartModel>;
             carts.forEach(item => {
               this.cartQty += item.qty;
-            })
+            });
           }
       }
     );
