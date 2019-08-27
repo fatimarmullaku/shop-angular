@@ -7,25 +7,36 @@ import {OrderModel} from './orders.model';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  om = new OrderModel();
+  om = new OrderModel('Agron',
+    234,
+    6456,
+    '2019-08-22T15:53:37',
+    23423.5,
+    [{
+      product_id: 1,
+      name: 'Pes 2015',
+      quantity: 2
+    },
+      {
+        product_id: 1,
+        name: 'Fifa 18',
+        quantity: 2
+      }
+    ]);
 
   data = [
-    {customer: 'Drilon Gashi', title: 'PES12', time: '22:05AM'},
-    {customer: 'Drilon Gashi', title: 'PES12', time: '22:05AM'},
-    {customer: 'Drilon Gashi', title: 'PES12', time: '22:05AM'},
-    {customer: 'Drilon Gashi', title: 'PES12', time: '22:05AM'}
+    this.om, this.om, this.om, this.om, this.om, this.om
   ];
 
-  now: number;
-  currentDate = new Date();
-
   constructor() {
-    setInterval(() => {
-      this.now = Date.now();
-    });
+
   }
 
   ngOnInit(): void {
+  }
+
+  parseDate(d: string){
+    return new Date(d);
   }
 
 }
