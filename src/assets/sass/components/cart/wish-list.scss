@@ -1,6 +1,12 @@
-body{
+//body{
+//  //background: #000;
+//  //padding-bottom: 150px;
+//}
+.dark_background {
   background: #000;
   padding-bottom: 150px;
+  min-height: 100vh;
+
 }
 .main-box {
   border: 1px solid map_get($ucx-colors,deep-orange);
