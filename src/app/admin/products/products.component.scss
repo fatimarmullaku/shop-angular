@@ -1,35 +1,41 @@
-.card{
+.card {
   background: transparent;
+
   .card-header {
     text-align: center;
-    color:black;
+    color: black;
   }
+
   .scrollable {
     position: relative;
     height: 200px;
     overflow: auto;
     display: block;
   }
-  .card-body{
-    .table{
+
+  .card-body {
+    .table {
       border: #4b4747 solid 1px;
       background: transparent;
-      color:black;
-      .thead{
+      color: black;
+
+      .thead {
         background-color: #4b4747;
+
         th {
           padding: 10px 15px;
-          color:white;
+          color: white;
           font-size: 12px;
           text-transform: uppercase;
         }
-        .add{
+
+        .add {
           background: #40be65;
         }
       }
-      .tbody
-      {
-        td{
+
+      .tbody {
+        td {
           border-color: #4b4747;
         }
       }
