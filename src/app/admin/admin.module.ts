@@ -19,6 +19,7 @@ import {CustomersFPipe} from './customers/customers-f.pipe';
 import {PlatformsComponent} from './platforms/platforms.component';
 import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
+import {ShopModule} from "../shop/shop.module";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {BrandsFilterPipe} from './brands/brands-filter.pipe';
     MatIconModule,
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    MatExpansionModule
+    MatExpansionModule,
+    ShopModule
 
   ]
 })

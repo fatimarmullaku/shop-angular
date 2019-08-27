@@ -33,10 +33,12 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   parseDate(d: string){
     return new Date(d);
   }
+
 
 }
