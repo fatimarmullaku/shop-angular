@@ -19,7 +19,7 @@ export class ProductGalleryComponent implements OnInit {
       console.log(res);
       if (res.id) {
         this.productService.getProductObservable(res.id).subscribe(response => {
-          this.image = `assets/img/${response.fileName}`;
+          this.image = response.fileName === null ? '/assets/img/bf4-cover.jpg' : '/assets/img/' + response.fileName;
         });
       }
     });
