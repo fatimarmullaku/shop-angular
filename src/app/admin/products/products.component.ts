@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core;
+import {Component, OnInit} from '@angular/core';
 import {ProductsService} from './products.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +17,7 @@ import {ProductsModel} from "./products.model";
 export class ProductsComponent implements OnInit {
   deleteModal = false;
   updateModal = false;
-  insertModal = true;
+  insertModal = false;
   platformList = PlatformsModel['']
   brandsList = BrandsModel[''];
   productId: number;
@@ -33,8 +33,8 @@ export class ProductsComponent implements OnInit {
   image: File;
   resData: any;
   selectedFile = null;
+  selectedFile2 = null;
 
-  fileToUpload;
 
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
@@ -74,7 +74,6 @@ export class ProductsComponent implements OnInit {
       }),
       unitPrice: [],
       inStock: [],
-      recordStatus: [''],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
@@ -134,7 +133,9 @@ export class ProductsComponent implements OnInit {
     payload.append('productId', this.filePId);
     payload.append('files', this.selectedFile, this.selectedFile.name);
     this.productsService.uploadFiles(payload);
-
+    this.insertModal = false;
+    this.productsForm.reset();
+    this.fileForm.reset();
   }
 
   openDelete(pid) {
@@ -195,9 +196,20 @@ export class ProductsComponent implements OnInit {
         console.log(err);
       }
     );
-    this.updateModal = false;
+
   }
 
+  onFileSelected2(event) {
+    this.selectedFile2 = event.target.files[0];
+    console.log(this.selectedFile2);
+  }
+  onFileUpdate() {
+    const payload = new FormData();
+    payload.append('productId', this.productId.toString());
+    payload.append('files', this.selectedFile, this.selectedFile.name);
+    this.productsService.uploadFiles(payload);
+    this.updateModal = false;
+  }
 
   openInsert() {
     console.log('insert is called');
@@ -208,11 +220,13 @@ export class ProductsComponent implements OnInit {
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
     this.updateForm.reset();
+    this.fileForm.reset();
   }
 
   closeInsertModal() {
     this.insertModal = !this.insertModal;
-    this.updateForm.reset();
+    this.productsForm.reset();
+    this.fileForm.reset();
   }
 
   toggleModal() {

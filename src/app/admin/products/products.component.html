@@ -121,10 +121,17 @@
                 <textarea formControlName="description" class="textarea" placeholder="Textarea"></textarea>
               </div>
             </div>
+            <button (click)="onUpdate()" class="button is-danger">Update</button>
           </form>
+            <form (ngSubmit)="onFileUpdate()" [formGroup]="fileForm">
+              <div>
+                <input type="file" name="image" (change)="onFileSelected2($event)" >
+              </div>
+              <button (click)="onFileUpdate()" class="button is-danger">Add file</button>
+            </form>
+
         </section>
         <footer class="modal-card-foot">
-          <button (click)="onUpdate()" class="button is-danger">Update</button>
           <button (click)="closeUpdateModal()" class="button">Cancel</button>
         </footer>
       </div>
@@ -147,7 +154,6 @@
                        formControlName="name"
                        type="text">
               </div>
-
               <div class="column" formGroupName="platform">
                 <select   formControlName="id" id="">
                   <option *ngFor="let p of platformList" [ngValue]="p.id">
@@ -177,16 +183,12 @@
                        type="boolean">
               </div>
             </div>
-            <input class="form-control" formControlName="recordStatus"
-                   placeholder="Record Status"
-                   required
-                   type="text">
+
             <div class="control">
               <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
             </div>
-            <button   class="button is-danger">Add Product</button>
+            <button  (click)="onAddProduct()" class="button is-danger">Add Product</button>
           </form>
-
 
           <form (ngSubmit)="onFileUpload()" [formGroup]="fileForm">
             <div>
