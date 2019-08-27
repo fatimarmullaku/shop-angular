@@ -8,6 +8,7 @@ export class ProductsService {
   readonly rootUrl = 'http://localhost:8080/api/v1/products/';
 
   resData: any;
+
   constructor(private http: HttpClient) {
   }
 
@@ -16,17 +17,15 @@ export class ProductsService {
 
   }
 
-  getProductId(name)
-  {
-    return this.http.get(this.rootUrl + "name/" + name);
+  getProductId(name) {
+    return this.http.get(this.rootUrl + 'name/' + name);
   }
 
   registerProduct(data) {
-    return this.http.post(this.rootUrl , data);
+    return this.http.post(this.rootUrl, data);
   }
 
-  uploadFiles(payload)
-  {
+  uploadFiles(payload) {
     this.http
       .post('http://localhost:8080/api/v1/upload/',
         payload
@@ -36,12 +35,12 @@ export class ProductsService {
     });
   }
 
-  deleteProduct(id) {
-    return this.http.delete(this.rootUrl +id);
+  updateProduct(data, id) {
+    return this.http.put(this.rootUrl + id, data);
   }
 
-  updateProduct(data, id) {
-    console.log('from service', data, id)
-    return this.http.put(this.rootUrl + id, data);
+
+  deleteProduct(id) {
+    return this.http.delete(this.rootUrl + id);
   }
 }
