@@ -15,13 +15,13 @@ import {Router} from '@angular/router';
 })
 export class CartPreviewComponent implements OnInit {
 
-  //FormGroup
+  // FormGroup
   loginForm: FormGroup;
 
   products: ProductModel[];
   cartProducts: ProductCartModel[];
-  isModalActive: boolean = false;
-  showRoute: boolean = true;
+  isModalActive = false;
+  showRoute = true;
 
   constructor(private productService: ProductService,
               private cartService: CartService,
