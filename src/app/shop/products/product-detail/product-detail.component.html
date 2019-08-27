@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="product-details-container">
+<div class="product-details-container" *ngIf="product">
   <div class="columns is-vcentered">
     <div class="column product-panel">
       <div class="product-panel-wrapper">
@@ -27,7 +27,7 @@
               <h3 class="product-name">{{ product.name }}</h3>
               <h5>{{ product.inStockState ? 'In Stock (' + product.inStock + ')' : 'Out of stock' }}</h5>
             </div>
-            <p class="product-description">{{ product.description }}</p>
+            <p class="product-description">{{product.productDescription}}</p>
             <div class="product-controls">
               <div class="product-price">
                 <div class="heading">
