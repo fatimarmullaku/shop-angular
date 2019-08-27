@@ -33,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(res => {
       if (res.id) {
-        this.productService.getProduct(res.id).subscribe(response => {
+        this.productService.getProductObservable(res.id).subscribe(response => {
           this.product = response;
         });
       }

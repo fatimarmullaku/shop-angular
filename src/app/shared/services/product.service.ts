@@ -50,7 +50,18 @@ export class ProductService {
     return this.products;
   }
 
-  getProduct(id: number): Observable<ProductModel> {
+  getProduct(id: number): ProductModel {
+    const products = this.products.filter(item => item.id == id);
+    if (products) {
+      const product = products[0];
+      // product.isWishlisted = this.getProductInWishlist(product.id);
+      return product;
+    }
+
+    return null;
+  }
+
+  getProductObservable(id: number): Observable<ProductModel> {
     return this.productsObservable().pipe(
       map((response: ProductModel[]) => {
         console.log(response);

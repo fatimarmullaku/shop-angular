@@ -18,7 +18,7 @@ export class ProductGalleryComponent implements OnInit {
     this.activatedRoute.parent.params.subscribe(res => {
       console.log(res);
       if (res.id) {
-        this.productService.getProduct(res.id).subscribe(response => {
+        this.productService.getProductObservable(res.id).subscribe(response => {
           this.image = `assets/img/${response.fileName}`;
         });
       }
