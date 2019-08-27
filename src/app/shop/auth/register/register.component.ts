@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../shared/services/user.service';
 import {UserRegisterModel} from '../../../shared/models/user-register.model';
 import {Router} from "@angular/router";
+import {BaseStorageService} from "../../../shared/services/base-storage.service";
+import {LocalStorageKey} from "../../../shared/constants/local-storage-key";
 
 @Component({
   selector: 'app-register',
@@ -13,8 +15,13 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   isRegistered = false;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder,private routerLink: Router) {
+  constructor(private userService: UserService,
+              private formBuilder: FormBuilder,
+              private routerLink: Router,
+              private baseStorageService: BaseStorageService) {
   }
+
+
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -51,12 +58,19 @@ export class RegisterComponent implements OnInit {
         password: this.f.password.value
       };
 
+      const cartStorage = this.baseStorageService.getStorageOf(LocalStorageKey.CART);
+
       this.userService.register(payload)
         .subscribe((res) => {
           this.userService.login(payload.user.email, payload.user.password)
             .subscribe(r => {
               this.isRegistered = true;
+              if(cartStorage != null && cartStorage.length >0){
+                this.routerLink.navigateByUrl('/cart/shipping');
+              }
+              else if(cartStorage == null || cartStorage.length == 0){
               this.routerLink.navigateByUrl('/auth/additional-information');
+                }
 
             }, (err) => {
               console.error(err);
