@@ -8,12 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class OrdersComponent implements OnInit {
 
   data = [
-    {customer: 'Drilon Gashi', title: 'PES12', time: '22:05AM'},
-    {customer: 'Faton Podrimqaku', title: 'NEED FOR SPEED 12', time: '13:15AM'},
-    {customer: 'Enis Rasimi', title: 'Call of Duty', time: '17:05AM'},
-    {customer: 'Fati Murmallaku', title: 'PES12', time: '22:05AM'},
-    {customer: 'Pashtrik Gashi', title: 'NEED FOR SPEED 12', time: '13:15AM'},
-    {customer: 'Durim Gashi', title: 'Call of Duty', time: '17:05AM'},
+    {customer: 'Drilon Gashi', title: 'PES12', time: '22:05AM'}
   ];
 
   now:number;
