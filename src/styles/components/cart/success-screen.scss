@@ -1,0 +1,11 @@
+.track-order-btn {
+  background-color: #1f2833;
+  color: #f1f1f1;
+  border-color: map_get($ucx-colors, deep-orange);
+
+  &:hover {
+    background-color: map_get($ucx-colors, deep-orange);
+    border: none;
+    color: #f1f1f1;
+  }
+}

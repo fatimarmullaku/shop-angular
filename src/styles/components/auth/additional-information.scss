@@ -54,9 +54,9 @@
   font-weight: 300;
   cursor: pointer;
   border-radius: 3px;
-#removeaddress,#removephone{
-  margin-right: 5px;
-}
+  #removeaddress,#removephone{
+    margin-right: 5px;
+  }
   &:hover {
     background: map-get($ucx-colors, deep-orange);
   }
