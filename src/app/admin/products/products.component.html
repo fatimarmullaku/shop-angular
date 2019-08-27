@@ -88,7 +88,7 @@
           <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
         </header>
         <section class="modal-card-body">
-          <form (ngSubmit)="onSubmit( )" [formGroup]="updateForm">
+          <form (ngSubmit)="onUpdate()" [formGroup]="updateForm">
             <div class="columns">
               <div class="column">
                 <input class="form-control"
@@ -139,7 +139,7 @@
           <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
         </header>
         <section class="modal-card-body">
-          <form (ngSubmit)="onSubmit( )" [formGroup]="productsForm">
+          <form (ngSubmit)="onAddProduct()" [formGroup]="productsForm">
             <div class="columns">
               <div class="column">
                 <input class="form-control"
@@ -155,8 +155,6 @@
                   </option>
                 </select>
               </div>
-
-
               <div class="column" formGroupName="brand">
                 <select  formControlName="id" >
                   <option *ngFor="let b of brandsList" [ngValue]="b.id">
@@ -186,17 +184,18 @@
             <div class="control">
               <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
             </div>
-            <button (click)="onSubmit()" class="button is-danger" value="Submit">Add Product</button>
-          </form>
-          <form (ngSubmit)="onFileUpload()" [formGroup]="fileForm">
-            <div (click)="onBllah()">
-              <input type="file">
-            </div>
+            <button   class="button is-danger">Add Product</button>
           </form>
 
+
+          <form (ngSubmit)="onFileUpload()" [formGroup]="fileForm">
+            <div>
+              <input type="file" name="image" (click)="getCurrenPid()" (change)="onFileSelected($event)">
+            </div>
+            <button (click)="onFileUpload()" class="button is-danger">Add file</button>
+          </form>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-danger">Submit</button>
           <button (click)="closeInsertModal()" class="button">Cancel</button>
         </footer>
       </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core;
 import {ProductsService} from './products.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -15,10 +15,9 @@ import {ProductsModel} from "./products.model";
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  myTest= "enis";
   deleteModal = false;
   updateModal = false;
-  insertModal = false;
+  insertModal = true;
   platformList = PlatformsModel['']
   brandsList = BrandsModel[''];
   productId: number;
@@ -26,10 +25,16 @@ export class ProductsComponent implements OnInit {
   productsForm: FormGroup;
   updateForm: FormGroup;
   fileForm: FormGroup;
-  platformObject : FormGroup;
+  platformObject: FormGroup;
   brandObject: FormGroup;
-  pName:string;
+  pName: string;
   filePId;
+  name = 'Angular';
+  image: File;
+  resData: any;
+  selectedFile = null;
+
+  fileToUpload;
 
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
@@ -39,6 +44,11 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.fileForm = this.fb.group({
+      files: [],
+    });
+
     this.productsService.getAllProducts().subscribe((data: ProductsModel[]) => {
       this.productsList = data;
       console.log(this.productsList);
@@ -52,19 +62,15 @@ export class ProductsComponent implements OnInit {
     this.brandsService.getAllBrands().subscribe((data: any) => {
       this.brandsList = data;
     })
-    // this.productsService.getProductId(this.pName).subscribe((data:any)=>{
-    //   this.filePId = data;
-    //   console.log('from productId get', this.filePId);
-    // })
 
     this.productsForm = this.fb.group({
       id: [],
       name: [''],
       platform: this.fb.group({
-        id:[]
+        id: []
       }),
       brand: this.fb.group({
-        id:[]
+        id: []
       }),
       unitPrice: [],
       inStock: [],
@@ -75,7 +81,6 @@ export class ProductsComponent implements OnInit {
       description: [''],
       version: [0]
     });
-
 
 
     console.log(this.productsForm.value)
@@ -97,36 +102,38 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onAddProduct() {
     const values = this.productsForm.value;
     console.log(values)
     this.productsService.registerProduct(values).subscribe(
       get => {
         this.productsService.getAllProducts().subscribe((data: any) => {
           this.productsList = data;
+
         });
       },
       (err: HttpErrorResponse) => {
         console.log(err);
       }
-
     );
-    // this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data:any)=>{
-    //   this.filePId = data;
-    //   console.log(this.filePId);
-    // });
   }
 
-  onBllah()
-  {
-    this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data:any)=>{
+  getCurrenPid() {
+    this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
       this.filePId = data;
-      console.log(this.filePId);
     });
   }
 
-  onFileUpload()
-  {
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+  }
+
+  onFileUpload() {
+    const payload = new FormData();
+    payload.append('productId', this.filePId);
+    payload.append('files', this.selectedFile, this.selectedFile.name);
+    this.productsService.uploadFiles(payload);
 
   }
 
@@ -142,14 +149,14 @@ export class ProductsComponent implements OnInit {
         this.productsService.getAllProducts().subscribe((data: any) => {
           this.productsList = data;
         });
-        console.log("pitepite");
+
       },
       (err: HttpErrorResponse) => {
         console.log(err);
       }
     );
     this.toggleModal();
-    console.log('pitepite' + this.productId);
+
   }
 
   openUpdate(
@@ -191,6 +198,7 @@ export class ProductsComponent implements OnInit {
     this.updateModal = false;
   }
 
+
   openInsert() {
     console.log('insert is called');
     this.insertModal = true;
@@ -210,12 +218,6 @@ export class ProductsComponent implements OnInit {
   toggleModal() {
     this.deleteModal = !this.deleteModal;
   }
-
-
-
-
-
-
 
 
 }
