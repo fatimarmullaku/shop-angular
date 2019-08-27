@@ -25,8 +25,10 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     console.log('THIS IS THE PRODUCT: ' + this.product);
     this.activatedRoute.params.subscribe(res => {
+      console.log(res);
       if (res.id) {
         this.product = this.productService.getProduct(res.id);
+        console.log('PRODUCT BINDED RES', this.product);
       }
     });
   }
