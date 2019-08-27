@@ -19,6 +19,7 @@ import {CustomersFPipe} from './customers/customers-f.pipe';
 import {PlatformsComponent} from './platforms/platforms.component';
 import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {BrandsFilterPipe} from './brands/brands-filter.pipe';
     NgbModule,
     CommonModule,
     AdminRoutingModule,
+    HttpClientModule,
     MatToolbarModule,
     MatListModule,
     MatSidenavModule,

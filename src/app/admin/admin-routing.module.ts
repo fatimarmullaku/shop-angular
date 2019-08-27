@@ -9,7 +9,6 @@ import {CustomersComponent} from './customers/customers.component';
 import {AdminComponent} from './admin.component';
 import {PlatformsComponent} from './platforms/platforms.component';
 import {BrandsComponent} from './brands/brands.component';
-
 const routes: Routes = [
   {
     path: '',
