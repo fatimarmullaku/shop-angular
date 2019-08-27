@@ -113,3 +113,14 @@
   }
 }
 
+div.static-filter{
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #434343 -29%, #000000);
+  border-right: 1px solid grey;
+  margin-top: -20px;
+  padding-top: 20px;
+  input{
+    margin-left: 7px;
+  }
+}
