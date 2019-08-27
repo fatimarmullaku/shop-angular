@@ -16,6 +16,11 @@ export class ProductsService {
 
   }
 
+  getProductId(name)
+  {
+    return this.http.get(this.rootUrl + "name/" + name);
+  }
+
   registerProduct(data) {
     return this.http.post(this.rootUrl , data);
   }

@@ -25,8 +25,11 @@ export class ProductsComponent implements OnInit {
   productsList: ProductsModel[];
   productsForm: FormGroup;
   updateForm: FormGroup;
+  fileForm: FormGroup;
   platformObject : FormGroup;
   brandObject: FormGroup;
+  pName:string;
+  filePId;
 
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
@@ -40,7 +43,6 @@ export class ProductsComponent implements OnInit {
       this.productsList = data;
       console.log(this.productsList);
     });
-
     this.platformsService.getAllPlatforms().subscribe((data: any) => {
       this.platformList = data;
 
@@ -50,6 +52,10 @@ export class ProductsComponent implements OnInit {
     this.brandsService.getAllBrands().subscribe((data: any) => {
       this.brandsList = data;
     })
+    // this.productsService.getProductId(this.pName).subscribe((data:any)=>{
+    //   this.filePId = data;
+    //   console.log('from productId get', this.filePId);
+    // })
 
     this.productsForm = this.fb.group({
       id: [],
@@ -85,6 +91,10 @@ export class ProductsComponent implements OnInit {
       description: [''],
       version: ['']
     });
+
+    this.fileForm = this.fb.group({
+      fileUpload: ['']
+    });
   }
 
   onSubmit() {
@@ -99,9 +109,24 @@ export class ProductsComponent implements OnInit {
       (err: HttpErrorResponse) => {
         console.log(err);
       }
-    );
 
-    this.insertModal = false;
+    );
+    // this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data:any)=>{
+    //   this.filePId = data;
+    //   console.log(this.filePId);
+    // });
+  }
+
+  onBllah()
+  {
+    this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data:any)=>{
+      this.filePId = data;
+      console.log(this.filePId);
+    });
+  }
+
+  onFileUpload()
+  {
 
   }
 

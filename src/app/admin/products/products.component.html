@@ -186,10 +186,17 @@
             <div class="control">
               <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
             </div>
+            <button (click)="onSubmit()" class="button is-danger" value="Submit">Add Product</button>
           </form>
+          <form (ngSubmit)="onFileUpload()" [formGroup]="fileForm">
+            <div (click)="onBllah()">
+              <input type="file">
+            </div>
+          </form>
+
         </section>
         <footer class="modal-card-foot">
-          <button (click)="onSubmit()" class="button is-danger">Submit</button>
+          <button class="button is-danger">Submit</button>
           <button (click)="closeInsertModal()" class="button">Cancel</button>
         </footer>
       </div>
