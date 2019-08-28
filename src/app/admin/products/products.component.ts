@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from './products.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpErrorResponse} from '@angular/common/http';
 import {PlatformsService} from '../platforms/platforms.service';
@@ -33,11 +33,8 @@ export class ProductsComponent implements OnInit {
   image: File;
   selectedFile = null;
   selectedFile2 = null;
-  resData: any;
-  platformObject: FormGroup;
-  brandObject: FormGroup;
-  pName: string;
-
+  isNotPlatform = true;
+  isNotBrand = true;
 
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
@@ -69,10 +66,10 @@ export class ProductsComponent implements OnInit {
       id: [],
       name: [''],
       platform: this.fb.group({
-        id: []
+        id: ['', [Validators.required]]
       }),
       brand: this.fb.group({
-        id: []
+        id: ['', [Validators.required]]
       }),
       unitPrice: [],
       inStock: [],
@@ -116,39 +113,60 @@ export class ProductsComponent implements OnInit {
   }
 
   onAddProduct() {
-    const values = this.productsForm.value;
-    console.log('from ts', values)
-    this.productsService.registerProduct(values).subscribe(
-      get => {
-        this.productsService.getAllProducts().subscribe((data: any) => {
-          this.productsList = data;
+    if (this.productsForm.controls.platform.invalid && this.productsForm.controls.brand.invalid) {
+      this.isNotPlatform = false;
+      this.isNotBrand = false;
+      console.log('Si ki plotsu krejt platform  brand field-at');
+    }
+    else if (this.productsForm.controls.platform.invalid) {
+      this.isNotPlatform = false;
+      this.isNotBrand = true;
+      console.log('Si ki plotsu krejt platform field-at');
+    }
+    else if(this.productsForm.controls.brand.invalid)
+    {
+      this.isNotPlatform = true;
+      this.isNotBrand = false;
+      console.log('Si ki plotsu krejt brand field-at');
+    }
+    else {
+      this.isNotBrand = true;
+      this.isNotPlatform = true;
+      const values = this.productsForm.value;
+      console.log('from ts', values)
+      this.productsService.registerProduct(values).subscribe(
+        get => {
+          this.productsService.getAllProducts().subscribe((data: any) => {
+            this.productsList = data;
+          });
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err);
+        }
+      );
+
+      setTimeout(() => {
+        this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
+          this.filePId = data;
+          console.log('get id from product');
         });
-      },
-      (err: HttpErrorResponse) => {
-        console.log(err);
-      }
-    );
+      }, 2000);
 
-    setTimeout(() => {
-      this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
-        this.filePId = data;
-        console.log('get id from product');
-      });
-    }, 2000);
+      setTimeout(() => {
+        const payload = new FormData();
+        payload.append('productId', this.filePId);
+        payload.append('files', this.selectedFile, this.selectedFile.name);
+        this.productsService.uploadFiles(payload);
 
-    setTimeout(() => {
-      const payload = new FormData();
-      payload.append('productId', this.filePId);
-      payload.append('files', this.selectedFile, this.selectedFile.name);
-      this.productsService.uploadFiles(payload);
+        this.insertModal = false;
+        this.productsForm.reset();
+        this.fileForm.reset();
+        console.log('post product with image');
+      }, 5000);
 
       this.insertModal = false;
       this.productsForm.reset();
-      this.fileForm.reset();
-      console.log('post product with image');
-    }, 5000);
-
-    this.insertModal = false;
+    }
   }
 
   onFileSelected(event) {
@@ -235,14 +253,6 @@ export class ProductsComponent implements OnInit {
     console.log(this.selectedFile2);
   }
 
-  onFileUpdate() {
-    const payload = new FormData();
-    payload.append('productId', this.productId.toString());
-    payload.append('files', this.selectedFile2, this.selectedFile2.name);
-    this.productsService.uploadFiles(payload);
-    this.updateModal = false;
-  }
-
   openInsert() {
     console.log('insert is called');
     this.insertModal = true;
@@ -263,6 +273,5 @@ export class ProductsComponent implements OnInit {
   toggleModal() {
     this.deleteModal = !this.deleteModal;
   }
-
 
 }
