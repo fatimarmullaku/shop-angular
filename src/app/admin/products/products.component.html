@@ -1,45 +1,45 @@
 <div class="container">
-    <div class="card">
-      <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Products</h3>
-      <div class="card-body">
-        <div class="table-editable" id="table">
+  <div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Products</h3>
+    <div class="card-body">
+      <div class="table-editable" id="table">
             <span class="table-add float-right mb-3 mr-2">
                 <a>
                 <i (click)="openInsert()" class="fas fa-plus"></i>
                 </a>
             </span>
-          <table class="table table-bordered table-responsive-md table-striped text-center">
-            <tr>
-              <th>Name</th>
-              <th>Platform</th>
-              <th>Brand</th>
-              <th>Unit Price</th>
-              <th>in Stock</th>
-              <th>Record Status</th>
-              <th>Create Time</th>
-              <th>Update Time</th>
-              <th>Delete Time</th>
-              <th>Description</th>
-              <th>Version</th>
-              <th> </th>
-            </tr>
-            <tr *ngFor="let p of productsList">
-              <td>{{p.name}}</td>
-              <td> {{p?.platform?.name}} </td>
-              <td> {{p?.brand?.name}} </td>
-              <td> {{p.unitPrice}}</td>
-              <td> {{p.inStock}}</td>
-              <td>{{p.recordStatus}}</td>
-              <td>{{p.createDateTime}}</td>
-              <td>{{p.updateDateTime}}</td>
-              <td>{{p.deletedDateTime}}</td>
-              <td>{{p.description}}</td>
-              <td>{{p.version}}</td>
-              <td>
-                <a>
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th>Name</th>
+            <th>Platform</th>
+            <th>Brand</th>
+            <th>Unit Price</th>
+            <th>in Stock</th>
+            <th>Record Status</th>
+            <th>Create Time</th>
+            <th>Update Time</th>
+            <th>Delete Time</th>
+            <th>Description</th>
+            <th>Version</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let p of productsList">
+            <td>{{p.name}}</td>
+            <td> {{p?.platform?.name}} </td>
+            <td> {{p?.brand?.name}} </td>
+            <td> {{p.unitPrice}}</td>
+            <td> {{p.inStock}}</td>
+            <td>{{p.recordStatus}}</td>
+            <td>{{p.createDateTime}}</td>
+            <td>{{p.updateDateTime}}</td>
+            <td>{{p.deletedDateTime}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.version}}</td>
+            <td>
+              <a>
 
-                  <i
-                    (click)="openUpdate(
+                <i
+                  (click)="openUpdate(
                 p.id,
                 p.name,
                 p.unitPrice,
@@ -49,157 +49,162 @@
                 p.deletedDateTime,
                 p.description,
                 p.version) "
-                    class="far fa-edit"></i>
-                </a>
-                <i (click)="openDelete(p.id)" class="fa fa-trash" aria-hidden="true"></i>
-              </td>
-            </tr>
-          </table>
-        </div>
+                  class="far fa-edit"></i>
+              </a>
+              <i (click)="openDelete(p.id)" class="fa fa-trash" aria-hidden="true"></i>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
+  </div>
 
-    <div [ngClass]="{ 'is-active' : deleteModal }" class="modal">
-      <div (click)="toggleModal()" class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Delete Product</p>
-          <button (click)="toggleModal()" aria-label="close" class="delete"></button>
-        </header>
-        <section class="modal-card-body">
-          <p><strong>Are you sure you want to delete this Product ?</strong></p>
-          <p>All information associated to this product will be permanently deleted.
-            <br>
-            <span class="has-text-danger">This operation can not be undone!</span>
-        </section>
-        <footer class="modal-card-foot">
-          <button (click)="onDelete()" class="button is-danger">Delete</button>
-          <button (click)="toggleModal()" class="button">Cancel</button>
-        </footer>
-      </div>
+  <div [ngClass]="{ 'is-active' : deleteModal }" class="modal">
+    <div (click)="toggleModal()" class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Delete Product</p>
+        <button (click)="toggleModal()" aria-label="close" class="delete"></button>
+      </header>
+      <section class="modal-card-body">
+        <p><strong>Are you sure you want to delete this Product ?</strong></p>
+        <p>All information associated to this product will be permanently deleted.
+          <br>
+          <span class="has-text-danger">This operation can not be undone!</span>
+      </section>
+      <footer class="modal-card-foot">
+        <button (click)="onDelete()" class="button is-danger">Delete</button>
+        <button (click)="toggleModal()" class="button">Cancel</button>
+      </footer>
     </div>
+  </div>
 
 
-    <div [ngClass]="{ 'is-active' : updateModal }" class="modal">
-      <div (click)="closeUpdateModal()" class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Update Product</p>
-          <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
-        </header>
-        <section class="modal-card-body">
-          <form (ngSubmit)="onSubmit( )" [formGroup]="updateForm">
-            <div class="columns">
-              <div class="column">
-                <input class="form-control"
-                       placeholder="Name"
-                       formControlName="name"
-                       type="text">
-              </div>
+
+
+
+  <div [ngClass]="{ 'is-active' : insertModal }" class="modal">
+    <div (click)="closeInsertModal()" class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Insert Product</p>
+        <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
+      </header>
+      <section class="modal-card-body">
+        <form (ngSubmit)="onAddProduct()" [formGroup]="productsForm">
+          <div class="columns">
+            <div class="column">
+              <input class="form-control"
+                     placeholder="Name"
+                     formControlName="name"
+                     type="text">
             </div>
-            <div class="columns">
-              <div class="column">
-                <input class="form-control"
-                       placeholder="Unit Price"
-                       formControlName="unitPrice"
-                       type="text">
-              </div>
-              <div class="column">
-                <input class="form-control"
-                       placeholder="In Stock"
-                       formControlName="inStock"
-                       type="boolean">
-              </div>
+            <div class="column" formGroupName="platform">
+              <select formControlName="id" id="">
+                <option *ngFor="let p of platformList" [ngValue]="p.id">
+                  {{p.name}}
+                </option>
+              </select>
             </div>
-            <input class="form-control" formControlName="recordStatus"
-                   placeholder="Record Status"
-                   required
-                   type="text">
-            <div class="field">
-              <label class="label">Description</label>
-              <div class="control">
-                <textarea formControlName="description" class="textarea" placeholder="Textarea"></textarea>
-              </div>
+            <div class="column" formGroupName="brand">
+              <select formControlName="id">
+                <option *ngFor="let b of brandsList" [ngValue]="b.id">
+                  {{b.name}}
+                </option>
+              </select>
             </div>
-          </form>
-        </section>
-        <footer class="modal-card-foot">
-          <button (click)="onUpdate()" class="button is-danger">Update</button>
-          <button (click)="closeUpdateModal()" class="button">Cancel</button>
-        </footer>
-      </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <input class="form-control"
+                     placeholder="Unit Price"
+                     formControlName="unitPrice"
+                     type="text">
+            </div>
+            <div class="column">
+              <input class="form-control"
+                     placeholder="In Stock"
+                     formControlName="inStock"
+                     type="boolean">
+            </div>
+          </div>
+
+          <div class="control">
+            <textarea formControlName="description" class="textarea"
+                      placeholder="Add your description here! ">
+            </textarea>
+          </div>
+          <button (click)="onAddProduct()" class="button is-danger">Add Product</button>
+        </form>
+        <form (ngSubmit)="onFileUpload()" [formGroup]="fileForm">
+          <div>
+            <input type="file" name="image" (click)="getCurrenPid()" (change)="onFileSelected($event)">
+          </div>
+          <button (click)="onFileUpload()" class="button is-danger">Add file</button>
+        </form>
+      </section>
+      <footer class="modal-card-foot">
+        <button (click)="closeInsertModal()" class="button">Cancel</button>
+      </footer>
     </div>
-
-
-    <div [ngClass]="{ 'is-active' : insertModal }" class="modal">
-      <div (click)="closeInsertModal()" class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Insert Product</p>
-          <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
-        </header>
-        <section class="modal-card-body">
-          <form (ngSubmit)="onSubmit( )" [formGroup]="productsForm">
-            <div class="columns">
-              <div class="column">
-                <input class="form-control"
-                       placeholder="Name"
-                       formControlName="name"
-                       type="text">
-              </div>
-
-              <div class="column" formGroupName="platform">
-                <select   formControlName="id" id="">
-                  <option *ngFor="let p of platformList" [ngValue]="p.id">
-                    {{p.name}}
-                  </option>
-                </select>
-              </div>
-
-
-              <div class="column" formGroupName="brand">
-                <select  formControlName="id" >
-                  <option *ngFor="let b of brandsList" [ngValue]="b.id">
-                    {{b.name}}
-                  </option>
-                </select>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <input class="form-control"
-                       placeholder="Unit Price"
-                       formControlName="unitPrice"
-                       type="text">
-              </div>
-              <div class="column">
-                <input class="form-control"
-                       placeholder="In Stock"
-                       formControlName="inStock"
-                       type="boolean">
-              </div>
-            </div>
-            <input class="form-control" formControlName="recordStatus"
-                   placeholder="Record Status"
-                   required
-                   type="text">
-            <div class="control">
-              <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
-            </div>
-            <button (click)="onSubmit()" class="button is-danger" value="Submit">Add Product</button>
-          </form>
-          <form (ngSubmit)="onFileUpload()" [formGroup]="fileForm">
-            <div (click)="onBllah()">
-              <input type="file">
-            </div>
-          </form>
-
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button is-danger">Submit</button>
-          <button (click)="closeInsertModal()" class="button">Cancel</button>
-        </footer>
-      </div>
-    </div>
+  </div>
 </div>
 
+
+
+<div [ngClass]="{ 'is-active' : updateModal }" class="modal">
+  <div (click)="closeUpdateModal()" class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Update Product</p>
+      <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (ngSubmit)="onUpdate()" [formGroup]="updateForm">
+        <div class="columns">
+          <div class="column">
+            <input
+              class="form-control"
+              placeholder="Name"
+              formControlName="name"
+              type="text">
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <input class="form-control"
+                   placeholder="Unit Price"
+                   formControlName="unitPrice"
+                   type="text">
+          </div>
+          <div class="column">
+            <input class="form-control"
+                   placeholder="In Stock"
+                   formControlName="inStock"
+                   type="boolean">
+          </div>
+        </div>
+        <input class="form-control" formControlName="recordStatus"
+               placeholder="Record Status"
+               required
+               type="text">
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea formControlName="description" class="textarea" placeholder="Textarea"></textarea>
+          </div>
+        </div>
+        <button (click)="onUpdate()" class="button is-danger">Update</button>
+      </form>
+      <form (ngSubmit)="onFileUpdate()" [formGroup]="fileForm">
+        <div>
+          <input type="file" name="image" (change)="onFileSelected2($event)">
+        </div>
+        <button (click)="onFileUpdate()" class="button is-danger">Add file</button>
+      </form>
+    </section>
+    <footer class="modal-card-foot">
+      <button (click)="closeUpdateModal()" class="button">Cancel</button>
+    </footer>
+  </div>
+</div>

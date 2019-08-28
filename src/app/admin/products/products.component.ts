@@ -15,7 +15,6 @@ import {ProductsModel} from "./products.model";
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  myTest= "enis";
   deleteModal = false;
   updateModal = false;
   insertModal = false;
@@ -26,10 +25,16 @@ export class ProductsComponent implements OnInit {
   productsForm: FormGroup;
   updateForm: FormGroup;
   fileForm: FormGroup;
-  platformObject : FormGroup;
-  brandObject: FormGroup;
-  pName:string;
   filePId;
+  name = 'Angular';
+  image: File;
+  selectedFile = null;
+  selectedFile2 = null;
+  resData: any;
+  platformObject: FormGroup;
+  brandObject: FormGroup;
+  pName: string;
+
 
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
@@ -39,6 +44,10 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fileForm = this.fb.group({
+      files: [],
+    });
+
     this.productsService.getAllProducts().subscribe((data: ProductsModel[]) => {
       this.productsList = data;
       console.log(this.productsList);
@@ -52,23 +61,18 @@ export class ProductsComponent implements OnInit {
     this.brandsService.getAllBrands().subscribe((data: any) => {
       this.brandsList = data;
     })
-    // this.productsService.getProductId(this.pName).subscribe((data:any)=>{
-    //   this.filePId = data;
-    //   console.log('from productId get', this.filePId);
-    // })
 
     this.productsForm = this.fb.group({
       id: [],
       name: [''],
       platform: this.fb.group({
-        id:[]
+        id: []
       }),
       brand: this.fb.group({
-        id:[]
+        id: []
       }),
       unitPrice: [],
       inStock: [],
-      recordStatus: [''],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
@@ -77,8 +81,6 @@ export class ProductsComponent implements OnInit {
     });
 
 
-
-    console.log(this.productsForm.value)
 
     this.updateForm = this.fb.group({
       name: [''],
@@ -97,37 +99,42 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  getCurrenPid() {
+    this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
+      this.filePId = data;
+    });
+  }
+
+
+  onAddProduct() {
     const values = this.productsForm.value;
     console.log(values)
     this.productsService.registerProduct(values).subscribe(
       get => {
         this.productsService.getAllProducts().subscribe((data: any) => {
           this.productsList = data;
+
         });
       },
       (err: HttpErrorResponse) => {
         console.log(err);
       }
-
     );
-    // this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data:any)=>{
-    //   this.filePId = data;
-    //   console.log(this.filePId);
-    // });
   }
 
-  onBllah()
-  {
-    this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data:any)=>{
-      this.filePId = data;
-      console.log(this.filePId);
-    });
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
   }
 
-  onFileUpload()
-  {
-
+  onFileUpload() {
+    const payload = new FormData();
+    payload.append('productId', this.filePId);
+    payload.append('files', this.selectedFile, this.selectedFile.name);
+    this.productsService.uploadFiles(payload);
+    this.insertModal = false;
+    this.productsForm.reset();
+    this.fileForm.reset();
   }
 
   openDelete(pid) {
@@ -142,14 +149,14 @@ export class ProductsComponent implements OnInit {
         this.productsService.getAllProducts().subscribe((data: any) => {
           this.productsList = data;
         });
-        console.log("pitepite");
+
       },
       (err: HttpErrorResponse) => {
         console.log(err);
       }
     );
     this.toggleModal();
-    console.log('pitepite' + this.productId);
+
   }
 
   openUpdate(
@@ -188,6 +195,18 @@ export class ProductsComponent implements OnInit {
         console.log(err);
       }
     );
+
+  }
+
+  onFileSelected2(event) {
+    this.selectedFile2 = event.target.files[0];
+    console.log(this.selectedFile2);
+  }
+  onFileUpdate() {
+    const payload = new FormData();
+    payload.append('productId', this.productId.toString());
+    payload.append('files', this.selectedFile, this.selectedFile.name);
+    this.productsService.uploadFiles(payload);
     this.updateModal = false;
   }
 
@@ -204,18 +223,13 @@ export class ProductsComponent implements OnInit {
 
   closeInsertModal() {
     this.insertModal = !this.insertModal;
-    this.updateForm.reset();
+    this.productsForm.reset();
+    this.fileForm.reset();
   }
 
   toggleModal() {
     this.deleteModal = !this.deleteModal;
   }
-
-
-
-
-
-
 
 
 }

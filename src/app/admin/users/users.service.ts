@@ -20,14 +20,13 @@ export class UsersService {
   }
 
 
-  updateUser(data, id) {
-    console.log("from service", id)
-    return this.http.put(this.rootUrl + id, data);
+  deleteUser(id) {
+    return this.http.delete(this.rootUrl + id);
   }
 
 
-  deleteUser(id) {
-    return this.http.delete(this.rootUrl + id);
+  updateUser(data, id) {
+    return this.http.put(this.rootUrl + id, data);
   }
 
 

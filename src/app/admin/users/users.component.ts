@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {UsersService} from './users.service';
 import {HttpErrorResponse} from '@angular/common/http';
 
@@ -12,7 +12,6 @@ export class UsersComponent implements OnInit {
   deleteModal = false;
   updateModal = false;
   insertModal = false;
-
   usersList: any;
   form: FormGroup;
   uid: number;
@@ -32,9 +31,9 @@ export class UsersComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       id: [],
-      email: ['', Validators.required ],
-      recordStatus: ['', Validators.required ],
-      isVerified: [''],
+      email: [''],
+      recordStatus: [''],
+      isVerified: [],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
@@ -52,8 +51,6 @@ export class UsersComponent implements OnInit {
       version: [],
     });
 
-    console.log(this.updateForm);
-
   }
 
   onSubmit() {
@@ -69,9 +66,7 @@ export class UsersComponent implements OnInit {
         console.log(err);
       }
     );
-
     this.insertModal = false;
-
   }
 
 
@@ -87,7 +82,6 @@ export class UsersComponent implements OnInit {
       }
     );
     this.toggleModal();
-
   }
 
   onUpdate() {
@@ -105,11 +99,6 @@ export class UsersComponent implements OnInit {
     this.updateModal = false;
   }
 
-  openInsert() {
-    console.log('insert is called');
-    this.insertModal = true;
-    console.log('from open insert', this.insertModal);
-  }
 
   openUpdate(
     id,
@@ -132,9 +121,14 @@ export class UsersComponent implements OnInit {
 
   }
 
+  openInsert() {
+    console.log('insert is called');
+    this.insertModal = true;
+    console.log('from open insert', this.insertModal);
+  }
+
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
-    ;
     this.updateForm.reset();
   }
 
@@ -150,6 +144,5 @@ export class UsersComponent implements OnInit {
   openDelete(uid) {
     this.deleteModal = true;
     this.uid = uid;
-    console.log('on Open Update', this.uid);
   }
 }
