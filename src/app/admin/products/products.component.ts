@@ -10,6 +10,7 @@ import {BrandsModel} from '../brands/brands.model';
 import {ProductsModel} from './products.model';
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
+import {ENDPOINTS} from '../../shared/constants/api.constants';
 
 @Component({
   selector: 'app-products',
@@ -17,6 +18,7 @@ import * as jspdf from 'jspdf';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  photoUrl = ENDPOINTS.products.getProductImage;
   deleteModal = false;
   updateModal = false;
   insertModal = false;
@@ -53,13 +55,9 @@ export class ProductsComponent implements OnInit {
 
     this.productsService.getAllProducts().subscribe((data: ProductsModel[]) => {
       this.productsList = data;
-      console.log(this.productsList);
     });
     this.platformsService.getAllPlatforms().subscribe((data: any) => {
       this.platformList = data;
-
-      console.log('from products func', data);
-
     });
     this.brandsService.getAllBrands().subscribe((data: any) => {
       this.brandsList = data;
@@ -117,11 +115,12 @@ export class ProductsComponent implements OnInit {
 
   onAddProduct() {
     const values = this.productsForm.value;
-    console.log('from ts', values)
+    console.log('from ts', values);
     this.productsService.registerProduct(values).subscribe(
       get => {
         this.productsService.getAllProducts().subscribe((data: any) => {
           this.productsList = data;
+          console.log(data);
         });
       },
       (err: HttpErrorResponse) => {
@@ -146,7 +145,10 @@ export class ProductsComponent implements OnInit {
       this.productsForm.reset();
       this.fileForm.reset();
       console.log('post product with image');
-    }, 5000);
+    }, 4000);
+
+
+
 
     this.insertModal = false;
   }

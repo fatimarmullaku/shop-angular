@@ -3,8 +3,9 @@
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Products</h3>
     <div class="card-body">
       <div class="table-editable" id="table">
-        <input type="text" class="form-control searchBrand" placeholder="search product" name="search" [(ngModel)]="filter">
-            <span class="table-add float-right mb-3 mr-2">
+        <input type="text" class="form-control searchBrand" placeholder="search product" name="search"
+               [(ngModel)]="filter">
+        <span class="table-add float-right mb-3 mr-2">
                 <a>
                 <i (click)="openInsert()" class="fas fa-plus"></i>
                 </a>
@@ -12,6 +13,7 @@
         <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
           <tr>
             <th>Name</th>
+            <th>Photo</th>
             <th>Platform</th>
             <th>Brand</th>
             <th>Unit Price</th>
@@ -26,6 +28,7 @@
           </tr>
           <tr *ngFor="let p of productsList | pipeFilteer:filter">
             <td>{{p.name}}</td>
+            <td><img src="{{photoUrl+'/'+p.fileUpload.fileName}}" class=" img-thumbnail product-image-sizing"></td>
             <td> {{p?.platform?.name}} </td>
             <td> {{p?.brand?.name}} </td>
             <td> {{p.unitPrice}}</td>
@@ -80,9 +83,6 @@
       </footer>
     </div>
   </div>
-
-
-
 
 
   <div [ngClass]="{ 'is-active' : insertModal }" class="modal">
@@ -145,12 +145,11 @@
       </section>
       <footer class="modal-card-foot">
         <button (click)="closeInsertModal()" class="button">Cancel</button>
-        <button  (click)="onAddProduct()" class="button is-danger">Add Product</button>
+        <button (click)="onAddProduct()" class="button is-danger">Add Product</button>
       </footer>
     </div>
   </div>
 </div>
-
 
 
 <div [ngClass]="{ 'is-active' : updateModal }" class="modal">
@@ -199,7 +198,7 @@
     </section>
     <footer class="modal-card-foot">
       <button (click)="closeUpdateModal()" class="button">Cancel</button>
-      <button  (click)="onUpdate()" class="button is-danger">Update Product</button>
+      <button (click)="onUpdate()" class="button is-danger">Update Product</button>
     </footer>
   </div>
 </div>
