@@ -22,6 +22,7 @@ import {CashMethodComponent} from './cart/cash-method/cash-method.component';
 import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
 import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
 import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
+import {ProductUploadComponent} from './product-upload/product-upload.component';
 
 const routes: Routes = [
   {
@@ -122,6 +123,10 @@ const routes: Routes = [
   {
     path: 'wish-list',
     component: WishlistComponent
+  },
+  {
+    path: 'product-upload',
+    component: ProductUploadComponent
   }
 ];
 
