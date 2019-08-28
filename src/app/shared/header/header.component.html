@@ -9,11 +9,11 @@
 
     <div class="columns right-buttons is-hidden-tablet-only">
       <div class="column is-6 dropdown dropdown-cart is-right is-large" (click)="toggleClass()"
-           [ngClass]="status ? 'is-active' : ''" (focusout)="toggleClass()">
+           [ngClass]="status ? 'is-active' : ''">
         <div class="dropdown-trigger">
           <button class="button cart-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fab fa-opencart"></i></span>
-            <span class="is-medium cart-nr">{{cartQty}}</span>
+            <span class="is-medium cart-nr" *ngIf="cartQty != null">{{cartQty}}</span>
           </button>
         </div>
         <div class="dropdown-menu" id="dropdown-menu-2" role="menu">
@@ -22,13 +22,13 @@
                  *ngFor="let item of this.cartService.getProductsFromCart()">
               <div class="column item-picture is-4">
                 <figure class="image is-64x64">
-                  <img class="is-rounded" [src]="item.product.fileName">
+                  <img class="is-rounded" *ngIf="item.product.fileName != null" [src]="item.product.fileName">
                 </figure>
               </div>
               <div class="column is-4 item-desc">
-                <a href="#"><h6><strong>{{item.product.name}}</strong></h6></a>
-                <h6>{{item.product.platform}}</h6>
-                <h6>{{item.product.unitPrice}}$</h6>
+                <a routerLink="/products/{{item.product.id}}" *ngIf="item.product.name != null"><h6><strong>{{item.product.name}}</strong></h6></a>
+                <h6 *ngIf="item.product.platform != null">{{item.product.platform}}</h6>
+                <h6 *ngIf="item.product.unitPrice != null">{{item.product.unitPrice}}$</h6>
               </div>
               <div class="column is-4 has-text-right">
                 <a (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>
@@ -58,7 +58,7 @@
               <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
             </div>
             <div *ngIf="this.isLoggedIn()">
-              <a href="#" class="dropdown-item is-dark is-active">{{this.customerName}}</a>
+              <a href="#" class="dropdown-item is-dark is-active" *ngIf="this.customerName != null">{{this.customerName}}</a>
               <a href="#" class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
             </div>
           </div>
