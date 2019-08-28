@@ -10,12 +10,12 @@
       <p class="detalis">{{role}}</p>
     </div>
     <mat-nav-list (click)="closeSideNav()">
-      <a class="sidebarMenu" mat-list-item routerLink="/admin/">
+      <a class="sidebarMenu" mat-list-item routerLink="/admin/home">
         <i class="fa fa-home"></i> Home</a>
-      <a class="sidebarMenu" mat-list-item routerLink="/admin/brands">
-        <i class="fa fa-tablet"></i> Brands </a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/platforms">
         <i class="fa fa-tablet"></i> Platforms</a>
+      <a class="sidebarMenu" mat-list-item routerLink="/admin/brands">
+        <i class="fa fa-tablet"></i> Brands</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/products">
         <i class="fas fa-shopping-cart"></i> Products</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/customers">
@@ -36,9 +36,11 @@
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
         aria-label="Toggle sidenav"
+        mat-icon-button
         type="button">
-         <i class="fas fa-bars"></i>
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <span>   </span>
       <div class="col-lg-12">
         <div class="row">
           <div class="col-lg-6">

@@ -1,9 +1,6 @@
 .card{
   background: transparent;
-  .card-header {
-    text-align: center;
-    color:black;
-  }
+
   .scrollable {
     position: relative;
     height: 200px;
@@ -12,9 +9,8 @@
   }
   .card-body{
     .table{
-      border: #4b4747 solid 1px;
+      //border: #4b4747 solid 1px;
       background: transparent;
-      color:black;
       .thead{
         background-color: #4b4747;
         th {
@@ -37,4 +33,20 @@
   }
 }
 
+//h3 {
+//  display: flex;
+//  justify-content: center;
+//}
+
+
+.image-upload > input
+{
+  //display: none;
+}
+
+.image-upload img
+{
+  width: 80px;
+  cursor: pointer;
+}
 
