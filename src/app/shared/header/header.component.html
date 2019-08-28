@@ -9,7 +9,7 @@
 
     <div class="columns right-buttons is-hidden-tablet-only">
       <div class="column is-6 dropdown dropdown-cart is-right is-large" (click)="toggleClass()"
-           [ngClass]="status ? 'is-active' : ''">
+           [ngClass]="status ? 'is-active' : ''" (focusout)="toggleClass()">
         <div class="dropdown-trigger">
           <button class="button cart-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fab fa-opencart"></i></span>
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large" (click)="toggleClass2()"
-           [ngClass]="status2 ? 'is-active' : ''">
+           [ngClass]="status2 ? 'is-active' : ''" (focusout)="toggleClass2()">
         <div class="dropdown-trigger">
           <button class="button user-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fas fa-user-alt "></i></span>
