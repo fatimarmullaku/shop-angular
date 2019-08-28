@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductModel} from '../../../../shared/models/product.model';
-import {ProductService} from "../../../../shared/services/product.service";
-import {CartService} from "../../../../shared/services/cart.service";
-import {ActivatedRoute} from "@angular/router";
-import {ProductWishlistModel} from "../../../../shared/models/product-wishlist.model";
-import {WishlistService} from "../../../../shared/services/wishlist.service";
+import {ProductService} from '../../../../shared/services/product.service';
+import {CartService} from '../../../../shared/services/cart.service';
+import {ActivatedRoute} from '@angular/router';
+import {WishlistService} from '../../../../shared/services/wishlist.service';
 
 @Component({
   selector: '[app-product-item]',
