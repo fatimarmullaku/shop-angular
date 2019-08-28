@@ -86,8 +86,6 @@ export class ProductsComponent implements OnInit {
 
     this.updateForm = this.fb.group({
       name: [''],
-      category: [''],
-      brand: [''],
       unitPrice: [],
       inStock: [],
       recordStatus: [''],
@@ -98,12 +96,6 @@ export class ProductsComponent implements OnInit {
 
     this.fileForm = this.fb.group({
       fileUpload: ['']
-    });
-  }
-
-  getCurrenPid() {
-    this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
-      this.filePId = data;
     });
   }
 
@@ -162,16 +154,6 @@ export class ProductsComponent implements OnInit {
   onFileSelected(event) {
     this.selectedFile = event.target.files[0];
     console.log(this.selectedFile);
-  }
-
-  onFileUpload() {
-    const payload = new FormData();
-    payload.append('productId', this.filePId);
-    payload.append('files', this.selectedFile, this.selectedFile.name);
-    this.productsService.uploadFiles(payload);
-    this.insertModal = false;
-    this.productsForm.reset();
-    this.fileForm.reset();
   }
 
   openDelete(pid) {
@@ -233,6 +215,19 @@ export class ProductsComponent implements OnInit {
       }
     );
 
+    setTimeout(() => {
+      const payload = new FormData();
+      payload.append('productId', this.productId.toString());
+      payload.append('files', this.selectedFile2, this.selectedFile2.name);
+      this.productsService.uploadFiles(payload);
+
+      this.insertModal = false;
+      this.productsForm.reset();
+      this.fileForm.reset();
+      console.log('post product with image update');
+    }, 5000);
+
+    this.updateModal = false;
   }
 
   onFileSelected2(event) {
@@ -243,7 +238,7 @@ export class ProductsComponent implements OnInit {
   onFileUpdate() {
     const payload = new FormData();
     payload.append('productId', this.productId.toString());
-    payload.append('files', this.selectedFile, this.selectedFile.name);
+    payload.append('files', this.selectedFile2, this.selectedFile2.name);
     this.productsService.uploadFiles(payload);
     this.updateModal = false;
   }

@@ -169,21 +169,6 @@
                    formControlName="name"
                    type="text">
           </div>
-          <div class="column" formGroupName="platform">
-            <span> Platform</span>
-            <select formControlName="id" id="">
-              <option *ngFor="let p of platformList" [ngValue]="p.id">
-                {{p.name}}
-              </option>
-            </select>
-          </div>
-          <div class="column" formGroupName="brand">
-            <select formControlName="id">
-              <option *ngFor="let b of brandsList" [ngValue]="b.id">
-                {{b.name}}
-              </option>
-            </select>
-          </div>
         </div>
         <div class="columns">
           <div class="column">
@@ -208,7 +193,7 @@
           <label for="file-input">
             <i class="fas fa-upload"></i>
           </label>
-          <input id="file-input" type="file" (change)="onFileSelected($event)"/>
+          <input id="file-input" type="file" (change)="onFileSelected2($event)"/>
         </div>
       </form>
     </section>
