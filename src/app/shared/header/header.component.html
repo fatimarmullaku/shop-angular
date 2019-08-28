@@ -8,39 +8,41 @@
     </a>
 
     <div class="columns right-buttons is-hidden-tablet-only">
-      <div class="column is-6 dropdown dropdown-cart is-right is-large" (click)="toggleClass()" [ngClass]="status ? 'is-active' : ''">
+      <div class="column is-6 dropdown dropdown-cart is-right is-large" (click)="toggleClass()"
+           [ngClass]="status ? 'is-active' : ''">
         <div class="dropdown-trigger">
           <button class="button cart-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fab fa-opencart"></i></span>
             <span class="is-medium cart-nr">{{cartQty}}</span>
           </button>
         </div>
-        <div class="dropdown-menu" id="dropdown-menu-2" role="menu" >
+        <div class="dropdown-menu" id="dropdown-menu-2" role="menu">
           <div class="dropdown-content">
-            <div class="columns is-mobile dropdown-item dropdown-cart-item" *ngFor="let item of this.cartService.getProductsFromCart()">
-              <div class="column item-picture is-6">
+            <div class="columns is-mobile dropdown-item dropdown-cart-item"
+                 *ngFor="let item of this.cartService.getProductsFromCart()">
+              <div class="column item-picture is-4">
                 <figure class="image is-64x64">
-                  <img class="is-rounded" [src]="item?.product?.fileName">
+                  <img class="is-rounded" [src]="item.product.fileName">
                 </figure>
               </div>
-              <div class="column is-6 item-desc">
-                <a href="#"><h6><strong>{{item?.product?.name}}</strong></h6></a>
-                <h6>{{item?.product?.platform}}</h6>
-                <h6>{{item?.product?.unitPrice}}$</h6>
+              <div class="column is-4 item-desc">
+                <a href="#"><h6><strong>{{item.product.name}}</strong></h6></a>
+                <h6>{{item.product.platform.name}}</h6>
+                <h6>{{item.product.unitPrice}}$</h6>
               </div>
-                    <!--        Next sprint      -->
-<!--              <div class="column is-4 has-text-right">-->
-<!--                <a  (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>-->
-<!--              </div>-->
-          </div>
+              <div class="column is-4 has-text-right">
+                <a (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>
+              </div>
+            </div>
             <hr class="dropdown-divider">
             <div class="dropdown-item proceed-checkout">
               <a routerLink="/cart" class="button is-dark is-fullwidth">Proceed to checkout</a>
             </div>
           </div>
         </div>
-    </div>
-      <div class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large" (click)="toggleClass2()" [ngClass]="status2 ? 'is-active' : ''" >
+      </div>
+      <div class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large" (click)="toggleClass2()"
+           [ngClass]="status2 ? 'is-active' : ''">
         <div class="dropdown-trigger">
           <button class="button user-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fas fa-user-alt "></i></span>
@@ -51,18 +53,19 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-            <div *ngIf="!this.isLoggedIn()" >
-            <a routerLink="/auth/register" class="dropdown-item sign-up-button">Sign Up</a>
-            <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
+            <div *ngIf="!this.isLoggedIn()">
+              <a routerLink="/auth/register" class="dropdown-item sign-up-button">Sign Up</a>
+              <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
             </div>
-            <div *ngIf="this.isLoggedIn()" >
-            <a href="#" class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
+            <div *ngIf="this.isLoggedIn()">
+              <a href="#" class="dropdown-item is-dark is-active">{{this.customerName}}</a>
+              <a href="#" class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-                                  <!-- End of header right buttons   -->
+    <!-- End of header right buttons   -->
     <div class="hamburger-menu-container is-hidden-tablet">
       <button>
         <i class="fa"></i>

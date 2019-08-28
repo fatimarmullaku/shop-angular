@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 export class ProductsService {
   readonly rootUrl = 'http://localhost:8080/api/v1/products/';
 
+  resData: any;
 
   constructor(private http: HttpClient) {
   }
@@ -16,23 +17,31 @@ export class ProductsService {
 
   }
 
-  getProductId(name)
-  {
-    return this.http.get(this.rootUrl + "name/" + name);
+  getProductId(name) {
+    return this.http.get(this.rootUrl + 'name/' + name);
   }
 
   registerProduct(data) {
-    return this.http.post(this.rootUrl , data);
+    return this.http.post(this.rootUrl, data);
   }
 
-  deleteProduct(id) {
-    return this.http.delete(this.rootUrl +id);
+  uploadFiles(payload) {
+    this.http
+      .post('http://localhost:8080/api/v1/upload/',
+        payload
+      ).subscribe((data: any) => {
+      this.resData = data;
+      console.log(this.resData);
+    });
   }
 
   updateProduct(data, id) {
-    console.log('from service', data, id)
+    console.log(data)
     return this.http.put(this.rootUrl + id, data);
   }
 
 
+  deleteProduct(id) {
+    return this.http.delete(this.rootUrl + id);
+  }
 }

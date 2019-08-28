@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {OrderModel} from './orders.model';
+import {OrdersService} from './orders.service';
 
 @Component({
   selector: 'app-orders',
@@ -7,23 +9,22 @@ import {Component, OnInit} from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
-  data = [
-    {customer: 'Drilon Gashi', title: 'PES12', time: '22:05AM'},
-    {customer: 'Faton Podrimqaku', title: 'NEED FOR SPEED 12', time: '13:15AM'},
-    {customer: 'Enis Rasimi', title: 'Call of Duty', time: '17:05AM'},
-    {customer: 'Fati Murmallaku', title: 'PES12', time: '22:05AM'},
-    {customer: 'Pashtrik Gashi', title: 'NEED FOR SPEED 12', time: '13:15AM'},
-    {customer: 'Durim Gashi', title: 'Call of Duty', time: '17:05AM'},
-  ];
+  data = [];
 
-  now:number;
-  currentDate = new Date();
+  constructor(private ordersService: OrdersService) {
 
-  constructor() {
-    setInterval(() => {this.now = Date.now();});
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.ordersService.paged().subscribe((orders: OrderModel[]) => {
+      this.data = orders;
+    });
+
   }
+
+  parseDate(d: string) {
+    return new Date(d);
+  }
+
 
 }

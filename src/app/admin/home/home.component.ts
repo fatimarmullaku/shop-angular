@@ -7,9 +7,6 @@ import {PlatformsService} from '../platforms/platforms.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  myData:string;
-
   constructor(private categoriesService: PlatformsService) { }
 
   ngOnInit() {

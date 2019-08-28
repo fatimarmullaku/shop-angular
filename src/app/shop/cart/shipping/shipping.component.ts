@@ -60,18 +60,70 @@ export class ShippingComponent implements OnInit {
     });
   }
 
+  createEmptyAddress(): FormGroup {
+    return this.formBuilder.group({
+      country: new FormControl(''),
+      city: new FormControl(''),
+      zipCode: new FormControl(''),
+      street: new FormControl('')
+    });
+  }
+
   onAddAddress(event: any) {
     event.preventDefault();
     this.addresses = this.shippingFormGroup.get('addresses') as FormArray;
-    this.addresses.push(this.createAddress());
+    this.addresses.push(this.createEmptyAddress());
+  }
+
+  newCustomerAddress(address: any) {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID);
+    const payload = {
+      addresses: [
+        address
+      ]
+    };
+    return this.restService.publicRequest<any>(HttpRequestMethod.PUT, ENDPOINTS.customers.getAll + `/${customerId}`, {
+      body: payload
+    });
+  }
+
+  getLastAddressRequest() {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID);
+    const url = ENDPOINTS.customers.getAll + `/${customerId}/last-address`;
+    return this.restService.publicRequest<any>(HttpRequestMethod.GET, url);
   }
 
   onSubmit(event: any) {
     event.preventDefault();
-    const address = {
-      id: this.selectedAddress.id
-    };
-    this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, address);
+    let address: any;
+    if (this.selectedAddress.id) {
+      address = {
+        id: this.selectedAddress.id
+      };
+    } else {
+      address = {
+        country: this.selectedAddress.country,
+        city: this.selectedAddress.city,
+        zipCode: this.selectedAddress.zipCode,
+        street: this.selectedAddress.street
+      };
+    }
+    if (!address.id) {
+      this.newCustomerAddress(address).subscribe(res => {
+          this.getLastAddressRequest().subscribe((result) => {
+              this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, result);
+            },
+            error => {
+              console.error(error);
+            }
+          );
+        },
+        err => {
+          console.error(err);
+        });
+    } else {
+      this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, address);
+    }
   }
 
   getRadioValue(value: any) {

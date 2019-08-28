@@ -73,6 +73,22 @@ export class RolesComponent implements OnInit {
 
   }
 
+  onUpdate() {
+    const values = this.updateForm.value;
+    this.rolesService.updateRole(values, this.rid).subscribe(
+      get => {
+        this.rolesService.getAllRoles().subscribe((data: any) => {
+          this.roleList = data;
+        });
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
+    this.updateModal = false;
+  }
+
+
 
   onDelete() {
     this.rolesService.deleteRole(this.rid).subscribe(
@@ -89,24 +105,8 @@ export class RolesComponent implements OnInit {
 
   }
 
-  onUpdate() {
-    const values = this.updateForm.value;
-    this.rolesService.updateRole(values, this.rid).subscribe(
-      get => {
-        this.rolesService.getAllRoles().subscribe((data: any) => {
-          this.roleList = data;
-        });
-      },
-      (err: HttpErrorResponse) => {
-        console.log(err);
-      }
-    );
-    this.updateModal = false;
-  }
 
-  openInsert() {
-    this.insertModal = true;
-      }
+
 
   openUpdate(
     id,
@@ -126,7 +126,10 @@ export class RolesComponent implements OnInit {
     this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
     this.updateForm.controls.description.setValue(description);
     this.updateForm.controls.version.setValue(version);
+  }
 
+  openInsert() {
+    this.insertModal = true;
   }
 
   closeUpdateModal() {

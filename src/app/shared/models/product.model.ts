@@ -6,7 +6,7 @@ export class ProductModel {
   fileName: string;
   inStock: number;
   unitPrice: number;
-  description: string;
+  productDescription: string;
   platform: PlatformModel;
   rating: ProductRatingModel;
   inStockState = this.isInStock();

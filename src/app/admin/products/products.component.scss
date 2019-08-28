@@ -1,10 +1,5 @@
-.card {
+.card{
   background: transparent;
-
-  .card-header {
-    text-align: center;
-    color: black;
-  }
 
   .scrollable {
     position: relative;
@@ -12,30 +7,25 @@
     overflow: auto;
     display: block;
   }
-
-  .card-body {
-    .table {
-      border: #4b4747 solid 1px;
+  .card-body{
+    .table{
+      //border: #4b4747 solid 1px;
       background: transparent;
-      color: black;
-
-      .thead {
+      .thead{
         background-color: #4b4747;
-
         th {
           padding: 10px 15px;
-          color: white;
+          color:white;
           font-size: 12px;
           text-transform: uppercase;
         }
-
-        .add {
+        .add{
           background: #40be65;
         }
       }
-
-      .tbody {
-        td {
+      .tbody
+      {
+        td{
           border-color: #4b4747;
         }
       }
@@ -43,4 +33,20 @@
   }
 }
 
+//h3 {
+//  display: flex;
+//  justify-content: center;
+//}
+
+
+.image-upload > input
+{
+  //display: none;
+}
+
+.image-upload img
+{
+  width: 80px;
+  cursor: pointer;
+}
 

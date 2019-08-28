@@ -7,7 +7,7 @@ import {ProductsComponent} from './products/products.component';
 import {RolesComponent} from './users/roles/roles.component';
 import {UsersComponent} from './users/users.component';
 import {HomeComponent} from './home/home.component';
-import {MatListModule, MatToolbarModule, MatSidenavModule, MatIconModule} from '@angular/material';
+import {MatListModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatExpansionModule} from '@angular/material';
 import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
 import {TablesDComponent} from '../shared/tables-d/tables-d.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -19,6 +19,8 @@ import {CustomersFPipe} from './customers/customers-f.pipe';
 import {PlatformsComponent} from './platforms/platforms.component';
 import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
+import {ProductsFPipe} from './products/products-f.pipe';
+import {ShopModule} from '../shop/shop.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {BrandsFilterPipe} from './brands/brands-filter.pipe';
     CustomersFPipe,
     PlatformsComponent,
     BrandsComponent,
-    BrandsFilterPipe
+    BrandsFilterPipe,
+    ProductsFPipe
+
   ],
   imports: [
     FormsModule,
@@ -48,7 +52,9 @@ import {BrandsFilterPipe} from './brands/brands-filter.pipe';
     MatSidenavModule,
     MatIconModule,
     ModalModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    MatExpansionModule,
+    ShopModule
 
   ]
 })

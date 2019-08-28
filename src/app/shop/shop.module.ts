@@ -33,6 +33,7 @@ import { CashMethodComponent } from './cart/cash-method/cash-method.component';
 import { CreditcardMethodComponent } from './cart/creditcard-method/creditcard-method.component';
 import { PaypalMethodComponent } from './cart/paypal-method/paypal-method.component';
 import { SuccessScreenComponent } from './cart/success-screen/success-screen.component';
+import { ProductUploadComponent } from './product-upload/product-upload.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SuccessScreenComponent } from './cart/success-screen/success-screen.com
     CreditcardMethodComponent,
     PaypalMethodComponent,
     SuccessScreenComponent,
+    ProductUploadComponent,
   ],
   exports: [
     PaginationComponent,
