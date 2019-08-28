@@ -30,8 +30,6 @@ export class ProductService {
   fetchProducts(): void {
     this.restService.publicRequest<ProductModel[]>(HttpRequestMethod.GET, ENDPOINTS.products.getAll).subscribe(res => {
         this.products = res;
-        console.log('FetchProducts ' + this.products[0].name);
-
         this.products.forEach(value => {
           const tempName = value.fileName;
           value.fileName = '/assets/img/' + tempName;

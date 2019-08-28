@@ -27,8 +27,7 @@
               </div>
               <div class="column is-4 item-desc">
                 <a routerLink="/products/{{item.product.id}}" *ngIf="item.product.name != null"><h6><strong>{{item.product.name}}</strong></h6></a>
-                <h6 *ngIf="item.product.platform != null">{{item.product.platform}}</h6>
-                <h6 *ngIf="item.product.unitPrice != null">{{item.product.unitPrice}}$</h6>
+                <h6>{{item.product.unitPrice}}$</h6>
               </div>
               <div class="column is-4 has-text-right">
                 <a (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>
@@ -42,7 +41,7 @@
         </div>
       </div>
       <div class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large" (click)="toggleClass2()"
-           [ngClass]="status2 ? 'is-active' : ''" (focusout)="toggleClass2()">
+           [ngClass]="status2 ? 'is-active' : ''">
         <div class="dropdown-trigger">
           <button class="button user-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fas fa-user-alt "></i></span>
