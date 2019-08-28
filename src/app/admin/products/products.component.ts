@@ -3,11 +3,13 @@ import {ProductsService} from './products.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpErrorResponse} from '@angular/common/http';
-import {PlatformsService} from "../platforms/platforms.service";
-import {BrandsService} from "../brands/brands.service";
-import {PlatformsModel} from "../platforms/platforms.model";
-import {BrandsModel} from "../brands/brands.model";
-import {ProductsModel} from "./products.model";
+import {PlatformsService} from '../platforms/platforms.service';
+import {BrandsService} from '../brands/brands.service';
+import {PlatformsModel} from '../platforms/platforms.model';
+import {BrandsModel} from '../brands/brands.model';
+import {ProductsModel} from './products.model';
+import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'app-products',
@@ -18,11 +20,12 @@ export class ProductsComponent implements OnInit {
   deleteModal = false;
   updateModal = false;
   insertModal = false;
-  platformList = PlatformsModel['']
+  platformList = PlatformsModel[''];
   brandsList = BrandsModel[''];
   productId: number;
   productsList: ProductsModel[];
   productsForm: FormGroup;
+  filter: string;
   updateForm: FormGroup;
   fileForm: FormGroup;
   filePId;
@@ -55,12 +58,12 @@ export class ProductsComponent implements OnInit {
     this.platformsService.getAllPlatforms().subscribe((data: any) => {
       this.platformList = data;
 
-      console.log('from products func', data)
+      console.log('from products func', data);
 
-    })
+    });
     this.brandsService.getAllBrands().subscribe((data: any) => {
       this.brandsList = data;
-    })
+    });
 
     this.productsForm = this.fb.group({
       id: [],
@@ -79,7 +82,6 @@ export class ProductsComponent implements OnInit {
       description: [''],
       version: [0]
     });
-
 
 
     this.updateForm = this.fb.group({
@@ -105,21 +107,56 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  public captureScreen() {
+    const data = document.getElementById('contentToConvert');
+    html2canvas(data).then(canvas => {
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png');
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+      const position = 10;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('brandsList.pdf');
+    });
+  }
 
   onAddProduct() {
     const values = this.productsForm.value;
-    console.log(values)
+    console.log('from ts', values)
     this.productsService.registerProduct(values).subscribe(
       get => {
         this.productsService.getAllProducts().subscribe((data: any) => {
           this.productsList = data;
-
         });
       },
       (err: HttpErrorResponse) => {
         console.log(err);
       }
     );
+
+    setTimeout(() => {
+      this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
+        this.filePId = data;
+        console.log('get id from product');
+      });
+    }, 2000);
+
+    setTimeout(() => {
+      const payload = new FormData();
+      payload.append('productId', this.filePId);
+      payload.append('files', this.selectedFile, this.selectedFile.name);
+      this.productsService.uploadFiles(payload);
+
+      this.insertModal = false;
+      this.productsForm.reset();
+      this.fileForm.reset();
+      console.log('post product with image');
+    }, 5000);
+
+    this.insertModal = false;
   }
 
   onFileSelected(event) {
@@ -184,7 +221,7 @@ export class ProductsComponent implements OnInit {
 
   onUpdate() {
     const values = this.updateForm.value;
-    console.log(values)
+    console.log(values);
     this.productsService.updateProduct(values, this.productId).subscribe(
       get => {
         this.productsService.getAllProducts().subscribe((data: any) => {
@@ -202,6 +239,7 @@ export class ProductsComponent implements OnInit {
     this.selectedFile2 = event.target.files[0];
     console.log(this.selectedFile2);
   }
+
   onFileUpdate() {
     const payload = new FormData();
     payload.append('productId', this.productId.toString());

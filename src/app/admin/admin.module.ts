@@ -19,6 +19,7 @@ import {CustomersFPipe} from './customers/customers-f.pipe';
 import {PlatformsComponent} from './platforms/platforms.component';
 import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
+import {ProductsFPipe} from './products/products-f.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {BrandsFilterPipe} from './brands/brands-filter.pipe';
     PlatformsComponent,
     BrandsComponent,
     BrandsFilterPipe,
-
+    ProductsFPipe
 
   ],
   imports: [
