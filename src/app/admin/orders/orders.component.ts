@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderModel} from './orders.model';
 import {OrdersService} from './orders.service';
+import {PaginationService} from '../../shared/pagination/pagination.service';
 
 @Component({
   selector: 'app-orders',
@@ -10,16 +11,26 @@ import {OrdersService} from './orders.service';
 export class OrdersComponent implements OnInit {
 
   data = [];
+  currentPage: number;
+  pageSize = 2;
 
-  constructor(private ordersService: OrdersService) {
+  constructor(private ordersService: OrdersService,
+              private paginationService: PaginationService) {
 
   }
 
   ngOnInit(): void {
-    this.ordersService.paged().subscribe((orders: OrderModel[]) => {
+    this.paginationService.changeTotalPages(9);
+    this.paginationService.currentPage.subscribe(currentPage => {
+      this.getOrderHistoryPaged(this.pageSize, currentPage - 1);
+      this.currentPage = currentPage;
+    });
+  }
+
+  getOrderHistoryPaged(size: number, page: number) {
+    this.ordersService.paged(size, page).subscribe((orders: OrderModel[]) => {
       this.data = orders;
     });
-
   }
 
   parseDate(d: string) {
