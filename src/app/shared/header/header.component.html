@@ -1,34 +1,34 @@
 <div class="header uses-flex">
   <div class="header-top uses-flex between-space">
     <a href="home.html">
-      <div [routerLink]="['/']" class="image-container">
-        <img alt="logo" class="header-logo is-hidden-mobile" src="assets/img/ucx-logo-desktop.png">
-        <img alt="logo" class="header-logo is-hidden-desktop" src="assets/img/ucx-logo-mobile.png">
+      <div class="image-container" [routerLink]="['/']">
+        <img src="assets/img/ucx-logo-desktop.png" alt="logo" class="header-logo is-hidden-mobile">
+        <img src="assets/img/ucx-logo-mobile.png" alt="logo" class="header-logo is-hidden-desktop">
       </div>
     </a>
 
     <div class="columns right-buttons is-hidden-tablet-only">
-      <div (click)="toggleClass()" [ngClass]="status ? 'is-active' : ''"
-           class="column is-6 dropdown dropdown-cart is-right is-large">
+      <div class="column is-6 dropdown dropdown-cart is-right is-large" (click)="toggleClass()"
+           [ngClass]="status ? 'is-active' : ''">
         <div class="dropdown-trigger">
-          <button aria-controls="dropdown-menu" aria-haspopup="true" class="button cart-button">
+          <button class="button cart-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fab fa-opencart"></i></span>
-            <span *ngIf="cartQty != null" class="is-medium cart-nr">{{cartQty}}</span>
+            <span class="is-medium cart-nr">{{cartQty}}</span>
           </button>
         </div>
         <div class="dropdown-menu" id="dropdown-menu-2" role="menu">
           <div class="dropdown-content">
-            <div *ngFor="let item of this.cartService.getProductsFromCart()"
-                 class="columns is-mobile dropdown-item dropdown-cart-item">
+            <div class="columns is-mobile dropdown-item dropdown-cart-item"
+                 *ngFor="let item of this.cartService.getProductsFromCart()">
               <div class="column item-picture is-4">
                 <figure class="image is-64x64">
-                  <img *ngIf="item.product.fileName != null" [src]="item.product.fileName" class="is-rounded">
+                  <img class="is-rounded" [src]="item.product.fileName">
                 </figure>
               </div>
               <div class="column is-4 item-desc">
-                <a *ngIf="item.product.name != null" href="#"><h6><strong>{{item.product.name}}</strong></h6></a>
-                <h6 *ngIf="item.product.platform != null">{{item.product.platform.name}}</h6>
-                <h6 *ngIf="item.product.unitPrice != null">{{item.product.unitPrice}}$</h6>
+                <a href="#"><h6><strong>{{item.product.name}}</strong></h6></a>
+                <h6>{{item.product.platform.name}}</h6>
+                <h6>{{item.product.unitPrice}}$</h6>
               </div>
               <div class="column is-4 has-text-right">
                 <a (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>
@@ -36,31 +36,30 @@
             </div>
             <hr class="dropdown-divider">
             <div class="dropdown-item proceed-checkout">
-              <a class="button is-dark is-fullwidth" routerLink="/cart">Proceed to checkout</a>
+              <a routerLink="/cart" class="button is-dark is-fullwidth">Proceed to checkout</a>
             </div>
           </div>
         </div>
       </div>
-      <div (click)="toggleClass2()" [ngClass]="status2 ? 'is-active' : ''"
-           class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large">
+      <div class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large" (click)="toggleClass2()"
+           [ngClass]="status2 ? 'is-active' : ''" (focusout)="toggleClass2()">
         <div class="dropdown-trigger">
-          <button aria-controls="dropdown-menu" aria-haspopup="true" class="button user-button">
+          <button class="button user-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fas fa-user-alt "></i></span>
             <span class="icon is-medium">
-                        <i aria-hidden="true" class="fas fa-angle-down"></i>
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
                     </span>
           </button>
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
             <div *ngIf="!this.isLoggedIn()">
-              <a *ngIf="this.customerName != null" class="dropdown-item sign-up-button" routerLink="/auth/register">Sign
-                Up</a>
-              <a class="dropdown-item sign-up-button" routerLink="/auth/login">Login</a>
+              <a routerLink="/auth/register" class="dropdown-item sign-up-button">Sign Up</a>
+              <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
             </div>
             <div *ngIf="this.isLoggedIn()">
-              <a class="dropdown-item is-dark is-active" href="#">{{this.customerName}}</a>
-              <a (click)="this.userService.logout()" class="dropdown-item sign-up-button" href="#">Log Out</a>
+              <a href="#" class="dropdown-item is-dark is-active">{{this.customerName}}</a>
+              <a href="#" class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
             </div>
           </div>
         </div>
@@ -74,10 +73,10 @@
     </div>
   </div>
   <div class="header-bottom uses-flex">
-    <nav aria-label="main navigation" class="navbar navbar-container" role="navigation">
-      <a class="navbar-item" href="index.html">Home</a>
-      <a class="navbar-item" routerLink="/wish-list">WishList</a>
-      <a class="navbar-item" href="">News</a>
+    <nav class="navbar navbar-container" role="navigation" aria-label="main navigation">
+      <a href="index.html" class="navbar-item">Home</a>
+      <a routerLink="/wish-list" class="navbar-item">WishList</a>
+      <a href="" class="navbar-item">News</a>
       <app-publisher-dropdown></app-publisher-dropdown>
       <div class="navbar-item has-dropdown is-hoverable">
 
@@ -101,8 +100,8 @@
           </a>
         </div>
       </div>
-      <a class="navbar-item is-hidden-tablet" href="">Sign up</a>
-      <a class="navbar-item is-hidden-tablet" href="">Log in</a>
+      <a href="" class="navbar-item is-hidden-tablet">Sign up</a>
+      <a href="" class="navbar-item is-hidden-tablet">Log in</a>
     </nav>
   </div>
 </div>

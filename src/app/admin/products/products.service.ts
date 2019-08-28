@@ -22,7 +22,7 @@ export class ProductsService {
   }
 
   registerProduct(data) {
-    return this.http.post(this.rootUrl, data);
+    return this.http.post<any>(this.rootUrl, data);
   }
 
   uploadFiles(payload) {
@@ -36,8 +36,8 @@ export class ProductsService {
   }
 
   updateProduct(data, id) {
-    console.log(data)
-    return this.http.put(this.rootUrl + id, data);
+    console.log(data);
+    return this.http.put(this.rootUrl + `${id}`, data);
   }
 
 
