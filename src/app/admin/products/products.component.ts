@@ -132,12 +132,14 @@ export class ProductsComponent implements OnInit {
     else {
       this.isNotBrand = true;
       this.isNotPlatform = true;
+
       const values = this.productsForm.value;
       console.log('from ts', values)
       this.productsService.registerProduct(values).subscribe(
         get => {
           this.productsService.getAllProducts().subscribe((data: any) => {
             this.productsList = data;
+            console.log('name ', this.productsForm.controls.name.value);
           });
         },
         (err: HttpErrorResponse) => {
@@ -165,8 +167,8 @@ export class ProductsComponent implements OnInit {
       }, 5000);
 
       this.insertModal = false;
-      this.productsForm.reset();
     }
+
   }
 
   onFileSelected(event) {
@@ -254,6 +256,8 @@ export class ProductsComponent implements OnInit {
   }
 
   openInsert() {
+    this.productsForm.reset();
+    this.fileForm.reset();
     console.log('insert is called');
     this.insertModal = true;
     console.log('from open insert', this.insertModal);
