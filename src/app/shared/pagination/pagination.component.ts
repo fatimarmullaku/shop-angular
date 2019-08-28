@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {PaginationService} from './pagination.service';
 
 @Component({
@@ -9,16 +9,15 @@ import {PaginationService} from './pagination.service';
 })
 export class PaginationComponent implements OnInit {
 
-  constructor(private router: Router,
-              private paginationService: PaginationService) {
-  }
   currentPage: number;
   totalPages = 6;
-
-
   left = 1;
   mid = 2;
   right = 3;
+
+  constructor(private router: Router,
+              private paginationService: PaginationService) {
+  }
 
   ngOnInit() {
     this.paginationService.currentPage.subscribe(currentPage => this.currentPage = currentPage);
