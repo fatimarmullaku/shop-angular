@@ -10,6 +10,7 @@ import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {WishlistService} from './wishlist.service';
 
 @Injectable({
   providedIn: 'root'
