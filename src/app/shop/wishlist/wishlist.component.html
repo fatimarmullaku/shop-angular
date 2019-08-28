@@ -1,17 +1,17 @@
 <app-header></app-header>
 <div class="box main-box" *ngIf="wishlistProducts && wishlistProducts.length > 0; else emptyWishlist ">
-  <div class="box inner-box" *ngFor="let item of this.wishlistService.getProductsFromWishlist(); let i = index;">
+  <div class="box inner-box" *ngFor="let item of wishlistService.getProductsFromWishlist(); let i = index;">
     <div class="columns column-container" >
       <div class="column is-2 is-12-mobile is-multiline wishlist-image-container">
-        <img [src]="item.product.image" class="wish-list-featured-image" height="216px" width="161px">
+        <img [src]="item.product.fileName" class="wish-list-featured-image" height="216px" width="161px">
       </div>
       <div class="column is-8 is-12-mobile is-multiline wishlist-item-information">
         <div class="game-information">
-          <h1 class="title is-3">{{item.product.title}}</h1>
+          <h1 class="title is-3">{{item.product.name}}</h1>
         </div>
         <br>
         <div class="wishlist-button-container">
-          <h1>Price: {{item.product.price}} $</h1>
+          <h1>Price: {{item.product.unitPrice}} $</h1>
           <button class="wishlist-button" (click)="addToCart(item.product,$event)">Add to cart</button>
           <br>
           <button class="wishlist-button is-hidden-desktop" >Remove</button>
