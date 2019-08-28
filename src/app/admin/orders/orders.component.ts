@@ -22,8 +22,8 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     this.paginationService.changeTotalPages(9);
     this.paginationService.currentPage.subscribe(currentPage => {
+      this.getOrderHistoryPaged(this.pageSize, currentPage - 1);
       this.currentPage = currentPage;
-      this.getOrderHistoryPaged(this.pageSize, currentPage);
     });
   }
 
