@@ -72,6 +72,39 @@
   </div>
 
 
+  <div [ngClass]="{ 'is-active' : insertModal }" class="modal">
+    <div (click)="closeInsertModal()" class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Insert Role</p>
+        <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
+      </header>
+      <section class="modal-card-body">
+        <form (ngSubmit)="onSubmit( )" [formGroup]="form">
+          <input class="form-control" formControlName="name"
+                 placeholder="Name"
+                 required
+                 type="name">
+          <input class="form-control" formControlName="recordStatus"
+                 placeholder="Record Status"
+                 required
+                 type="text">
+          <input class="form-control" formControlName="roleDescription"
+                 placeholder="Role Description"
+                 required
+                 type="text">
+          <div class="control">
+            <textarea class="textarea" placeholder="Add your description here! "></textarea>
+          </div>
+        </form>
+      </section>
+      <footer class="modal-card-foot">
+        <button (click)="onSubmit()" class="button is-danger">Submit</button>
+        <button (click)="closeInsertModal()" class="button">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
   <div [ngClass]="{ 'is-active' : updateModal }" class="modal">
     <div (click)="closeUpdateModal()" class="modal-background"></div>
     <div class="modal-card">
@@ -104,40 +137,6 @@
       <footer class="modal-card-foot">
         <button (click)="onUpdate()" class="button is-danger">Update</button>
         <button (click)="closeUpdateModal()" class="button">Cancel</button>
-      </footer>
-    </div>
-  </div>
-
-
-  <div [ngClass]="{ 'is-active' : insertModal }" class="modal">
-    <div (click)="closeInsertModal()" class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Insert Role</p>
-        <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
-      </header>
-      <section class="modal-card-body">
-        <form (ngSubmit)="onSubmit( )" [formGroup]="form">
-          <input class="form-control" formControlName="name"
-                 placeholder="Name"
-                 required
-                 type="name">
-          <input class="form-control" formControlName="recordStatus"
-                 placeholder="Record Status"
-                 required
-                 type="text">
-          <input class="form-control" formControlName="roleDescription"
-                 placeholder="Role Description"
-                 required
-                 type="text">
-          <div class="control">
-            <textarea class="textarea" placeholder="Add your description here! "></textarea>
-          </div>
-        </form>
-      </section>
-      <footer class="modal-card-foot">
-        <button (click)="onSubmit()" class="button is-danger">Submit</button>
-        <button (click)="closeInsertModal()" class="button">Cancel</button>
       </footer>
     </div>
   </div>

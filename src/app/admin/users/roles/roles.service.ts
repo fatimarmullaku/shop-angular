@@ -11,7 +11,6 @@ export class RolesService {
   }
 
   registerRole(data) {
-    console.log('from service', data)
     return this.http.post(this.rootUrl ,data);
   }
 
@@ -21,13 +20,12 @@ export class RolesService {
 
 
   updateRole(data, id) {
-    console.log('from service', data, id)
     return this.http.put(this.rootUrl + id, data);
   }
 
 
   deleteRole(id) {
-    console.log('from service', id)
+
     return this.http.delete(this.rootUrl + id);
   }
 }
