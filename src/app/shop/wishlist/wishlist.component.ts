@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {WishlistService} from "../../shared/services/wishlist.service";
-import {ProductWishlistModel} from "../../shared/models/product-wishlist.model";
-import {ProductModel} from "../../shared/models/product.model";
-import {ProductService} from "../../shared/services/product.service";
-import {CartService} from "../../shared/services/cart.service";
+import {WishlistService} from '../../shared/services/wishlist.service';
+import {ProductWishlistModel} from '../../shared/models/product-wishlist.model';
+import {ProductModel} from '../../shared/models/product.model';
+import {ProductService} from '../../shared/services/product.service';
+import {CartService} from '../../shared/services/cart.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -21,6 +21,7 @@ export class WishlistComponent implements OnInit {
   }
   ngOnInit() {
     this.productService.getProducts();
+    console.log('this is the list of products: ', this.productService.getProducts());
     this.wishlistProducts = this.wishlistService.getProductsFromWishlist();
   }
 
@@ -30,7 +31,7 @@ export class WishlistComponent implements OnInit {
   }
 
 
-  addToCart(prod: ProductModel,event: any) {
+  addToCart(prod: ProductModel, event: any) {
     event.preventDefault();
     this.cartService.addToCart(prod.id, 1);
   }
