@@ -112,6 +112,9 @@
                   </option>
                 </select>
               </div>
+              <div *ngIf="!isNotPlatform" class="requiredError">
+                <sup>*</sup>Choose a Platform
+              </div>
             </div>
             <div class="column" formGroupName="brand">
               <label for="brand">Brand:</label>
@@ -121,6 +124,9 @@
                     {{b.name}}
                   </option>
                 </select>
+              </div>
+              <div *ngIf="!isNotBrand" class="requiredError">
+                <sup>*</sup>Choose a brand
               </div>
             </div>
           </div>
