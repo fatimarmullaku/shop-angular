@@ -4,9 +4,12 @@ import {ProductCartModel} from "../models/product-cart.model";
 import {CartService} from "../services/cart.service";
 import {ProductModel} from "../models/product.model";
 import {ProductService} from "../services/product.service";
-import {BaseStorageService} from "../services/base-storage.service";
 import {LocalStorageKey} from "../constants/local-storage-key";
 import {StorageService} from "../services/storage.service";
+import {RestService} from "../services/rest.service";
+import {HttpRequestMethod} from "../constants/http-request.method";
+import {ENDPOINTS} from "../constants/api.constants";
+import {BaseStorageService} from "../services/base-storage.service";
 
 
 @Component({
@@ -20,16 +23,20 @@ export class HeaderComponent implements OnInit {
   cartQty = 0;
   status: boolean = false;
   status2: boolean = false;
+  customerName: string;
 
   constructor(private userService: UserService,
               private cartService: CartService,
               private productService: ProductService,
-              private storageService: StorageService) { }
+              private storageService: StorageService,
+              private restService: RestService,
+              private baseStorageService: BaseStorageService) { }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
     this.cartProducts = this.cartService.getProductsFromCart();
     this.getCartProducts();
+    this.fetchCustomer();
   }
 
   getCartProducts() {
@@ -45,6 +52,8 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
+
+
 
   toggleClass(){
       this.status = !this.status;
@@ -62,4 +71,17 @@ export class HeaderComponent implements OnInit {
     }
     return isLogedIn;
   }
+
+  fetchCustomer(): void{
+    const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res)=>{
+        this.customerName = res.name;
+        console.log(this.customerName);
+    },
+      (err) => {
+      console.log(err);
+      });
+  }
+
+
 }

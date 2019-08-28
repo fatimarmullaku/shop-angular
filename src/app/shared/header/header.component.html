@@ -55,7 +55,8 @@
             <a routerLink="/auth/register" class="dropdown-item sign-up-button">Sign Up</a>
             <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
             </div>
-            <div *ngIf="this.isLoggedIn()" >
+            <div *ngIf="this.isLoggedIn()">
+              <a href="#" class="dropdown-item is-dark is-active">{{this.customerName}}</a>
             <a href="#" class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
             </div>
           </div>
