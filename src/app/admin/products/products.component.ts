@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
   name = 'Angular';
   image: File;
   selectedFile = null;
-  selectedFile2 = null;
+  selectedFile2: File;
   isNotPlatform = true;
   isNotBrand = true;
 
@@ -134,9 +134,10 @@ export class ProductsComponent implements OnInit {
       this.isNotPlatform = true;
 
       const values = this.productsForm.value;
-      console.log('from ts', values)
+      console.log('from ts', values);
       this.productsService.registerProduct(values).subscribe(
         get => {
+          this.filePId = get.id;
           this.productsService.getAllProducts().subscribe((data: any) => {
             this.productsList = data;
             console.log('name ', this.productsForm.controls.name.value);
@@ -147,12 +148,12 @@ export class ProductsComponent implements OnInit {
         }
       );
 
-      setTimeout(() => {
+      /*setTimeout(() => {
         this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
           this.filePId = data;
           console.log('get id from product');
         });
-      }, 2000);
+      }, 2000);*/
 
       setTimeout(() => {
         const payload = new FormData();
@@ -213,18 +214,25 @@ export class ProductsComponent implements OnInit {
     this.updateForm.controls.name.setValue(name);
     this.updateForm.controls.unitPrice.setValue(unitPrice);
     this.updateForm.controls.inStock.setValue(inStock);
-    this.updateForm.controls.recordStatus.setValue(recordStatus);
-    this.updateForm.controls.updateDateTime.setValue(updateDateTime);
-    this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
+    // this.updateForm.controls.recordStatus.setValue(recordStatus);
+    // this.updateForm.controls.updateDateTime.setValue(updateDateTime);
+    // this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
     this.updateForm.controls.description.setValue(description);
-    this.updateForm.controls.version.setValue(version);
+    // this.updateForm.controls.version.setValue(version);
 
   }
 
   onUpdate() {
     const values = this.updateForm.value;
+    const updatePayload = {
+      name: this.updateForm.controls.name.value,
+      inStock: this.updateForm.controls.inStock.value,
+      unitPrice: this.updateForm.controls.unitPrice.value,
+      description: this.updateForm.controls.description.value
+    };
+    console.log('PAYLOAD THAT IS SENT', updatePayload);
     console.log(values);
-    this.productsService.updateProduct(values, this.productId).subscribe(
+    this.productsService.updateProduct(updatePayload, this.productId).subscribe(
       get => {
         this.productsService.getAllProducts().subscribe((data: any) => {
           this.productsList = data;
@@ -235,17 +243,19 @@ export class ProductsComponent implements OnInit {
       }
     );
 
-    setTimeout(() => {
-      const payload = new FormData();
-      payload.append('productId', this.productId.toString());
-      payload.append('files', this.selectedFile2, this.selectedFile2.name);
-      this.productsService.uploadFiles(payload);
+    if (this.selectedFile2 != null) {
+      setTimeout(() => {
+        const payload = new FormData();
+        payload.append('productId', this.productId.toString());
+        payload.append('files', this.selectedFile2, this.selectedFile2.name);
+        this.productsService.uploadFiles(payload);
 
-      this.insertModal = false;
-      this.productsForm.reset();
-      this.fileForm.reset();
-      console.log('post product with image update');
-    }, 5000);
+        this.insertModal = false;
+        this.productsForm.reset();
+        this.fileForm.reset();
+        console.log('post product with image update');
+      }, 5000);
+    }
 
     this.updateModal = false;
   }
