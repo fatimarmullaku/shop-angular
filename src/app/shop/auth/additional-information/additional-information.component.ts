@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../../shared/services/user.service';
 import {Router} from '@angular/router';
+import {BaseStorageService} from '../../../shared/services/base-storage.service';
+import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
 
 @Component({
   selector: 'app-additional-information',
@@ -14,7 +16,10 @@ export class AdditionalInformationComponent implements OnInit {
   addresses: FormArray;
 
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private routerLink: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private routerLink: Router,
+              private baseStorage: BaseStorageService) {
   }
 
   ngOnInit() {
@@ -26,7 +31,6 @@ export class AdditionalInformationComponent implements OnInit {
 
   createPhoneNumber(): FormGroup {
     return this.formBuilder.group({
-      // mobile: new FormControl(''),
       phoneNumber: new FormControl('')
     });
   }
@@ -66,11 +70,13 @@ export class AdditionalInformationComponent implements OnInit {
 
   onSubmit(event: any) {
     event.preventDefault();
-
-    console.log(this.informationForm.getRawValue());
     this.userService.addPhonesAndAddresses(this.informationForm.getRawValue()).subscribe((res) => {
-      console.log('RETURN FROM SERVER: ' + res);
-      this.routerLink.navigateByUrl('/');
+      const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
+      if (cartStorage && cartStorage.length > 0) {
+        this.routerLink.navigateByUrl('/cart/shipping');
+      } else {
+        this.routerLink.navigateByUrl('/');
+      }
     }, (error) => {
       console.error(error);
     });
