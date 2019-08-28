@@ -96,42 +96,55 @@
         <form (ngSubmit)="onAddProduct()" [formGroup]="productsForm">
           <div class="columns">
             <div class="column">
+              <label for="name">Name:</label>
               <input class="form-control"
+                     id="name"
                      placeholder="Name"
                      formControlName="name"
                      type="text">
             </div>
             <div class="column" formGroupName="platform">
-              <select formControlName="id" id="">
-                <option *ngFor="let p of platformList" [ngValue]="p.id">
-                  {{p.name}}
-                </option>
-              </select>
+              <label for="platform">Platform:</label>
+              <div>
+                <select formControlName="id" id="platform">
+                  <option *ngFor="let p of platformList" [ngValue]="p.id">
+                    {{p.name}}
+                  </option>
+                </select>
+              </div>
             </div>
             <div class="column" formGroupName="brand">
-              <select formControlName="id">
-                <option *ngFor="let b of brandsList" [ngValue]="b.id">
-                  {{b.name}}
-                </option>
-              </select>
+              <label for="brand">Brand:</label>
+              <div>
+                <select formControlName="id" id="brand">
+                  <option *ngFor="let b of brandsList" [ngValue]="b.id">
+                    {{b.name}}
+                  </option>
+                </select>
+              </div>
             </div>
           </div>
           <div class="columns">
             <div class="column">
+              <label for="unitPrice">Unit Price:</label>
               <input class="form-control"
+                     id="unitPrice"
                      placeholder="Unit Price"
                      formControlName="unitPrice"
                      type="text">
             </div>
             <div class="column">
+              <label for="inStock">In Stock:</label>
               <input class="form-control"
+                     id="inStock"
                      placeholder="In Stock"
                      formControlName="inStock"
                      type="boolean">
             </div>
           </div>
           <div class="control">
-            <textarea formControlName="description" class="textarea"
+            <label for="description">Description:</label>
+            <textarea formControlName="description" class="textarea" id="description"
                       placeholder="Add your description here! ">
             </textarea>
           </div>
@@ -164,36 +177,41 @@
       <form (ngSubmit)="onAddProduct()" [formGroup]="updateForm">
         <div class="columns">
           <div class="column">
+            <label for="uName">Name:</label>
             <input class="form-control"
+                   id="uName"
                    placeholder="Name"
                    formControlName="name"
-                   type="text">
+                   type="text" disabled>
           </div>
-        </div>
-        <div class="columns">
           <div class="column">
+            <label for="uUnitPrice">Unit Price:</label>
             <input class="form-control"
+                   id="uUnitPrice"
                    placeholder="Unit Price"
                    formControlName="unitPrice"
                    type="text">
           </div>
           <div class="column">
+            <label for="uInStock">In Stock:</label>
             <input class="form-control"
+                   id="uInStock"
                    placeholder="In Stock"
                    formControlName="inStock"
                    type="boolean">
           </div>
         </div>
         <div class="control">
-            <textarea formControlName="description" class="textarea"
+            <label for="uDescription">Description:</label>
+            <textarea formControlName="description" class="textarea" id="uDescription"
                       placeholder="Add your description here! ">
             </textarea>
         </div>
         <div class="image-upload">
-          <label for="file-input">
+          <label for="file-input2">
             <i class="fas fa-upload"></i>
           </label>
-          <input id="file-input" type="file" (change)="onFileSelected2($event)"/>
+          <input id="file-input2" type="file" (change)="onFileSelected2($event)"/>
         </div>
       </form>
     </section>

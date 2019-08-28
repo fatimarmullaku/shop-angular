@@ -33,11 +33,6 @@ export class ProductsComponent implements OnInit {
   image: File;
   selectedFile = null;
   selectedFile2 = null;
-  resData: any;
-  platformObject: FormGroup;
-  brandObject: FormGroup;
-  pName: string;
-
 
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
@@ -235,14 +230,6 @@ export class ProductsComponent implements OnInit {
     console.log(this.selectedFile2);
   }
 
-  onFileUpdate() {
-    const payload = new FormData();
-    payload.append('productId', this.productId.toString());
-    payload.append('files', this.selectedFile2, this.selectedFile2.name);
-    this.productsService.uploadFiles(payload);
-    this.updateModal = false;
-  }
-
   openInsert() {
     console.log('insert is called');
     this.insertModal = true;
@@ -263,6 +250,5 @@ export class ProductsComponent implements OnInit {
   toggleModal() {
     this.deleteModal = !this.deleteModal;
   }
-
 
 }
