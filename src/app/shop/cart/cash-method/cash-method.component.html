@@ -14,17 +14,14 @@
       <div class="column is-6-desktop is-6-mobile">
         <h1>CASH</h1>
       </div>
-      <div class="column is-6-desktop is-6-mobile has-text-right">
-        <h2>Order-696969</h2>
-      </div>
     </div>
 
     <div class="main-container">
       <div class="columns is-mobile is-multiline">
         <div class="column is-6-desktop is-12-mobile shipping-parent">
           <div class="cash-total has-text-centered">
-            <h3>$706.05 + $120,00(VAT)=</h3>
-            <h1 class="title" id="title" style="color: #ff2600">$826,05</h1>
+            <h3>Total Price</h3>
+            <h1 class="title" id="title" style="color: #ff2600">$ {{this.cartService.generateTotalPrice().toFixed(2)}}</h1>
           </div>
         </div>
 
@@ -36,7 +33,7 @@
             order will
             remain pending until we receive the payment.</p>
           <div class="column is-12-desktop is-12-mobile left-button has-text-centered">
-            <a class="button" routerLink="/cart/success-screen">Confirm</a>
+            <a class="button" routerLink="/cart/success-screen" (click)="buy()">Confirm</a>
           </div>
         </div>
       </div>
