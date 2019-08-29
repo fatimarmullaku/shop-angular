@@ -248,7 +248,8 @@ export class ProductsComponent implements OnInit {
         this.insertModal = false;
         this.productsForm.reset();
         this.fileForm.reset();
-
+        this.editShowBrandName = null;
+        this.editShowPlatformName = null;
       },
       (err: HttpErrorResponse) => {
         console.log(err);
