@@ -8,7 +8,6 @@ import {RestService} from './rest.service';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {getAbsoluteValue} from 'html2canvas/dist/types/css/types/length-percentage';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +54,7 @@ export class UserService {
   logout(): void {
     this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
     this.baseStorage.clearStorageOf(LocalStorageKey.CUSTOMER_ID);
+    this.baseStorage.clearStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY);
     this.router.navigateByUrl('/auth/login');
   }
 
