@@ -10,6 +10,7 @@ import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {WishlistService} from './wishlist.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,6 @@ export class ProductService {
   fetchProducts(): void {
     this.restService.publicRequest<ProductModel[]>(HttpRequestMethod.GET, ENDPOINTS.products.getAll).subscribe(res => {
         this.products = res;
-        console.log('FetchProducts ' + this.products[0].name);
-
         this.products.forEach(value => {
           const tempName = value.fileName;
           value.fileName = '/assets/img/' + tempName;
