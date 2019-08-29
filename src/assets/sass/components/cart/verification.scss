@@ -12,8 +12,13 @@
   }
 }
 
+.credit-card-iconi {
+  color: map_get($ucx-colors, deep-orange);
+}
+
 .shipping-parent {
   background-color: #1f2833;
+  //background-color: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
