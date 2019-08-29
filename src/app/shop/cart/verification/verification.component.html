@@ -2,10 +2,7 @@
 <div class="container">
   <div class="checkout-steps">
     <div class="step-buttons no-hover">
-      <a class="button is-rounded is-hovered" href="checkout.html">1</a>
-      <a class="button is-rounded is-hovered" href="shipping.html">2</a>
-      <a class="button is-rounded is-hovered" href="verification.html">3</a>
-      <a class="button is-rounded is-hovered" href="payment-methods.html">4</a>
+      <progress class="progress is-danger" value="50" max="100">15%</progress>
     </div>
   </div>
 
@@ -24,10 +21,10 @@
     <div class="columns is-mobile is-multiline">
       <div class="column is-4-desktop is-12-mobile shipping-parent">
         <div class="shipping-total">
-          <i class="fa fa-credit-card fa-3x"></i>
+          <i class="fa fa-credit-card fa-3x credit-card-iconi"></i>
           <h3>ORDER TOTAL</h3>
           <h2 class="title" id="title">{{this.cartService.generateTotalPrice().toFixed(2)}}</h2>
-          <h3>{{this.cartService.getProductsFromCart().length}} products are ordered</h3>
+          <h3>{{this.cartService.getProductsFromCart().length}} {{this.cartService.getProductsFromCart().length > 1 ? 'products are ordered': 'product is ordered'}}</h3>
         </div>
       </div>
 
@@ -35,20 +32,20 @@
         <div class="columns is-mobile shipping-infos" *ngFor="let item of this.cartService.getProductsFromCart(); let i = index;">
           <div class="column is-6-desktop is-6-mobile">
             <div class="shipping-delivery-content">
-              <span><h3>{{item.product.name}}</h3></span>
-              <span><h5>{{item.product.platform? item.product.platform.name : ''}}</h5></span>
+              <span><h3 *ngIf="item.product.name != null">{{item.product.name}}</h3></span>
+              <span><h5 *ngIf="item.product.platform != null">{{item.product.platform.name}}</h5></span>
             </div>
           </div>
           <div class="column is-3-desktop is-3-mobile">
             <div class="quantity">
               <span><h3>Quantity</h3></span>
-              <span><h5>{{item.qty}}</h5></span>
+              <span><h5 *ngIf="item.qty != null">{{item.qty}}</h5></span>
             </div>
           </div>
           <div class="column is-3-desktop is-3-mobile">
             <div class="order-price">
               <span><h3>Unit Price</h3></span>
-              <span><h5>{{item.product.unitPrice}}</h5></span>
+              <span><h5 *ngIf="item.product.unitPrice != null">{{item.product.unitPrice}}</h5></span>
             </div>
           </div>
         </div>

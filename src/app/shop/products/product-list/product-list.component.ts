@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductModel} from '../../../shared/models/product.model';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import {ProductService} from '../../../shared/services/product.service';
 import {PaginationService} from '../../../shared/pagination/pagination.service';
 import {ProductRatingModel} from '../../../shared/models/product-rating.model';
@@ -16,7 +15,7 @@ export class ProductListComponent implements OnInit {
   products: ProductModel[];
   productsList: any[];
   currentPage: number;
-  pageSize = 6;
+  pageSize = 8;
 
   constructor(private productService: ProductService,
               private paginationService: PaginationService) {

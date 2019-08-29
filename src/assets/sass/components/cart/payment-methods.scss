@@ -33,7 +33,8 @@
   background: #0a0a0a;
   margin: 40px 30px;
   padding: 20px 20px;
-  background: map_get($ucx-colors, dark-gray);
+  //background: map_get($ucx-colors, dark-gray);
+  background-color: transparent;
   text-align: center;
 
   #img-paypal {
