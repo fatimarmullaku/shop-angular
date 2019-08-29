@@ -17,7 +17,6 @@ export class CartService {
 
   getProductsFromCart(): ProductCartModel[] {
     let carts = this.baseStorage.getStorageOf(LocalStorageKey.CART);
-    console.log(carts);
     this.cartSubject.next(carts);
     return carts;
   }

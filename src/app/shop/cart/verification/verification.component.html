@@ -24,7 +24,7 @@
           <i class="fa fa-credit-card fa-3x credit-card-iconi"></i>
           <h3>ORDER TOTAL</h3>
           <h2 class="title" id="title">{{this.cartService.generateTotalPrice().toFixed(2)}}</h2>
-          <h3>{{this.cartService.getProductsFromCart().length}} products are ordered</h3>
+          <h3>{{this.cartService.getProductsFromCart().length}} {{this.cartService.getProductsFromCart().length > 1 ? 'products are ordered': 'product is ordered'}}</h3>
         </div>
       </div>
 
