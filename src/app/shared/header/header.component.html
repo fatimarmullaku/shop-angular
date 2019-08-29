@@ -27,7 +27,7 @@
               </div>
               <div class="column is-4 item-desc">
                 <a href="#" *ngIf="item.product.name != null"><h6><strong>{{item.product.name}}</strong></h6></a>
-                <h6 *ngIf="item.product.platform != null">{{item.product.platform}}</h6>
+                <h6 *ngIf="item.product.platform != null">{{item.product.platform.name}}</h6>
                 <h6 *ngIf=" item.product.unitPrice != null">{{item.product.unitPrice}}$</h6>
               </div>
               <div class="column is-4 has-text-right">
