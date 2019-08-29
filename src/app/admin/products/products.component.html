@@ -52,7 +52,8 @@
                 p.deletedDateTime,
                 p.description,
                 p.version,
-                p?.brand?.name
+                p?.brand?.name,
+                p?.platform?.name
                 ) "
                   class="far fa-edit"></i>
               </a>
@@ -197,11 +198,7 @@
           <div class="column" formGroupName="platform">
             <label for="platform">Platform:</label>
             <div>
-              <select formControlName="id" class="form-control" id="platform_edit">
-                <option *ngFor="let p of platformList" [ngValue]="p.id">
-                  {{p.name}}
-                </option>
-              </select>
+              <input type="text" disabled [value]="editShowPlatformName">
             </div>
           </div>
           <div class="column" formGroupName="brand">

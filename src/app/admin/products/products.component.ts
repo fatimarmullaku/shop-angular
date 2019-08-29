@@ -39,6 +39,7 @@ export class ProductsComponent implements OnInit {
   isNotPlatform = true;
   isNotBrand = true;
   editShowBrandName: string;
+  editShowPlatformName: string;
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
               private fb: FormBuilder,
@@ -196,9 +197,11 @@ export class ProductsComponent implements OnInit {
     deletedDateTime: Date,
     description: string,
     version: number,
-    brandName: string
+    brandName: string,
+    platformName: string
   ) {
     this.editShowBrandName = brandName;
+    this.editShowPlatformName = platformName;
     this.updateModal = true;
     this.productId = id;
     this.updateForm.controls.name.setValue(name);
