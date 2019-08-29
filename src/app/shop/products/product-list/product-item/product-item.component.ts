@@ -24,21 +24,37 @@ export class ProductItemComponent implements OnInit {
   ngOnInit() {
       this.productService.getProduct(this.item.id);
       this.wishlistService.getProductsFromWishlist();
+      if (this.isWishlisted()){
+        this.item.isWishlisted = true;
+      }
+      else{
+        this.item.isWishlisted = false;
+      }
   }
 
   isWishlisted(): boolean {
     return this.wishlistService.getProductInWishlist(this.item.id);
   }
 
-  toggleWishlist() {
-    if (this.isWishlisted()) {
+  // toggleWishlist() {
+  //   if (this.isWishlisted()) {
+  //     this.wishlistService.deleteFromWishlist(this.item.id);
+  //     this.item.isWishlisted = false;
+  //   } else {
+  //     this.wishlistService.addToWishlist(this.item.id);
+  //     this.item.isWishlisted = true;
+  //   }
+  // }
+
+  addToWishlist(){
+    this.wishlistService.addToWishlist(this.item.id);
+    this.item.isWishlisted = true;
+  }
+  removeFromWishlist(){
       this.wishlistService.deleteFromWishlist(this.item.id);
       this.item.isWishlisted = false;
-    } else {
-      this.wishlistService.addToWishlist(this.item.id);
-      this.item.isWishlisted = true;
-    }
   }
+
 
   addToCart(event: any) {
     event.preventDefault();
