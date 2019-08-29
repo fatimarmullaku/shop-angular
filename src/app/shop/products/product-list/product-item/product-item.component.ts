@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductModel} from '../../../../shared/models/product.model';
-import {ProductService} from "../../../../shared/services/product.service";
-import {CartService} from "../../../../shared/services/cart.service";
-import {ActivatedRoute} from "@angular/router";
-import {ProductWishlistModel} from "../../../../shared/models/product-wishlist.model";
-import {WishlistService} from "../../../../shared/services/wishlist.service";
+import {ProductService} from '../../../../shared/services/product.service';
+import {CartService} from '../../../../shared/services/cart.service';
+import {ActivatedRoute} from '@angular/router';
+import {WishlistService} from '../../../../shared/services/wishlist.service';
 
 @Component({
   selector: '[app-product-item]',
@@ -25,21 +24,37 @@ export class ProductItemComponent implements OnInit {
   ngOnInit() {
       this.productService.getProduct(this.item.id);
       this.wishlistService.getProductsFromWishlist();
+      if (this.isWishlisted()){
+        this.item.isWishlisted = true;
+      }
+      else{
+        this.item.isWishlisted = false;
+      }
   }
 
   isWishlisted(): boolean {
     return this.wishlistService.getProductInWishlist(this.item.id);
   }
 
-  toggleWishlist() {
-    if (this.isWishlisted()) {
+  // toggleWishlist() {
+  //   if (this.isWishlisted()) {
+  //     this.wishlistService.deleteFromWishlist(this.item.id);
+  //     this.item.isWishlisted = false;
+  //   } else {
+  //     this.wishlistService.addToWishlist(this.item.id);
+  //     this.item.isWishlisted = true;
+  //   }
+  // }
+
+  addToWishlist(){
+    this.wishlistService.addToWishlist(this.item.id);
+    this.item.isWishlisted = true;
+  }
+  removeFromWishlist(){
       this.wishlistService.deleteFromWishlist(this.item.id);
       this.item.isWishlisted = false;
-    } else {
-      this.wishlistService.addToWishlist(this.item.id);
-      this.item.isWishlisted = true;
-    }
   }
+
 
   addToCart(event: any) {
     event.preventDefault();

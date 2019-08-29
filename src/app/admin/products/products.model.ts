@@ -3,6 +3,7 @@ import {BrandsModel} from '../brands/brands.model';
 
 export class ProductsModel {
   platform: PlatformsModel;
+  fileUpload: any;
   brand: BrandsModel;
   id: number;
   name: string;

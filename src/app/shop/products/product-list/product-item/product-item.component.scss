@@ -16,3 +16,15 @@
     padding-top: 10px;
   }
 }
+
+.image {
+  min-height: 345px;
+  max-height: 345px;
+
+  img {
+    object-fit: cover;
+    min-height: 345px;
+    max-height: 345px;
+    width: 100%;
+  }
+}

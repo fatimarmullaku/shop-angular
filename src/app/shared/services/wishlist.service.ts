@@ -21,7 +21,13 @@ export class WishlistService{
   }
 
   getProductInWishlist(id: number): boolean {
-    return this.baseStorage.getElementInStorage(id, LocalStorageKey.WISHLIST);
+    if (this.baseStorage.getElementInStorage(id, LocalStorageKey.WISHLIST)) {
+      return true;
+    }
+    else{
+      return false;
+    }
+    // return ;
   }
 
   addToWishlist(id: number): void {
@@ -35,7 +41,7 @@ export class WishlistService{
       const newProductInWishlist = new ProductWishlistModel();
       newProductInWishlist.id = id;
       newProductInWishlist.product = this.productService.getProduct(id);
-
+      newProductInWishlist.product.isWishlisted = true;
       wishlist.push(newProductInWishlist);
     }
     this.baseStorage.setStorage(LocalStorageKey.WISHLIST, wishlist);

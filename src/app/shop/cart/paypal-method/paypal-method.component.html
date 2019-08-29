@@ -2,10 +2,7 @@
 <div class="container">
   <div class="checkout-steps">
     <div class="step-buttons no-hover">
-      <a class="button is-rounded is-hovered" href="cart-preview.html">1</a>
-      <a class="button is-rounded is-hovered" href="checkout.html">2</a>
-      <a class="button is-rounded is-hovered" href="#">3</a>
-      <a class="button is-rounded is-hovered" href="#">4</a>
+      <progress class="progress is-danger" value="100" max="100"></progress>
     </div>
   </div>
 
@@ -14,24 +11,21 @@
       <div class="column is-6-desktop is-6-mobile">
         <h1>PAYPAL</h1>
       </div>
-      <div class="column is-6-desktop is-6-mobile has-text-right">
-        <h2>Order-696969</h2>
-      </div>
     </div>
 
     <div class="main-container">
       <div class="columns is-mobile is-multiline">
         <div class="column is-6-desktop is-12-mobile shipping-parent">
           <div class="cash-total has-text-centered">
-            <h3>$706.05 + $120,00(VAT)=</h3>
-            <h1 class="title" id="title">$826,05</h1>
+            <h3>Total Price</h3>
+            <h1 class="title" id="title">$ {{this.cartService.generateTotalPrice().toFixed(2)}}</h1>
           </div>
         </div>
 
         <div class="column is-6-desktop is-12-mobile has-text-centered">
           <div class="righ-container">
             <div class="icon-container">
-              <i class="fab fa-cc-paypal fa-8x" id="paypal-icon"></i>
+              <i class="fab fa-cc-paypal fa-8x paypal-icon" id="paypal-icon"></i>
             </div>
 
             <div class="profile-inputs">

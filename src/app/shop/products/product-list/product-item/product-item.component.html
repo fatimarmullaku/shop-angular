@@ -12,9 +12,9 @@
       <div class="column is-2-desktop" (click)="addToCart($event)">
         <i class="fab fa-opencart"></i>
       </div>
-      <div class="column is-2-desktop" (click)="toggleWishlist()">
-        <i *ngIf="!item.isWishlisted" class='far fa-heart'></i>
-        <i *ngIf="item.isWishlisted" class='fas fa-heart'></i>
+      <div class="column is-2-desktop">
+        <i *ngIf="!item.isWishlisted" class='far fa-heart' (click)="addToWishlist()"></i>
+        <i *ngIf="item.isWishlisted" class='fas fa-heart' (click)="removeFromWishlist()"></i>
       </div>
       <div class="column is-7-desktop">
       </div>

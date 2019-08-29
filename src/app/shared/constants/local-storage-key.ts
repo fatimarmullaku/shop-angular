@@ -3,5 +3,6 @@ export enum LocalStorageKey {
   CART = 'cart',
   ACCESS_TOKEN = 'accessToken',
   CUSTOMER_ID = 'customerId',
-  SHIPPING_ADDRESS_ID = 'addressId'
+  SHIPPING_ADDRESS_ID = 'addressId',
+  TEMP_SHIPPING_KEY = 'tempKey'
 }
