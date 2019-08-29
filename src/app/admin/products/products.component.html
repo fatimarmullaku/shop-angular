@@ -51,7 +51,9 @@
                 p.updateDateTime,
                 p.deletedDateTime,
                 p.description,
-                p.version) "
+                p.version,
+                p?.brand?.name
+                ) "
                   class="far fa-edit"></i>
               </a>
               <i (click)="openDelete(p.id)" class="fa fa-trash" aria-hidden="true"></i>
@@ -195,7 +197,7 @@
           <div class="column" formGroupName="platform">
             <label for="platform">Platform:</label>
             <div>
-              <select formControlName="id" id="platform">
+              <select formControlName="id" class="form-control" id="platform_edit">
                 <option *ngFor="let p of platformList" [ngValue]="p.id">
                   {{p.name}}
                 </option>
@@ -205,11 +207,7 @@
           <div class="column" formGroupName="brand">
             <label for="brand">Brand:</label>
             <div>
-              <select formControlName="id" id="brand">
-                <option *ngFor="let b of brandsList" [ngValue]="b.id">
-                  {{b.name}}
-                </option>
-              </select>
+              <input type="text" disabled [value]="editShowBrandName">
             </div>
           </div>
         </div>

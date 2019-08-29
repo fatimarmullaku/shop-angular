@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
   selectedFile2: File;
   isNotPlatform = true;
   isNotBrand = true;
-
+  editShowBrandName: string;
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
               private fb: FormBuilder,
@@ -187,34 +187,18 @@ export class ProductsComponent implements OnInit {
   }
 
   openUpdate(
-    id
-      :
-      number,
-    name
-      :
-      string,
-    unitPrice
-      :
-      bigint,
-    inStock
-      :
-      number,
-    recordStatus
-      :
-      string,
-    updateDateTime
-      :
-      Date,
-    deletedDateTime
-      :
-      Date,
-    description
-      :
-      string,
-    version
-      :
-      number
+    id: number,
+    name: string,
+    unitPrice: bigint,
+    inStock: number,
+    recordStatus: string,
+    updateDateTime: Date,
+    deletedDateTime: Date,
+    description: string,
+    version: number,
+    brandName: string
   ) {
+    this.editShowBrandName = brandName;
     this.updateModal = true;
     this.productId = id;
     this.updateForm.controls.name.setValue(name);
