@@ -190,8 +190,30 @@
                    id="uName"
                    placeholder="Name"
                    formControlName="name"
-                   type="text" disabled>
+                   type="text">
           </div>
+          <div class="column" formGroupName="platform">
+            <label for="platform">Platform:</label>
+            <div>
+              <select formControlName="id" id="platform">
+                <option *ngFor="let p of platformList" [ngValue]="p.id">
+                  {{p.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="column" formGroupName="brand">
+            <label for="brand">Brand:</label>
+            <div>
+              <select formControlName="id" id="brand">
+                <option *ngFor="let b of brandsList" [ngValue]="b.id">
+                  {{b.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
           <div class="column">
             <label for="uUnitPrice">Unit Price:</label>
             <input class="form-control"
