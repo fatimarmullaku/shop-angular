@@ -12,6 +12,7 @@
         <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
           <tr>
             <th>Name</th>
+            <th>Photo</th>
             <th>Platform</th>
             <th>Brand</th>
             <th>Unit Price</th>
@@ -26,6 +27,7 @@
           </tr>
           <tr *ngFor="let p of productsList | pipeFilteer:filter">
             <td>{{p.name}}</td>
+            <td><img src="{{photoUrl+'/'+p.fileUpload.fileName}}" class=" img-thumbnail product-image-sizing"></td>
             <td> {{p?.platform?.name}} </td>
             <td> {{p?.brand?.name}} </td>
             <td> {{p.unitPrice}}</td>

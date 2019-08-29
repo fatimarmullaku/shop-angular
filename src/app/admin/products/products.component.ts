@@ -10,6 +10,7 @@ import {BrandsModel} from '../brands/brands.model';
 import {ProductsModel} from './products.model';
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
+import {ENDPOINTS} from '../../shared/constants/api.constants';
 
 @Component({
   selector: 'app-products',
@@ -17,6 +18,7 @@ import * as jspdf from 'jspdf';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  photoUrl = ENDPOINTS.products.getProductImage;
   deleteModal = false;
   updateModal = false;
   insertModal = false;
