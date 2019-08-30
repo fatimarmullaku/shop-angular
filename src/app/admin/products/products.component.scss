@@ -36,6 +36,9 @@
     width: auto;
     max-width:50px;
   }
+  .enlarge-hover:hover {
+    transform: scale(5);
+  }
 
 }
 
@@ -59,4 +62,5 @@
 .requiredError{
   color:red;
 }
+
 

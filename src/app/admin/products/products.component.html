@@ -27,7 +27,7 @@
           </tr>
           <tr *ngFor="let p of productsList | pipeFilteer:filter">
             <td>{{p?.name}}</td>
-            <td ><img src="{{photoUrl+'/'+p?.fileUpload?.fileName}}" class=" img-thumbnail product-image-sizing"></td>
+            <td ><img src="{{photoUrl+'/'+p?.fileUpload?.fileName}}" class=" img-thumbnail product-image-sizing enlarge-hover"></td>
             <td> {{p?.platform?.name}} </td>
             <td> {{p?.brand?.name}} </td>
             <td> {{p.unitPrice}}</td>
