@@ -92,7 +92,7 @@ export class ProductsComponent implements OnInit {
       recordStatus: [''],
       deletedDateTime: [''],
       description: [''],
-      version: ['']
+      version: [''],
     });
 
     this.fileForm = this.fb.group({
