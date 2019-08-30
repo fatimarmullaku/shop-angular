@@ -19,7 +19,7 @@
         <div class="dropdown-menu" id="dropdown-menu-2" role="menu">
           <div class="dropdown-content">
             <div class="columns is-mobile dropdown-item dropdown-cart-item"
-                 *ngFor="let item of this.cartService.getProductsFromCart()">
+                 *ngFor="let item of getProductsFromCart()">
               <div class="column item-picture is-4">
                 <figure class="image is-64x64">
                   <img class="is-rounded" *ngIf="item.product.fileName != null" [src]="photoUrl + item.product.fileName">

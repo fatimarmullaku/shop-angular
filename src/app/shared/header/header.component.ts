@@ -54,6 +54,10 @@ export class HeaderComponent implements OnInit {
     );
   }
 
+  getProductsFromCart() {
+    return this.cartService.getProductsFromCart();
+  }
+
 
 
   toggleClass(){
