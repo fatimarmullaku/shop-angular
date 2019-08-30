@@ -22,7 +22,7 @@
                  *ngFor="let item of this.cartService.getProductsFromCart()">
               <div class="column item-picture is-4">
                 <figure class="image is-64x64">
-                  <img class="is-rounded" *ngIf="item.product.fileName != null" [src]="item.product.fileName">
+                  <img class="is-rounded" *ngIf="item.product.fileName != null" [src]="photoUrl + item.product.fileName">
                 </figure>
               </div>
               <div class="column is-4 item-desc">
