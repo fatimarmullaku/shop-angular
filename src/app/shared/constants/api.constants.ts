@@ -10,7 +10,7 @@ const AUTH = {
 const PRODUCTS = {
   getAll: environment.apiHost + '/products',
   getProduct: environment.apiHost + '/products/{id}',
-  getProductImage: environment.apiHost + '/products/image'
+  getProductImage: environment.apiHost + '/products/image/'
 };
 
 const CUSTOMERS = {
