@@ -26,13 +26,10 @@ export class ProductsService {
   }
 
   uploadFiles(payload) {
-    this.http
+    return this.http
       .post('http://localhost:8080/api/v1/upload/',
         payload
-      ).subscribe((data: any) => {
-      this.resData = data;
-      console.log(this.resData);
-    });
+      );
   }
 
   updateProduct(data, id) {

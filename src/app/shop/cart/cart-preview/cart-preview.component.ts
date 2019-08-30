@@ -8,6 +8,8 @@ import {StorageService} from '../../../shared/services/storage.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../shared/services/user.service';
 import {Router} from '@angular/router';
+import {BaseStorageService} from '../../../shared/services/base-storage.service';
+import {ENDPOINTS} from '../../../shared/constants/api.constants';
 
 @Component({
   selector: 'app-cart-preview',
@@ -15,17 +17,19 @@ import {Router} from '@angular/router';
 })
 export class CartPreviewComponent implements OnInit {
 
-  //FormGroup
+  // FormGroup
   loginForm: FormGroup;
 
   products: ProductModel[];
   cartProducts: ProductCartModel[];
-  isModalActive: boolean = false;
-  showRoute: boolean = true;
+  isModalActive = false;
+  showRoute = true;
+  productUrl = ENDPOINTS.products.getProductImage;
 
   constructor(private productService: ProductService,
               private cartService: CartService,
               private storageService: StorageService,
+              private baseStorage: BaseStorageService,
               private userService: UserService,
               private router: Router,
               private formBuilder: FormBuilder) {
@@ -112,6 +116,10 @@ export class CartPreviewComponent implements OnInit {
 
   continueShipping() {
     this.router.navigateByUrl('/cart/shipping');
+  }
+
+  createDummyKey() {
+    this.baseStorage.setStorage(LocalStorageKey.TEMP_SHIPPING_KEY, 'temporary', true);
   }
 
 }

@@ -9,12 +9,13 @@ const AUTH = {
 
 const PRODUCTS = {
   getAll: environment.apiHost + '/products',
-  getProduct: environment.apiHost + '/products/{id}'
+  getProduct: environment.apiHost + '/products/{id}',
+  getProductImage: environment.apiHost + '/products/image/'
 };
 
 const CUSTOMERS = {
-    getAll: environment.apiHost + '/customers',
-    updatePhonesAndAddresses: environment.apiHost + '/customers'
+  getAll: environment.apiHost + '/customers',
+  updatePhonesAndAddresses: environment.apiHost + '/customers'
 };
 
 const BRANDS = {
@@ -22,8 +23,8 @@ const BRANDS = {
 }
 
 const PURCHASES = {
-    addToCart: environment.apiHost + '/purchases/lineitems',
-    buy: environment.apiHost + '/purchases'
+  addToCart: environment.apiHost + '/purchases/lineitems',
+  buy: environment.apiHost + '/purchases'
 }
 export const ENDPOINTS = {
   auth: AUTH,

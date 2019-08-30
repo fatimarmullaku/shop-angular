@@ -30,6 +30,15 @@ export class ProductDetailComponent implements OnInit {
   //   });
   // }
 
+  numbersOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+
   ngOnInit() {
     this.activatedRoute.params.subscribe(res => {
       if (res.id) {

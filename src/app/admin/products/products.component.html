@@ -12,8 +12,9 @@
         <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
           <tr>
             <th>Name</th>
+            <th>Photo</th>
             <th>Platform</th>
-            <th>Brand</th>
+            <th>Brand </th>
             <th>Unit Price</th>
             <th>in Stock</th>
             <th>Record Status</th>
@@ -25,7 +26,8 @@
             <th></th>
           </tr>
           <tr *ngFor="let p of productsList | pipeFilteer:filter">
-            <td>{{p.name}}</td>
+            <td>{{p?.name}}</td>
+            <td ><img src="{{photoUrl + p?.fileUpload?.fileName}}" class=" img-thumbnail product-image-sizing"></td>
             <td> {{p?.platform?.name}} </td>
             <td> {{p?.brand?.name}} </td>
             <td> {{p.unitPrice}}</td>
@@ -49,7 +51,10 @@
                 p.updateDateTime,
                 p.deletedDateTime,
                 p.description,
-                p.version) "
+                p.version,
+                p?.brand?.name,
+                p?.platform?.name
+                ) "
                   class="far fa-edit"></i>
               </a>
               <i (click)="openDelete(p.id)" class="fa fa-trash" aria-hidden="true"></i>
@@ -188,8 +193,22 @@
                    id="uName"
                    placeholder="Name"
                    formControlName="name"
-                   type="text" disabled>
+                   type="text">
           </div>
+          <div class="column">
+            <label for="platform">Platform:</label>
+            <div>
+              <input type="text" disabled [value]="editShowPlatformName">
+            </div>
+          </div>
+          <div class="column">
+            <label for="brand">Brand:</label>
+            <div>
+              <input type="text" disabled [value]="editShowBrandName">
+            </div>
+          </div>
+        </div>
+        <div class="columns">
           <div class="column">
             <label for="uUnitPrice">Unit Price:</label>
             <input class="form-control"

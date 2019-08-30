@@ -13,12 +13,11 @@
             <div class="columns is-vcentered">
               <div class="column is-2">
                 <div class="product-img">
-                  <img [src]="item.product.fileName" alt="">
+                  <img [src]="item.product.fileName.startsWith('/asset')? item.product.fileName : productUrl + item.product.fileName" alt="">
                 </div>
               </div>
               <div class="column is-3 product-info">
                 <h1>{{ item.product.name }}</h1>
-                <p>{{ item.product.description }}</p>
               </div>
               <div class="column is-2 product-info">
                 <h2>{{ item.isInStock ? 'Available': 'Out of stock' }} </h2>
@@ -92,7 +91,7 @@
 
                 <div class="field">
                   <div class="control">
-                    <input type="text" [formControlName]="'password'" class="input auth-input" placeholder="Password">
+                    <input type="password" [formControlName]="'password'" class="input auth-input" placeholder="Password">
                   </div>
                 </div>
 
@@ -107,7 +106,7 @@
                 </div>
 
                 <div class="register-account-link">
-                  <p class="paragraph">Don't have an account yet?<a [routerLink]="['/auth', 'register']">Sign up</a></p>
+                  <p class="paragraph">Don't have an account yet?<a [routerLink]="['/auth', 'register']" (click)="createDummyKey()">Sign up</a></p>
                 </div>
               </div>
             </div>

@@ -10,6 +10,8 @@ import {BrandsModel} from '../brands/brands.model';
 import {ProductsModel} from './products.model';
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
+import {ENDPOINTS} from '../../shared/constants/api.constants';
+import {combineLatest} from "rxjs";
 
 @Component({
   selector: 'app-products',
@@ -17,6 +19,7 @@ import * as jspdf from 'jspdf';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  photoUrl = ENDPOINTS.products.getProductImage;
   deleteModal = false;
   updateModal = false;
   insertModal = false;
@@ -35,7 +38,8 @@ export class ProductsComponent implements OnInit {
   selectedFile2: File;
   isNotPlatform = true;
   isNotBrand = true;
-
+  editShowBrandName: string;
+  editShowPlatformName: string;
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
               private fb: FormBuilder,
@@ -88,7 +92,7 @@ export class ProductsComponent implements OnInit {
       recordStatus: [''],
       deletedDateTime: [''],
       description: [''],
-      version: ['']
+      version: [''],
     });
 
     this.fileForm = this.fb.group({
@@ -117,59 +121,43 @@ export class ProductsComponent implements OnInit {
       this.isNotPlatform = false;
       this.isNotBrand = false;
       console.log('Si ki plotsu krejt platform  brand field-at');
-    }
-    else if (this.productsForm.controls.platform.invalid) {
+    } else if (this.productsForm.controls.platform.invalid) {
       this.isNotPlatform = false;
       this.isNotBrand = true;
       console.log('Si ki plotsu krejt platform field-at');
-    }
-    else if(this.productsForm.controls.brand.invalid)
-    {
+    } else if (this.productsForm.controls.brand.invalid) {
       this.isNotPlatform = true;
       this.isNotBrand = false;
       console.log('Si ki plotsu krejt brand field-at');
-    }
-    else {
+    } else {
       this.isNotBrand = true;
       this.isNotPlatform = true;
 
       const values = this.productsForm.value;
       console.log('from ts', values);
       this.productsService.registerProduct(values).subscribe(
-        get => {
-          this.filePId = get.id;
-          this.productsService.getAllProducts().subscribe((data: any) => {
-            this.productsList = data;
-            console.log('name ', this.productsForm.controls.name.value);
-          });
-        },
-        (err: HttpErrorResponse) => {
+        response => {
+          this.filePId = response.id;
+          const payload = new FormData();
+          if (this.filePId) {
+            payload.append('productId', this.filePId);
+            payload.append('files', this.selectedFile, this.selectedFile.name);
+            this.productsService.uploadFiles(payload).subscribe((data: any) => {
+              if (data) {
+                this.productsForm.reset();
+                this.fileForm.reset();
+                this.productsService.getAllProducts().subscribe((data: any) => {
+                  this.productsList = data;
+                  console.log('name ', this.productsForm.controls.name.value);
+                });
+              }
+            });
+          }
+        }, (err: HttpErrorResponse) => {
           console.log(err);
-        }
-      );
-
-      /*setTimeout(() => {
-        this.productsService.getProductId(this.productsForm.controls.name.value).subscribe((data: any) => {
-          this.filePId = data;
-          console.log('get id from product');
         });
-      }, 2000);*/
-
-      setTimeout(() => {
-        const payload = new FormData();
-        payload.append('productId', this.filePId);
-        payload.append('files', this.selectedFile, this.selectedFile.name);
-        this.productsService.uploadFiles(payload);
-
-        this.insertModal = false;
-        this.productsForm.reset();
-        this.fileForm.reset();
-        console.log('post product with image');
-      }, 5000);
-
       this.insertModal = false;
     }
-
   }
 
   onFileSelected(event) {
@@ -208,7 +196,12 @@ export class ProductsComponent implements OnInit {
     updateDateTime: Date,
     deletedDateTime: Date,
     description: string,
-    version: number) {
+    version: number,
+    brandName: string,
+    platformName: string
+  ) {
+    this.editShowBrandName = brandName;
+    this.editShowPlatformName = platformName;
     this.updateModal = true;
     this.productId = id;
     this.updateForm.controls.name.setValue(name);
@@ -232,32 +225,39 @@ export class ProductsComponent implements OnInit {
     };
     console.log('PAYLOAD THAT IS SENT', updatePayload);
     console.log(values);
-    this.productsService.updateProduct(updatePayload, this.productId).subscribe(
-      get => {
-        this.productsService.getAllProducts().subscribe((data: any) => {
-          this.productsList = data;
-        });
-      },
-      (err: HttpErrorResponse) => {
-        console.log(err);
-      }
-    );
 
-    if (this.selectedFile2 != null) {
-      setTimeout(() => {
-        const payload = new FormData();
-        payload.append('productId', this.productId.toString());
-        payload.append('files', this.selectedFile2, this.selectedFile2.name);
-        this.productsService.uploadFiles(payload);
+    this.productsService.updateProduct(updatePayload, this.productId).subscribe(
+      response => {
+        if (this.selectedFile2) {
+          const payload = new FormData();
+          payload.append('productId', this.productId.toString());
+          payload.append('files', this.selectedFile2, this.selectedFile2.name);
+          this.productsService.uploadFiles(payload).subscribe(res => {
+            this.productsService.getAllProducts().subscribe((data: any) => {
+              this.productsList = data;
+              this.insertModal = false;
+            });
+          });
+        } else {
+          this.productsService.getAllProducts().subscribe((data: any) => {
+            this.productsList = data;
+          });
+
+        }
 
         this.insertModal = false;
         this.productsForm.reset();
         this.fileForm.reset();
-        console.log('post product with image update');
-      }, 5000);
-    }
+        this.editShowBrandName = null;
+        this.editShowPlatformName = null;
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      });
+    this.closeUpdateModal();
 
-    this.updateModal = false;
+    console.log('post product with image update');
+
   }
 
   onFileSelected2(event) {
