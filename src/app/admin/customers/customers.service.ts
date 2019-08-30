@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {ENDPOINTS} from '../../shared/constants/api.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,8 @@ import {HttpClient} from '@angular/common/http';
 export class CustomersService {
 
 
-  // readonly getAll = ENDPOINTS.customers.getAll;
-  readonly rootUrl = 'http://localhost:8080/api/v1/customers/';
+  readonly rootUrl = ENDPOINTS.customers.getAll;
+  // readonly rootUrl = 'http://localhost:8080/api/v1/customers/';
 
   constructor(private http: HttpClient) {
   }
