@@ -16,7 +16,6 @@
             <th>Platform</th>
             <th>Brand </th>
             <th>Unit Price</th>
-            <th>in Stock</th>
             <th>Record Status</th>
             <th>Create Time</th>
             <th>Update Time</th>
@@ -31,7 +30,6 @@
             <td> {{p?.platform?.name}} </td>
             <td> {{p?.brand?.name}} </td>
             <td> {{p.unitPrice}}</td>
-            <td> {{p.inStock}}</td>
             <td>{{p.recordStatus}}</td>
             <td>{{p.createDateTime | date:'dd-MM-yyyy'}}</td>
             <td>{{p.updateDateTime | date:'dd-MM-yyyy'}}</td>
@@ -46,7 +44,6 @@
                 p.id,
                 p.name,
                 p.unitPrice,
-                p.inStock,
                 p.recordStatus,
                 p.updateDateTime,
                 p.deletedDateTime,
@@ -145,14 +142,6 @@
                      formControlName="unitPrice"
                      type="text">
             </div>
-            <div class="column">
-              <label for="inStock">In Stock:</label>
-              <input class="form-control"
-                     id="inStock"
-                     placeholder="In Stock"
-                     formControlName="inStock"
-                     type="boolean">
-            </div>
           </div>
           <div class="control">
             <label for="description">Description:</label>
@@ -217,14 +206,6 @@
                    placeholder="Unit Price"
                    formControlName="unitPrice"
                    type="text">
-          </div>
-          <div class="column">
-            <label for="uInStock">In Stock:</label>
-            <input class="form-control"
-                   id="uInStock"
-                   placeholder="In Stock"
-                   formControlName="inStock"
-                   type="boolean">
           </div>
         </div>
         <div class="control">

@@ -27,7 +27,6 @@ export class ProductUploadComponent implements OnInit {
     this.productForm = this.formBuilder.group({
       name: new FormControl(''),
       unitPrice: new FormControl(''),
-      inStock: new FormControl('')
     });
   }
 
@@ -55,7 +54,6 @@ export class ProductUploadComponent implements OnInit {
     const payload = {
       name: this.form.name.value,
       unitPrice: this.form.unitPrice.value,
-      inStock: this.form.inStock.value
     };
     console.log(payload);
     const stringifiedPayload = JSON.stringify(payload);

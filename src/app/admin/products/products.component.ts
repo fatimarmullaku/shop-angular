@@ -76,7 +76,6 @@ export class ProductsComponent implements OnInit {
         id: ['', [Validators.required]]
       }),
       unitPrice: [],
-      inStock: [],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
@@ -88,7 +87,6 @@ export class ProductsComponent implements OnInit {
     this.updateForm = this.fb.group({
       name: [''],
       unitPrice: [],
-      inStock: [],
       recordStatus: [''],
       deletedDateTime: [''],
       description: [''],
@@ -191,7 +189,6 @@ export class ProductsComponent implements OnInit {
     id: number,
     name: string,
     unitPrice: bigint,
-    inStock: number,
     recordStatus: string,
     updateDateTime: Date,
     deletedDateTime: Date,
@@ -206,7 +203,6 @@ export class ProductsComponent implements OnInit {
     this.productId = id;
     this.updateForm.controls.name.setValue(name);
     this.updateForm.controls.unitPrice.setValue(unitPrice);
-    this.updateForm.controls.inStock.setValue(inStock);
     // this.updateForm.controls.recordStatus.setValue(recordStatus);
     // this.updateForm.controls.updateDateTime.setValue(updateDateTime);
     // this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
@@ -219,7 +215,6 @@ export class ProductsComponent implements OnInit {
     const values = this.updateForm.value;
     const updatePayload = {
       name: this.updateForm.controls.name.value,
-      inStock: this.updateForm.controls.inStock.value,
       unitPrice: this.updateForm.controls.unitPrice.value,
       description: this.updateForm.controls.description.value
     };
