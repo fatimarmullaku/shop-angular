@@ -112,9 +112,10 @@
               <label for="platform">Platform:</label>
               <div>
                 <select formControlName="id" id="platform">
-                  <option *ngFor="let p of platformList" [ngValue]="p.id">
-                    {{p.name}}
-                  </option>
+<!--                  <option *ngFor="let p of platformList" [ngValue]="p.id">-->
+<!--                    {{p.name}}-->
+<!--                  </option>-->
+                  <option [ngValue]="1">PC (default)</option>
                 </select>
               </div>
               <div *ngIf="!isNotPlatform" class="requiredError">
