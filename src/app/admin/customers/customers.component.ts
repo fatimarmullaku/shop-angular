@@ -62,17 +62,7 @@ export class CustomersComponent implements OnInit {
     }));
 
 
-    this.updateForm = this.fb.group({
-      email: [''],
-      phoneNumbers: [],
-      recordStatus: [''],
-      updateDateTime: [],
-      deletedDateTime: [],
-      description: [''],
-      version: [],
-      address: [],
 
-    });
 
     console.log(this.updateForm);
 
@@ -127,21 +117,7 @@ export class CustomersComponent implements OnInit {
 
   }
 
-  onUpdate() {
-    const values = this.customersForm.value;
-    this.customersService.updateCustomer(values, this.customerId).subscribe(
-      get => {
-        this.customersService.getAllCustomers().subscribe((data: any) => {
-          this.customersList = data;
-        });
-      },
-      (err: HttpErrorResponse) => {
-        console.log(err);
-      }
-    );
-    this.updateModal = false;
-    this.customersForm.reset();
-  }
+
 
   openInsert() {
     console.log('insert is called');

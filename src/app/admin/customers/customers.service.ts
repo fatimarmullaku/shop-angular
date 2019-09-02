@@ -16,7 +16,7 @@ export class CustomersService {
 
 
   getAllCustomers() {
-    return this.http.get(this.rootUrl + 'allActive');
+    return this.http.get(this.rootUrl + '/allActive');
   }
 
   registerCustomer(values) {
