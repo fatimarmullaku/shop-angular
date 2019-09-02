@@ -21,6 +21,7 @@ import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
 import {ProductsFPipe} from './products/products-f.pipe';
 import {ShopModule} from '../shop/shop.module';
+import { FiltersComponent } from './shared/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {ShopModule} from '../shop/shop.module';
     PlatformsComponent,
     BrandsComponent,
     BrandsFilterPipe,
-    ProductsFPipe
+    ProductsFPipe,
+    FiltersComponent
 
   ],
   imports: [
