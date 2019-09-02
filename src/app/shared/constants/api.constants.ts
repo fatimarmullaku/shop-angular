@@ -22,6 +22,10 @@ const BRANDS = {
   getAll: environment.apiHost + '/brand'
 }
 
+const PLATFORMS = {
+  getAll: environment.apiHost + '/platforms'
+}
+
 const PURCHASES = {
   addToCart: environment.apiHost + '/purchases/lineitems',
   buy: environment.apiHost + '/purchases'
@@ -31,6 +35,7 @@ export const ENDPOINTS = {
   products: PRODUCTS,
   customers: CUSTOMERS,
   purchases: PURCHASES,
-  brands: BRANDS
+  brands: BRANDS,
+  platforms:PLATFORMS
 };
 
