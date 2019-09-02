@@ -22,14 +22,13 @@
             <th>Email</th>
             <th>City</th>
             <th>Phone Number</th>
-            <th>Record Status</th>
             <th>Create Time</th>
             <th>Update Time</th>
             <th>Delete Time</th>
             <th>Description</th>
             <th>Version</th>
             <th> </th>
-            <th> </th>
+            
           </tr>
           <tr *ngFor="let c of customersList | pipeFilteer:filter  ">
             <td>{{c.name}}</td>
@@ -44,20 +43,6 @@
             <td>{{c.version}}</td>
             <td></td>
             <td>
-              <a>
-                <i
-                  (click)="openUpdate(
-                c.id,
-                c.email,
-                c.phoneNumbers.phoneNumber,
-                c.addresses.city,
-                c.recordStatus,
-                c.updateDateTime,
-                c.deletedDateTime,
-                c.description,
-                c.version) "
-                  class="far fa-edit"></i>
-              </a>
               <i (click)="openDelete(c.id)" class="fa fa-trash" aria-hidden="true"></i>
             </td>
           </tr>
@@ -136,73 +121,6 @@
 
 
 
-
-  <div [ngClass]="{ 'is-active' : updateModal }" class="modal">
-    <div (click)="closeUpdateModal()" class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Update Customer</p>
-        <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
-      </header>
-      <section class="modal-card-body">
-        <form (ngSubmit)="onUpdate( )" [formGroup]="customersForm">
-          <span> Name </span>
-          <input class="form-control"
-                 formControlName="name"
-                 type="text">
-          <span> Email </span>
-          <input class="form-control"
-                 formControlName="email"
-                 type="email">
-          <div formArrayName="addresses" *ngFor="let item of addressesArray['controls']; let i = index">
-            <div [formGroupName]="i">
-              <span> Address </span>
-              <div class="columns">
-                <div class="column">
-                  <input class="form-control" formControlName="city"
-                         placeholder="City"
-                         type="text">
-                </div>
-                <div class="column">
-                  <input class="form-control" formControlName="street"
-                         placeholder="Street"
-                         type="text">
-                </div>
-                <div class="column">
-                  <input class="form-control" formControlName="country"
-                         placeholder="Country"
-                         type="text">
-                </div>
-                <div class="column">
-                  <input class="form-control" formControlName="zip_code"
-                         placeholder="Zip Code"
-                         type="text">
-                </div>
-              </div>
-            </div>
-          </div>
-          <span> Phone Number</span>
-          <div formArrayName="phoneNumbers" *ngFor="let item of phoneNumbersArray['controls']; let i = index">
-            <div [formGroupName]="i">
-              <input class="form-control" formControlName="phoneNumber"
-                     type="text">
-            </div>
-          </div>
-          <span> Record Status </span>
-          <input class="form-control" formControlName="recordStatus"
-                 type="email">
-          <span> Description </span>
-          <div class="control">
-            <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
-          </div>
-        </form>
-      </section>
-      <footer class="modal-card-foot">
-        <button (click)="onUpdate()" class="button is-danger">Save</button>
-        <button (click)="closeUpdateModal()" class="button">Cancel</button>
-      </footer>
-    </div>
-  </div>
 
 
   <div [ngClass]="{ 'is-active' : deleteModal }" class="modal">

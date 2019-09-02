@@ -42,7 +42,6 @@ export class CustomersComponent implements OnInit {
       email: new FormControl('', Validators.required),
       phoneNumbers: this.fb.array([]),
       addresses: this.fb.array([]),
-      recordStatus: [''],
       createDateTime: [],
       updateDateTime: [],
       deletedDateTime: [],
@@ -125,28 +124,7 @@ export class CustomersComponent implements OnInit {
     console.log('from open insert', this.insertModal);
   }
 
-  openUpdate(
-    id,
-    email,
-    name,
-    phoneNumber,
-    recordStatus,
-    updateDateTime,
-    deletedDateTime,
-    description,
-    version: number) {
-    this.customerId = id;
-    this.updateModal = true;
-    this.customersForm.controls.email.setValue(email);
-    this.customersForm.controls.name.setValue(name);
-    this.customersForm.controls.phoneNumbers.setValue(phoneNumber);
-    this.customersForm.controls.recordStatus.setValue(recordStatus);
-    this.customersForm.controls.updateDateTime.setValue(updateDateTime);
-    this.customersForm.controls.deletedDateTime.setValue(deletedDateTime);
-    this.customersForm.controls.description.setValue(description);
-    this.customersForm.controls.version.setValue(version);
 
-  }
 
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
