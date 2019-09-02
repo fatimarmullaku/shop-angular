@@ -10,6 +10,7 @@ import * as jspdf from 'jspdf';
   selector: 'app-platforms',
   templateUrl: './platforms.component.html',
   styleUrls: ['./platforms.component.scss']
+  
 })
 export class PlatformsComponent implements OnInit {
   deleteModal = false;
@@ -36,8 +37,7 @@ export class PlatformsComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       id: [''],
-      name: [''],
-      recordStatus: [''],
+      name: [''], 
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
@@ -46,8 +46,7 @@ export class PlatformsComponent implements OnInit {
     });
 
     this.updateForm = this.formBuilder.group({
-      name: [''],
-      recordStatus: [''],
+      name: [''], 
       updateDateTime: [],
       deletedDateTime: [],
       description: [''],
@@ -132,16 +131,14 @@ export class PlatformsComponent implements OnInit {
 
   openUpdate(
     id,
-    name,
-    recordStatus,
+    name, 
     updateDateTime,
     deletedDateTime,
     description,
     version: number) {
     this.pid = id;
     this.updateModal = true;
-    this.updateForm.controls.name.setValue(name);
-    this.updateForm.controls.recordStatus.setValue(recordStatus);
+    this.updateForm.controls.name.setValue(name); 
     this.updateForm.controls.updateDateTime.setValue(updateDateTime);
     this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
     this.updateForm.controls.description.setValue(description);

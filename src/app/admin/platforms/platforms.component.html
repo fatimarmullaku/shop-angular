@@ -76,17 +76,13 @@
     <div (click)="closeUpdateModal()" class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Update Category</p>
+        <p class="modal-card-title">Update Platoform</p>
         <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
         <form (ngSubmit)="onSubmit( )" [formGroup]="updateForm">
           <input class="form-control" formControlName="name"
                  placeholder="Name"
-                 required
-                 type="text">
-          <input class="form-control" formControlName="recordStatus"
-                 placeholder="Record Status"
                  required
                  type="text">
           <div class="field">
@@ -109,17 +105,13 @@
     <div (click)="closeInsertModal()" class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Insert Category</p>
+        <p class="modal-card-title">Insert Platform</p>
         <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
         <form (ngSubmit)="onSubmit( )" [formGroup]="form">
           <input class="form-control" formControlName="name"
                  placeholder="Name"
-                 required
-                 type="text">
-          <input class="form-control" formControlName="recordStatus"
-                 placeholder="Record Status"
                  required
                  type="text">
           <div class="control">
