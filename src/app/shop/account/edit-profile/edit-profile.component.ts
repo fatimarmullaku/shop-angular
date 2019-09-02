@@ -65,6 +65,7 @@ export class EditProfileComponent implements OnInit {
     event.preventDefault();
     console.log(this.editProfileFormGroup.getRawValue());
     this.userService.addPhonesAndAddresses(this.editProfileFormGroup.getRawValue()).subscribe((res) => {
+      alert('You have successfully updated your profile');
     }, (error) => {
       console.error(error);
     });
