@@ -1,1 +1,71 @@
-<p>edit-profile works!</p>
+<div class="profile-information-panel">
+
+  <div class="column main-content edit-profile-wrapper">
+
+
+
+    <form [formGroup]="editProfileFormGroup" class="form" (submit)="onSubmit($event)">
+      <p class="title is-2 static-titles">Profile Information</p>
+      <hr>
+      <p class="title is-4 static-titles">Account information</p>
+          <div class="columns">
+            <div class="column">
+              <label class="label">Email</label>
+              <input formControlName="email" type="email" class="input">
+            </div>
+          </div>
+      <p class="title is-4 static-titles">Personal information</p>
+      <hr>
+      <div class="columns">
+        <div class="column">
+          <label class="label">Full Name</label>
+          <input formControlName="name" type="text" class="input">
+        </div>
+      </div>
+
+      <h3 class="title is-5 static-titles">Phone Numbers</h3>
+      <div>
+        <div formArrayName="phoneNumbers" *ngFor="let _ of editProfileFormGroup.get('phoneNumbers')['controls']; let i = index;">
+          <div class="columns" [formGroupName]="i">
+            <div class="column is-12">
+              <label>Phone Number</label><br>
+              <input formControlName="phoneNumber" type="text" class="input" placeholder="xxx xxx xxx">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <h3 class="title is-5 static-titles">Addresses</h3>
+      <div>
+        <div formArrayName="addresses" *ngFor="let _ of editProfileFormGroup.get('addresses')['controls']; let i = index;">
+          <div class="columns" [formGroupName]="i">
+            <div class="column is-2">
+              <label class="label">Country</label>
+              <input type="text" class="input" formControlName="country">
+            </div>
+
+            <div class="column is-2">
+              <label class="label">City</label>
+              <input type="text" class="input" formControlName="city">
+            </div>
+
+            <div class="column is-2">
+              <label class="label">Zip code</label>
+              <input type="text" class="input" formControlName="zipCode">
+            </div>
+
+            <div class="column is-6">
+              <label class="label">Street</label>
+              <input type="text" class="input" formControlName="street">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-grouped is-grouped-right">
+        <button class="button is-primary save-button">Save</button>
+      </div>
+    </form>
+  </div>
+
+</div>

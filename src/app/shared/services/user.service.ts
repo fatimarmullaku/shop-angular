@@ -33,18 +33,18 @@ export class UserService {
         password
       }
     }).pipe(map(user => {
-        if (user) {
-          if (user.accessToken) {
-            this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
-          }
-          if (user.customerId) {
-            console.log(user.customerId);
-            this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.customerId, true);
-          }
+      if (user) {
+        if (user.accessToken) {
+          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
         }
+        if (user.customerId) {
+          console.log(user.customerId);
+          this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.customerId, true);
+        }
+      }
 
-        return user;
-      }));
+      return user;
+    }));
   }
 
   register(payload: UserRegisterModel) {
@@ -63,7 +63,19 @@ export class UserService {
     return this.restService.publicRequest<any>(HttpRequestMethod.PUT,
       ENDPOINTS.customers.updatePhonesAndAddresses + `/${customerId}`,
       {
+        body: payload
+      });
+  }
+
+  updateCustomer(payload: any) {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    console.log(this.restService.publicRequest<any>(HttpRequestMethod.PUT, ENDPOINTS.customers.update + `/${customerId}`, {
       body: payload
-    });
+    }));
+    return this.restService.publicRequest<any>(HttpRequestMethod.PUT,
+      ENDPOINTS.customers.update + `/${customerId}`,
+      {
+        body: payload
+      });
   }
 }
