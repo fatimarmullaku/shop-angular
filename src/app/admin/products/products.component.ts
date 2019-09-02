@@ -11,7 +11,6 @@ import {ProductsModel} from './products.model';
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
 import {ENDPOINTS} from '../../shared/constants/api.constants';
-import {combineLatest} from "rxjs";
 
 @Component({
   selector: 'app-products',
@@ -38,8 +37,6 @@ export class ProductsComponent implements OnInit {
   selectedFile2: File;
   isNotPlatform = true;
   isNotBrand = true;
-  editShowBrandName: string;
-  editShowPlatformName: string;
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
               private fb: FormBuilder,
@@ -87,6 +84,12 @@ export class ProductsComponent implements OnInit {
     this.updateForm = this.fb.group({
       name: [''],
       unitPrice: [],
+      platform: this.fb.group({
+        id: ['']
+      }),
+      brand: this.fb.group({
+        id: ['']
+      }),
       recordStatus: [''],
       deletedDateTime: [''],
       description: [''],
@@ -189,37 +192,28 @@ export class ProductsComponent implements OnInit {
     id: number,
     name: string,
     unitPrice: bigint,
-    recordStatus: string,
-    updateDateTime: Date,
-    deletedDateTime: Date,
     description: string,
-    version: number,
-    brandName: string,
-    platformName: string
+    brand: any,
+    platform: any
   ) {
-    this.editShowBrandName = brandName;
-    this.editShowPlatformName = platformName;
     this.updateModal = true;
     this.productId = id;
     this.updateForm.controls.name.setValue(name);
     this.updateForm.controls.unitPrice.setValue(unitPrice);
-    // this.updateForm.controls.recordStatus.setValue(recordStatus);
-    // this.updateForm.controls.updateDateTime.setValue(updateDateTime);
-    // this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
     this.updateForm.controls.description.setValue(description);
-    // this.updateForm.controls.version.setValue(version);
 
   }
 
   onUpdate() {
-    const values = this.updateForm.value;
     const updatePayload = {
+      id: this.productId,
       name: this.updateForm.controls.name.value,
       unitPrice: this.updateForm.controls.unitPrice.value,
-      description: this.updateForm.controls.description.value
+      description: this.updateForm.controls.description.value,
+      platform: this.updateForm.controls.platform.value,
+      brand: this.updateForm.controls.brand.value
     };
     console.log('PAYLOAD THAT IS SENT', updatePayload);
-    console.log(values);
 
     this.productsService.updateProduct(updatePayload, this.productId).subscribe(
       response => {
@@ -243,8 +237,6 @@ export class ProductsComponent implements OnInit {
         this.insertModal = false;
         this.productsForm.reset();
         this.fileForm.reset();
-        this.editShowBrandName = null;
-        this.editShowPlatformName = null;
       },
       (err: HttpErrorResponse) => {
         console.log(err);

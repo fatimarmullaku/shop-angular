@@ -44,13 +44,9 @@
                 p.id,
                 p.name,
                 p.unitPrice,
-                p.recordStatus,
-                p.updateDateTime,
-                p.deletedDateTime,
                 p.description,
-                p.version,
-                p?.brand?.name,
-                p?.platform?.name
+                p?.brand,
+                p?.platform
                 ) "
                   class="far fa-edit"></i>
               </a>
@@ -185,16 +181,25 @@
                    formControlName="name"
                    type="text">
           </div>
-          <div class="column">
+          <div class="column" formGroupName="platform">
             <label for="platform">Platform:</label>
             <div>
-              <input type="text" disabled [value]="editShowPlatformName">
+              <select formControlName="id" id="uPlatform">
+<!--                <option *ngFor="let p of platformList" [ngValue]="p.id">-->
+<!--                  {{p.name}}-->
+<!--                </option>-->
+                <option [ngValue]="1">PC (default)</option>
+              </select>
             </div>
           </div>
-          <div class="column">
+          <div class="column" formGroupName="brand">
             <label for="brand">Brand:</label>
             <div>
-              <input type="text" disabled [value]="editShowBrandName">
+              <select formControlName="id" id="uBrand">
+                <option *ngFor="let b of brandsList" [ngValue]="b.id">
+                  {{b.name}}
+                </option>
+              </select>
             </div>
           </div>
         </div>
