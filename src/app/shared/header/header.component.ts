@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/user.service';
-import {ProductCartModel} from "../models/product-cart.model";
-import {CartService} from "../services/cart.service";
-import {ProductModel} from "../models/product.model";
-import {ProductService} from "../services/product.service";
-import {LocalStorageKey} from "../constants/local-storage-key";
-import {StorageService} from "../services/storage.service";
-import {RestService} from "../services/rest.service";
-import {HttpRequestMethod} from "../constants/http-request.method";
-import {ENDPOINTS} from "../constants/api.constants";
-import {BaseStorageService} from "../services/base-storage.service";
+import {ProductCartModel} from '../models/product-cart.model';
+import {CartService} from '../services/cart.service';
+import {ProductModel} from '../models/product.model';
+import {ProductService} from '../services/product.service';
+import {LocalStorageKey} from '../constants/local-storage-key';
+import {StorageService} from '../services/storage.service';
+import {RestService} from '../services/rest.service';
+import {HttpRequestMethod} from '../constants/http-request.method';
+import {ENDPOINTS} from '../constants/api.constants';
+import {BaseStorageService} from '../services/base-storage.service';
 
 
 @Component({
@@ -22,8 +22,8 @@ export class HeaderComponent implements OnInit {
   products: ProductModel[];
   cartProducts: ProductCartModel[];
   cartQty = 0;
-  status: boolean = false;
-  status2: boolean = false;
+  status = false;
+  status2 = false;
   customerName: string;
 
   constructor(private userService: UserService,
@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit {
               private productService: ProductService,
               private storageService: StorageService,
               private restService: RestService,
-              private baseStorageService: BaseStorageService) { }
+              private baseStorageService: BaseStorageService) {
+  }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
@@ -45,11 +46,11 @@ export class HeaderComponent implements OnInit {
       result => {
         if (result) {
           this.cartQty = 0;
-            const carts = result as Array<ProductCartModel>;
-            carts.forEach(item => {
-              this.cartQty += item.qty;
-            });
-          }
+          const carts = result as Array<ProductCartModel>;
+          carts.forEach(item => {
+            this.cartQty += item.qty;
+          });
+        }
       }
     );
   }
@@ -59,32 +60,31 @@ export class HeaderComponent implements OnInit {
   }
 
 
-
-  toggleClass(){
-      this.status = !this.status;
+  toggleClass() {
+    this.status = !this.status;
   }
 
-  toggleClass2(){
+  toggleClass2() {
     this.status2 = !this.status2;
   }
 
-  isLoggedIn(): boolean{
+  isLoggedIn(): boolean {
     const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
     let isLogedIn = false;
-    if(element != null){
+    if (element != null) {
       isLogedIn = !isLogedIn;
     }
     return isLogedIn;
   }
 
-  fetchCustomer(): void{
+  fetchCustomer(): void {
     const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res)=>{
+    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res) => {
         this.customerName = res.name;
         console.log(this.customerName);
-    },
+      },
       (err) => {
-      console.log(err);
+        console.log(err);
       });
   }
 

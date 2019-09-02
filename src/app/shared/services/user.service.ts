@@ -60,7 +60,7 @@ export class UserService {
 
   addPhonesAndAddresses(payload: any) {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    return this.restService.publicRequest<any>(HttpRequestMethod.PUT,
+    return this.restService.request<any>(HttpRequestMethod.PUT,
       ENDPOINTS.customers.updatePhonesAndAddresses + `/${customerId}`,
       {
       body: payload

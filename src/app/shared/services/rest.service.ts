@@ -15,12 +15,12 @@ export class RestService {
   * */
 
   // request(method, url, parameters[body, url, etc]
-  request(method: HttpRequestMethod, url: string, options?: {
+  request<R>(method: HttpRequestMethod, url: string, options?: {
     params?: any
     body?: any
     headers?: any
   }) {
-    return this.httpClient.request<any>(method, url, options);
+    return this.httpClient.request<R>(method, url, options);
   }
 
   /*
