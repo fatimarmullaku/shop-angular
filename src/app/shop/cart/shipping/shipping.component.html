@@ -40,7 +40,7 @@
               <form (submit)="onSubmit($event)" [formGroup]="shippingFormGroup" class="form">
                 <div *ngIf="customerAddresses">
                   <h3 class="title is-5 static-titles">Addresses</h3>
-                  <div id="box-address">
+                  <div id="box-address-shipping">
                     <div *ngFor="let _ of shippingFormGroup.get('addresses')['controls']; let i = index;"
                          formArrayName="addresses">
                       <div [formGroupName]="i" class="columns">

@@ -40,7 +40,7 @@ export class ProductListComponent implements OnInit {
 
         obj.id = product.id;
         obj.productDescription = 'Lorem ipsumlmlml';
-        obj.fileName = product.fileName === null ? '/assets/img/bf4-cover.jpg' : '/assets/img/' + product.fileName;
+        obj.fileName = product.fileName === null ? '/assets/img/bf4-cover.jpg' : product.fileName;
         obj.platform = {
           name: 'PC'
         };

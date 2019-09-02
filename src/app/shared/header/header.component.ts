@@ -18,6 +18,7 @@ import {BaseStorageService} from "../services/base-storage.service";
 })
 export class HeaderComponent implements OnInit {
 
+  photoUrl = ENDPOINTS.products.getProductImage;
   products: ProductModel[];
   cartProducts: ProductCartModel[];
   cartQty = 0;
@@ -51,6 +52,10 @@ export class HeaderComponent implements OnInit {
           }
       }
     );
+  }
+
+  getProductsFromCart() {
+    return this.cartService.getProductsFromCart();
   }
 
 

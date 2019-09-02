@@ -14,7 +14,7 @@
             <th>Name</th>
             <th>Photo</th>
             <th>Platform</th>
-            <th>Brand</th>
+            <th>Brand </th>
             <th>Unit Price</th>
             <th>in Stock</th>
             <th>Record Status</th>
@@ -27,7 +27,7 @@
           </tr>
           <tr *ngFor="let p of productsList | pipeFilteer:filter">
             <td>{{p?.name}}</td>
-            <td ><img src="{{photoUrl+'/'+p?.fileUpload?.fileName}}" class=" img-thumbnail product-image-sizing"></td>
+            <td ><img src="{{photoUrl + p?.fileUpload?.fileName}}" class=" img-thumbnail product-image-sizing"></td>
             <td> {{p?.platform?.name}} </td>
             <td> {{p?.brand?.name}} </td>
             <td> {{p.unitPrice}}</td>
@@ -51,7 +51,10 @@
                 p.updateDateTime,
                 p.deletedDateTime,
                 p.description,
-                p.version) "
+                p.version,
+                p?.brand?.name,
+                p?.platform?.name
+                ) "
                   class="far fa-edit"></i>
               </a>
               <i (click)="openDelete(p.id)" class="fa fa-trash" aria-hidden="true"></i>
@@ -192,24 +195,16 @@
                    formControlName="name"
                    type="text">
           </div>
-          <div class="column" formGroupName="platform">
+          <div class="column">
             <label for="platform">Platform:</label>
             <div>
-              <select formControlName="id" id="platform">
-                <option *ngFor="let p of platformList" [ngValue]="p.id">
-                  {{p.name}}
-                </option>
-              </select>
+              <input type="text" disabled [value]="editShowPlatformName">
             </div>
           </div>
-          <div class="column" formGroupName="brand">
+          <div class="column">
             <label for="brand">Brand:</label>
             <div>
-              <select formControlName="id" id="brand">
-                <option *ngFor="let b of brandsList" [ngValue]="b.id">
-                  {{b.name}}
-                </option>
-              </select>
+              <input type="text" disabled [value]="editShowBrandName">
             </div>
           </div>
         </div>

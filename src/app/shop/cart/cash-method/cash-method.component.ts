@@ -25,4 +25,8 @@ export class CashMethodComponent implements OnInit {
         console.error(error);
       });
   }
+
+  generateTotalPrice() {
+    return this.cartService.generateTotalPrice();
+  }
 }

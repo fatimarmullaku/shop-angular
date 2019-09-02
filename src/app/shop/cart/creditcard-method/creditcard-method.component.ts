@@ -28,4 +28,7 @@ export class CreditcardMethodComponent implements OnInit {
       });
   }
 
+  generateTotalPrice() {
+    return this.cartService.generateTotalPrice();
+  }
 }

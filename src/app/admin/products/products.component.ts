@@ -38,7 +38,8 @@ export class ProductsComponent implements OnInit {
   selectedFile2: File;
   isNotPlatform = true;
   isNotBrand = true;
-
+  editShowBrandName: string;
+  editShowPlatformName: string;
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
               private fb: FormBuilder,
@@ -91,7 +92,7 @@ export class ProductsComponent implements OnInit {
       recordStatus: [''],
       deletedDateTime: [''],
       description: [''],
-      version: ['']
+      version: [''],
     });
 
     this.fileForm = this.fb.group({
@@ -187,34 +188,20 @@ export class ProductsComponent implements OnInit {
   }
 
   openUpdate(
-    id
-      :
-      number,
-    name
-      :
-      string,
-    unitPrice
-      :
-      bigint,
-    inStock
-      :
-      number,
-    recordStatus
-      :
-      string,
-    updateDateTime
-      :
-      Date,
-    deletedDateTime
-      :
-      Date,
-    description
-      :
-      string,
-    version
-      :
-      number
+    id: number,
+    name: string,
+    unitPrice: bigint,
+    inStock: number,
+    recordStatus: string,
+    updateDateTime: Date,
+    deletedDateTime: Date,
+    description: string,
+    version: number,
+    brandName: string,
+    platformName: string
   ) {
+    this.editShowBrandName = brandName;
+    this.editShowPlatformName = platformName;
     this.updateModal = true;
     this.productId = id;
     this.updateForm.controls.name.setValue(name);
@@ -261,7 +248,8 @@ export class ProductsComponent implements OnInit {
         this.insertModal = false;
         this.productsForm.reset();
         this.fileForm.reset();
-
+        this.editShowBrandName = null;
+        this.editShowPlatformName = null;
       },
       (err: HttpErrorResponse) => {
         console.log(err);
