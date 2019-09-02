@@ -21,6 +21,7 @@ export class ShippingComponent implements OnInit {
   clicked = false;
   nextClicked = true;
   selectedAddress: any;
+  customerEmail: string;
 
   constructor(private formBuilder: FormBuilder,
               public router: Router,
@@ -32,6 +33,7 @@ export class ShippingComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCustomer();
+    this.fetchEmail();
     this.shippingFormGroup = new FormGroup({
       addresses: new FormArray([])
     });
@@ -50,6 +52,17 @@ export class ShippingComponent implements OnInit {
         });
   }
 
+  fetchEmail(): void {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res) => {
+        this.customerEmail = res.email;
+        console.log(this.customerEmail);
+      },
+      (err) => {
+        console.log(err);
+      });
+  }
+
   createAddress(index?: number): FormGroup {
     return this.formBuilder.group({
       id: new FormControl(this.customer.addresses[index].id),
@@ -59,7 +72,6 @@ export class ShippingComponent implements OnInit {
       street: new FormControl(this.customer.addresses[index].street)
     });
   }
-
   createEmptyAddress(): FormGroup {
     return this.formBuilder.group({
       country: new FormControl(''),
