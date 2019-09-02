@@ -20,8 +20,8 @@
         </div>
       </div>
       <div>
-        <div formArrayName="phoneNumbers" *ngFor="let _ of editProfileFormGroup.get('phoneNumbers')['controls']; let i = index;">
-          <div class="columns" [formGroupName]="i">
+        <div>
+          <div class="columns">
             <div class="column is-12">
               <label>Phone Number</label><br>
               <input formControlName="phoneNumber" type="text" class="input">

@@ -30,7 +30,7 @@ export class EditProfileComponent implements OnInit {
     this.editProfileFormGroup = this.formBuilder.group({
       name: this.formBuilder.control(['']),
       email: this.formBuilder.control(['']),
-      phoneNumbers: this.formBuilder.array([this.createPhoneNumber()]),
+      phoneNumber: this.formBuilder.control(['']),
       addresses: this.formBuilder.array([this.createAddress()])
     });
 
@@ -39,7 +39,7 @@ export class EditProfileComponent implements OnInit {
         this.editProfileFormGroup.patchValue({
           name: response.name,
           email: response.email,
-          phoneNumbers: response.phoneNumbers,
+          phoneNumber: response.phoneNumber,
           addresses: response.addresses,
         });
       }
