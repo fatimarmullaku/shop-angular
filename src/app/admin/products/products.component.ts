@@ -22,8 +22,8 @@ export class ProductsComponent implements OnInit {
   deleteModal = false;
   updateModal = false;
   insertModal = false;
-  platformList = PlatformsModel[''];
-  brandsList = BrandsModel[''];
+  platformList: PlatformsModel[];
+  brandsList: BrandsModel[];
   productId: number;
   productsList: ProductsModel[];
   productsForm: FormGroup;
@@ -85,10 +85,10 @@ export class ProductsComponent implements OnInit {
       name: [''],
       unitPrice: [],
       platform: this.fb.group({
-        id: ['']
+        id: []
       }),
       brand: this.fb.group({
-        id: ['']
+        id: []
       }),
       recordStatus: [''],
       deletedDateTime: [''],
@@ -193,15 +193,18 @@ export class ProductsComponent implements OnInit {
     name: string,
     unitPrice: bigint,
     description: string,
-    brand: any,
-    platform: any
+    brand: BrandsModel,
+    platform: PlatformsModel
   ) {
+    console.log('brand ', brand);
+    console.log('platform ', platform);
     this.updateModal = true;
     this.productId = id;
     this.updateForm.controls.name.setValue(name);
     this.updateForm.controls.unitPrice.setValue(unitPrice);
-    this.updateForm.controls.description.setValue(description);
-
+    this.updateForm.controls.description.patchValue(description);
+    this.updateForm.controls.brand.patchValue(brand);
+    this.updateForm.controls.platform.patchValue(platform);
   }
 
   onUpdate() {
