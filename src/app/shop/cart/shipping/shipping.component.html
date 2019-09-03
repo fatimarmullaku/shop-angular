@@ -5,14 +5,14 @@
 
       <div class="checkout-steps">
         <div class="step-buttons no-hover">
-          <progress class="progress is-danger" value="25" max="100"></progress>
+          <progress class="progress is-danger" max="100" value="25"></progress>
         </div>
       </div>
 
       <div class="sub-info">
         <div class="columns is-mobile">
           <div class="column is-6-desktop is-6-mobile ">
-            <h1>SHIPPING</h1>
+            <h1>Activation Information</h1>
           </div>
           <div class="column is-6-desktop is-6-mobile has-text-right">
             <h1>Order-42319</h1>
@@ -26,62 +26,31 @@
           <!-- Title -->
           <!-- Card -->
           <div class="columns is-vcentered">
-            <div class="column is-5 has-text-centered grey-column has-popover-top enhanced-popover-hidden-mobile ">
+            <div class="column is-3 has-text-centered grey-column has-popover-top enhanced-popover-hidden-mobile ">
               <div class="shipping-wrapper">
                 <div class="columns is-multiline is-gapless">
                   <!-- Shipping method selection -->
                   <div class="column is-12 ">
-                    <img class="shipping-image" src="assets/img/delivery-truck.png">
+                    <!--                    <img class="shipping-image" src="assets/img/delivery-truck.png">-->
+                    <i class="fab fa-steam steam-icon"></i>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="column is-7 is-padded shipping-form-container">
-              <form (submit)="onSubmit($event)" [formGroup]="shippingFormGroup" class="form">
-                <div *ngIf="customerAddresses">
-                  <h3 class="title is-5 static-titles">Addresses</h3>
-                  <div id="box-address-shipping">
-                    <div *ngFor="let _ of shippingFormGroup.get('addresses')['controls']; let i = index;"
-                         formArrayName="addresses">
-                      <div [formGroupName]="i" class="columns">
-                        <div class="column is-1" style="margin-top: 10px">
-                          <label class="label" style="visibility: hidden">sada</label>
-                          <input  #radioAddress name="customRadio" value="{{i}}" type="radio" (click)="getRadioValue(radioAddress.value)">
-                        </div>
-                        <div class="column is-3">
-                          <label class="label">Country</label>
-                          <input class="input" formControlName="country" type="text"
-                                 value="{{customerAddresses[i] ? customerAddresses[i].country : ''}}">
-                        </div>
-
-                        <div class="column is-3">
-                          <label class="label">City</label>
-                          <input class="input" formControlName="city" type="text"
-                                 value="{{customerAddresses[i] ? customerAddresses[i].city : ''}}">
-                        </div>
-
-                        <div class="column is-2">
-                          <label class="label">Zip code</label>
-                          <input class="input" formControlName="zipCode" type="text"
-                                 value="{{customerAddresses[i] ? customerAddresses[i].zipCode : ''}}">
-                        </div>
-
-                        <div class="column is-3">
-                          <label class="label">Street</label>
-                          <input class="input" formControlName="street" type="text"
-                                 value="{{customerAddresses[i] ? customerAddresses[i].street : ''}}">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="add-addresses-container-btn column has-text-centered">
-                  <button (click)="onAddAddress($event); clicked = true" [disabled]="clicked" class="button add-field-button no-float"
-                          id="addaddress">Add address
-                  </button>
-                </div>
-              </form>
-
+            <div class="column is-9 shipping-form-container">
+              <h1 class="title" id="title">Steam Information</h1>
+              <h1>License codes and activation link will be sent to this email:</h1>
+              <h2 class="customer-email">{{this.customerEmail}}</h2>
+              <br>
+              <p><strong class="alertion">Important:</strong><br>
+                Ensure that you are activating your game through the Steam application. The Steam website or the Steam
+                client can
+                be used to activate a game. You can download and install the Steam
+                application by clicking on the green "Install Steam Now" button here:
+              </p>
+              <a href="http://store.steampowered.com/about/">http://store.steampowered.com/about/</a>
+              <br><br>
+              <p>Note: You will need a Steam account to activate the product</p>
             </div>
           </div>
         </div>
@@ -90,8 +59,9 @@
             <a class="nav-buttons-shipping button" routerLink="/cart"><span>Previous</span></a>
           </div>
           <div class="column is-6-desktop is-6-mobile has-text-right ">
-            <button (click)="onSubmit($event); " [disabled]="nextClicked" class="nav-buttons-shipping button"
-               routerLink="/cart/verification" ><span>Next</span></button>
+            <!--            <button (click)="onSubmit($event); " [disabled]="nextClicked" class="nav-buttons-shipping button"-->
+            <button (click)="onSubmit($event); " class="nav-buttons-shipping button"
+                    routerLink="/cart/verification"><span>Next</span></button>
           </div>
         </div>
       </div>

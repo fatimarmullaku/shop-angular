@@ -5,6 +5,7 @@ import {UserRegisterModel} from '../../../shared/models/user-register.model';
 import {Router} from '@angular/router';
 import {BaseStorageService} from '../../../shared/services/base-storage.service';
 import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
+import {MustMatch} from "./must-match-validator";
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   isRegistered = false;
+  submitted = false;
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
@@ -27,38 +29,31 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      first_name: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(2)
-      ])),
-      last_name: new FormControl(''),
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.email
-      ])),
-      password: new FormControl('', Validators.required),
-      confirm_password: new FormControl('', Validators.required),
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: MustMatch('password', 'confirmPassword')
     });
   }
 
-  onRegisterSubmit() {
-    if (this.registerForm.valid) {
-      if (this.f.password.value !== this.f.confirm_password.value) {
-        alert('Password and confirm password must be the same');
-        return false;
-      }
 
-      const payload = new UserRegisterModel();
-      payload.name = this.f.first_name.value + ' ' + this.f.last_name.value;
+  onRegisterSubmit() {
+    this.submitted = true;
+    if (this.registerForm.invalid){
+      return;
+    }
+    const payload = new UserRegisterModel();
+      payload.name = this.f.firstName.value + ' ' + this.f.lastName.value;
       payload.email = this.f.email.value;
       payload.user = {
         email: this.f.email.value,
         password: this.f.password.value
       };
-
-      const cartStorage = this.baseStorageService.getStorageOf(LocalStorageKey.CART);
-
-      this.userService.register(payload)
+    const cartStorage = this.baseStorageService.getStorageOf(LocalStorageKey.CART);
+    this.userService.register(payload)
         .subscribe((res) => {
           this.userService.login(payload.user.email, payload.user.password)
             .subscribe(r => {
@@ -75,9 +70,6 @@ export class RegisterComponent implements OnInit {
         }, (err) => {
           alert(err.error.errorMessage);
         });
-    } else {
-      alert('register form invalid');
-    }
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
-
 }
