@@ -71,6 +71,12 @@ export class UserService {
   }
 
   getRole(): string {
-    return this.tokenService.decodeToken().role;
+    let returnValue: string;
+    if (this.baseStorage.getStorageOf(LocalStorageKey.ACCESS_TOKEN, true)) {
+      returnValue = this.tokenService.decodeToken().role;
+    } else {
+      returnValue = '';
+    }
+    return returnValue;
   }
 }
