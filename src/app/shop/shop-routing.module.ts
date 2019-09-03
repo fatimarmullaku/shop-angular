@@ -10,6 +10,19 @@ import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.co
 import {NewPasswordComponent} from './auth/new-password/new-password.component';
 import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 import {LogoutComponent} from './auth/logout/logout.component';
+import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
+import {AddNewProductComponent} from './newproduct/add-new-product/add-new-product.component';
+import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
+import {WishlistComponent} from './wishlist/wishlist.component';
+import {ShippingComponent} from './cart/shipping/shipping.component';
+import {AccountInfoComponent} from './cart/account-info/account-info.component';
+import {VerificationComponent} from './cart/verification/verification.component';
+import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
+import {CashMethodComponent} from './cart/cash-method/cash-method.component';
+import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
+import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
+import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
+import {ProductUploadComponent} from './product-upload/product-upload.component';
 
 const routes: Routes = [
   {
@@ -62,6 +75,58 @@ const routes: Routes = [
         redirectTo: '/auth/login'
       }
     ]
+  },
+  {
+    path: 'auth/additional-information',
+    component: AdditionalInformationComponent
+  },
+  {
+    path: 'add-new-product',
+    component: AddNewProductComponent
+  },
+  {
+    path: 'cart',
+    component: CartPreviewComponent
+  },
+  {
+    path: 'cart/account-info',
+    component: AccountInfoComponent
+  },
+  {
+    path: 'cart/shipping',
+    component: ShippingComponent
+  },
+  {
+    path: 'cart/verification',
+    component: VerificationComponent
+  },
+  {
+    path: 'cart/payment-methods',
+    component: PaymentMethodsComponent
+  },
+  {
+    path: 'cart/paypal-method',
+    component: PaypalMethodComponent
+  },
+  {
+    path: 'cart/creditcard-method',
+    component: CreditcardMethodComponent
+  },
+  {
+    path: 'cart/cash-method',
+    component: CashMethodComponent
+  },
+  {
+    path: 'cart/success-screen',
+    component: SuccessScreenComponent
+  },
+  {
+    path: 'wish-list',
+    component: WishlistComponent
+  },
+  {
+    path: 'product-upload',
+    component: ProductUploadComponent
   }
 ];
 

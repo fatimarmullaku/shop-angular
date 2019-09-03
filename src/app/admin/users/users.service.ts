@@ -6,27 +6,27 @@ import {HttpClient} from '@angular/common/http';
 })
 export class UsersService {
 
-  readonly rootUrl = '';
+  readonly rootUrl = 'http://localhost:8080/api/v1/users/';
 
   constructor(private http: HttpClient) {
   }
 
   registerUser(data) {
-    return this.http.post(this.rootUrl + '/', data);
+    return this.http.post(this.rootUrl , data);
   }
 
   getAllUsers() {
-    return this.http.get(this.rootUrl + '/allProducts');
-  }
-
-
-  updateUser(data) {
-    return this.http.put(this.rootUrl + '/', data);
+    return this.http.get(this.rootUrl );
   }
 
 
   deleteUser(id) {
-    return this.http.post(this.rootUrl + '/', id);
+    return this.http.delete(this.rootUrl + id);
+  }
+
+
+  updateUser(data, id) {
+    return this.http.put(this.rootUrl + id, data);
   }
 
 

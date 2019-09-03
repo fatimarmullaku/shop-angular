@@ -1,9 +1,23 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
 
-  constructor() { }
+  readonly baseUrl = environment.apiHost;
+
+
+  constructor(private http: HttpClient) {
+
+  }
+
+  paged(size: number, page: number) {
+    const params = new HttpParams().set('size', String(size)).set('page', String(page));
+    return this.http.get(this.baseUrl + '/invoices/history/paged', {params});
+  }
+
+
 }

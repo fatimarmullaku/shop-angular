@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', Validators.required),
     });
   }
@@ -27,13 +27,15 @@ export class LoginComponent implements OnInit {
 
   onLoginFormSubmit() {
     if (this.loginForm.valid) {
-
-      this.userService.login(this.f.email.value, this.f.password.value)
-        .then(() => {
+      const payload = {
+        email: this.f.email.value,
+        password: this.f.password.value
+      };
+      this.userService.login(payload.email, payload.password).subscribe(res => {
           this.router.navigateByUrl('/');
-        })
-        .catch(() => {
-          alert('failed login');
+        },
+        (err) => {
+          console.error(err);
         });
     } else {
       alert('form not valid');

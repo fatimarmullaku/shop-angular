@@ -2,11 +2,11 @@
   <mat-expansion-panel class="panel">
     <mat-expansion-panel-header >
       <mat-panel-title>
-        Category
+        Platforms
       </mat-panel-title>
     </mat-expansion-panel-header >
     <div class="contentt">
-      <mat-checkbox *ngFor="let category of productCategories; let i = index">{{productCategories[i]}}</mat-checkbox>
+      <mat-checkbox *ngFor="let p of productCategories; let i = index" >{{productCategories[i]}}</mat-checkbox>
     </div>
   </mat-expansion-panel>
   <mat-expansion-panel class="panel">

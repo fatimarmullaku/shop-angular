@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PlatformsService} from '../platforms/platforms.service';
 
 @Component({
   selector: 'app-home-dashboard',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  constructor(private categoriesService: PlatformsService) { }
 
   ngOnInit() {
+
   }
 
 }

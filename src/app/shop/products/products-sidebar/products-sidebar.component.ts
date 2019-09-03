@@ -7,7 +7,6 @@ import 'hammerjs';
   styleUrls: ['./products-sidebar.component.scss']
 })
 export class ProductsSidebarComponent implements OnInit {
-
   productCategories = ['Category1', 'Category2', 'Category3', 'Category4'];
   productSort = ['Alphabetical A to Z', 'Alphabetical from Z to A', 'Most popular', 'Release date'];
   showFiller = false;
@@ -16,6 +15,11 @@ export class ProductsSidebarComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  checked() {
+    console.log('button is checked')
+  }
+
   formatLabel(value: number | null) {
     if (!value) {
       return 0;

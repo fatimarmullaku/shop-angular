@@ -1,79 +1,84 @@
-<!--<div class="header">-->
-<!--  <div class="image-container" [routerLink]="['/']">-->
-<!--    <img class="header-logo" src="assets/img/logo-ucx-wix.png" alt="logo">-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <a *ngIf="!isLoggedIn()" [routerLink]="['/auth/login']" class="log-out-button">Log In</a>-->
-<!--    <a *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']" class="log-out-button">Log Out</a>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-
 <div class="header uses-flex">
-  <!-- HEADER TOP STARTS HERE -->
   <div class="header-top uses-flex between-space">
     <a href="home.html">
       <div class="image-container" [routerLink]="['/']">
-        <!--                <img src="{{imageSRC}}logo-ucx-wix.png" alt="logo" class="header-logo">-->
         <img src="assets/img/ucx-logo-desktop.png" alt="logo" class="header-logo is-hidden-mobile">
         <img src="assets/img/ucx-logo-mobile.png" alt="logo" class="header-logo is-hidden-desktop">
       </div>
     </a>
-    <div class="auth-buttons is-hidden-mobile">
-<!--      -->
-<!--      <button class="log-out-button">Sign up</button>-->
-<!--      <button class="log-out-button">Login</button>-->
 
-
-      <a *ngIf="!isLoggedIn()" [routerLink]="['/auth/login']" class="log-out-button">Log In</a>
-      <a *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']" class="log-out-button">Log Out</a>
+    <div class="columns right-buttons is-hidden-tablet-only">
+      <div class="column is-6 dropdown dropdown-cart is-right is-large" (click)="toggleClass()"
+           [ngClass]="status ? 'is-active' : ''">
+        <div class="dropdown-trigger">
+          <button class="button cart-button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span><i class="fab fa-opencart"></i></span>
+            <span class="is-medium cart-nr" *ngIf="cartQty != null">{{cartQty}}</span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu-2" role="menu">
+          <div class="dropdown-content">
+            <div class="columns is-mobile dropdown-item dropdown-cart-item"
+                 *ngFor="let item of getProductsFromCart()">
+              <div class="column item-picture is-4">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" *ngIf="item.product.fileName != null" [src]="photoUrl + item.product.fileName">
+                </figure>
+              </div>
+              <div class="column is-4 item-desc">
+                <a href="#" *ngIf="item.product.name != null"><h6><strong>{{item.product.name}}</strong></h6></a>
+                <h6 *ngIf="item.product.platform != null">{{item.product.platform.name}}</h6>
+                <h6 *ngIf=" item.product.unitPrice != null">{{item.product.unitPrice}}$</h6>
+              </div>
+              <div class="column is-4 has-text-right">
+                <a (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>
+              </div>
+            </div>
+            <hr class="dropdown-divider">
+            <div class="dropdown-item proceed-checkout">
+              <a routerLink="/cart" class="button is-dark is-fullwidth">Proceed to checkout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large" (click)="toggleClass2()"
+           [ngClass]="status2 ? 'is-active' : ''">
+        <div class="dropdown-trigger">
+          <button class="button user-button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span><i class="fas fa-user-alt "></i></span>
+            <span class="icon is-medium">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <div *ngIf="!this.isLoggedIn()">
+              <a routerLink="/auth/register" class="dropdown-item sign-up-button">Sign Up</a>
+              <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
+            </div>
+            <div *ngIf="this.isLoggedIn()">
+              <a href="#" class="dropdown-item is-dark is-active" *ngIf="this.customerName != null">{{this.customerName}}</a>
+              <a href="#" class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- End of header right buttons   -->
     <div class="hamburger-menu-container is-hidden-tablet">
       <button>
         <i class="fa"></i>
       </button>
     </div>
   </div>
-  <!--------------------------------HEADER 2---------------------------------->
   <div class="header-bottom uses-flex">
     <nav class="navbar navbar-container" role="navigation" aria-label="main navigation">
       <a href="index.html" class="navbar-item">Home</a>
-      <a href="" class="navbar-item">Accesories</a>
+      <a routerLink="/wish-list" class="navbar-item">WishList</a>
       <a href="" class="navbar-item">News</a>
-      <!------------------------------------PUBLISHER DROPDOWN----------------------------------------->
-<!--      <div class="navbar-item has-dropdown is-hoverable">-->
-<!--        <a href="" class="navbar-link" style="background: none">Publishers</a>-->
-
-<!--        <div class="navbar-dropdown publisher-dropdown" style="margin-left: -20px">-->
-<!--          <div class="columns navbar-item is-mobile is-multiline publisher-column-container">-->
-<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
-<!--              <img src="assets/img/activision-dd.png"  alt="">-->
-<!--            </div>-->
-<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
-<!--              <img src="assets/img/sega-dd.png" alt="">-->
-<!--            </div>-->
-<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
-<!--              <img src="assets/img/ea-dd.png" alt="">-->
-<!--            </div>-->
-<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
-<!--              <img src="assets/img/rockstar-dd.png" alt="">-->
-<!--            </div>-->
-<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
-<!--              <img src="assets/img/ubisoft-dd.png" alt="">-->
-<!--            </div>-->
-<!--            <div class="column is-4-desktop is-4-mobile dropdown-publisher-container">-->
-<!--              <img src="assets/img/netherrealm-dd.png" alt="">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="navbar-item">-->
-<!--            <a href="#" class="see-more-publishers">See more..</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
       <app-publisher-dropdown></app-publisher-dropdown>
-      <!-------------------------------MORE DROPDOWN--------------------------------->
-      <div class="navbar-item has-dropdown is-hoverable" >
+      <div class="navbar-item has-dropdown is-hoverable">
 
         <a class="navbar-link" style="background: none">
           More

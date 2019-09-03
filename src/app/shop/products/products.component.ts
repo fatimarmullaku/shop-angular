@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../shared/services/product.service';
 import {ProductModel} from '../../shared/models/product.model';
 
@@ -9,12 +9,15 @@ import {ProductModel} from '../../shared/models/product.model';
 })
 export class ProductsComponent implements OnInit {
 
-  products: ProductModel[] = [];
+  products: ProductModel[];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
-
+    console.log('from products',this.products);
   }
 }
+
+

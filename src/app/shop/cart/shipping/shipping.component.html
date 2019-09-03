@@ -1,0 +1,101 @@
+<app-header></app-header>
+<div class="shop-wrapper">
+  <section class="section">
+    <div class="container ">
+
+      <div class="checkout-steps">
+        <div class="step-buttons no-hover">
+          <progress class="progress is-danger" value="25" max="100"></progress>
+        </div>
+      </div>
+
+      <div class="sub-info">
+        <div class="columns is-mobile">
+          <div class="column is-6-desktop is-6-mobile ">
+            <h1>SHIPPING</h1>
+          </div>
+          <div class="column is-6-desktop is-6-mobile has-text-right">
+            <h1>Order-42319</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Checkout step 3 -->
+        <div class="columns account-header">
+          <!-- Title -->
+          <!-- Card -->
+          <div class="columns is-vcentered">
+            <div class="column is-5 has-text-centered grey-column has-popover-top enhanced-popover-hidden-mobile ">
+              <div class="shipping-wrapper">
+                <div class="columns is-multiline is-gapless">
+                  <!-- Shipping method selection -->
+                  <div class="column is-12 ">
+                    <img class="shipping-image" src="assets/img/delivery-truck.png">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-7 is-padded shipping-form-container">
+              <form (submit)="onSubmit($event)" [formGroup]="shippingFormGroup" class="form">
+                <div *ngIf="customerAddresses">
+                  <h3 class="title is-5 static-titles">Addresses</h3>
+                  <div id="box-address-shipping">
+                    <div *ngFor="let _ of shippingFormGroup.get('addresses')['controls']; let i = index;"
+                         formArrayName="addresses">
+                      <div [formGroupName]="i" class="columns">
+                        <div class="column is-1" style="margin-top: 10px">
+                          <label class="label" style="visibility: hidden">sada</label>
+                          <input  #radioAddress name="customRadio" value="{{i}}" type="radio" (click)="getRadioValue(radioAddress.value)">
+                        </div>
+                        <div class="column is-3">
+                          <label class="label">Country</label>
+                          <input class="input" formControlName="country" type="text"
+                                 value="{{customerAddresses[i] ? customerAddresses[i].country : ''}}">
+                        </div>
+
+                        <div class="column is-3">
+                          <label class="label">City</label>
+                          <input class="input" formControlName="city" type="text"
+                                 value="{{customerAddresses[i] ? customerAddresses[i].city : ''}}">
+                        </div>
+
+                        <div class="column is-2">
+                          <label class="label">Zip code</label>
+                          <input class="input" formControlName="zipCode" type="text"
+                                 value="{{customerAddresses[i] ? customerAddresses[i].zipCode : ''}}">
+                        </div>
+
+                        <div class="column is-3">
+                          <label class="label">Street</label>
+                          <input class="input" formControlName="street" type="text"
+                                 value="{{customerAddresses[i] ? customerAddresses[i].street : ''}}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-addresses-container-btn column has-text-centered">
+                  <button (click)="onAddAddress($event); clicked = true" [disabled]="clicked" class="button add-field-button no-float"
+                          id="addaddress">Add address
+                  </button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="columns is-mobile shipping-nav-buttons">
+          <div class="column is-6-desktop is-6-mobile has-text-left">
+            <a class="nav-buttons-shipping button" routerLink="/cart"><span>Previous</span></a>
+          </div>
+          <div class="column is-6-desktop is-6-mobile has-text-right ">
+            <button (click)="onSubmit($event); " [disabled]="nextClicked" class="nav-buttons-shipping button"
+               routerLink="/cart/verification" ><span>Next</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+

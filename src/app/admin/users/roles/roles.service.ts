@@ -5,26 +5,27 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class RolesService {
-  readonly rootUrl = 'localhost:8089/shop/v1';
+  readonly rootUrl = 'http://localhost:8080/api/v1/roles/';
 
   constructor(private http: HttpClient) {
   }
 
   registerRole(data) {
-    return this.http.post(this.rootUrl + '/', data);
+    return this.http.post(this.rootUrl ,data);
   }
 
   getAllRoles() {
-    return this.http.get(this.rootUrl + '/');
+    return this.http.get(this.rootUrl );
   }
 
 
-  updateRole(data) {
-    return this.http.put(this.rootUrl + '/', data);
+  updateRole(data, id) {
+    return this.http.put(this.rootUrl + id, data);
   }
 
 
   deleteRole(id) {
-    return this.http.post(this.rootUrl + '/', id);
+
+    return this.http.delete(this.rootUrl + id);
   }
 }

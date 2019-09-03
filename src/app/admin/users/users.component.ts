@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {RolesModel} from './roles/roles.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {UsersService} from './users.service';
-import {RolesService} from './roles/roles.service';
-import {UsersModel} from './users.model';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-users',
@@ -12,20 +9,17 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  // state
-  usersList: UsersModel[];
-  rolesList: RolesModel[];
-  roles: RolesModel[];
-  usersForm: FormGroup;
+  deleteModal = false;
+  updateModal = false;
+  insertModal = false;
+  usersList: any;
+  form: FormGroup;
+  uid: number;
   updateForm: FormGroup;
-  selectedUserId: number;
-  selectedRoleId: number;
 
 
   constructor(private usersService: UsersService,
-              private modalService: NgbModal,
               private formBuilder: FormBuilder,
-              private rolesService: RolesService,
   ) {
   }
 
@@ -35,37 +29,120 @@ export class UsersComponent implements OnInit {
       console.log(this.usersList);
     });
 
-    this.rolesService.getAllRoles().subscribe((data: any) => {
-      this.rolesList = data;
-    });
-
-    this.usersForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
+      id: [],
       email: [''],
-      password: [''],
-      isVerified: [''],
       recordStatus: [''],
+      isVerified: [],
       createDateTime: [''],
       updateDateTime: [''],
+      deletedDateTime: [''],
       description: [''],
-      version: ['']
+      version: [''],
     });
 
     this.updateForm = this.formBuilder.group({
       email: [''],
-      password: [''],
       isVerified: [''],
       recordStatus: [''],
-      updateDateTime: [''],
+      updateDateTime: [],
+      deletedDateTime: [],
       description: [''],
-      version: ['']
+      version: [],
     });
 
-
   }
-
 
   onSubmit() {
-    const values = this.usersForm.value;
+    const values = this.form.value;
+    console.log('on Submit', values);
+    this.usersService.registerUser(values).subscribe(
+      get => {
+        this.usersService.getAllUsers().subscribe((data: any) => {
+          this.usersList = data;
+        });
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
+    this.insertModal = false;
   }
 
+
+  onDelete() {
+    this.usersService.deleteUser(this.uid).subscribe(
+      get => {
+        this.usersService.getAllUsers().subscribe((data: any) => {
+          this.usersList = data;
+        });
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
+    this.toggleModal();
+  }
+
+  onUpdate() {
+    const values = this.updateForm.value;
+    this.usersService.updateUser(values, this.uid).subscribe(
+      get => {
+        this.usersService.getAllUsers().subscribe((data: any) => {
+          this.usersList = data;
+        });
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
+    this.updateModal = false;
+  }
+
+
+  openUpdate(
+    id,
+    isVerified,
+    email,
+    recordStatus,
+    updateDateTime,
+    deletedDateTime,
+    description,
+    version: number) {
+    this.uid = id;
+    this.updateModal = true;
+    this.updateForm.controls.email.setValue(email);
+    this.updateForm.controls.isVerified.setValue(isVerified);
+    this.updateForm.controls.recordStatus.setValue(recordStatus);
+    this.updateForm.controls.updateDateTime.setValue(updateDateTime);
+    this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
+    this.updateForm.controls.description.setValue(description);
+    this.updateForm.controls.version.setValue(version);
+
+  }
+
+  openInsert() {
+    console.log('insert is called');
+    this.insertModal = true;
+    console.log('from open insert', this.insertModal);
+  }
+
+  closeUpdateModal() {
+    this.updateModal = !this.updateModal;
+    this.updateForm.reset();
+  }
+
+  closeInsertModal() {
+    this.insertModal = !this.insertModal;
+    this.form.reset();
+  }
+
+  toggleModal() {
+    this.deleteModal = !this.deleteModal;
+  }
+
+  openDelete(uid) {
+    this.deleteModal = true;
+    this.uid = uid;
+  }
 }

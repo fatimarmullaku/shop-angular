@@ -1,0 +1,78 @@
+.sub-info {
+  color: #FF5A09;
+  font-size: x-large;
+  margin: 10px;
+}
+
+.center-button {
+  a {
+    background-color: #1f2833;
+    border: 1px solid #FF5A09;
+    color: #FF5A09;
+
+    &:hover {
+      background-color: #FF5A09;
+      color: #f1f1f1;
+      border: 1px solid #FF5A09;
+    }
+  }
+
+  text-align: left;
+}
+
+.checkout-steps {
+  margin: 25px;
+}
+
+.back-next-buttons {
+  margin-top: 15px;
+}
+
+.payment-container {
+  border: 1px solid map_get($ucx-colors, deep-orange);
+  background: #0a0a0a;
+  margin: 40px 30px;
+  padding: 20px 20px;
+  //background: map_get($ucx-colors, dark-gray);
+  background-color: transparent;
+  text-align: center;
+
+  #img-paypal {
+    background-color: #3f4954;
+  }
+
+  #img-credit-card {
+    background-color: #3f4954;
+  }
+
+  #img-cash {
+    background-color: #3f4954;
+  }
+
+  img {
+    width: 230px;
+    height: 230px;
+    padding: 40px;
+  }
+
+  .payment-method-link {
+    background: map_get($ucx-colors, dark-gray);
+    border: 2px solid map_get($ucx-colors, deep-orange);
+    display: block;
+    text-align: center;
+    padding-bottom: 30px;
+    color: white;
+    font-size: 18px;
+
+    &:hover img {
+      transform: scale(1.2);
+      transition: 700ms;
+    }
+
+    img {
+      width: 230px;
+      height: 230px;
+      padding: 40px;
+    }
+  }
+}

@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../shared/services/user.service';
 import {UserRegisterModel} from '../../../shared/models/user-register.model';
 import {Router} from '@angular/router';
+import {BaseStorageService} from '../../../shared/services/base-storage.service';
+import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +13,16 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  isRegistered = false;
 
-  constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder) {
+  constructor(private userService: UserService,
+              private formBuilder: FormBuilder,
+              private routerLink: Router,
+              private baseStorageService: BaseStorageService) {
+  }
+
+  get f() {
+    return this.registerForm.controls;
   }
 
   ngOnInit() {
@@ -31,10 +41,6 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  get f() {
-    return this.registerForm.controls;
-  }
-
   onRegisterSubmit() {
     if (this.registerForm.valid) {
       if (this.f.password.value !== this.f.confirm_password.value) {
@@ -50,13 +56,20 @@ export class RegisterComponent implements OnInit {
         password: this.f.password.value
       };
 
+      const cartStorage = this.baseStorageService.getStorageOf(LocalStorageKey.CART);
+
       this.userService.register(payload)
         .subscribe((res) => {
           this.userService.login(payload.user.email, payload.user.password)
-            .then(() => {
-              this.router.navigateByUrl('/');
-            })
-            .catch((err) => {
+            .subscribe(r => {
+              this.isRegistered = true;
+              if (cartStorage != null && cartStorage.length > 0) {
+                this.routerLink.navigateByUrl('/auth/additional-information');
+              } else if (cartStorage == null || cartStorage.length == 0) {
+                this.routerLink.navigateByUrl('/auth/additional-information');
+              }
+
+            }, (err) => {
               console.error(err);
             });
         }, (err) => {

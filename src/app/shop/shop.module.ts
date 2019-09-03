@@ -1,25 +1,44 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { ShopRoutingModule } from './shop-routing.module';
+import {ShopRoutingModule} from './shop-routing.module';
 import {SharedModule} from '../shared/shared.module';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
-import { NewPasswordComponent } from './auth/new-password/new-password.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductsSidebarComponent } from './products/products-sidebar/products-sidebar.component';
-import { ProductItemComponent } from './products/product-list/product-item/product-item.component';
-import { ProductMenuComponent } from './products/product-list/product-menu/product-menu.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { ProductReviewsComponent } from './products/product-detail/product-reviews/product-reviews.component';
-import { ProductGalleryComponent } from './products/product-detail/product-gallery/product-gallery.component';
-import { AuthLayoutComponent } from './auth/auth-layout/auth-layout.component';
-import { LogoutComponent } from './auth/logout/logout.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {LoginComponent} from './auth/login/login.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
+import {NewPasswordComponent} from './auth/new-password/new-password.component';
+import {ProductListComponent} from './products/product-list/product-list.component';
+import {ProductsComponent} from './products/products.component';
+import {ProductsSidebarComponent} from './products/products-sidebar/products-sidebar.component';
+import {ProductItemComponent} from './products/product-list/product-item/product-item.component';
+import {ProductDetailComponent} from './products/product-detail/product-detail.component';
+import {ProductReviewsComponent} from './products/product-detail/product-reviews/product-reviews.component';
+import {ProductGalleryComponent} from './products/product-detail/product-gallery/product-gallery.component';
+import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
+import {LogoutComponent} from './auth/logout/logout.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
+import {AddNewProductComponent} from './newproduct/add-new-product/add-new-product.component';
+import {PaginationComponent} from '../shared/pagination/pagination.component';
+import {AccountInfoComponent} from './cart/account-info/account-info.component';
+import {ShippingComponent} from './cart/shipping/shipping.component';
+import {WishlistComponent} from './wishlist/wishlist.component';
+import {SliderComponent} from './products/product-list/slider/slider.component';
+import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
+import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
+import {VerificationComponent} from './cart/verification/verification.component';
+import {CashMethodComponent} from './cart/cash-method/cash-method.component';
+import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
+import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
+import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
+import {ProductUploadComponent} from './product-upload/product-upload.component';
+import {AccountComponent} from '../auth/account/account.component';
+import {ProfileComponent} from './auth/account/profile/profile.component';
+import {ChangeEmailComponent} from './auth/account/profile/change-email/change-email.component';
+import {ChangePasswordComponent} from './auth/account/profile/change-password/change-password.component';
+import {InformationComponent} from './auth/account/profile/information/information.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AngularMaterialModuleCollapse} from '../shared/products-modules';
 
 @NgModule({
@@ -32,23 +51,48 @@ import {AngularMaterialModuleCollapse} from '../shared/products-modules';
     ProductsComponent,
     ProductsSidebarComponent,
     ProductItemComponent,
-    ProductMenuComponent,
     ProductDetailComponent,
     ProductReviewsComponent,
     ProductGalleryComponent,
     AuthLayoutComponent,
     LogoutComponent,
-    ],
+    AdditionalInformationComponent,
+    AddNewProductComponent,
+    PaginationComponent,
+    CartPreviewComponent,
+    AccountInfoComponent,
+    ShippingComponent,
+    WishlistComponent,
+    SliderComponent,
+    VerificationComponent,
+    PaymentMethodsComponent,
+    CashMethodComponent,
+    CreditcardMethodComponent,
+    PaypalMethodComponent,
+    SuccessScreenComponent,
+    ProductUploadComponent,
+    AccountComponent,
+    ProfileComponent,
+    ChangeEmailComponent,
+    ChangePasswordComponent,
+    InformationComponent,
+    LogoutComponent
+  ],
+  exports: [
+    PaginationComponent,
+    CartPreviewComponent
+  ],
   imports: [
     CommonModule,
     ShopRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    FormsModule,
     NgbModule,
     AngularMaterialModuleCollapse
 
-
   ]
 })
-export class ShopModule { }
+export class ShopModule {
+}
