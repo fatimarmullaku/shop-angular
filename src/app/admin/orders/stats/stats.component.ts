@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import {StatsService} from './stats.service';
+import {ENDPOINTS} from "../../../shared/constants/api.constants";
 
 @Component({
   selector: 'app-stats',
@@ -11,7 +12,7 @@ export class StatsComponent implements OnInit {
   title = 'dashboard';
   chart = [];
   topSoldItemsArr = [];
-
+  photoUrl = ENDPOINTS.products.getProductImage;
   constructor(private statsService: StatsService) { }
 
   ngOnInit() {
