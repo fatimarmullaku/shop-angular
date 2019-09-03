@@ -34,7 +34,7 @@
       <h3 class="title is-5 static-titles">Address</h3>
       <div>
         <div formArrayName="addresses" *ngFor="let _ of editProfileFormGroup.get('addresses')['controls']; let i = index;">
-          <div class="columns" [formGroupName]="i">
+          <div class="columns" [formGroupName]="0">
             <div class="column is-3">
               <label class="label">Country</label>
               <input type="text" class="input" formControlName="country">

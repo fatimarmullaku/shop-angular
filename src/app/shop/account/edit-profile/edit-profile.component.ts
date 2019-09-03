@@ -47,7 +47,7 @@ export class EditProfileComponent implements OnInit {
 
   createAddress(): FormGroup {
     return this.formBuilder.group({
-      id: new FormControl(''),
+      id: new FormControl(-1),
       country: new FormControl(''),
       city: new FormControl(''),
       zipCode: new FormControl(''),
