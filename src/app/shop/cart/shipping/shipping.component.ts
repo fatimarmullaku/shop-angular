@@ -106,36 +106,36 @@ export class ShippingComponent implements OnInit {
   }
 
   onSubmit(event: any) {
-    event.preventDefault();
-    let address: any;
-    if (this.selectedAddress.id) {
-      address = {
-        id: this.selectedAddress.id
-      };
-    } else {
-      address = {
-        country: this.selectedAddress.country,
-        city: this.selectedAddress.city,
-        zipCode: this.selectedAddress.zipCode,
-        street: this.selectedAddress.street
-      };
-    }
-    if (!address.id) {
-      this.newCustomerAddress(address).subscribe(res => {
-          this.getLastAddressRequest().subscribe((result) => {
-              this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, result);
-            },
-            error => {
-              console.error(error);
-            }
-          );
-        },
-        err => {
-          console.error(err);
-        });
-    } else {
-      this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, address);
-    }
+    // event.preventDefault();
+    // let address: any;
+    // if (this.selectedAddress.id) {
+    //   address = {
+    //     id: this.selectedAddress.id
+    //   };
+    // } else {
+    //   address = {
+    //     country: this.selectedAddress.country,
+    //     city: this.selectedAddress.city,
+    //     zipCode: this.selectedAddress.zipCode,
+    //     street: this.selectedAddress.street
+    //   };
+    // }
+    // if (!address.id) {
+    //   this.newCustomerAddress(address).subscribe(res => {
+    //       this.getLastAddressRequest().subscribe((result) => {
+    //           this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, result);
+    //         },
+    //         error => {
+    //           console.error(error);
+    //         }
+    //       );
+    //     },
+    //     err => {
+    //       console.error(err);
+    //     });
+    // } else {
+    //   this.baseStorage.setStorage(LocalStorageKey.SHIPPING_ADDRESS_ID, address);
+    // }
   }
 
   getRadioValue(value: any) {
