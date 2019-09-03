@@ -23,6 +23,7 @@ import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-met
 import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
 import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
 import {ProductUploadComponent} from './product-upload/product-upload.component';
+import {PoliceComponent} from './police/police.component';
 
 const routes: Routes = [
   {
@@ -127,6 +128,10 @@ const routes: Routes = [
   {
     path: 'product-upload',
     component: ProductUploadComponent
+  },
+  {
+    path: 'police',
+    component: PoliceComponent
   }
 ];
 

@@ -6,16 +6,19 @@ import {RouterModule} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import {HttpClientModule} from '@angular/common/http';
 import { PublisherDropdownComponent } from './header/publisher-dropdown/publisher-dropdown.component';
+import {ModalModule} from 'ngx-bootstrap';
+import { PoliceComponent } from '../shop/police/police.component';
 
 @NgModule({
-  declarations: [MinComponent, BaseComponent, HeaderComponent, PublisherDropdownComponent],
+  declarations: [MinComponent, BaseComponent, HeaderComponent, PublisherDropdownComponent, PoliceComponent],
   exports: [
     HeaderComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ModalModule.forRoot()
   ]
 })
 export class SharedModule { }

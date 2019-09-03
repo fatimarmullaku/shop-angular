@@ -15,8 +15,7 @@ export class AuthGuardService implements CanActivate {
     if (this.userService.getRole() === 'ADMIN') {
       return true;
     } else {
-      alert('IK ATJE');
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/police');
       return false;
     }
   }
