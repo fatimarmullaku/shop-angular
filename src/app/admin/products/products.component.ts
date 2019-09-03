@@ -266,6 +266,7 @@ export class ProductsComponent implements OnInit {
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
     this.updateForm.reset();
+    this.fileForm.reset();
   }
 
   closeInsertModal() {
