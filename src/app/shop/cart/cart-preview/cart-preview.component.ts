@@ -78,10 +78,6 @@ export class CartPreviewComponent implements OnInit {
     this.cartProducts = this.cartService.getProductsFromCart();
   }
 
-  isProductInStock(product: ProductModel): boolean {
-    return ProductModel.isInStock(product);
-  }
-
   isLoginModalActive(): boolean {
     const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
     if (element == null) {

@@ -34,7 +34,7 @@ export class ProductsService {
 
   updateProduct(data, id) {
     console.log(data);
-    return this.http.put(this.rootUrl + `${id}`, data);
+    return this.http.put(this.rootUrl + id , data);
   }
 
 
