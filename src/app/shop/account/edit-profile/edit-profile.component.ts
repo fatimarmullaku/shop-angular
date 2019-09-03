@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../../shared/services/customer.service';
 import {CustomerModel} from '../../../shared/models/customer.model';
 import {Observable} from 'rxjs';
@@ -48,7 +48,11 @@ export class EditProfileComponent implements OnInit {
   createAddress(): FormGroup {
     return this.formBuilder.group({
       id: new FormControl(-1),
-      country: new FormControl(''),
+      country: new FormControl('',
+        [
+          Validators.required,
+          Validators.minLength(2)
+        ]),
       city: new FormControl(''),
       zipCode: new FormControl(''),
       street: new FormControl('')
@@ -63,5 +67,16 @@ export class EditProfileComponent implements OnInit {
     }, (error) => {
       console.error(error);
     });
+
+    this.customerService.getCustomer().subscribe(response => {
+        this.customer = response;
+        this.editProfileFormGroup.patchValue({
+          name: response.name,
+          email: response.email,
+          phoneNumber: response.phoneNumber,
+          addresses: response.addresses,
+        });
+      }
+    );
   }
 }
