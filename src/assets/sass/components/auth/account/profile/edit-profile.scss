@@ -33,7 +33,7 @@
 }
 
 .static-titles {
-  color: map-get($ucx-colors, deep-orange);
+  color: map-get($ucx-colors, light-orange);
 }
 
 .main-content {
@@ -77,15 +77,6 @@
   }
 }
 
-.order-history-wrapper{
-  background-color: map-get($ucx-colors, dark-gray);
-
-  color: black;
-
-  strong {
-    color: black;
-  }
-}
 
 /*
 body {
