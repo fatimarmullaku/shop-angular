@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PlatformsService} from '../../../admin/platforms/platforms.service';
 import 'hammerjs';
+import {BrandsService} from '../../../admin/brands/brands.service';
+import {BrandsModel} from '../../../admin/brands/brands.model';
+import {PlatformsModel} from '../../../admin/platforms/platforms.model';
 
 @Component({
   selector: 'app-products-sidebar',
@@ -7,18 +11,26 @@ import 'hammerjs';
   styleUrls: ['./products-sidebar.component.scss']
 })
 export class ProductsSidebarComponent implements OnInit {
-  productCategories = ['Category1', 'Category2', 'Category3', 'Category4'];
   productSort = ['Alphabetical A to Z', 'Alphabetical from Z to A', 'Most popular', 'Release date'];
   showFiller = false;
+  platformsList: PlatformsModel[];
+  brandsList: BrandsModel[];
 
-  constructor() { }
+
+  constructor(private platformsService: PlatformsService,
+              private brandsService: BrandsService) {
+  }
 
   ngOnInit() {
+    this.platformsService.getAllPlatforms().subscribe((data: any) => {
+      this.platformsList = data;
+    });
+
+    this.brandsService.getAllBrands().subscribe((data: any) => {
+      this.brandsList = data;
+    });
   }
 
-  checked() {
-    console.log('button is checked')
-  }
 
   formatLabel(value: number | null) {
     if (!value) {
