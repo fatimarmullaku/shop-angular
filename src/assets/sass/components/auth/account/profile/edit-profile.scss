@@ -77,6 +77,16 @@
   }
 }
 
+.order-history-wrapper{
+  background-color: map-get($ucx-colors, dark-gray);
+
+  color: black;
+
+  strong {
+    color: black;
+  }
+}
+
 /*
 body {
   background: linear-gradient(135deg, rgb(21, 70, 45),rgb(177, 24, 19),rgb(203, 214, 34));

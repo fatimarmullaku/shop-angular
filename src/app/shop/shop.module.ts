@@ -37,6 +37,7 @@ import { ProductUploadComponent } from './product-upload/product-upload.componen
 import {AccountComponent} from './account/account.component';
 import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import {MatExpansionModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { OrderHistoryComponent } from './account/order-history/order-history.com
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule
 
   ]
 })
