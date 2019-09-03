@@ -21,6 +21,7 @@ import { BrandsComponent } from './brands/brands.component';
 import {BrandsFilterPipe} from './brands/brands-filter.pipe';
 import {ProductsFPipe} from './products/products-f.pipe';
 import {ShopModule} from '../shop/shop.module';
+import {AuthGuardService} from '../shared/services/guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {ShopModule} from '../shop/shop.module';
     MatExpansionModule,
     ShopModule
 
-  ]
+  ],
+  providers: [AuthGuardService]
 })
 export class AdminModule {
 }
