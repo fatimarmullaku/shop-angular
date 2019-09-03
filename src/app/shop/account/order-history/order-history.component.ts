@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OrdersService} from '../../../admin/orders/orders.service';
 import {PaginationService} from '../../../shared/pagination/pagination.service';
 import {OrderModel} from '../../../admin/orders/orders.model';
+import {OrderService} from '../../../shared/services/order.service';
 
 @Component({
   selector: 'app-order-history',
@@ -14,7 +15,7 @@ export class OrderHistoryComponent implements OnInit {
   currentPage: number;
   pageSize = 2;
 
-  constructor(private ordersService: OrdersService,
+  constructor(private orderService: OrderService,
               private paginationService: PaginationService) {
 
   }
@@ -28,7 +29,7 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   getOrderHistoryPaged(size: number, page: number) {
-    this.ordersService.paged(size, page).subscribe((orders: OrderModel[]) => {
+    this.orderService.paged(size, page).subscribe((orders: OrderModel[]) => {
       this.data = orders;
     });
   }
