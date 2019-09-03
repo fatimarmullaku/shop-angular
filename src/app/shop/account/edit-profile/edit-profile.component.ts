@@ -15,7 +15,6 @@ import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
 })
 export class EditProfileComponent implements OnInit {
   editProfileFormGroup: FormGroup;
-  phones: FormArray;
   addresses: FormArray;
   customer: CustomerModel;
 
@@ -36,7 +35,6 @@ export class EditProfileComponent implements OnInit {
 
     this.customerService.getCustomer().subscribe(response => {
         this.customer = response;
-        console.log('Addresa', response.addresses[0]);
         this.editProfileFormGroup.patchValue({
           name: response.name,
           email: response.email,
