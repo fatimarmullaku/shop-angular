@@ -13,15 +13,14 @@
             <div class="columns is-vcentered">
               <div class="column is-2">
                 <div class="product-img">
-                  <img [src]="item.product.fileName" alt="">
+                  <img [src]="item.product.fileName.startsWith('/asset')? item.product.fileName : productUrl + item.product.fileName" alt="">
                 </div>
               </div>
               <div class="column is-3 product-info">
                 <h1>{{ item.product.name }}</h1>
-                <p>{{ item.product.description }}</p>
               </div>
               <div class="column is-2 product-info">
-                <h2>{{ item.isInStock ? 'Available': 'Out of stock' }} </h2>
+
               </div>
               <div class="column is-1">
                 <br>

@@ -28,4 +28,8 @@ export class PaypalMethodComponent implements OnInit {
       });
   }
 
+  generateTotalPrice() {
+    return this.cartService.generateTotalPrice();
+  }
+
 }

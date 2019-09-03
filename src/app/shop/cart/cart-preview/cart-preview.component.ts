@@ -9,6 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../shared/services/user.service';
 import {Router} from '@angular/router';
 import {BaseStorageService} from '../../../shared/services/base-storage.service';
+import {ENDPOINTS} from '../../../shared/constants/api.constants';
 
 @Component({
   selector: 'app-cart-preview',
@@ -23,6 +24,7 @@ export class CartPreviewComponent implements OnInit {
   cartProducts: ProductCartModel[];
   isModalActive = false;
   showRoute = true;
+  productUrl = ENDPOINTS.products.getProductImage;
 
   constructor(private productService: ProductService,
               private cartService: CartService,
@@ -74,10 +76,6 @@ export class CartPreviewComponent implements OnInit {
   deleteFromCart(cartProduct: ProductCartModel) {
     this.cartService.deleteFromCart(cartProduct.id);
     this.cartProducts = this.cartService.getProductsFromCart();
-  }
-
-  isProductInStock(product: ProductModel): boolean {
-    return ProductModel.isInStock(product);
   }
 
   isLoginModalActive(): boolean {

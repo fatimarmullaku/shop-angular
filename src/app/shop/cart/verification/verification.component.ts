@@ -15,4 +15,12 @@ export class VerificationComponent implements OnInit {
     this.cartService.getProductsFromCart();
   }
 
+  generateTotalPrice() {
+    return this.cartService.generateTotalPrice();
+  }
+
+  getProductsFromCart() {
+    return this.cartService.getProductsFromCart();
+  }
+
 }

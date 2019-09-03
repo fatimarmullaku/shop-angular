@@ -4,6 +4,7 @@ import {ProductWishlistModel} from '../../shared/models/product-wishlist.model';
 import {ProductModel} from '../../shared/models/product.model';
 import {ProductService} from '../../shared/services/product.service';
 import {CartService} from '../../shared/services/cart.service';
+import {ENDPOINTS} from '../../shared/constants/api.constants';
 
 @Component({
   selector: 'app-wishlist',
@@ -14,6 +15,7 @@ export class WishlistComponent implements OnInit {
 
   product: ProductModel;
   wishlistProducts: ProductWishlistModel[];
+  productUrl = ENDPOINTS.products.getProductImage;
 
   constructor(private productService: ProductService,
               private wishlistService: WishlistService,
