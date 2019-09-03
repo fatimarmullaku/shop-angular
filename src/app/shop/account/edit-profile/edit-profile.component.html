@@ -1,8 +1,6 @@
 <div class="profile-information-panel">
 
-  <div class="column main-content edit-profile-wrapper">
-
-
+  <div class="column edit-profile-wrapper">
 
     <form [formGroup]="editProfileFormGroup" class="form" (submit)="onSubmit($event)">
       <p class="title is-2 static-titles">Profile Information</p>
@@ -62,6 +60,18 @@
         <button class="button is-primary save-button">Save changes</button>
       </div>
     </form>
+  </div>
+
+  <div class="modal" [ngClass]="{'is-active':isModalActive}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <section class="modal-card-body model-edit-profile-body">
+        <button class="delete delete-modal-edit-profile" aria-label="close" (click)="removeActiveClass()"></button>
+        <div class="modal-content-edit-profile">
+          <p>You have successfully updated your profile!</p>
+        </div>
+      </section>
+    </div>
   </div>
 
 </div>

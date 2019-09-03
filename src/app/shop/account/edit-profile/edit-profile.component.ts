@@ -17,6 +17,7 @@ export class EditProfileComponent implements OnInit {
   editProfileFormGroup: FormGroup;
   addresses: FormArray;
   customer: CustomerModel;
+  isModalActive = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -63,7 +64,7 @@ export class EditProfileComponent implements OnInit {
     event.preventDefault();
     console.log(this.editProfileFormGroup.getRawValue());
     this.userService.addPhonesAndAddresses(this.editProfileFormGroup.getRawValue()).subscribe((res) => {
-      alert('You have successfully updated your profile');
+      this.isModalActive = true;
     }, (error) => {
       console.error(error);
     });
@@ -78,5 +79,9 @@ export class EditProfileComponent implements OnInit {
         });
       }
     );
+  }
+
+  removeActiveClass() {
+    this.isModalActive = !this.isModalActive;
   }
 }
