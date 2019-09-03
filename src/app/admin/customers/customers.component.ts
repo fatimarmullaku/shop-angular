@@ -84,21 +84,7 @@ export class CustomersComponent implements OnInit {
   }
 
 
-  onSubmit() {
-    const values = this.customersForm.value;
-    this.customersService.registerCustomer(values).subscribe(
-      get => {
-        this.customersService.getAllCustomers().subscribe((data: any) => {
-          this.customersList = data;
-        });
-      },
-      (err: HttpErrorResponse) => {
-        console.log(err);
-      }
-    );
-    this.insertModal = false;
-    this.customersForm.reset();
-  }
+ 
 
 
   onDelete() {
@@ -122,14 +108,7 @@ export class CustomersComponent implements OnInit {
     console.log('insert is called');
     this.insertModal = true;
     console.log('from open insert', this.insertModal);
-  }
-
-
-
-  closeUpdateModal() {
-    this.updateModal = !this.updateModal;
-    this.updateForm.reset();
-  }
+  } 
 
   closeInsertModal() {
     this.insertModal = !this.insertModal;
