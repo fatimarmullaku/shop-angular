@@ -36,6 +36,7 @@ export class EditProfileComponent implements OnInit {
 
     this.customerService.getCustomer().subscribe(response => {
         this.customer = response;
+        console.log('Addresa', response.addresses[0]);
         this.editProfileFormGroup.patchValue({
           name: response.name,
           email: response.email,
@@ -46,14 +47,9 @@ export class EditProfileComponent implements OnInit {
     );
   }
 
-  createPhoneNumber(): FormGroup {
-    return this.formBuilder.group({
-      phoneNumber: new FormControl('')
-    });
-  }
-
   createAddress(): FormGroup {
     return this.formBuilder.group({
+      id: new FormControl(''),
       country: new FormControl(''),
       city: new FormControl(''),
       zipCode: new FormControl(''),
