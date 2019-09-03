@@ -40,6 +40,7 @@ import {ChangePasswordComponent} from './auth/account/profile/change-password/ch
 import {InformationComponent} from './auth/account/profile/information/information.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AngularMaterialModuleCollapse} from '../shared/products-modules';
+import {ProductFilterPipe} from './products/product-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import {AngularMaterialModuleCollapse} from '../shared/products-modules';
     ChangeEmailComponent,
     ChangePasswordComponent,
     InformationComponent,
-    LogoutComponent
+    LogoutComponent,
+    ProductFilterPipe
   ],
   exports: [
     PaginationComponent,

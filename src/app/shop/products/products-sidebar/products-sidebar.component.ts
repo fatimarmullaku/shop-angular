@@ -15,6 +15,7 @@ export class ProductsSidebarComponent implements OnInit {
   showFiller = false;
   platformsList: PlatformsModel[];
   brandsList: BrandsModel[];
+  selected: boolean;
 
 
   constructor(private platformsService: PlatformsService,
@@ -29,6 +30,14 @@ export class ProductsSidebarComponent implements OnInit {
     this.brandsService.getAllBrands().subscribe((data: any) => {
       this.brandsList = data;
     });
+  }
+
+  selectedPlatform(option: any) {
+    localStorage.setItem('platformSelected', option);
+  }
+
+  selectedBrand(option: any) {
+    localStorage.setItem('brandSelected', option);
   }
 
 
