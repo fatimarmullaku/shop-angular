@@ -74,9 +74,13 @@ export class CartService {
   generateTotalPrice(): number {
     const array = this.getProductsFromCart();
     const tempTotal = [];
-    array.forEach(value => {
-      tempTotal.push(value.product.unitPrice * value.qty);
-    });
+    if(array.length > 0) {
+      array.forEach(value => {
+        tempTotal.push(value.product.unitPrice * value.qty);
+      });
+    }else {
+      tempTotal.push(null);
+    }
     return tempTotal.reduce((previousValue, currentValue) => previousValue + currentValue);
   }
 }

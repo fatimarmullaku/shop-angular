@@ -26,6 +26,8 @@ const PURCHASES = {
   addToCart: environment.apiHost + '/purchases/lineitems',
   buy: environment.apiHost + '/purchases'
 }
+
+
 export const ENDPOINTS = {
   auth: AUTH,
   products: PRODUCTS,
@@ -33,4 +35,5 @@ export const ENDPOINTS = {
   purchases: PURCHASES,
   brands: BRANDS
 };
+
 

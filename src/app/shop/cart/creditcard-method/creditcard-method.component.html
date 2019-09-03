@@ -18,7 +18,7 @@
         <div class="column is-6-desktop is-12-mobile shipping-parent">
           <div class="cash-total has-text-centered">
             <h3>Total Price</h3>
-            <h1 class="title" id="title" style="color: #ff2600">$ {{generateTotalPrice().toFixed(2)}}</h1>
+            <h1 class="title" id="title" style="color: #ff2600"> $ {{this.cartService.generateTotalPrice().toFixed(2)}}</h1>
           </div>
         </div>
 
@@ -27,15 +27,15 @@
             <div class="icon-container">
               <i class="fa fa-credit-card" id="creditcard-icon"></i>
             </div>
+                                <!--     Form begins here   -->
+            <form [formGroup]="creditCard">
               <div class="columns is-multiline is-gapless">
                 <div class="column is-6">
                   <div class="control">
-                    <input class="input unknown jp-card-invalid" name="number"
-                           placeholder="Card number" type="text">
+                      <input class="input unknown jp-card-invalid" formControlName="creditCardNumber" placeholder="Card number" type="text">
                   </div>
                   <div class="control">
-                    <input class="input jp-card-invalid" name="expiry" placeholder="MM/YY"
-                           type="text">
+                    <input class="input jp-card-invalid" formControlName="expireDate" placeholder="MM/YY" type="text">
                   </div>
                 </div>
                 <div class="column is-6">
@@ -43,13 +43,14 @@
                     <input class="input" name="name" placeholder="Full name" type="text">
                   </div>
                   <div class="control">
-                    <input class="input" name="cvc" placeholder="CVC" type="text">
+                    <input class="input" formControlName="cvc" placeholder="CVC" type="text">
                   </div>
                 </div>
               </div>
-
+            </form>
+                            <!--       End of form           -->
             <div class="column is-12-desktop is-12-mobile left-button has-text-centered">
-              <a class="button" routerLink="/cart/success-screen" (click)="buy()">Checkout</a>
+              <a class="button" (click)="chargeCreditCard()">Checkout</a>
             </div>
           </div>
         </div>
