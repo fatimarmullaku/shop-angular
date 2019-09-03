@@ -76,10 +76,10 @@ export class CustomersComponent implements OnInit {
       const heightLeft = imgHeight;
 
       const contentDataURL = canvas.toDataURL('image/png');
-      // const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
       const position = 10;
-      /*pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('customers.pdf');*/
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('customers.pdf');
     });
   }
 
