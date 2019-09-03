@@ -1,4 +1,5 @@
 export class BrandsModel {
+  id: number;
   name: string;
   recordStatus: string;
   createDateTime: Date;

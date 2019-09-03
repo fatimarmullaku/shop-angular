@@ -41,9 +41,7 @@ export class CartService {
       newProductInCart.id = id;
       newProductInCart.qty = qty;
       newProductInCart.product = this.productService.getProduct(id);
-      // newProductInCart.isInStock = this.productService.getProduct(id).isInStock();
       const prodModel = this.productService.getProduct(id);
-      newProductInCart.isInStock = ProductModel.isInStock(prodModel);
 
       cart.push(newProductInCart);
     }

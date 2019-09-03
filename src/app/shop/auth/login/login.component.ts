@@ -14,15 +14,15 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder) {
   }
 
+  get f() {
+    return this.loginForm.controls;
+  }
+
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', Validators.required),
     });
-  }
-
-  get f() {
-    return this.loginForm.controls;
   }
 
   onLoginFormSubmit() {
@@ -32,7 +32,11 @@ export class LoginComponent implements OnInit {
         password: this.f.password.value
       };
       this.userService.login(payload.email, payload.password).subscribe(res => {
-          this.router.navigateByUrl('/');
+          if (this.userService.getRole() === 'ADMIN') {
+            this.router.navigateByUrl('/admin');
+          } else {
+            this.router.navigateByUrl('/');
+          }
         },
         (err) => {
           console.error(err);
