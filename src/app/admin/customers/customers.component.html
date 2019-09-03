@@ -28,14 +28,13 @@
             <th>Description</th>
             <th>Version</th>
             <th> </th>
-            
+            <th> </th>
           </tr>
           <tr *ngFor="let c of customersList | pipeFilteer:filter  ">
             <td>{{c.name}}</td>
             <td>{{c?.email}}</td>
             <td>{{transformCity(c.addresses)}}</td>
             <td>{{transformNumber(c.phoneNumbers) }}</td>
-            <td>{{c.recordStatus}}</td>
             <td>{{c.createDateTime | date:'dd-MM-yyyy'}}</td>
             <td>{{c.updateDateTime| date:'dd-MM-yyyy'}}</td>
             <td>{{c.deletedDateTime| date:'dd-MM-yyyy'}}</td>
@@ -103,9 +102,6 @@
                      type="text">
             </div>
           </div>
-          <span> Record Status </span>
-          <input  class="form-control" formControlName="recordStatus"
-                 type="text">
           <span> Description </span>
           <div class="control">
             <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
