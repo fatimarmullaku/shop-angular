@@ -10,6 +10,7 @@ import {StatsService} from './stats.service';
 export class StatsComponent implements OnInit {
   title = 'dashboard';
   chart = [];
+  topSoldItemsArr = [];
 
   constructor(private statsService: StatsService) { }
 
@@ -18,6 +19,8 @@ export class StatsComponent implements OnInit {
   }
   getStatsData() {
     this.statsService.getStats().subscribe((stDataResponse: any) => {
+      this.topSoldItemsArr = stDataResponse.topSoldItems;
+      console.log('this.topSoldItemsArr: ', this.topSoldItemsArr);
       const chartData = [
         stDataResponse.FIRST_QUARTAL.orders,
         stDataResponse.SECOND_QUARTAL.orders,
@@ -63,7 +66,7 @@ export class StatsComponent implements OnInit {
         },
       },
       data: {
-        labels: ['TM1', 'TM2', 'TM3', 'TM4'],
+        labels: ['Quartal 1', 'Quartal 2', 'Quartal 3', 'Quartal 4'],
         datasets: [
           {
             type: 'bar',
@@ -83,15 +86,15 @@ export class StatsComponent implements OnInit {
         responsive: true,
         title: {
           display: true,
-          text: 'Number of orders for a Quartal'
+          text: 'Amount of income for a Quartal'
         },
       },
       data: {
-        labels: ['TM1', 'TM2', 'TM3', 'TM4'],
+        labels: ['Quartal 1', 'Quartal 2', 'Quartal 3', 'Quartal 4'],
         datasets: [
           {
             type: 'bar',
-            label: 'Quartal orders for DataSet',
+            label: 'Quartal income for DataSet',
             data: dtd,
             backgroundColor: 'rgba(59,22,200,0.4)',
             borderColor: 'rgba(34,30,255,0.4)',
