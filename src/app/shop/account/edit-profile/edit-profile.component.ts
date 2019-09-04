@@ -18,6 +18,7 @@ export class EditProfileComponent implements OnInit {
   addresses: FormArray;
   customer: CustomerModel;
   isModalActive = false;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -28,10 +29,10 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.editProfileFormGroup = this.formBuilder.group({
-      name: this.formBuilder.control(['']),
-      email: this.formBuilder.control(['']),
-      phoneNumber: this.formBuilder.control(['']),
-      addresses: this.formBuilder.array([this.createAddress()])
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', Validators.required]
+      // addresses: this.formBuilder.array([this.createAddress()])
     });
 
     this.customerService.getCustomer().subscribe(response => {
@@ -40,7 +41,7 @@ export class EditProfileComponent implements OnInit {
           name: response.name,
           email: response.email,
           phoneNumber: response.phoneNumber,
-          addresses: response.addresses,
+          // addresses: response.addresses,
         });
       }
     );
@@ -48,20 +49,28 @@ export class EditProfileComponent implements OnInit {
 
   createAddress(): FormGroup {
     return this.formBuilder.group({
-      id: new FormControl(-1),
-      country: new FormControl('',
-        [
-          Validators.required,
-          Validators.minLength(2)
-        ]),
-      city: new FormControl(''),
-      zipCode: new FormControl(''),
-      street: new FormControl('')
+      id: [-1, Validators.required],
+      country: ['', Validators.required],
+      city: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      street: ['', Validators.required]
     });
   }
 
-  onSubmit(event: any) {
-    event.preventDefault();
+  get f() {
+    return this.editProfileFormGroup.controls;
+  }
+
+  // get a() {
+  //   return this.editProfileFormGroup.addresses.controls;
+  // }
+
+  onSubmit() {
+    // event.preventDefault();
+    this.submitted = true;
+    if (this.editProfileFormGroup.invalid) {
+      return;
+    }
     console.log(this.editProfileFormGroup.getRawValue());
     this.userService.addPhonesAndAddresses(this.editProfileFormGroup.getRawValue()).subscribe((res) => {
       this.isModalActive = true;

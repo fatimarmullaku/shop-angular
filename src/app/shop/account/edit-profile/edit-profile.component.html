@@ -2,19 +2,26 @@
 
   <div class="column edit-profile-wrapper">
 
-    <form [formGroup]="editProfileFormGroup" class="form" (submit)="onSubmit($event)">
+    <form [formGroup]="editProfileFormGroup" class="form" (ngSubmit)="onSubmit()">
       <p class="title is-2 static-titles">Profile Information</p>
       <hr>
       <div class="columns">
         <div class="column">
           <label class="label">Email</label>
-          <input formControlName="email" type="email" class="input">
+          <input formControlName="email" type="email" class="input" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
         </div>
       </div>
       <div class="columns">
         <div class="column">
           <label class="label">Full Name</label>
-          <input formControlName="name" type="text" class="input">
+          <input formControlName="name" name="name" type="text" class="input" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+          </div>
         </div>
       </div>
       <div>
@@ -22,39 +29,54 @@
           <div class="columns">
             <div class="column is-12">
               <label>Phone Number</label><br>
-              <input formControlName="phoneNumber" type="text" class="input">
+              <input formControlName="phoneNumber" type="text" class="input" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
+              <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <br>
-      <h3 class="title is-5 static-titles">Address</h3>
-      <div>
-        <div formArrayName="addresses" *ngFor="let _ of editProfileFormGroup.get('addresses')['controls']; let i = index;">
-          <div class="columns" [formGroupName]="0">
-            <div class="column is-3">
-              <label class="label">Country</label>
-              <input type="text" class="input" formControlName="country" required="">
-            </div>
+<!--      <h3 class="title is-5 static-titles">Address</h3>-->
+<!--      <div>-->
+<!--        <div formArrayName="addresses" *ngFor="let _ of editProfileFormGroup.get('addresses')['controls']; let i = index;">-->
+<!--          <div class="columns" [formGroupName]="0">-->
+<!--            <div class="column is-3">-->
+<!--              <label class="label">Country</label>-->
+<!--              <input type="text" class="input" formControlName="country">-->
+<!--              <div *ngIf="submitted && a.country.errors" class="invalid-feedback">-->
+<!--                <div *ngIf="a.country.errors.required">Country is required</div>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class="column is-3">
-              <label class="label">City</label>
-              <input type="text" class="input" formControlName="city">
-            </div>
+<!--            <div class="column is-3">-->
+<!--              <label class="label">City</label>-->
+<!--              <input type="text" class="input" formControlName="city">-->
+<!--              <div *ngIf="submitted && a.city.errors" class="invalid-feedback">-->
+<!--                <div *ngIf="a.city.errors.required">Country is required</div>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class="column is-2">
-              <label class="label">Zip code</label>
-              <input type="text" class="input" formControlName="zipCode">
-            </div>
+<!--            <div class="column is-2">-->
+<!--              <label class="label">Zip code</label>-->
+<!--              <input type="text" class="input" formControlName="zipCode">-->
+<!--              <div *ngIf="submitted && a.zipCode.errors" class="invalid-feedback">-->
+<!--                <div *ngIf="a.zipCode.errors.required">Country is required</div>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class="column is-4">
-              <label class="label">Street</label>
-              <input type="text" class="input" formControlName="street">
-            </div>
-          </div>
-        </div>
-      </div>
+<!--            <div class="column is-4">-->
+<!--              <label class="label">Street</label>-->
+<!--              <input type="text" class="input" formControlName="street">-->
+<!--              <div *ngIf="submitted && a.street.errors" class="invalid-feedback">-->
+<!--                <div *ngIf="a.street.errors.required">Country is required</div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
       <hr>
       <div class="field is-grouped is-grouped-left">
         <button class="button is-primary save-button">Save changes</button>
