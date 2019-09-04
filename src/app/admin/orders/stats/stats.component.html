@@ -1,0 +1,60 @@
+
+<div class="row">
+  <div class="col-12">
+    <br>
+    <br>
+  </div>
+</div>
+<div class="panel-body columns is-multiline overflow-auto">
+  <div class="row column columns is-10-desktop is-offset-1-desktop ng-star-inserted">
+    <div class="col-md-10 col-sm-12 col-xs-12">
+      <div class="orderstats">
+        <canvas id="order">
+        </canvas>
+      </div>
+    </div>
+    <div class="col-12">
+      <br>
+      <hr class="grey_hr">
+      <br>
+    </div>
+    <div class="col-md-10 col-sm-12 col-xs-12">
+      <div class="orderstats">
+        <canvas id="income">
+        </canvas>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <br>
+      <br>
+    </div>
+    <div class="col-md-12">
+      <h3 class="table_head"><strong class="align-content-center">Top 10 most saled Products</strong></h3>
+    </div>
+    <div class="col-md-12">
+
+      <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
+        <thead>
+        <tr>
+          <th>NR</th>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Product Image</th>
+          <th>Unit Price</th>
+          <th>Sold number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let topitem of topSoldItemsArr; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{ topitem.productid }}</td>
+          <td>{{ topitem.itemname }}</td>
+          <td>{{ topitem.image }}</td>
+          <td>{{ topitem.unitprice }}</td>
+          <td>{{ topitem.pcssold }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
