@@ -22,6 +22,7 @@ export class TokenService {
 
   // FIXME: Do not get token from local storage. Check if token exists in local storage.
   decodeToken(): any {
-    return this.jwtHelper.decodeToken(this.getToken());
+    const token = this.getToken();
+    return token && token.length > 0 ? this.jwtHelper.decodeToken(token) : '';
   }
 }
