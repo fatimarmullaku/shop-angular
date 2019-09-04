@@ -27,6 +27,7 @@ import {PoliceComponent} from './police/police.component';
 import {AccountComponent} from './account/account.component';
 import {EditProfileComponent} from './account/edit-profile/edit-profile.component';
 import {OrderHistoryComponent} from './account/order-history/order-history.component';
+import {ShopAuthGuardService} from '../shared/services/guards/shop-auth-guard.service';
 
 const routes: Routes = [
   {
@@ -83,6 +84,7 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
+    canActivate: [ShopAuthGuardService],
     children: [
       {
         path: 'edit-profile',
