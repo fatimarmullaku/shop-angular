@@ -1,31 +1,53 @@
-<div class="row column columns is-10-desktop is-offset-1-desktop" *ngFor="let d of orderData">
-
-  <div class="columns column is-1-desktop is-vcentered"><img src="assets/img/My-Cart/tick.png" class="media-object img-thumbnail"></div>
-  <div class="column is-11">
-    <div class="columns row">
-      <div class="column is-12">
-        <span><strong>Order Id: {{d.orderId}}</strong></span><br>
-        <span class=""><strong>Customer ID: {{d.customerId}}</strong></span><br>
-        <span class=""><strong>Total Amount:  {{d.total}}$</strong></span><br>
-      </div>
-      <div class="column is-12 alert-dark">
-        order made on: {{ parseDate(d.orderTime) | date:'dd-MM-yyyy'}} , {{ parseDate(d.orderTime) | date:'HH:mm'}}
-        by <a
-        href="#"> {{ d.customerName}} </a>
-      </div>
-    </div>
+<div class="container flex-container">
+  <div class="form-group fill-space">
+    <input type="text" class="form-control" placeholder="Search order..." [(ngModel)]="searchOrder" (keyup)="searchWithCustomParams()">
   </div>
-  <mat-expansion-panel class=" column is-offset-1">
-    <mat-expansion-panel-header class="zero-margin-left">
-      Products purchased
-    </mat-expansion-panel-header>
+  <div class="form-group">
+    <select name="" class="form-control" [(ngModel)]="searchBy">
+      <option value="customerName" selected>Customer Name</option>
+      <option value="customerId">Customer Id</option>
+      <option value="orderId">Order Id</option>
+    </select>
+  </div>
+</div>
 
-    <div *ngFor="let product of d.itemspurchased" class="columns product_purchased list ">
-      <div class="list-item">
-        <div class="is-info"> Product name: {{product.name}} </div>
-        <div> Quantity : {{product.quantity}} </div>
+
+
+<div class="panel-body columns is-multiline overflow-auto">
+  <div class="row column columns is-10-desktop is-offset-1-desktop" *ngFor="let d of data">
+
+    <div class="columns column is-1-desktop is-vcentered"><img src="assets/img/My-Cart/tick.png" class="media-object img-thumbnail"></div>
+    <div class="column is-11">
+      <div class="columns row">
+        <div class="column is-12">
+          <span><strong>Order Id: {{d.orderId}}</strong></span><br>
+          <span class=""><strong>Customer ID: {{d.customerId}}</strong></span><br>
+          <span class=""><strong>Total Amount:  {{d.total}}$</strong></span><br>
+        </div>
+        <div class="column is-12 alert-dark">
+          order made on: {{ parseDate(d.orderTime) | date:'dd-MM-yyyy'}} , {{ parseDate(d.orderTime) | date:'HH:mm'}}
+          by <a
+          href="#"> {{ d.customerName}} </a>
+        </div>
       </div>
     </div>
-  </mat-expansion-panel>
+    <mat-expansion-panel class=" column is-offset-1">
+      <mat-expansion-panel-header class="zero-margin-left">
+        Products purchased
+      </mat-expansion-panel-header>
 
+      <div *ngFor="let product of d.itemspurchased" class="columns product_purchased list ">
+        <div class="list-item">
+          <div class="is-info"> Product name: {{product.name}} </div>
+          <div> Quantity : {{product.quantity}} </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+  </div>
+</div>
+<div class="">
+  <div class="columns is-centered">
+    <app-product-list-pagination></app-product-list-pagination>
+  </div>
 </div>

@@ -1,5 +1,14 @@
 <div class="panel panel-default panel-order">
   <ngb-tabset class="tabDesign">
+
+    <ngb-tab >
+      <ng-template ngbTabTitle><strong>Order history</strong></ng-template>
+      <ng-template ngbTabContent>
+        <div class="">
+          <app-order-data></app-order-data>
+        </div>
+      </ng-template>
+    </ngb-tab>
     <ngb-tab>
       <ng-template ngbTabTitle><strong>Stats</strong></ng-template>
       <ng-template ngbTabContent>
@@ -10,24 +19,6 @@
         </div>
       </ng-template>
     </ngb-tab>
-    <ngb-tab >
-      <ng-template ngbTabTitle><strong>Order history</strong></ng-template>
-      <ng-template ngbTabContent>
-        <div class="">
-          <div class="order_history">
-            <div class="panel-body columns is-multiline overflow-auto">
-              <app-order-data [orderData]="data"></app-order-data>
-            </div>
-            <div class="row">
-              <div class="columns is-centered">
-                <app-product-list-pagination></app-product-list-pagination>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-    </ngb-tab>
-
   </ngb-tabset>
   <br>
 </div>
