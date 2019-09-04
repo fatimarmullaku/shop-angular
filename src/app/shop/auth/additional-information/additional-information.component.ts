@@ -37,8 +37,7 @@ export class AdditionalInformationComponent implements OnInit {
     });
   }
 
-  onSubmit(event: any) {
-    event.preventDefault();
+  onSubmit() {
     console.log(this.informationForm.getRawValue());
     this.userService.addPhonesAndAddresses(this.informationForm.getRawValue()).subscribe((res) => {
       const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
@@ -51,5 +50,15 @@ export class AdditionalInformationComponent implements OnInit {
     }, (error) => {
       console.error(error);
     });
+  }
+
+  skipAdditionalInformation() {
+    const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
+    const dummyKey = this.baseStorage.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
+    if ((cartStorage && cartStorage.length > 0) && dummyKey) {
+      this.routerLink.navigateByUrl('/cart/shipping');
+    } else {
+      this.routerLink.navigateByUrl('/');
+    }
   }
 }

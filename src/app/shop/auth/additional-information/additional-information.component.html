@@ -7,7 +7,7 @@
           <h4>Additional Information</h4>
           <span>Enter your additional information.</span>
         </div>
-        <form [formGroup]="informationForm" class="form" (submit)="onSubmit($event)">
+        <form [formGroup]="informationForm" class="form" (submit)="onSubmit()">
           <div id="box-phone">
             <div>
               <div class="columns">
@@ -46,9 +46,15 @@
             </div>
           </div>
 
-          <div>
+          <br>
+          <div class="columns">
             <br>
-            <button class="auth-button">Send</button>
+            <div class="column">
+              <button class="auth-button">Send</button>
+            </div>
+            <div class="column">
+              <button class="auth-button" (click)="skipAdditionalInformation()">Skip</button>
+            </div>
           </div>
         </form>
       </div>
