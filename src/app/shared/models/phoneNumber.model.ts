@@ -1,3 +1,4 @@
 export class PhoneNumberModel {
-  phoneNumber: string;
+  mobile: string;
+  home: string;
 }

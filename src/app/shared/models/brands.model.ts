@@ -1,0 +1,12 @@
+export class BrandsModel {
+  id: number;
+  name: string;
+  recordStatus: string;
+  createDateTime: Date;
+  updateDateTime: Date;
+  deletedDateTime: Date;
+  description: string;
+  version: number;
+}
+
+

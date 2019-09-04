@@ -9,4 +9,6 @@ export class ProductModel {
   platform: PlatformModel;
   rating: ProductRatingModel;
   isWishlisted = false;
+
+
 }
