@@ -70,6 +70,11 @@ export class EditProfileComponent implements OnInit {
     this.readCustomerInfo();
   }
 
+  cancelEditing(event) {
+    event.preventDefault();
+    this.readCustomerInfo();
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.editProfileFormGroup.invalid) {

@@ -66,9 +66,9 @@
 
               <div class="column is-2">
                 <label class="label">Zip code</label>
-                <input type="text" class="input form-control" formControlName="zipCode" [ngClass]="{ 'is-invalid': submitted && n.controls.zipCode.errors }">
+                <input pattern="[0-9]*" maxlength="9" minlength="5" type="text" class="input form-control" formControlName="zipCode" [ngClass]="{ 'is-invalid': submitted && n.controls.zipCode.errors }">
                 <div *ngIf="submitted && n.controls.zipCode.errors" class="invalid-feedback">
-                  <div *ngIf="n.controls.zipCode.errors.required">ZipCode is required</div>
+                  <div *ngIf="n.controls.zipCode.errors.required">Zip Code is required</div>
                 </div>
               </div>
 
@@ -89,7 +89,7 @@
         <hr>
         <div class="field is-grouped is-grouped-left">
         <button class="button is-primary save-button">Save changes</button>
-        <button class="button" (click)="readProfile()">Cancel</button>
+        <button class="button" (click)="cancelEditing($event)">Cancel</button>
       </div>
       </div>
     </form>
