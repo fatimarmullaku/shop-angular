@@ -31,8 +31,8 @@ export class EditProfileComponent implements OnInit {
     this.editProfileFormGroup = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required]
-      // addresses: this.formBuilder.array([this.createAddress()])
+      phoneNumber: ['', Validators.required],
+      addresses: this.formBuilder.array([this.createAddress()])
     });
 
     this.customerService.getCustomer().subscribe(response => {
@@ -41,7 +41,7 @@ export class EditProfileComponent implements OnInit {
           name: response.name,
           email: response.email,
           phoneNumber: response.phoneNumber,
-          // addresses: response.addresses,
+          addresses: response.addresses,
         });
       }
     );
@@ -49,11 +49,11 @@ export class EditProfileComponent implements OnInit {
 
   createAddress(): FormGroup {
     return this.formBuilder.group({
-      id: [-1, Validators.required],
+      id: [-1],
       country: ['', Validators.required],
       city: ['', Validators.required],
       zipCode: ['', Validators.required],
-      street: ['', Validators.required]
+      street: ['', Validators.required],
     });
   }
 
@@ -61,13 +61,14 @@ export class EditProfileComponent implements OnInit {
     return this.editProfileFormGroup.controls;
   }
 
-  // get a() {
-  //   return this.editProfileFormGroup.addresses.controls;
-  // }
+  get a() {
+    return this.createAddress().controls;
+  }
 
   onSubmit() {
     // event.preventDefault();
     this.submitted = true;
+    console.log(this.a.city.errors.required);
     if (this.editProfileFormGroup.invalid) {
       return;
     }
