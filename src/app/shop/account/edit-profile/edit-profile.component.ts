@@ -17,8 +17,8 @@ export class EditProfileComponent implements OnInit {
   editProfileFormGroup: FormGroup;
   addresses: FormArray;
   customer: CustomerModel;
-  isModalActive = false;
   submitted = false;
+  editable = true;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -50,7 +50,7 @@ export class EditProfileComponent implements OnInit {
   createAddress(): FormGroup {
     return this.formBuilder.group({
       id: [-1],
-      country: ['', Validators.required],
+      country: new FormControl('', Validators.required),
       city: ['', Validators.required],
       zipCode: ['', Validators.required],
       street: ['', Validators.required],
@@ -68,13 +68,13 @@ export class EditProfileComponent implements OnInit {
   onSubmit() {
     // event.preventDefault();
     this.submitted = true;
-    console.log(this.a.city.errors.required);
     if (this.editProfileFormGroup.invalid) {
       return;
     }
+
     console.log(this.editProfileFormGroup.getRawValue());
     this.userService.addPhonesAndAddresses(this.editProfileFormGroup.getRawValue()).subscribe((res) => {
-      this.isModalActive = true;
+      this.editProfile();
     }, (error) => {
       console.error(error);
     });
@@ -91,7 +91,7 @@ export class EditProfileComponent implements OnInit {
     );
   }
 
-  removeActiveClass() {
-    this.isModalActive = !this.isModalActive;
+  editProfile() {
+    this.editable = this.editable ? false : true;
   }
 }

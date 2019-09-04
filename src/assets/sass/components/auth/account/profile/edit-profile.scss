@@ -59,8 +59,21 @@
   margin-right: 20px;
 }
 
-.static-titles {
-  color: map-get($ucx-colors, light-orange);
+.title-wrapper{
+  display: flex;
+  justify-content: space-between;
+  .static-titles {
+    color: map-get($ucx-colors, light-orange);
+  }
+
+  i{
+    color: map-get($ucx-colors, light-orange);
+    font-size: 30px;
+
+    &:hover{
+      transform: scale(1);
+    }
+  }
 }
 
 .main-content {
@@ -101,6 +114,40 @@
 
   @include mobile {
     margin-right: 0;
+  }
+}
+
+.display-address{
+  display: none;
+}
+
+.edit-profile-display{
+  input{
+    pointer-events:none;
+    background-color: transparent;
+    color: map-get($ucx-colors, extra-light-gray);
+    border: none;
+  }
+
+  hr{
+    display: none;
+  }
+
+  .address-wrapper{
+    display: none;
+  }
+
+  .display-address{
+    display: block;
+    color: map-get($ucx-colors, extra-light-gray);
+
+    p{
+      margin-left: 7px;
+    }
+  }
+
+  button{
+    display: none;
   }
 }
 
