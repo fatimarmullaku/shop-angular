@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
 
   fetchCustomer(): void{
     const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res)=>{
+    this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res)=>{
         this.customerName = res.name;
         console.log(this.customerName);
     },
