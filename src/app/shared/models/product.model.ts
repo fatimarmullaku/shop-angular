@@ -8,6 +8,7 @@ export class ProductModel {
   productDescription: string;
   platform: PlatformModel;
   rating: ProductRatingModel;
+
   isWishlisted = false;
 
 
