@@ -6,3 +6,15 @@ hr.grey_hr {
   margin-top: 100px;
   margin-bottom: 40px;
 }
+#topSoldTable {
+  .product-image-sizing {
+    max-height: 50px;
+    width: auto;
+    max-width: 50px;
+  }
+
+  .hover-transform:hover {
+    box-shadow: 2px 5px 10px lightgrey inset;
+  }
+
+}

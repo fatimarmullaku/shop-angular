@@ -2,6 +2,8 @@ import {PhoneModel} from './phone.model';
 import {AddressesModel} from './addresses.model';
 
 export class CustomerModel {
+  addresses: AddressesModel;
+  phoneNumbers: PhoneModel;
   id: number;
   name: string;
   email: string;
@@ -11,6 +13,4 @@ export class CustomerModel {
   deletedDateTime: Date;
   description: string;
   version: number;
-  addresses: AddressesModel;
-  phoneNumbers: PhoneModel;
 }

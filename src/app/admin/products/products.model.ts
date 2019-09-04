@@ -8,7 +8,6 @@ export class ProductsModel {
   id: number;
   name: string;
   unitPrice: bigint;
-  inStock: number;
   recordStatus: string;
   createDateTime: Date;
   updateDateTime: Date;

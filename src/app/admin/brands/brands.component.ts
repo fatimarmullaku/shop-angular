@@ -87,9 +87,7 @@ export class BrandsComponent implements OnInit {
         console.log(err);
       }
     );
-
     this.insertModal = false;
-
   }
 
 
@@ -168,6 +166,4 @@ export class BrandsComponent implements OnInit {
     this.bid = bid;
     console.log(this.bid);
   }
-
-
 }

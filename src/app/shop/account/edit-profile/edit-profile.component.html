@@ -1,0 +1,77 @@
+<div class="profile-information-panel">
+
+  <div class="column edit-profile-wrapper">
+
+    <form [formGroup]="editProfileFormGroup" class="form" (submit)="onSubmit($event)">
+      <p class="title is-2 static-titles">Profile Information</p>
+      <hr>
+      <div class="columns">
+        <div class="column">
+          <label class="label">Email</label>
+          <input formControlName="email" type="email" class="input">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <label class="label">Full Name</label>
+          <input formControlName="name" type="text" class="input">
+        </div>
+      </div>
+      <div>
+        <div>
+          <div class="columns">
+            <div class="column is-12">
+              <label>Phone Number</label><br>
+              <input formControlName="phoneNumber" type="text" class="input">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <h3 class="title is-5 static-titles">Address</h3>
+      <div>
+        <div formArrayName="addresses" *ngFor="let _ of editProfileFormGroup.get('addresses')['controls']; let i = index;">
+          <div class="columns" [formGroupName]="0">
+            <div class="column is-3">
+              <label class="label">Country</label>
+              <input type="text" class="input" formControlName="country" required="">
+            </div>
+
+            <div class="column is-3">
+              <label class="label">City</label>
+              <input type="text" class="input" formControlName="city">
+            </div>
+
+            <div class="column is-2">
+              <label class="label">Zip code</label>
+              <input type="text" class="input" formControlName="zipCode">
+            </div>
+
+            <div class="column is-4">
+              <label class="label">Street</label>
+              <input type="text" class="input" formControlName="street">
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="field is-grouped is-grouped-left">
+        <button class="button is-primary save-button">Save changes</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal" [ngClass]="{'is-active':isModalActive}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <section class="modal-card-body model-edit-profile-body">
+        <button class="delete delete-modal-edit-profile" aria-label="close" (click)="removeActiveClass()"></button>
+        <div class="modal-content-edit-profile">
+          <p>You have successfully updated your profile!</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>

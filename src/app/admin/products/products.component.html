@@ -16,7 +16,6 @@
             <th>Platform</th>
             <th>Brand </th>
             <th>Unit Price</th>
-            <th>in Stock</th>
             <th>Record Status</th>
             <th>Create Time</th>
             <th>Update Time</th>
@@ -31,7 +30,6 @@
             <td> {{p?.platform?.name}} </td>
             <td> {{p?.brand?.name}} </td>
             <td> {{p.unitPrice}}</td>
-            <td> {{p.inStock}}</td>
             <td>{{p.recordStatus}}</td>
             <td>{{p.createDateTime | date:'dd-MM-yyyy'}}</td>
             <td>{{p.updateDateTime | date:'dd-MM-yyyy'}}</td>
@@ -46,14 +44,9 @@
                 p.id,
                 p.name,
                 p.unitPrice,
-                p.inStock,
-                p.recordStatus,
-                p.updateDateTime,
-                p.deletedDateTime,
                 p.description,
-                p.version,
-                p?.brand?.name,
-                p?.platform?.name
+                p?.brand,
+                p?.platform
                 ) "
                   class="far fa-edit"></i>
               </a>
@@ -112,9 +105,10 @@
               <label for="platform">Platform:</label>
               <div>
                 <select formControlName="id" id="platform">
-                  <option *ngFor="let p of platformList" [ngValue]="p.id">
-                    {{p.name}}
-                  </option>
+<!--                  <option *ngFor="let p of platformList" [ngValue]="p.id">-->
+<!--                    {{p.name}}-->
+<!--                  </option>-->
+                  <option [ngValue]="1">PC</option>
                 </select>
               </div>
               <div *ngIf="!isNotPlatform" class="requiredError">
@@ -143,14 +137,6 @@
                      placeholder="Unit Price"
                      formControlName="unitPrice"
                      type="text">
-            </div>
-            <div class="column">
-              <label for="inStock">In Stock:</label>
-              <input class="form-control"
-                     id="inStock"
-                     placeholder="In Stock"
-                     formControlName="inStock"
-                     type="boolean">
             </div>
           </div>
           <div class="control">
@@ -195,16 +181,25 @@
                    formControlName="name"
                    type="text">
           </div>
-          <div class="column">
+          <div class="column" formGroupName="platform">
             <label for="platform">Platform:</label>
             <div>
-              <input type="text" disabled [value]="editShowPlatformName">
+              <select formControlName="id" id="uPlatform">
+<!--                <option *ngFor="let p of platformList" [ngValue]="p.id">-->
+<!--                  {{p.name}}-->
+<!--                </option>-->
+                <option [ngValue]="1">PC</option>
+              </select>
             </div>
           </div>
-          <div class="column">
+          <div class="column" formGroupName="brand">
             <label for="brand">Brand:</label>
             <div>
-              <input type="text" disabled [value]="editShowBrandName">
+              <select formControlName="id" id="uBrand">
+                <option *ngFor="let b of brandsList" [ngValue]="b.id">
+                  {{b.name}}
+                </option>
+              </select>
             </div>
           </div>
         </div>
@@ -216,14 +211,6 @@
                    placeholder="Unit Price"
                    formControlName="unitPrice"
                    type="text">
-          </div>
-          <div class="column">
-            <label for="uInStock">In Stock:</label>
-            <input class="form-control"
-                   id="uInStock"
-                   placeholder="In Stock"
-                   formControlName="inStock"
-                   type="boolean">
           </div>
         </div>
         <div class="control">

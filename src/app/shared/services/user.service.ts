@@ -8,6 +8,7 @@ import {RestService} from './rest.service';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {TokenService} from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class UserService {
   constructor(private httpClient: HttpClient,
               private restService: RestService,
               private baseStorage: BaseStorageService,
-              private router: Router) {
+              private router: Router,
+              private tokenService: TokenService) {
   }
 
   isLoggedIn(): boolean {
@@ -36,6 +38,7 @@ export class UserService {
         if (user) {
           if (user.accessToken) {
             this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
+            console.log(this.tokenService.decodeToken());
           }
           if (user.customerId) {
             console.log(user.customerId);
@@ -63,7 +66,23 @@ export class UserService {
     return this.restService.publicRequest<any>(HttpRequestMethod.PUT,
       ENDPOINTS.customers.updatePhonesAndAddresses + `/${customerId}`,
       {
+        body: payload
+      });
+  }
+
+  updateCustomer(payload: any) {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    console.log(this.restService.publicRequest<any>(HttpRequestMethod.PUT, ENDPOINTS.customers.update + `/${customerId}`, {
       body: payload
-    });
+    }));
+    return this.restService.publicRequest<any>(HttpRequestMethod.PUT,
+      ENDPOINTS.customers.update + `/${customerId}`,
+      {
+        body: payload
+      });
+  }
+
+  getRole(): string {
+    return this.tokenService.decodeToken().role;
   }
 }

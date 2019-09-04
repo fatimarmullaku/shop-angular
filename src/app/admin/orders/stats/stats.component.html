@@ -29,14 +29,14 @@
       <br>
     </div>
     <div class="col-md-12">
-      <h3 class="table_head"><strong class="align-content-center">Top 10 most saled Products</strong></h3>
+      <h3 class="table_head"><strong class="align-content-center">Top 10 most sold Products</strong></h3>
     </div>
     <div class="col-md-12">
 
-      <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
+      <table class="table table-bordered table-responsive-md table-striped text-center" id="topSoldTable">
         <thead>
         <tr>
-          <th>NR</th>
+          <th>No</th>
           <th>Product ID</th>
           <th>Product Name</th>
           <th>Product Image</th>
@@ -45,11 +45,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let topitem of topSoldItemsArr; let i = index">
+        <tr *ngFor="let topitem of topSoldItemsArr; let i = index" class="hover-transform">
           <td>{{i + 1}}</td>
           <td>{{ topitem.productid }}</td>
-          <td>{{ topitem.itemname }}</td>
-          <td>{{ topitem.image }}</td>
+          <td>{{ topitem.productname }}</td>
+          <td><div class="image"><img src="{{photoUrl + topitem.image}}" class=" img-thumbnail product-image-sizing is-rounded hover-enlarge"></div></td>
           <td>{{ topitem.unitprice }}</td>
           <td>{{ topitem.pcssold }}</td>
         </tr>

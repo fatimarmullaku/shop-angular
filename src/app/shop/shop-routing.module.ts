@@ -23,6 +23,9 @@ import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-met
 import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
 import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
 import {ProductUploadComponent} from './product-upload/product-upload.component';
+import {AccountComponent} from './account/account.component';
+import {EditProfileComponent} from './account/edit-profile/edit-profile.component';
+import {OrderHistoryComponent} from './account/order-history/order-history.component';
 
 const routes: Routes = [
   {
@@ -73,6 +76,20 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: '/auth/login'
+      }
+    ]
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    children: [
+      {
+        path: 'edit-profile',
+        component: EditProfileComponent
+      },
+      {
+        path: 'order-history',
+        component: OrderHistoryComponent
       }
     ]
   },

@@ -11,7 +11,6 @@ import {ProductsModel} from './products.model';
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
 import {ENDPOINTS} from '../../shared/constants/api.constants';
-import {combineLatest} from "rxjs";
 
 @Component({
   selector: 'app-products',
@@ -23,8 +22,8 @@ export class ProductsComponent implements OnInit {
   deleteModal = false;
   updateModal = false;
   insertModal = false;
-  platformList = PlatformsModel[''];
-  brandsList = BrandsModel[''];
+  platformList: PlatformsModel[];
+  brandsList: BrandsModel[];
   productId: number;
   productsList: ProductsModel[];
   productsForm: FormGroup;
@@ -38,8 +37,6 @@ export class ProductsComponent implements OnInit {
   selectedFile2: File;
   isNotPlatform = true;
   isNotBrand = true;
-  editShowBrandName: string;
-  editShowPlatformName: string;
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
               private fb: FormBuilder,
@@ -76,7 +73,6 @@ export class ProductsComponent implements OnInit {
         id: ['', [Validators.required]]
       }),
       unitPrice: [],
-      inStock: [],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
@@ -88,7 +84,12 @@ export class ProductsComponent implements OnInit {
     this.updateForm = this.fb.group({
       name: [''],
       unitPrice: [],
-      inStock: [],
+      platform: this.fb.group({
+        id: []
+      }),
+      brand: this.fb.group({
+        id: []
+      }),
       recordStatus: [''],
       deletedDateTime: [''],
       description: [''],
@@ -191,40 +192,31 @@ export class ProductsComponent implements OnInit {
     id: number,
     name: string,
     unitPrice: bigint,
-    inStock: number,
-    recordStatus: string,
-    updateDateTime: Date,
-    deletedDateTime: Date,
     description: string,
-    version: number,
-    brandName: string,
-    platformName: string
+    brand: BrandsModel,
+    platform: PlatformsModel
   ) {
-    this.editShowBrandName = brandName;
-    this.editShowPlatformName = platformName;
+    console.log('brand ', brand);
+    console.log('platform ', platform);
     this.updateModal = true;
     this.productId = id;
     this.updateForm.controls.name.setValue(name);
     this.updateForm.controls.unitPrice.setValue(unitPrice);
-    this.updateForm.controls.inStock.setValue(inStock);
-    // this.updateForm.controls.recordStatus.setValue(recordStatus);
-    // this.updateForm.controls.updateDateTime.setValue(updateDateTime);
-    // this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
-    this.updateForm.controls.description.setValue(description);
-    // this.updateForm.controls.version.setValue(version);
-
+    this.updateForm.controls.description.patchValue(description);
+    this.updateForm.controls.brand.patchValue(brand);
+    this.updateForm.controls.platform.patchValue(platform);
   }
 
   onUpdate() {
-    const values = this.updateForm.value;
     const updatePayload = {
+      id: this.productId,
       name: this.updateForm.controls.name.value,
-      inStock: this.updateForm.controls.inStock.value,
       unitPrice: this.updateForm.controls.unitPrice.value,
-      description: this.updateForm.controls.description.value
+      description: this.updateForm.controls.description.value,
+      platform: this.updateForm.controls.platform.value,
+      brand: this.updateForm.controls.brand.value
     };
     console.log('PAYLOAD THAT IS SENT', updatePayload);
-    console.log(values);
 
     this.productsService.updateProduct(updatePayload, this.productId).subscribe(
       response => {
@@ -248,8 +240,6 @@ export class ProductsComponent implements OnInit {
         this.insertModal = false;
         this.productsForm.reset();
         this.fileForm.reset();
-        this.editShowBrandName = null;
-        this.editShowPlatformName = null;
       },
       (err: HttpErrorResponse) => {
         console.log(err);
@@ -276,6 +266,7 @@ export class ProductsComponent implements OnInit {
   closeUpdateModal() {
     this.updateModal = !this.updateModal;
     this.updateForm.reset();
+    this.fileForm.reset();
   }
 
   closeInsertModal() {

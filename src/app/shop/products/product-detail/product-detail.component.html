@@ -25,7 +25,6 @@
           <div class="product-info-body">
             <div class="product-name-instock">
               <h3 class="product-name">{{ product.name }}</h3>
-              <h5>{{ product.inStockState ? 'In Stock (' + product.inStock + ')' : 'Out of stock' }}</h5>
             </div>
             <p class="product-description">{{product.productDescription}}</p>
             <div class="product-controls">
@@ -39,7 +38,7 @@
               </div>
               <div class="product-quantity">
                 <div class="heading">
-                  Quantity
+                  License Quantity
                 </div>
                 <div class="">
                   <input class="input is-rounded" value="1" (keyup)="getQuantity($event)" (keypress)="numbersOnly($event)">

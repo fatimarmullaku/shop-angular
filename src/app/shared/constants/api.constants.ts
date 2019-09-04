@@ -15,8 +15,14 @@ const PRODUCTS = {
 
 const CUSTOMERS = {
   getAll: environment.apiHost + '/customers',
+  getById: environment.apiHost + '/customers',
+  update: environment.apiHost + '/customers',
   updatePhonesAndAddresses: environment.apiHost + '/customers'
 };
+
+const BRANDS = {
+  getAll: environment.apiHost + '/brand'
+}
 
 const PURCHASES = {
   addToCart: environment.apiHost + '/purchases/lineitems',
@@ -26,6 +32,7 @@ export const ENDPOINTS = {
   auth: AUTH,
   products: PRODUCTS,
   customers: CUSTOMERS,
-  purchases: PURCHASES
+  purchases: PURCHASES,
+  brands: BRANDS
 };
 
