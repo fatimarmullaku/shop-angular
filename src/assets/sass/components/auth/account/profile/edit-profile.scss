@@ -60,7 +60,7 @@
 }
 
 .static-titles {
-  color: map-get($ucx-colors, deep-orange);
+  color: map-get($ucx-colors, light-orange);
 }
 
 .main-content {
@@ -103,6 +103,7 @@
     margin-right: 0;
   }
 }
+
 
 /*
 body {
