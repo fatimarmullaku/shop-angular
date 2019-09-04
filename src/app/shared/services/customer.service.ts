@@ -25,7 +25,7 @@ export class CustomerService {
 
   getCustomer(): Observable<CustomerModel> {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    return this.restService.publicRequest<CustomerModel>(HttpRequestMethod.GET, ENDPOINTS.customers.getById + `/${customerId}`);
+    return this.restService.request<CustomerModel>(HttpRequestMethod.GET, ENDPOINTS.customers.getById + `/${customerId}`);
   }
 
   // updateCustomer(payload: any) {
