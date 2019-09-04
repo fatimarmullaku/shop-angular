@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../../shared/services/customer.service';
 import {CustomerModel} from '../../../shared/models/customer.model';
-import {Observable} from 'rxjs';
 import {AddressModel} from '../../../shared/models/address.model';
 import {UserService} from '../../../shared/services/user.service';
 import {Router} from '@angular/router';
@@ -69,7 +68,7 @@ export class EditProfileComponent implements OnInit {
       console.error(error);
     });
 
-    this.customerService.getCustomer().subscribe(response => {
+    this.customerService.getCustomers().subscribe(response => {
         this.customer = response;
         this.editProfileFormGroup.patchValue({
           name: response.name,

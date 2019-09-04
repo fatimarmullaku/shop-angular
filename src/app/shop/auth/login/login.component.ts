@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         password: this.f.password.value
       };
       this.userService.login(payload.email, payload.password).subscribe(res => {
-          if (this.userService.getRole() === 'ADMIN') {
+          if (this.userService.getRoles() === 'ADMIN') {
             this.router.navigateByUrl('/admin');
           } else {
             this.router.navigateByUrl('/');
