@@ -1,31 +1,37 @@
 <!-- PAGINATION -->
 <div class="block pg">
   <div class="pagination">
-    <ng-template [ngIf]="totalPages>=3" [ngIfElse]="lowerThanFourPages">
-      <nav class="pagination" role="navigation" aria-label="pagination">
-        <a class="pagination-previous pagination-default log-out-button" (click)="changePage(currentPage - 1)" >Previous</a>
-        <a class="pagination-next pagination-default log-out-button" (click)="changePage(currentPage + 1)">Next page</a>
+    <ng-template [ngIfElse]="lowerThanFourPages" [ngIf]="totalPages>=3">
+      <nav aria-label="pagination" class="pagination" role="navigation">
+        <a (click)="changePage(currentPage - 1)"
+           class="pagination-previous pagination-default log-out-button">Previous</a>
+        <a (click)="changePage(currentPage + 1)" class="pagination-next pagination-default log-out-button">Next page</a>
         <ul class="pagination-list">
           <li>
-            <a class="pagination-link pagination-default" aria-label="Goto page 1" (click)="changePage(1)" [class.selected]="currentPage==1" >1</a>
+            <a (click)="changePage(1)" [class.selected]="currentPage==1" aria-label="Goto page 1"
+               class="pagination-link pagination-default">1</a>
           </li>
           <li>
             <span class="pagination-ellipsis">&hellip;</span>
           </li>
           <li>
-            <a class="pagination-link pagination-default" (click)="changePage(left)" [class.selected]="currentPage==left">{{left}}</a>
+            <a (click)="changePage(left)" [class.selected]="currentPage==left"
+               class="pagination-link pagination-default">{{left}}</a>
           </li>
           <li>
-            <a class="pagination-link pagination-default" (click)="changePage(mid)" [class.selected]="currentPage==mid">{{mid}}</a>
+            <a (click)="changePage(mid)" [class.selected]="currentPage==mid"
+               class="pagination-link pagination-default">{{mid}}</a>
           </li>
           <li>
-            <a class="pagination-link pagination-default" (click)="changePage(right)" [class.selected]="currentPage==right"> {{right}}</a>
+            <a (click)="changePage(right)" [class.selected]="currentPage==right"
+               class="pagination-link pagination-default"> {{right}}</a>
           </li>
           <li>
-            <span class="pagination-ellipsis" [class.hidden]="">&hellip;</span>
+            <span [class.hidden]="" class="pagination-ellipsis">&hellip;</span>
           </li>
           <li>
-            <a class="pagination-link pagination-default" aria-label="Goto page " (click)="changePage(totalPages)" [class.selected]="currentPage==totalPages">{{totalPages}}</a>
+            <a (click)="changePage(totalPages)" [class.selected]="currentPage==totalPages" aria-label="Goto page "
+               class="pagination-link pagination-default">{{totalPages}}</a>
           </li>
         </ul>
       </nav>
@@ -36,14 +42,16 @@
     >
 
 
-      <nav class="pagination" role="navigation" aria-label="pagination">
-        <a class="pagination-previous pagination-default log-out-button" title="This is the first page" (click)="changePage(currentPage - 1)">Previous</a>
-        <a class="pagination-next pagination-default log-out-button" (click)="changePage(currentPage + 1)">Next page</a>
+      <nav aria-label="pagination" class="pagination" role="navigation">
+        <a (click)="changePage(currentPage - 1)" class="pagination-previous pagination-default log-out-button"
+           title="This is the first page">Previous</a>
+        <a (click)="changePage(currentPage + 1)" class="pagination-next pagination-default log-out-button">Next page</a>
         <ul class="pagination-list">
-          <li *ngFor="let dummy of ' '.repeat(totalPages).split(''), let x = index" class="pagination-link pagination-default"
-              routerLink="/../../../app"
-              aria-label="Page 1" aria-current="page" (click)="changePage(x+1)" [class.selected]="currentPage==x+1" >
-            <a >{{x+1}}</a>
+          <li (click)="changePage(x+1)"
+              *ngFor="let dummy of ' '.repeat(totalPages).split(''), let x = index"
+              [class.selected]="currentPage==x+1"
+              aria-current="page" aria-label="Page 1" class="pagination-link pagination-default" routerLink="/../../../app">
+            <a>{{x + 1}}</a>
           </li>
         </ul>
       </nav>
