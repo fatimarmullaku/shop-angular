@@ -3,6 +3,13 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
+import {HttpRequestMethod} from '../../../shared/constants/http-request.method';
+import {ENDPOINTS} from '../../../shared/constants/api.constants';
+import {StatsService} from '../../orders/stats/stats.service';
+import {StorageService} from '../../../shared/services/storage.service';
+import {RestService} from '../../../shared/services/rest.service';
+import {BaseStorageService} from '../../../shared/services/base-storage.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,19 +17,24 @@ import {Router} from '@angular/router';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  @ViewChild('drawer',  {static: false}) drawer: any;
+  @ViewChild('drawer', {static: false}) drawer: any;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  username = 'Enis Rasimi';
+  username: string;
   role = 'Administrator';
 
   ngOnInit(): void {
+    this.fetchUser();
   }
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor(private breakpointObserver: BreakpointObserver,
+              private router: Router,
+              private storageService: StorageService,
+              private restService: RestService,
+              private baseStorageService: BaseStorageService) {
   }
 
 
@@ -39,5 +51,16 @@ export class SidebarComponent implements OnInit {
 
   onMyProfile() {
     this.router.navigate(['/my-profile']);
+  }
+
+  fetchUser(): void {
+    const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res) => {
+        this.username = res.name;
+        console.log(this.username);
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 }
