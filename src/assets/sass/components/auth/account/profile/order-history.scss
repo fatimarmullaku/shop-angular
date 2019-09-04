@@ -1,0 +1,44 @@
+
+.order-history-wrapper{
+  background-color: transparent;
+
+  color: map-get($ucx-colors, light-orange);
+
+  strong {
+    color: map-get($ucx-colors, dark-gray);
+  }
+
+  .image-thumbnail-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i{
+      font-size: 40px;
+      color: map-get($ucx-colors, light-orange);
+    }
+  }
+
+  .alert-dark{
+    .mat-expansion-panel-header{
+      padding: 0 0;
+    }
+    overflow: auto;
+    background-color: transparent;
+    .columns {
+      margin-bottom: 0;
+    }
+    strong {
+      color: map-get($ucx-colors, light-gray);
+    }
+    p{
+      color: map-get($ucx-colors, deep-orange);
+    }
+  }
+
+  .product_purchased{
+    background-color: transparent;
+    .list-item{
+      color: map-get($ucx-colors, deep-orange);
+    }
+  }
+}

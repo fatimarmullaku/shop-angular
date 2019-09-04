@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {ProductModel} from '../../shared/models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,13 @@ export class ProductsService {
     return this.http.post<any>(this.rootUrl, data);
   }
 
+  getProductByPlatformAndBrand(params: any) {
+    return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params});
+  }
+
+
+
+
   uploadFiles(payload) {
     return this.http
       .post('http://localhost:8080/api/v1/upload/',
@@ -34,7 +42,7 @@ export class ProductsService {
 
   updateProduct(data, id) {
     console.log(data);
-    return this.http.put(this.rootUrl + id , data);
+    return this.http.put(this.rootUrl + id, data);
   }
 
 

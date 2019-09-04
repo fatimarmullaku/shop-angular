@@ -11,6 +11,7 @@ import {ProductListComponent} from './products/product-list/product-list.compone
 import {ProductsComponent} from './products/products.component';
 import {ProductsSidebarComponent} from './products/products-sidebar/products-sidebar.component';
 import {ProductItemComponent} from './products/product-list/product-item/product-item.component';
+import {ProductMenuComponent} from './products/product-list/product-menu/product-menu.component';
 import {ProductDetailComponent} from './products/product-detail/product-detail.component';
 import {ProductReviewsComponent} from './products/product-detail/product-reviews/product-reviews.component';
 import {ProductGalleryComponent} from './products/product-detail/product-gallery/product-gallery.component';
@@ -21,26 +22,22 @@ import {HttpClientModule} from '@angular/common/http';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
 import {AddNewProductComponent} from './newproduct/add-new-product/add-new-product.component';
 import {PaginationComponent} from '../shared/pagination/pagination.component';
-import {AccountInfoComponent} from './cart/account-info/account-info.component';
+import { AccountInfoComponent } from './cart/account-info/account-info.component';
 import {ShippingComponent} from './cart/shipping/shipping.component';
-import {WishlistComponent} from './wishlist/wishlist.component';
-import {SliderComponent} from './products/product-list/slider/slider.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { SliderComponent } from './products/product-list/slider/slider.component';
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
 import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
 import {VerificationComponent} from './cart/verification/verification.component';
-import {CashMethodComponent} from './cart/cash-method/cash-method.component';
-import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
-import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
-import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
-import {ProductUploadComponent} from './product-upload/product-upload.component';
-import {AccountComponent} from '../auth/account/account.component';
-import {ProfileComponent} from './auth/account/profile/profile.component';
-import {ChangeEmailComponent} from './auth/account/profile/change-email/change-email.component';
-import {ChangePasswordComponent} from './auth/account/profile/change-password/change-password.component';
-import {InformationComponent} from './auth/account/profile/information/information.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {AngularMaterialModuleCollapse} from '../shared/products-modules';
-import {ProductFilterPipe} from './products/product-filter.pipe';
+import { CashMethodComponent } from './cart/cash-method/cash-method.component';
+import { CreditcardMethodComponent } from './cart/creditcard-method/creditcard-method.component';
+import { PaypalMethodComponent } from './cart/paypal-method/paypal-method.component';
+import { SuccessScreenComponent } from './cart/success-screen/success-screen.component';
+import { ProductUploadComponent } from './product-upload/product-upload.component';
+import {AccountComponent} from './account/account.component';
+import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import {MatExpansionModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -52,6 +49,7 @@ import {ProductFilterPipe} from './products/product-filter.pipe';
     ProductsComponent,
     ProductsSidebarComponent,
     ProductItemComponent,
+    ProductMenuComponent,
     ProductDetailComponent,
     ProductReviewsComponent,
     ProductGalleryComponent,
@@ -73,12 +71,8 @@ import {ProductFilterPipe} from './products/product-filter.pipe';
     SuccessScreenComponent,
     ProductUploadComponent,
     AccountComponent,
-    ProfileComponent,
-    ChangeEmailComponent,
-    ChangePasswordComponent,
-    InformationComponent,
-    LogoutComponent,
-    ProductFilterPipe
+    EditProfileComponent,
+    OrderHistoryComponent
   ],
   exports: [
     PaginationComponent,
@@ -91,8 +85,7 @@ import {ProductFilterPipe} from './products/product-filter.pipe';
     HttpClientModule,
     SharedModule,
     FormsModule,
-    NgbModule,
-    AngularMaterialModuleCollapse
+    MatExpansionModule
 
   ]
 })

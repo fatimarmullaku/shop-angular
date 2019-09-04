@@ -8,7 +8,7 @@
     <div class="contentt">
       <ul class="game-list">
         <li *ngFor="let p of platformsList " class="game-item">
-          <input (change)="selectedPlatform(p.name)" type="checkbox"
+          <input (change)="selectedPlatform(p.id)" type="checkbox"
                  name="games"
                  value="{{p.id}}"/>
           <span class="game-text">{{p.name}}</span>
@@ -25,7 +25,7 @@
     <div class="contentt">
       <ul class="game-list">
         <li *ngFor="let b of brandsList " class="game-item">
-          <input (change)="selectedBrand(b.name)" type="checkbox"
+          <input (change)="selectedBrand(b.id)" type="checkbox"
                  name="games"
                  value="{{b.id}}"/>
           <span class="game-text">{{b.name}}</span>
