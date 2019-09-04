@@ -90,10 +90,10 @@
 
 .side-menu-parent {
   margin-right: 10px;
-  height: calc(100vh - 120px);
+  //height: calc(100vh - 120px);
 
-  background: linear-gradient(to top, #434343 -29%, #000000);
-  border-right: 1px solid grey;
+  //background: linear-gradient(to top, #434343 -29%, #000000);
+  //border-right: 1px solid grey;
   padding-top: 20px;
 
   @include mobile {
@@ -136,9 +136,15 @@
 }
 
 .edit-account {
-  max-height: calc(100vh - 270px);
+  height: 100%;
   .account-wrapper{
     margin-top: 0;
     overflow: hidden;
   }
 }
+
+
+/*
+body {
+  background: linear-gradient(135deg, rgb(21, 70, 45),rgb(177, 24, 19),rgb(203, 214, 34));
+}*/

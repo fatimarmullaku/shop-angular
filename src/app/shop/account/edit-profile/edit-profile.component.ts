@@ -29,9 +29,9 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.editProfileFormGroup = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: new FormControl('', Validators.required),
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: new FormControl('', Validators.required),
       addresses: this.formBuilder.array([this.createAddress()])
     });
 
@@ -51,9 +51,9 @@ export class EditProfileComponent implements OnInit {
     return this.formBuilder.group({
       id: [-1],
       country: new FormControl('', Validators.required),
-      city: ['', Validators.required],
-      zipCode: ['', Validators.required],
-      street: ['', Validators.required],
+      city: new FormControl('', Validators.required),
+      zipCode: new FormControl('', Validators.required),
+      street: new FormControl('', Validators.required),
     });
   }
 
@@ -66,7 +66,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   readProfile() {
-    this.readOnlyProfile = true;
+    this.readCustomerInfo();
   }
 
   onSubmit() {
@@ -78,7 +78,6 @@ export class EditProfileComponent implements OnInit {
     console.log(this.editProfileFormGroup.getRawValue());
     this.userService.addPhonesAndAddresses(this.editProfileFormGroup.getRawValue()).subscribe((res) => {
       this.readProfile();
-      this.readCustomerInfo();
     }, (error) => {
       console.error(error);
     });
@@ -87,6 +86,7 @@ export class EditProfileComponent implements OnInit {
   readCustomerInfo() {
     this.customerService.getCustomer().subscribe(response => {
         this.customer = response;
+        this.readOnlyProfile = true;
         this.editProfileFormGroup.patchValue({
           name: response.name,
           email: response.email,
