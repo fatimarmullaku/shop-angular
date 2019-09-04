@@ -14,7 +14,7 @@ export class OrdersService {
 
   }
 
-  paged(size: number, page: number) {
+  paged(size: number, page: number, httpParams?: HttpParams) {
     const params = new HttpParams().set('size', String(size)).set('page', String(page));
     return this.http.get(this.baseUrl + '/invoices/history/paged', {params});
   }

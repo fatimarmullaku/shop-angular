@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   products: ProductModel[];
   productsList: any[];
   currentPage: number;
-  pageSize = 8;
+  pageSize = 1;
 
   constructor(private productService: ProductService,
               private paginationService: PaginationService) {
