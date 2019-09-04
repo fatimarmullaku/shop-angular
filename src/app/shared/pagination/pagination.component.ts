@@ -27,12 +27,12 @@ export class PaginationComponent implements OnInit {
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.paginationService.changePage(page);
-      //   this.router.navigate(
-      //     [],
-      //     {
-      //       relativeTo: this.activatedRoute,
-      //       queryParams: {size: this.pageSize, page: this.currentPage}
-      //     });
+        // this.router.navigate(
+        //   [],
+        //   {
+        //     relativeTo: this.activatedRoute,
+        //     queryParams: {size: this.pageSize, page: this.currentPage}
+        //   });
       console.log(this.currentPage);
     }
     if (this.currentPage === 1) {

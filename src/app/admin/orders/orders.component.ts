@@ -12,7 +12,7 @@ export class OrdersComponent implements OnInit {
 
   data = [];
   currentPage: number;
-  pageSize = 2;
+  pageSize = 4;
 
   constructor(private ordersService: OrdersService,
               private paginationService: PaginationService) {
