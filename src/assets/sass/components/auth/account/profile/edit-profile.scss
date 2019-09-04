@@ -1,5 +1,37 @@
+.model-edit-profile-body{
+  background-color: map-get($ucx-colors, dark);
+  border: 1px solid map-get($ucx-colors, deep-orange);
+  border-radius: 4px;
+  opacity: 0.9;
+  .delete-modal-edit-profile{
+    float: right;
+  }
+  .modal-content-edit-profile{
+    background-color: transparent;
+    color: map-get($ucx-colors, deep-orange);
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+
+    p{
+      font-size: 20px;
+    }
+  }
+}
+
 .change-account-settings {
   padding-top: 20px;
+}
+
+.profile-information-panel{
+  padding: 0 20px;
+}
+
+.edit-profile-wrapper{
+  padding-right:70px;
+  padding-left:70px;
 }
 
 .cancel-button-block {
