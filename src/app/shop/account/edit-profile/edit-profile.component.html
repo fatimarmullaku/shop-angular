@@ -33,8 +33,9 @@
             <div class="columns">
               <div class="column is-12">
                 <label>Phone Number</label><br>
-                <input formControlName="phoneNumber" type="text" class="input form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
-                <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                <input formControlName="phoneNumber" type="text" class="input form-control" [ngClass]="{ 'is-invalid': (submitted && f.phoneNumber.errors) || numbersOnlyValidator }" (keypress)="numbersOnly($event)">
+                <div *ngIf="(submitted && f.phoneNumber.errors) || numbersOnlyValidator" class="invalid-feedback">
+                  <div *ngIf="numbersOnlyValidator">Phone number must be a number</div>
                   <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
                 </div>
               </div>

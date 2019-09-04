@@ -19,6 +19,7 @@ export class EditProfileComponent implements OnInit {
   customer: CustomerModel;
   submitted = false;
   readOnlyProfile = true;
+  numbersOnlyValidator = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -87,6 +88,7 @@ export class EditProfileComponent implements OnInit {
     this.customerService.getCustomer().subscribe(response => {
         this.customer = response;
         this.readOnlyProfile = true;
+        this.numbersOnlyValidator = false;
         this.editProfileFormGroup.patchValue({
           name: response.name,
           email: response.email,
@@ -96,4 +98,18 @@ export class EditProfileComponent implements OnInit {
       }
     );
   }
+
+  numbersOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      this.numbersOnlyValidator = true;
+      console.log('brenda ', this.numbersOnlyValidator);
+      return false;
+    }
+    this.numbersOnlyValidator = false;
+    console.log('jasht ', this.numbersOnlyValidator);
+    return true;
+
+  }
+
 }
