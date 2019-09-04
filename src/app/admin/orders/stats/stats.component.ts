@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import {StatsService} from './stats.service';
 import {ENDPOINTS} from "../../../shared/constants/api.constants";
+import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
+import {HttpRequestMethod} from '../../../shared/constants/http-request.method';
+import {StorageService} from '../../../shared/services/storage.service';
+import {RestService} from '../../../shared/services/rest.service';
+import {BaseStorageService} from '../../../shared/services/base-storage.service';
 
 @Component({
   selector: 'app-stats',
