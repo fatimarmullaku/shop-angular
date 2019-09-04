@@ -18,7 +18,7 @@ export class EditProfileComponent implements OnInit {
   addresses: FormArray;
   customer: CustomerModel;
   submitted = false;
-  editable = true;
+  readOnlyProfile = true;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -61,12 +61,15 @@ export class EditProfileComponent implements OnInit {
     return this.editProfileFormGroup.controls;
   }
 
-  get a() {
-    return this.createAddress().controls;
+  editProfile() {
+    this.readOnlyProfile = false;
+  }
+
+  readProfile() {
+    this.readOnlyProfile = true;
   }
 
   onSubmit() {
-    // event.preventDefault();
     this.submitted = true;
     if (this.editProfileFormGroup.invalid) {
       return;
@@ -74,11 +77,14 @@ export class EditProfileComponent implements OnInit {
 
     console.log(this.editProfileFormGroup.getRawValue());
     this.userService.addPhonesAndAddresses(this.editProfileFormGroup.getRawValue()).subscribe((res) => {
-      this.editProfile();
+      this.readProfile();
+      this.readCustomerInfo();
     }, (error) => {
       console.error(error);
     });
+  }
 
+  readCustomerInfo() {
     this.customerService.getCustomer().subscribe(response => {
         this.customer = response;
         this.editProfileFormGroup.patchValue({
@@ -89,9 +95,5 @@ export class EditProfileComponent implements OnInit {
         });
       }
     );
-  }
-
-  editProfile() {
-    this.editable = this.editable ? false : true;
   }
 }

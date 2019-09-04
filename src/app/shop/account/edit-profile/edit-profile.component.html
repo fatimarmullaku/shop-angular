@@ -8,7 +8,7 @@
         <a (click)="editProfile()"><i class="fas fa-user-edit"></i></a>
       </div>
       <hr>
-      <div [ngClass]="editable ? 'edit-profile-display' : ''">
+      <div [ngClass]="readOnlyProfile ? 'edit-profile-display' : ''">
         <div class="columns">
           <div class="column">
             <label class="label">Email</label>
@@ -81,13 +81,14 @@
             </div>
           </div>
 
-          <div class="display-address">
+          <div class="display-address" *ngIf="customer.addresses[0]">
             <p>{{customer.addresses[0].country +', '+ customer.addresses[0].city +', '+ customer.addresses[0].zipCode +', '+ customer.addresses[0].street}}</p>
           </div>
         </div>
         <hr>
         <div class="field is-grouped is-grouped-left">
         <button class="button is-primary save-button">Save changes</button>
+        <button class="button" (click)="readProfile()">Cancel</button>
       </div>
       </div>
     </form>

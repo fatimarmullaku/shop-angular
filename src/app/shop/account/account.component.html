@@ -1,18 +1,20 @@
 <app-header></app-header>
 <div class="edit-account">
-  <div class="columns">
+  <div class="columns account-wrapper">
     <div class="column is-2 side-menu-parent">
 
-      <div class="side-menu">
-        <aside class="menu edit-profile-menu">
-          <p class="menu-label">Account information</p>
-          <ul class="menu-list">
-            <li>
-              <a [routerLink]="['./edit-profile']">Profile Information</a>
-            </li>
-            <li><a [routerLink]="['./order-history']">Order History</a></li>
-          </ul>
-        </aside>
+      <div class="side-menu-wrapper">
+        <div class="side-menu">
+          <aside class="menu edit-profile-menu">
+            <p class="menu-label">Account information</p>
+            <ul class="menu-list">
+              <li>
+                <a [routerLink]="['./edit-profile']">Profile Information</a>
+              </li>
+              <li><a [routerLink]="['./order-history']">Order History</a></li>
+            </ul>
+          </aside>
+        </div>
       </div>
 
     </div>
