@@ -5,6 +5,7 @@ import {CartService} from '../../../../shared/services/cart.service';
 import {ActivatedRoute} from '@angular/router';
 import {WishlistService} from '../../../../shared/services/wishlist.service';
 import {ENDPOINTS} from '../../../../shared/constants/api.constants';
+import {PurchaseService} from "../../../../shared/services/purchase.service";
 
 @Component({
   selector: '[app-product-item]',
@@ -22,7 +23,8 @@ export class ProductItemComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private productService: ProductService,
               private wishlistService: WishlistService,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private purchaseService: PurchaseService) {
   }
 
   ngOnInit() {

@@ -1,0 +1,42 @@
+<div class="order-history-wrapper">
+  <div class="panel panel-default panel-order">
+
+
+    <div class="">
+      <p class="title is-2 static-titles">Order History</p>
+    </div>
+    <hr>
+    <br>
+    <div class="panel-body columns is-multiline overflow-auto">
+      <div class="row column columns is-12-desktop" *ngFor="let d of data">
+        <div class="image-thumbnail-container column is-1-desktop is-vcentered"><i class="fas fa-check-circle"></i></div>
+        <div class="column is-11">
+          <div class="columns row">
+            <div class="column is-12">
+              <mat-expansion-panel class=" column alert-dark">
+                <mat-expansion-panel-header class="zero-margin-left ">
+                  <div class="column is-12 ">
+                    <span><strong>Order Id: {{d.orderId}} , made on: {{ parseDate(d.orderTime) | date:'dd-MM-yyyy'}} {{ parseDate(d.orderTime) | date:'HH:mm'}}</strong></span>
+                  </div>
+                </mat-expansion-panel-header>
+                <hr>
+                <div *ngFor="let product of d.itemspurchased" class="columns product_purchased list ">
+                  <div class="list-item">
+                    <div class="is-info"> Product name: {{product.name}} </div>
+                    <div> Quantity : {{product.quantity}} </div>
+                  </div>
+                </div>
+                <span class=""><p>Total Amount:  {{d.total}}$</p></span> <br>
+              </mat-expansion-panel>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <app-product-list-pagination></app-product-list-pagination>
+    </div>
+
+  </div>
+</div>

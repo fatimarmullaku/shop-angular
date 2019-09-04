@@ -22,6 +22,7 @@ import {BrandsFilterPipe} from './brands/brands-filter.pipe';
 import {ProductsFPipe} from './products/products-f.pipe';
 import {ShopModule} from '../shop/shop.module';
 import {AdminAuthGuardService} from '../shared/services/guards/admin-auth-guard.service';
+import { StatsComponent } from './orders/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {AdminAuthGuardService} from '../shared/services/guards/admin-auth-guard.
     PlatformsComponent,
     BrandsComponent,
     BrandsFilterPipe,
-    ProductsFPipe
+    ProductsFPipe,
+    StatsComponent,
 
   ],
   imports: [

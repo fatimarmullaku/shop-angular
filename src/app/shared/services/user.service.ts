@@ -66,8 +66,20 @@ export class UserService {
     return this.restService.request<any>(HttpRequestMethod.PUT,
       ENDPOINTS.customers.updatePhonesAndAddresses + `/${customerId}`,
       {
+        body: payload
+      });
+  }
+
+  updateCustomer(payload: any) {
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+    console.log(this.restService.publicRequest<any>(HttpRequestMethod.PUT, ENDPOINTS.customers.update + `/${customerId}`, {
       body: payload
-    });
+    }));
+    return this.restService.publicRequest<any>(HttpRequestMethod.PUT,
+      ENDPOINTS.customers.update + `/${customerId}`,
+      {
+        body: payload
+      });
   }
 
   getRole(): string {

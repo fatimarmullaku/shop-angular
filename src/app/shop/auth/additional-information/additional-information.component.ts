@@ -70,6 +70,7 @@ export class AdditionalInformationComponent implements OnInit {
 
   onSubmit(event: any) {
     event.preventDefault();
+    console.log(this.informationForm.getRawValue());
     this.userService.addPhonesAndAddresses(this.informationForm.getRawValue()).subscribe((res) => {
       const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
       const dummyKey = this.baseStorage.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
