@@ -16,6 +16,7 @@ import {TokenService} from './token.service';
 export class UserService {
 
   loggedIn = false;
+  justSignUp = false;
 
   constructor(private httpClient: HttpClient,
               private restService: RestService,

@@ -49,27 +49,27 @@
             <div class="columns" [formGroupName]="0">
               <div class="column is-3">
                 <label class="label">Country</label>
-                <input type="text" class="input form-control" formControlName="country">
+                <input type="text" class="input" formControlName="country">
               </div>
 
               <div class="column is-3">
                 <label class="label">City</label>
-                <input type="text" class="input form-control" formControlName="city">
+                <input type="text" class="input" formControlName="city">
               </div>
 
               <div class="column is-2">
                 <label class="label">Zip code</label>
-                <input minlength="5" maxlength="9" type="text" class="input form-control" formControlName="zipCode" (keypress)="numbersOnlyZipCode($event)">
+                <input type="text" class="input" formControlName="zipCode">
               </div>
 
               <div class="column is-4">
                 <label class="label">Street</label>
-                <input type="text" class="input form-control" formControlName="street">
+                <input type="text" class="input" formControlName="street">
               </div>
             </div>
           </div>
 
-          <div class="display-address" *ngIf="customer.addresses[0]">
+          <div class="display-address" *ngIf="(customer.addresses[0].country && customer.addresses[0].city && customer.addresses[0].street && customer.addresses[0].zipCode)">
             <p>{{customer.addresses[0].country +', '+ customer.addresses[0].city +', '+ customer.addresses[0].zipCode +', '+ customer.addresses[0].street}}</p>
           </div>
         </div>

@@ -1,9 +1,4 @@
 .additional-information-screen {
-  @include mobile{
-    margin: 10px;
-  }
-  margin-top: 70px;
-  margin-bottom: 40px;
   width: 910px;
   min-height: 430px;
   //background-color: map_get($ucx-colors, dark-gray);
@@ -35,12 +30,6 @@
   margin-top: 50px;
 }
 
-
-#box-address,#box-phone{
-  border: 1px solid orange;
-  border-radius: 4px;
-  padding: 20px;
-}
 .add-button{
   display: block;
   font-size: 16px;
