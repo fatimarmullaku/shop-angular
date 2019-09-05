@@ -4,9 +4,7 @@ import {BrandsService} from '../../../shared/services/brands.service';
 import 'hammerjs';
 import {ProductsService} from '../products.service';
 import {BrandsModel} from '../../../shared/models/brands.model';
-import {ɵNgStyleR2Impl} from '@angular/common';
-import {HttpParams} from '@angular/common/http';
-import {ProductModel} from '../../../shared/models/product.model';
+import { Options, LabelType } from 'ng5-slider';
 
 @Component({
   selector: 'app-products-sidebar',
@@ -21,6 +19,22 @@ export class ProductsSidebarComponent implements OnInit {
   selectedBrandd: any = '';
   platformsList: PlatformModel[];
   brandsList: any;
+  minValue: number = 100;
+  maxValue: number = 400;
+  options: Options = {
+    floor: 0,
+    ceil: 500,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Min price:</b> $' + value;
+        case LabelType.High:
+          return '<b>Max price:</b> $' + value;
+        default:
+          return '$' + value;
+      }
+    }
+  };
 
   @Output()
   params: EventEmitter<object> = new EventEmitter();
