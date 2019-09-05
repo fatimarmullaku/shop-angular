@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../shared/services/product.service';
 import {ProductModel} from '../../shared/models/product.model';
 import {ProductsService} from './products.service';
+import {UserService} from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-products',
@@ -13,7 +14,8 @@ export class ProductsComponent implements OnInit {
   products: ProductModel[];
 
   constructor(private productService: ProductService,
-              private productsService: ProductsService) {
+              private productsService: ProductsService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -25,6 +27,10 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProductByPlatformAndBrand(event).subscribe(res => {
       this.products = res;
     });
+  }
+
+  removeActiveClass() {
+    this.userService.justSignUp = !this.userService.justSignUp;
   }
 }
 

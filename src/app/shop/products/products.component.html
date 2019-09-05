@@ -8,4 +8,21 @@
       <app-product-list [products]="products"></app-product-list>
     </div>
   </div>
+
+  <div class="modal" [ngClass]="{'is-active': userService.justSignUp}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Sign in to UCXGaming</p>
+        <button class="delete" aria-label="close" (click)="removeActiveClass()"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="auth-content login-screen">
+          <div class="auth-form-header">
+            <h4>Sign in to UCXMarket</h4>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>

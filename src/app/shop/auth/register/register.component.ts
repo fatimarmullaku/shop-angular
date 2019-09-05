@@ -5,7 +5,7 @@ import {UserRegisterModel} from '../../../shared/models/user-register.model';
 import {Router} from '@angular/router';
 import {BaseStorageService} from '../../../shared/services/base-storage.service';
 import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
-import {MustMatch} from "./must-match-validator";
+import {MustMatch} from './must-match-validator';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   isRegistered = false;
   submitted = false;
+  modalActive = false;
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
@@ -59,9 +60,10 @@ export class RegisterComponent implements OnInit {
           .subscribe(r => {
             this.isRegistered = true;
             if (cartStorage != null && cartStorage.length > 0) {
-              this.routerLink.navigateByUrl('/auth/additional-information');
+              this.routerLink.navigateByUrl('/cart');
             } else if (cartStorage == null || cartStorage.length == 0) {
-              this.routerLink.navigateByUrl('/auth/additional-information');
+              this.userService.justSignUp = true;
+              this.routerLink.navigateByUrl('/');
             }
 
           }, (err) => {
