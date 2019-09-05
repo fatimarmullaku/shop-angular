@@ -5,16 +5,6 @@
         Platforms
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <div class="contentt">
-      <ul class="game-list">
-        <li *ngFor="let p of platformsList " class="game-item">
-          <input (change)="selectedPlatform(p.id)" type="checkbox"
-                 name="games"
-                 value="{{p.id}}"/>
-          <span class="game-text">{{p.name}}</span>
-        </li>
-      </ul>
-    </div>
   </mat-expansion-panel>
   <mat-expansion-panel class="panel">
     <mat-expansion-panel-header>
