@@ -74,6 +74,7 @@ import {MatExpansionModule} from '@angular/material';
     EditProfileComponent,
     OrderHistoryComponent
   ],
+
   exports: [
     PaginationComponent,
     CartPreviewComponent
