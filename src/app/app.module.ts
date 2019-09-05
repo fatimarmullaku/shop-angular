@@ -11,7 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap';
 import {TokenInterceptor} from './shared/interceptors/token.interceptor';
-import {NgxStripeModule, StripeJS} from "ngx-stripe";
+
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import {NgxStripeModule, StripeJS} from "ngx-stripe";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    NgxStripeModule,
+    HttpClientModule
   ],
   providers: [
     {
