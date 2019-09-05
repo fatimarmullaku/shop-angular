@@ -26,6 +26,12 @@ export class ProductsComponent implements OnInit {
       this.products = res;
     });
   }
+
+  onFilterPriceChange(event:any) {
+    this.productsService.getProductBySelectedPrice(event).subscribe(res => {
+      this.products = res;
+    })
+  }
 }
 
 

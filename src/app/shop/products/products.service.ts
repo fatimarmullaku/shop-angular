@@ -30,7 +30,13 @@ export class ProductsService {
     return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params});
   }
 
+  getMinAndMaxPrices() {
+    return this.http.get(this.rootUrl + 'getPrices');
+  }
 
+  getProductBySelectedPrice() {
+    return this.http.get(this.rootUrl + ' ');
+  }
 
 
   uploadFiles(payload) {
