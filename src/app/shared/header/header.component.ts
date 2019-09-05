@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
     this.products = this.productService.getProducts();
     this.cartProducts = this.cartService.getProductsFromCart();
     this.getCartProducts();
-    // this.fetchCustomer();
+    this.fetchCustomer();
   }
 
   getCartProducts() {
