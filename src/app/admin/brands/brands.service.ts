@@ -7,28 +7,24 @@ import {ENDPOINTS} from '../../shared/constants/api.constants';
 })
 export class BrandsService {
 
-  readonly rootU = ENDPOINTS.brands.getAll;
-  readonly rootUrl = 'http://localhost:8080/api/v1/brand/';
+  readonly rootUrl = ENDPOINTS.brands.getAll;
 
   constructor(private http: HttpClient) {
   }
 
   getAllBrands() {
-    return this.http.get(this.rootU);
+    return this.http.get(this.rootUrl);
   }
 
-  registerBrand(data) {
-    console.log('from service', data);
+  registerBrand(data) { 
     return this.http.post(this.rootUrl, data);
   }
 
-  deleteBrand(id) {
-    console.log('from service', id);
+  deleteBrand(id) { 
     return this.http.delete(this.rootUrl + id);
   }
 
-  updateBrand(data, bid) {
-    console.log('from service', data, bid);
+  updateBrand(data, bid) { 
     return this.http.put(this.rootUrl + bid, data);
 
   }
