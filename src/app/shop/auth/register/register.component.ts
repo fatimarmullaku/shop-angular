@@ -16,7 +16,6 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   isRegistered = false;
   submitted = false;
-  modalActive = false;
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
