@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class PlatformsService {
 
   // readonly getAll = ENDPOINTS.customers.getAll;
-  readonly rootUrl = 'http://localhost:8080/api/v1/platforms';
+  readonly rootUrl = 'api/v1/platforms';
 
   constructor(private http: HttpClient) {
   }

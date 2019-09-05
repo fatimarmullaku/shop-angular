@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class RolesService {
-  readonly rootUrl = 'http://localhost:8080/api/v1/roles/';
+  readonly rootUrl = 'api/v1/roles/';
 
   constructor(private http: HttpClient) {
   }

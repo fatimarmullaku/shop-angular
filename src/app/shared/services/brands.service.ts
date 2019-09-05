@@ -8,7 +8,7 @@ import {ENDPOINTS} from '../../shared/constants/api.constants';
 export class BrandsService {
 
   readonly rootU = ENDPOINTS.brands.getAll;
-  readonly rootUrl = '/api/v1/brand/';
+  readonly rootUrl = '/api/v1/brands/';
 
   constructor(private http: HttpClient) {
   }

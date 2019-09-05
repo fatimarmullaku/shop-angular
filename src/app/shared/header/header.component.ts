@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
     this.products = this.productService.getProducts();
     this.cartProducts = this.cartService.getProductsFromCart();
     this.getCartProducts();
-    this.fetchCustomer();
+    // this.fetchCustomer();
   }
 
   getCartProducts() {
@@ -79,13 +79,16 @@ export class HeaderComponent implements OnInit {
 
   fetchCustomer(): void {
     const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res)=>{
-        this.customerName = res.name;
-        console.log(this.customerName);
-      },
-      (err) => {
-        console.log(err);
-      });
+    if (customerId) {
+      this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
+        .subscribe((res) => {
+            this.customerName = res.name;
+            console.log(this.customerName);
+          },
+          (err) => {
+            console.log(err);
+          });
+    }
   }
 
 

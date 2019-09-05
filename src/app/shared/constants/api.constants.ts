@@ -21,7 +21,7 @@ const CUSTOMERS = {
 };
 
 const BRANDS = {
-  getAll: environment.apiHost + '/brand'
+  getAll: environment.apiHost + '/brands'
 }
 
 const PURCHASES = {

@@ -114,30 +114,37 @@ const routes: Routes = [
   },
   {
     path: 'cart/shipping',
+    canActivate: [ShopAuthGuardService],
     component: ShippingComponent
   },
   {
     path: 'cart/verification',
+    canActivate: [ShopAuthGuardService],
     component: VerificationComponent
   },
   {
     path: 'cart/payment-methods',
+    canActivate: [ShopAuthGuardService],
     component: PaymentMethodsComponent
   },
   {
     path: 'cart/paypal-method',
+    canActivate: [ShopAuthGuardService],
     component: PaypalMethodComponent
   },
   {
     path: 'cart/creditcard-method',
+    canActivate: [ShopAuthGuardService],
     component: CreditcardMethodComponent
   },
   {
     path: 'cart/cash-method',
+    canActivate: [ShopAuthGuardService],
     component: CashMethodComponent
   },
   {
     path: 'cart/success-screen',
+    canActivate: [ShopAuthGuardService],
     component: SuccessScreenComponent
   },
   {
