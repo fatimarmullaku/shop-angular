@@ -11,8 +11,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap';
 import {TokenInterceptor} from './shared/interceptors/token.interceptor';
+import {CreditCardDirectivesModule} from "angular-cc-library";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
-// import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,9 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     MatCardModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    HttpClientModule,
+    CreditCardDirectivesModule
   ],
   providers: [
     {

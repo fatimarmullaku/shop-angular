@@ -34,6 +34,7 @@ import { CreditcardMethodComponent } from './cart/creditcard-method/creditcard-m
 import { PaypalMethodComponent } from './cart/paypal-method/paypal-method.component';
 import { SuccessScreenComponent } from './cart/success-screen/success-screen.component';
 import { ProductUploadComponent } from './product-upload/product-upload.component';
+import {CreditCardDirectivesModule} from "angular-cc-library";
 import {AccountComponent} from './account/account.component';
 import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
@@ -75,7 +76,6 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     EditProfileComponent,
     OrderHistoryComponent
   ],
-
   exports: [
     PaginationComponent,
     CartPreviewComponent
@@ -86,9 +86,10 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    FormsModule,
     MatExpansionModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    FormsModule,
+    CreditCardDirectivesModule
 
   ]
 })
