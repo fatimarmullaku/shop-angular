@@ -17,7 +17,7 @@ import {WishlistService} from './wishlist.service';
 })
 export class ProductService {
 
-  rootUrl = '/api/v1/products';
+  rootUrl = 'http://localhost:8080/api/v1/products';
   products: ProductModel[] = [];
 
   constructor(private storageService: StorageService,

@@ -17,7 +17,9 @@ export class EditProfileComponent implements OnInit {
   editProfileFormGroup: FormGroup;
   addresses: FormArray;
   customer: CustomerModel;
-  isModalActive = false;
+  submitted = false;
+  readOnlyProfile = true;
+  numbersOnlyValidator = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -28,9 +30,9 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.editProfileFormGroup = this.formBuilder.group({
-      name: this.formBuilder.control(['']),
-      email: this.formBuilder.control(['']),
-      phoneNumber: this.formBuilder.control(['']),
+      name: new FormControl('', Validators.required),
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: new FormControl('', Validators.required),
       addresses: this.formBuilder.array([this.createAddress()])
     });
 
@@ -48,29 +50,50 @@ export class EditProfileComponent implements OnInit {
 
   createAddress(): FormGroup {
     return this.formBuilder.group({
-      id: new FormControl(-1),
-      country: new FormControl('',
-        [
-          Validators.required,
-          Validators.minLength(2)
-        ]),
-      city: new FormControl(''),
-      zipCode: new FormControl(''),
-      street: new FormControl('')
+      id: [-1],
+      country: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      zipCode: new FormControl('', Validators.required),
+      street: new FormControl('', Validators.required),
     });
   }
 
-  onSubmit(event: any) {
+  get f() {
+    return this.editProfileFormGroup.controls;
+  }
+
+  editProfile() {
+    this.readOnlyProfile = false;
+  }
+
+  readProfile() {
+    this.readCustomerInfo();
+  }
+
+  cancelEditing(event) {
     event.preventDefault();
+    this.readCustomerInfo();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.editProfileFormGroup.invalid) {
+      return;
+    }
+
     console.log(this.editProfileFormGroup.getRawValue());
     this.userService.addPhonesAndAddresses(this.editProfileFormGroup.getRawValue()).subscribe((res) => {
-      this.isModalActive = true;
+      this.readProfile();
     }, (error) => {
       console.error(error);
     });
+  }
 
+  readCustomerInfo() {
     this.customerService.getCustomer().subscribe(response => {
         this.customer = response;
+        this.readOnlyProfile = true;
+        this.numbersOnlyValidator = false;
         this.editProfileFormGroup.patchValue({
           name: response.name,
           email: response.email,
@@ -81,7 +104,17 @@ export class EditProfileComponent implements OnInit {
     );
   }
 
-  removeActiveClass() {
-    this.isModalActive = !this.isModalActive;
+  numbersOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      this.numbersOnlyValidator = true;
+      console.log('brenda ', this.numbersOnlyValidator);
+      return false;
+    }
+    this.numbersOnlyValidator = false;
+    console.log('jasht ', this.numbersOnlyValidator);
+    return true;
+
   }
+
 }
