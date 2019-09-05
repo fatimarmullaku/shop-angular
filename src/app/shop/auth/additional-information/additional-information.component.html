@@ -13,7 +13,7 @@
               <div class="columns">
                 <div class="column is-12">
                   <label>Phone Number</label><br>
-                  <input formControlName="phoneNumber" type="text" class="input">
+                  <input pattern="[0-9]*" formControlName="phoneNumber" type="text" class="input" (keypress)="numbersOnly($event)">
                 </div>
               </div>
             </div>
