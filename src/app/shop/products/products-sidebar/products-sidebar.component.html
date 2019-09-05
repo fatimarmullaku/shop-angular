@@ -1,92 +1,46 @@
-<div class="static-filter">
-
-  <!-- Search bar -->
-  <div class="field has-addons">
-    <div class="control has-icons-left">
-      <input class="input is-rounded" placeholder="Search anything!" type="text">
-      <div class="icon is-small is-left">
-        <i class="fa fa-search search-icon"></i>
-      </div>
+<mat-accordion>
+  <mat-expansion-panel class="panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Platforms
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="contentt">
+      <ul class="game-list">
+        <li *ngFor="let p of platformsList " class="game-item">
+          <input (change)="selectedPlatform(p.id)" type="checkbox"
+                 name="games"
+                 value="{{p.id}}"/>
+          <span class="game-text">{{p.name}}</span>
+        </li>
+      </ul>
     </div>
-  </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Brands
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="contentt">
+      <ul class="game-list">
+        <li *ngFor="let b of brandsList " class="game-item">
+          <input (change)="selectedBrand(b.id)" type="checkbox"
+                 name="games"
+                 value="{{b.id}}"/>
+          <span class="game-text">{{b.name}}</span>
+        </li>
+      </ul>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Price
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>
 
 
-  <!-- Categories -->
-  <div class="dropdown-categories">
-    <label for="dropdown-categories-content">
-      Category
-      <span class="icon is-small">
-          <i aria-hidden="true" class="fas fa-angle-down"></i>
-        </span>
-      <input id="dropdown-categories-content" type="checkbox" >
-
-      <div class="dropdown-categories-content">
-        <label class="radio">
-          <input name="category" type="radio">
-          Category1
-        </label>
-        <label class="radio">
-          <input checked name="category" type="radio">
-          Category2
-        </label>
-        <label class="radio">
-          <input name="category" type="radio">
-          Category3
-        </label>
-        <label class="radio">
-          <input name="category" type="radio">
-          Category4
-        </label>
-      </div>
-    </label>
-  </div>
-
-  <!-- Sort -->
-  <div class="dropdown-sort">
-    <label for="dropdown-sort-content">
-      Sort
-      <span class="icon is-small">
-          <i aria-hidden="true" class="fas fa-angle-down"></i>
-        </span>
-
-      <input id="dropdown-sort-content" type="checkbox">
-      <div class="dropdown-sort-content">
-        <label class="radio">
-          <input name="sort" type="radio">
-          Most popular
-        </label>
-        <label class="radio">
-          <input checked name="sort" type="radio">
-          Release Date
-        </label>
-        <label class="radio">
-          <input name="sort" type="radio">
-          Alphabetical A to Z
-        </label>
-        <label class="radio">
-          <input name="sort" type="radio">
-          Alphabetical Z to A
-        </label>
-      </div>
-    </label>
-  </div>
-
-  <!-- Filter -->
-  <div class="dropdown-filter">
-    <label for="dropdown-filter-content">
-      Filter
-      <span class="icon is-small">
-          <i aria-hidden="true" class="fas fa-angle-down"></i>
-        </span>
-      <input id="dropdown-filter-content" type="checkbox">
-
-      <div class="dropdown-filter-content">
-        <p>Price Range</p>
-        <input class="slider" id="myRange" max="100" min="1" type="range" value="50">
-      </div>
-    </label>
-
-  </div>
-
-</div>
 

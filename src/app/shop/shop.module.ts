@@ -38,6 +38,7 @@ import {AccountComponent} from './account/account.component';
 import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
 import {MatExpansionModule} from '@angular/material';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import {MatExpansionModule} from '@angular/material';
     EditProfileComponent,
     OrderHistoryComponent
   ],
+
   exports: [
     PaginationComponent,
     CartPreviewComponent
@@ -85,7 +87,8 @@ import {MatExpansionModule} from '@angular/material';
     HttpClientModule,
     SharedModule,
     FormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    Ng2SearchPipeModule
 
   ]
 })
