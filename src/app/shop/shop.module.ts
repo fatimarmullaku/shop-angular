@@ -39,6 +39,7 @@ import {ProfileComponent} from './auth/account/profile/profile.component';
 import {ChangeEmailComponent} from './auth/account/profile/change-email/change-email.component';
 import {ChangePasswordComponent} from './auth/account/profile/change-password/change-password.component';
 import {InformationComponent} from './auth/account/profile/information/information.component';
+import {CreditCardDirectivesModule} from "angular-cc-library";
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import {InformationComponent} from './auth/account/profile/information/informati
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    CreditCardDirectivesModule
 
   ]
 })

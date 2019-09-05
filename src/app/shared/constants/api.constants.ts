@@ -27,13 +27,19 @@ const PURCHASES = {
   buy: environment.apiHost + '/purchases'
 }
 
+const STRIPE ={
+  createStripeCustomer : environment.apiHost + '/payment',
+  charge: environment.apiHost + '/payment/charge'
+}
+
 
 export const ENDPOINTS = {
   auth: AUTH,
   products: PRODUCTS,
   customers: CUSTOMERS,
   purchases: PURCHASES,
-  brands: BRANDS
+  brands: BRANDS,
+  stripe: STRIPE
 };
 
 

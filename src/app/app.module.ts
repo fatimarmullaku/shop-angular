@@ -11,6 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap';
 import {TokenInterceptor} from './shared/interceptors/token.interceptor';
+import {CreditCardDirectivesModule} from "angular-cc-library";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {TokenInterceptor} from './shared/interceptors/token.interceptor';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    CreditCardDirectivesModule
   ],
   providers: [
     {
