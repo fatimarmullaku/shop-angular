@@ -2,76 +2,97 @@
 
   <div class="column edit-profile-wrapper">
 
-    <form [formGroup]="editProfileFormGroup" class="form" (submit)="onSubmit($event)">
-      <p class="title is-2 static-titles">Profile Information</p>
+    <form [formGroup]="editProfileFormGroup" class="form" (ngSubmit)="onSubmit()" *ngIf="customer">
+      <div class="title-wrapper">
+        <p class="title is-2 static-titles">Profile Information</p>
+        <a (click)="editProfile()"><i class="fas fa-user-edit"></i></a>
+      </div>
       <hr>
-      <div class="columns">
-        <div class="column">
-          <label class="label">Email</label>
-          <input formControlName="email" type="email" class="input">
+      <div [ngClass]="readOnlyProfile ? 'edit-profile-display' : ''">
+        <div class="columns">
+          <div class="column">
+            <label class="label">Email</label>
+            <input formControlName="email" type="email" class="input form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <label class="label">Full Name</label>
-          <input formControlName="name" type="text" class="input">
+        <div class="columns">
+          <div class="column">
+            <label class="label">Full Name</label>
+            <input formControlName="name" name="name" type="text" class="input form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div>
         <div>
-          <div class="columns">
-            <div class="column is-12">
-              <label>Phone Number</label><br>
-              <input formControlName="phoneNumber" type="text" class="input">
+          <div>
+            <div class="columns">
+              <div class="column is-12">
+                <label>Phone Number</label><br>
+                <input formControlName="phoneNumber" type="text" class="input form-control" [ngClass]="{ 'is-invalid': (submitted && f.phoneNumber.errors) || numbersOnlyValidator }" (keypress)="numbersOnly($event)">
+                <div *ngIf="(submitted && f.phoneNumber.errors) || numbersOnlyValidator" class="invalid-feedback">
+                  <div *ngIf="numbersOnlyValidator">Phone number must be a number</div>
+                  <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <br>
-      <h3 class="title is-5 static-titles">Address</h3>
-      <div>
-        <div formArrayName="addresses" *ngFor="let _ of editProfileFormGroup.get('addresses')['controls']; let i = index;">
-          <div class="columns" [formGroupName]="0">
-            <div class="column is-3">
-              <label class="label">Country</label>
-              <input type="text" class="input" formControlName="country" required="">
-            </div>
+        <br>
+        <h3 class="title is-5 static-titles">Address</h3>
+        <div>
+          <div formArrayName="addresses" class="address-wrapper" *ngFor="let n of editProfileFormGroup.get('addresses')['controls']; let i = index;" >
+            <div class="columns" [formGroupName]="0">
+              <div class="column is-3">
+                <label class="label">Country</label>
+                <input type="text" class="input form-control" formControlName="country" [ngClass]="{ 'is-invalid': submitted && n.controls.country.errors }">
+                <div *ngIf="submitted && n.controls.country.errors" class="invalid-feedback">
+                  <div *ngIf="n.controls.country.errors.required">Country is required</div>
+                </div>
+              </div>
 
-            <div class="column is-3">
-              <label class="label">City</label>
-              <input type="text" class="input" formControlName="city">
-            </div>
+              <div class="column is-3">
+                <label class="label">City</label>
+                <input type="text" class="input form-control" formControlName="city" [ngClass]="{ 'is-invalid': submitted && n.controls.city.errors }">
+                <div *ngIf="submitted && n.controls.city.errors" class="invalid-feedback">
+                  <div *ngIf="n.controls.city.errors.required">City is required</div>
+                </div>
+              </div>
 
-            <div class="column is-2">
-              <label class="label">Zip code</label>
-              <input type="text" class="input" formControlName="zipCode">
-            </div>
+              <div class="column is-2">
+                <label class="label">Zip code</label>
+                <input pattern="[0-9]*" maxlength="9" minlength="5" type="text" class="input form-control" formControlName="zipCode" [ngClass]="{ 'is-invalid': submitted && n.controls.zipCode.errors }">
+                <div *ngIf="submitted && n.controls.zipCode.errors" class="invalid-feedback">
+                  <div *ngIf="n.controls.zipCode.errors.required">Zip Code is required</div>
+                </div>
+              </div>
 
-            <div class="column is-4">
-              <label class="label">Street</label>
-              <input type="text" class="input" formControlName="street">
+              <div class="column is-4">
+                <label class="label">Street</label>
+                <input type="text" class="input form-control" formControlName="street" [ngClass]="{ 'is-invalid': submitted && n.controls.street.errors }">
+                <div *ngIf="submitted && n.controls.street.errors" class="invalid-feedback">
+                  <div *ngIf="n.controls.street.errors.required">Street is required</div>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div class="display-address" *ngIf="customer.addresses[0]">
+            <p>{{customer.addresses[0].country +', '+ customer.addresses[0].city +', '+ customer.addresses[0].zipCode +', '+ customer.addresses[0].street}}</p>
+          </div>
         </div>
-      </div>
-      <hr>
-      <div class="field is-grouped is-grouped-left">
+        <hr>
+        <div class="field is-grouped is-grouped-left">
         <button class="button is-primary save-button">Save changes</button>
+        <button class="button" (click)="cancelEditing($event)">Cancel</button>
+      </div>
       </div>
     </form>
-  </div>
-
-  <div class="modal" [ngClass]="{'is-active':isModalActive}">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <section class="modal-card-body model-edit-profile-body">
-        <button class="delete delete-modal-edit-profile" aria-label="close" (click)="removeActiveClass()"></button>
-        <div class="modal-content-edit-profile">
-          <p>You have successfully updated your profile!</p>
-        </div>
-      </section>
-    </div>
   </div>
 
 </div>
