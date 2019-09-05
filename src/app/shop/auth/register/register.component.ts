@@ -58,9 +58,10 @@ export class RegisterComponent implements OnInit {
         this.userService.login(payload.user.email, payload.user.password)
           .subscribe(r => {
             this.isRegistered = true;
-            if (cartStorage != null && cartStorage.length > 0) {
+            const dummyKey = this.baseStorageService.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
+            if ((cartStorage != null && cartStorage.length > 0) && (dummyKey && dummyKey.length > 0)) {
               this.routerLink.navigateByUrl('/cart/shipping');
-            } else if (cartStorage == null || cartStorage.length == 0) {
+            } else{
               this.userService.justSignUp = true;
               this.routerLink.navigateByUrl('/');
             }
