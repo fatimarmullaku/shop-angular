@@ -20,11 +20,17 @@ export class TokenInterceptor implements HttpInterceptor {
         headers: req.headers.delete('X_SKIP_TOKEN')
       });
     } else {
-      return req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${this.tokenService.getToken()}`
-        }
-      });
+      // TODO: Check if token has time from tokenService method.
+
+      if (this.tokenService.isTokenExpired() === true) {
+        console.log('TOKEN IS EXPIRED');
+      } else {
+        return req.clone({
+          setHeaders: {
+            Authorization: `Bearer ${this.tokenService.getToken()}`
+          }
+        });
+      }
     }
   }
 }

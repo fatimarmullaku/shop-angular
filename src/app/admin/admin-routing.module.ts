@@ -9,11 +9,13 @@ import {CustomersComponent} from './customers/customers.component';
 import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
 import {PlatformsComponent} from './platforms/platforms.component';
 import {BrandsComponent} from './brands/brands.component';
+import {AdminAuthGuardService} from '../shared/services/guards/admin-auth-guard.service';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardBaseComponent,
+    canActivate: [AdminAuthGuardService],
     children: [
       {path: '', component: HomeComponent},
       {path: 'customers', component: CustomersComponent},

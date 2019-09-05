@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class UsersService {
 
-  readonly rootUrl = 'http://localhost:8080/api/v1/users/';
+  readonly rootUrl = 'api/v1/users/';
 
   constructor(private http: HttpClient) {
   }

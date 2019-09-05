@@ -7,7 +7,7 @@
   background-color: transparent;
 
   progress {
-    .progress{
+    .progress {
       width: 500px;
       margin: 0 auto;
       height: 20px;
@@ -56,6 +56,7 @@ label.checkout-label {
 }
 
 .shipping-form-container {
+  height: 100%;
   margin-left: 30px;
   padding: 1vh;
 }
@@ -108,9 +109,12 @@ label.checkout-label {
 }
 
 .shipping-wrapper {
-  padding: 40px;
-  border: 1px solid map_get($ucx-colors, deep-orange);
-  border-radius: 5px;
+  padding: 0px;
+
+  .steam-icon {
+    color: white;
+    font-size: 270px;
+  }
 }
 
 .no-float {
@@ -125,4 +129,26 @@ label.checkout-label {
 #box-address-shipping {
   margin-right: 25px;
   margin-left: -25px;
+}
+
+.steam-icon {
+  &:hover {
+    transform: scale(1);
+  }
+}
+
+.shipping-form-container {
+  h1 {
+    #title {
+      color: orange;
+    }
+  }
+
+  .customer-email {
+    color: #3273dc;
+  }
+
+  .alertion {
+    color: #ffffff;
+  }
 }

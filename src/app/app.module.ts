@@ -8,17 +8,19 @@ import {SharedModule} from './shared/shared.module';
 import {ProductService} from './shared/services/product.service';
 import {UserService} from './shared/services/user.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap';
 import {TokenInterceptor} from './shared/interceptors/token.interceptor';
 import {CreditCardDirectivesModule} from "angular-cc-library";
-
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    Ng2SearchPipeModule,
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     SharedModule,

@@ -34,12 +34,12 @@ import { CreditcardMethodComponent } from './cart/creditcard-method/creditcard-m
 import { PaypalMethodComponent } from './cart/paypal-method/paypal-method.component';
 import { SuccessScreenComponent } from './cart/success-screen/success-screen.component';
 import { ProductUploadComponent } from './product-upload/product-upload.component';
-import {AccountComponent} from '../auth/account/account.component';
-import {ProfileComponent} from './auth/account/profile/profile.component';
-import {ChangeEmailComponent} from './auth/account/profile/change-email/change-email.component';
-import {ChangePasswordComponent} from './auth/account/profile/change-password/change-password.component';
-import {InformationComponent} from './auth/account/profile/information/information.component';
 import {CreditCardDirectivesModule} from "angular-cc-library";
+import {AccountComponent} from './account/account.component';
+import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
+import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import {MatExpansionModule} from '@angular/material';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -73,10 +73,8 @@ import {CreditCardDirectivesModule} from "angular-cc-library";
     SuccessScreenComponent,
     ProductUploadComponent,
     AccountComponent,
-    ProfileComponent,
-    ChangeEmailComponent,
-    ChangePasswordComponent,
-    InformationComponent
+    EditProfileComponent,
+    OrderHistoryComponent
   ],
   exports: [
     PaginationComponent,
@@ -88,6 +86,8 @@ import {CreditCardDirectivesModule} from "angular-cc-library";
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    MatExpansionModule,
+    Ng2SearchPipeModule,
     FormsModule,
     CreditCardDirectivesModule
 

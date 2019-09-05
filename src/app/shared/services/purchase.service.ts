@@ -30,10 +30,11 @@ export class PurchaseService {
     const purchaseModel = new PurchaseModel();
     purchaseModel.cart = [];
     purchaseModel.customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    const address = this.baseStorage.getStorageOf(LocalStorageKey.SHIPPING_ADDRESS_ID);
-    if (address) {
-      purchaseModel.address = address;
-    }
+    //const address = this.baseStorage.getStorageOf(LocalStorageKey.SHIPPING_ADDRESS_ID);
+
+    // if (address) {
+    //   purchaseModel.address = address;
+    // }
     purchaseModel.total = this.cartService.generateTotalPrice();
     const prod = this.cartService.getProductsFromCart();
     prod.forEach(value => {
@@ -42,8 +43,9 @@ export class PurchaseService {
       modelenzi.quantity = value.qty;
       purchaseModel.cart.push(modelenzi);
     });
-    return this.restService.publicRequest(HttpRequestMethod.POST, ENDPOINTS.purchases.buy, {
+    return this.restService.request<any>(HttpRequestMethod.POST, ENDPOINTS.purchases.buy, {
       body: purchaseModel
     });
   }
+
 }

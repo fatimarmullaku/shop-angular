@@ -5,34 +5,52 @@
     <span>Sign up to UCXMarket</span>
   </div>
 
-  <form [formGroup]="registerForm" (submit)="onRegisterSubmit()">
-    <div class="field">
+  <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+    <div class="field form-group">
       <div class="control">
-        <input type="text" formControlName="first_name" class="input auth-input" placeholder="First Name">
+        <input type="text" formControlName="firstName" class="input auth-input form-control" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
       </div>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <div class="control">
-        <input type="text" formControlName="last_name" class="input auth-input" placeholder="Last Name">
+        <input type="text" formControlName="lastName" class="input auth-input form-control" placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
       </div>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <div class="control">
-        <input type="text" formControlName="email" class="input auth-input" placeholder="Email">
+        <input type="text" formControlName="email" class="input auth-input form-control" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
       </div>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <div class="control">
-        <input type="password" formControlName="password" class="input auth-input" placeholder="Password">
+        <input type="password" name="password" formControlName="password" class="input auth-input form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
       </div>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <div class="control">
-        <input type="password" formControlName="confirm_password" class="input auth-input" placeholder="Confirm Password">
+        <input type="password" name="password" min="6" formControlName="confirmPassword" class="input auth-input form-control" placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+          <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+          <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+        </div>
       </div>
     </div>
 
@@ -47,3 +65,4 @@
     </div>
   </div>
 </div>
+

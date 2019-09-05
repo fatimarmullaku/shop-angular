@@ -6,9 +6,8 @@ export class ProductModel {
   fileName: string;
   unitPrice: number;
   productDescription: string;
-  platform: PlatformModel;
   rating: ProductRatingModel;
-
+  platform: any;
   isWishlisted = false;
 
 

@@ -117,6 +117,35 @@ i{
     font-size: 60px;
   }
 }
+.modal-cart-wrapper{
+  @media screen and (min-width: 769px){
+    width: 910px;
+  }
+}
+.model-edit-profile-body{
+  background-color: map-get($ucx-colors, dark);
+  border: 1px solid map-get($ucx-colors, deep-orange);
+  border-radius: 4px;
+  width: 910px;
+  overflow: hidden;
+  padding: 0;
+  .delete-modal-edit-profile{
+    float: right;
+  }
+  .modal-content-edit-profile{
+    background-color: transparent;
+    color: map-get($ucx-colors, deep-orange);
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+
+    p{
+      font-size: 20px;
+    }
+  }
+}
 
 
 
