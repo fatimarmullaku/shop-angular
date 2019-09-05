@@ -27,6 +27,7 @@ export class ProductsService {
   }
 
   getProductByPlatformAndBrand(params: any) {
+    console.log('from service', params);
     return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params});
   }
 
@@ -34,8 +35,9 @@ export class ProductsService {
     return this.http.get(this.rootUrl + 'getPrices');
   }
 
-  getProductBySelectedPrice() {
-    return this.http.get(this.rootUrl + ' ');
+  getProductBySelectedPrice(event: any) {
+    console.log('from service', event)
+    return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params: event});
   }
 
 
