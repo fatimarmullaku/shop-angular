@@ -30,13 +30,12 @@
         </div>
         <div>
           <div>
-            <div class="columns">
+            <div class="columns" *ngIf="(customer.phoneNumber && readOnlyProfile) || (!readOnlyProfile)">
               <div class="column is-12">
-                <label *ngIf="(customer.phoneNumber && readOnlyProfile) || (!readOnlyProfile)">Phone Number</label><br>
-                <input formControlName="phoneNumber" type="text" class="input form-control" [ngClass]="{ 'is-invalid': (submitted && f.phoneNumber.errors) || numbersOnlyValidator }" (keypress)="numbersOnly($event)">
-                <div *ngIf="(submitted && f.phoneNumber.errors) || numbersOnlyValidator" class="invalid-feedback">
+                <label>Phone Number</label><br>
+                <input formControlName="phoneNumber" type="text" class="input form-control" [ngClass]="{ 'is-invalid': numbersOnlyValidator }" (keypress)="numbersOnly($event)">
+                <div *ngIf="numbersOnlyValidator" class="invalid-feedback">
                   <div *ngIf="numbersOnlyValidator">Phone number must be a number</div>
-                  <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
                 </div>
               </div>
             </div>

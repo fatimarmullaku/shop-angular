@@ -32,7 +32,7 @@ export class EditProfileComponent implements OnInit {
     this.editProfileFormGroup = this.formBuilder.group({
       name: new FormControl('', Validators.required),
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: new FormControl('', Validators.required),
+      phoneNumber: new FormControl(''),
       addresses: this.formBuilder.array([this.createAddress()])
     });
 
