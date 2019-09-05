@@ -13,9 +13,9 @@ import {ProductReviewModel} from '../../../shared/models/product-review.model';
 export class ProductListComponent implements OnInit {
   @Input()
   products: ProductModel[];
-  productsList: any[];
+  productsList: ProductModel[];
   currentPage: number;
-  pageSize = 14;
+  pageSize = 8;
 
   constructor(private productService: ProductService,
               private paginationService: PaginationService) {
