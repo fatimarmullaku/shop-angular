@@ -20,8 +20,7 @@ export class ProductsSidebarComponent implements OnInit {
   selectedPlatformm: any = '';
   selectedBrandd: any = '';
   platformsList: PlatformModel[];
-  brandsList: BrandsModel[];
-  productsList: ProductModel[];
+  brandsList: any;
 
   @Output()
   params: EventEmitter<object> = new EventEmitter();
