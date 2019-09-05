@@ -9,7 +9,6 @@
       <ul class="game-list">
         <li *ngFor="let b of brandsList " class="game-item">
           <input (change)="selectedBrand(b.id)" type="checkbox"
-                 name="games"
                  value="{{b.id}}"/>
           <span class="game-text">{{b.name}}</span>
         </li>
