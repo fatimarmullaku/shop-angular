@@ -13,7 +13,11 @@
               <div class="columns">
                 <div class="column is-12">
                   <label>Phone Number</label><br>
-                  <input pattern="[0-9]*" formControlName="phoneNumber" type="text" class="input" (keypress)="numbersOnly($event)">
+                  <input formControlName="phoneNumber" type="text" class="input form-control" [ngClass]="{ 'is-invalid': (submitted && f.phoneNumber.errors) || numbersOnlyValidator }" (keypress)="numbersOnly($event)">
+                  <div *ngIf="(submitted && f.phoneNumber.errors) || numbersOnlyValidator " class="invalid-feedback">
+                    <div *ngIf="f.phoneNumber.errors.required">PhoneNumber is required</div>
+                    <div *ngIf="numbersOnlyValidator">Phone number must be a number</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -21,26 +25,38 @@
           <br>
           <h3 class="title is-5 static-titles">Address</h3>
           <div id="box-address">
-            <div formArrayName="addresses" *ngFor="let _ of informationForm.get('addresses')['controls']; let i = index;">
-              <div class="columns" [formGroupName]="i">
+            <div formArrayName="addresses" *ngFor="let n of informationForm.get('addresses')['controls']; let i = index;">
+              <div class="columns" [formGroupName]="0">
                 <div class="column is-3">
                   <label class="label">Country</label>
-                  <input type="text" class="input" formControlName="country">
+                  <input type="text" class="input form-control" formControlName="country" [ngClass]="{ 'is-invalid': submitted && n.controls.country.errors }">
+                  <div *ngIf="submitted && n.controls.country.errors" class="invalid-feedback">
+                    <div *ngIf="n.controls.country.errors.required">Country is required</div>
+                  </div>
                 </div>
 
                 <div class="column is-3">
                   <label class="label">City</label>
-                  <input type="text" class="input" formControlName="city">
+                  <input type="text" class="input form-control" formControlName="city" [ngClass]="{ 'is-invalid': submitted && n.controls.city.errors }">
+                  <div *ngIf="submitted && n.controls.city.errors" class="invalid-feedback">
+                    <div *ngIf="n.controls.city.errors.required">City is required</div>
+                  </div>
                 </div>
 
                 <div class="column is-2">
                   <label class="label">Zip code</label>
-                  <input type="text" class="input" formControlName="zipCode">
+                  <input maxlength="9" type="text" class="input form-control" formControlName="zipCode" [ngClass]="{ 'is-invalid': submitted && n.controls.zipCode.errors }">
+                  <div *ngIf="submitted && n.controls.zipCode.errors" class="invalid-feedback">
+                    <div *ngIf="n.controls.zipCode.errors.required">Zip Code is required</div>
+                  </div>
                 </div>
 
                 <div class="column is-4">
                   <label class="label">Street</label>
-                  <input type="text" class="input" formControlName="street">
+                  <input type="text" class="input form-control" formControlName="street" [ngClass]="{ 'is-invalid': submitted && n.controls.street.errors }">
+                  <div *ngIf="submitted && n.controls.street.errors" class="invalid-feedback">
+                    <div *ngIf="n.controls.street.errors.required">Street is required</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -50,7 +66,7 @@
           <div class="columns">
             <br>
             <div class="column">
-              <button class="auth-button">Send</button>
+              <button class="auth-button">Save</button>
             </div>
             <div class="column">
               <button class="auth-button" (click)="skipAdditionalInformation()">Skip</button>

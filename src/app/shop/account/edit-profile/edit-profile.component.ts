@@ -81,7 +81,6 @@ export class EditProfileComponent implements OnInit {
       return;
     }
 
-    console.log(this.editProfileFormGroup.getRawValue());
     this.userService.addPhonesAndAddresses(this.editProfileFormGroup.getRawValue()).subscribe((res) => {
       this.readProfile();
     }, (error) => {

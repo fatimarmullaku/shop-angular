@@ -16,6 +16,7 @@ import {TokenService} from './token.service';
 export class UserService {
 
   loggedIn = false;
+  justSignUp = false;
 
   constructor(private httpClient: HttpClient,
               private restService: RestService,
@@ -63,7 +64,7 @@ export class UserService {
 
   addPhonesAndAddresses(payload: any) {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    return this.restService.publicRequest<any>(HttpRequestMethod.PUT,
+    return this.restService.request<any>(HttpRequestMethod.PUT,
       ENDPOINTS.customers.updatePhonesAndAddresses + `/${customerId}`,
       {
         body: payload
@@ -83,6 +84,12 @@ export class UserService {
   }
 
   getRole(): string {
-    return this.tokenService.decodeToken().role;
+    let returnValue: string;
+    if (this.baseStorage.getStorageOf(LocalStorageKey.ACCESS_TOKEN, true)) {
+      returnValue = this.tokenService.decodeToken().role;
+    } else {
+      returnValue = '';
+    }
+    return returnValue;
   }
 }

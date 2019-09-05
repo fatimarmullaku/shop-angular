@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductsService {
-  readonly rootUrl = 'http://localhost:8080/api/v1/products/';
+  readonly rootUrl = 'api/v1/products/';
 
   resData: any;
 
@@ -27,7 +27,7 @@ export class ProductsService {
 
   uploadFiles(payload) {
     return this.http
-      .post('http://localhost:8080/api/v1/upload/',
+      .post('/api/v1/upload/',
         payload
       );
   }

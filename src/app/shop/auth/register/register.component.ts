@@ -5,7 +5,7 @@ import {UserRegisterModel} from '../../../shared/models/user-register.model';
 import {Router} from '@angular/router';
 import {BaseStorageService} from '../../../shared/services/base-storage.service';
 import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
-import {MustMatch} from "./must-match-validator";
+import {MustMatch} from './must-match-validator';
 
 @Component({
   selector: 'app-register',
@@ -58,10 +58,12 @@ export class RegisterComponent implements OnInit {
         this.userService.login(payload.user.email, payload.user.password)
           .subscribe(r => {
             this.isRegistered = true;
-            if (cartStorage != null && cartStorage.length > 0) {
-              this.routerLink.navigateByUrl('/auth/additional-information');
-            } else if (cartStorage == null || cartStorage.length == 0) {
-              this.routerLink.navigateByUrl('/auth/additional-information');
+            const dummyKey = this.baseStorageService.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
+            if ((cartStorage != null && cartStorage.length > 0) && (dummyKey && dummyKey.length > 0)) {
+              this.routerLink.navigateByUrl('/cart/shipping');
+            } else{
+              this.userService.justSignUp = true;
+              this.routerLink.navigateByUrl('/');
             }
 
           }, (err) => {
