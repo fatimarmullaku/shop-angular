@@ -92,7 +92,7 @@ a.dropdown-item.is-active {
         .dropdown-cart-item {
           width: 350px;
           @include mobile {
-            width: 250px;
+            width: auto;
           }
 
         }
