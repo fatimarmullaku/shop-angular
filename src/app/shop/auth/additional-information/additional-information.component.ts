@@ -12,7 +12,6 @@ import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
 export class AdditionalInformationComponent implements OnInit {
 
   informationForm: FormGroup;
-  phones: FormArray;
   addresses: FormArray;
 
 
@@ -24,14 +23,8 @@ export class AdditionalInformationComponent implements OnInit {
 
   ngOnInit() {
     this.informationForm = this.formBuilder.group({
-      phoneNumbers: this.formBuilder.array([this.createPhoneNumber()]),
+      phoneNumber: this.formBuilder.control(['']),
       addresses: this.formBuilder.array([this.createAddress()])
-    });
-  }
-
-  createPhoneNumber(): FormGroup {
-    return this.formBuilder.group({
-      phoneNumber: new FormControl('')
     });
   }
 
@@ -44,32 +37,7 @@ export class AdditionalInformationComponent implements OnInit {
     });
   }
 
-  onAddPhoneNumber(event: any) {
-    event.preventDefault();
-    this.phones = this.informationForm.get('phoneNumbers') as FormArray;
-    this.phones.push(this.createPhoneNumber());
-  }
-
-  onAddAddress(event: any) {
-    event.preventDefault();
-    this.addresses = this.informationForm.get('addresses') as FormArray;
-    this.addresses.push(this.createAddress());
-  }
-
-  onPhoneDelete(event: any, index: number) {
-    event.preventDefault();
-
-    this.phones.removeAt(index);
-  }
-
-  onAddressDelete(event: any, index: number) {
-    event.preventDefault();
-
-    this.addresses.removeAt(index);
-  }
-
-  onSubmit(event: any) {
-    event.preventDefault();
+  onSubmit() {
     console.log(this.informationForm.getRawValue());
     this.userService.addPhonesAndAddresses(this.informationForm.getRawValue()).subscribe((res) => {
       const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
@@ -82,5 +50,25 @@ export class AdditionalInformationComponent implements OnInit {
     }, (error) => {
       console.error(error);
     });
+  }
+
+  skipAdditionalInformation() {
+    const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
+    const dummyKey = this.baseStorage.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
+    if ((cartStorage && cartStorage.length > 0) && dummyKey) {
+      this.routerLink.navigateByUrl('/cart/shipping');
+    } else {
+      this.routerLink.navigateByUrl('/');
+    }
+  }
+
+  numbersOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+
   }
 }
