@@ -32,7 +32,7 @@ export class EditProfileComponent implements OnInit {
     this.editProfileFormGroup = this.formBuilder.group({
       name: new FormControl('', Validators.required),
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: new FormControl('', Validators.required),
+      phoneNumber: new FormControl(''),
       addresses: this.formBuilder.array([this.createAddress()])
     });
 
@@ -51,10 +51,10 @@ export class EditProfileComponent implements OnInit {
   createAddress(): FormGroup {
     return this.formBuilder.group({
       id: [-1],
-      country: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      zipCode: new FormControl('', Validators.required),
-      street: new FormControl('', Validators.required),
+      country: new FormControl(''),
+      city: new FormControl(''),
+      zipCode: new FormControl(''),
+      street: new FormControl(''),
     });
   }
 
@@ -108,11 +108,18 @@ export class EditProfileComponent implements OnInit {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       this.numbersOnlyValidator = true;
-      console.log('brenda ', this.numbersOnlyValidator);
       return false;
     }
     this.numbersOnlyValidator = false;
-    console.log('jasht ', this.numbersOnlyValidator);
+    return true;
+
+  }
+
+  numbersOnlyZipCode(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
     return true;
 
   }

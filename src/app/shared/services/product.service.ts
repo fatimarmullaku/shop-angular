@@ -17,7 +17,6 @@ import {WishlistService} from './wishlist.service';
 })
 export class ProductService {
 
-  rootUrl = 'http://localhost:8080/api/v1/products';
   products: ProductModel[] = [];
 
   constructor(private storageService: StorageService,
@@ -79,7 +78,7 @@ export class ProductService {
       .set('size', size.toString());
 
     const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
-    return this.http.get(this.rootUrl + '/paged', {headers, params: qParams});
+    return this.http.get(ENDPOINTS.products.getAll + '/paged', {headers, params: qParams});
   }
 
 }

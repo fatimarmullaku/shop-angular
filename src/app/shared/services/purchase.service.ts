@@ -43,7 +43,7 @@ export class PurchaseService {
       modelenzi.quantity = value.qty;
       purchaseModel.cart.push(modelenzi);
     });
-    return this.restService.publicRequest(HttpRequestMethod.POST, ENDPOINTS.purchases.buy, {
+    return this.restService.request<any>(HttpRequestMethod.POST, ENDPOINTS.purchases.buy, {
       body: purchaseModel
     });
   }
