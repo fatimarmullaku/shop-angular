@@ -3,7 +3,7 @@ import {AddressesModel} from './addresses.model';
 
 export class CustomerModel {
   addresses: AddressesModel;
-  phoneNumbers: PhoneModel;
+  phoneNumber:number;
   id: number;
   name: string;
   email: string;

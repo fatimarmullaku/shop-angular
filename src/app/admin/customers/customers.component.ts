@@ -21,7 +21,6 @@ export class CustomersComponent implements OnInit {
   datePicker: Date;
   searchPicker: string;
   addressesArray: FormArray;
-  phoneNumbersArray: FormArray;
   customerId: number;
   updateForm: FormGroup;
 
@@ -40,7 +39,6 @@ export class CustomersComponent implements OnInit {
       id: new FormControl(),
       name: [''],
       email: new FormControl('', Validators.required),
-      phoneNumbers: this.fb.array([]),
       addresses: this.fb.array([]),
       createDateTime: [],
       updateDateTime: [],
@@ -56,12 +54,6 @@ export class CustomersComponent implements OnInit {
       street: '',
       zip_code: ''
     }));
-
-
-
-
-
-    console.log(this.updateForm);
 
   }
 
@@ -82,9 +74,6 @@ export class CustomersComponent implements OnInit {
   }
 
 
- 
-
-
   onDelete() {
     this.customersService.deleteCostumer(this.customerId).subscribe(
       get => {
@@ -97,7 +86,6 @@ export class CustomersComponent implements OnInit {
       }
     );
     this.toggleModal();
-
   }
 
 
@@ -122,7 +110,6 @@ export class CustomersComponent implements OnInit {
     this.customerId = cid;
     console.log(this.customerId);
   }
- 
 
   transformCity(addresses: any) {
     return addresses.map(item => item.city);
