@@ -19,7 +19,7 @@ export class ProductsSidebarComponent implements OnInit {
   selectedBrandd: any = '';
   platformsList: PlatformModel[];
   brandsList: any;
-  minValue: number = 100;
+  minValue: number = 10;
   maxValue: number = 500;
   options: Options = {
     floor: 0,
@@ -74,15 +74,12 @@ export class ProductsSidebarComponent implements OnInit {
   getProducts() {
     const params = {
       platformId: this.selectedPlatformm,
-      brandId: this.selectedBrandd
+      brandId: this.selectedBrandd,
+      min:this.minValue,
+      max:this.maxValue
     };
     this.params.emit(params);
   }
-
-  // selectedPlatform(option: string) {
-  //   this.selectedPlatformm = option;
-  //   this.getProducts();
-  // }
 
 
   selectedBrand(option: any) {
