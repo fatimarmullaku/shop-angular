@@ -3,7 +3,7 @@
   <div class="box inner-box" *ngFor="let item of wishlistService.getProductsFromWishlist(); let i = index;">
     <div class="columns column-container" >
       <div class="column is-2 is-12-mobile is-multiline wishlist-image-container">
-        <img [src]="item.product.fileName.startsWith('/asset')? item.product.fileName : productUrl + item.product.fileName" class="wish-list-featured-image" height="216px" width="161px">
+        <img [src]="item.product.fileName.startsWith('/asset')? item.product.fileName : productUrl + item.product.fileName" class="wish-list-featured-image" height="135px" width="116px">
       </div>
       <div class="column is-8 is-12-mobile is-multiline wishlist-item-information">
         <div class="game-information">

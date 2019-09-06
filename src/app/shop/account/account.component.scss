@@ -1,0 +1,23 @@
+.side-menu-parent{
+  padding-left: 23px;
+}
+
+aside{
+  background-color: white;
+  //border: 2px solid red;
+  border-radius: 10px;
+  padding: 10px;
+  position: sticky;
+  p{
+
+    text-align: center;
+  }
+  i{
+    color: black;
+  }
+}
+
+p{
+  width: 100%;
+  font-size: 20px;
+}
