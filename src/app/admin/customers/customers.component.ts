@@ -46,19 +46,17 @@ export class CustomersComponent implements OnInit {
       updateDateTime: [],
       deletedDateTime: [],
       description: [''],
-      version: ['']
+      version: [''],
+      phoneNumber:[]
     });
     this.addressesArray = this.customersForm.get('addresses') as FormArray;
-    this.phoneNumbersArray = this.customersForm.get('phoneNumbers') as FormArray;
     this.addressesArray.push(this.fb.group({
       city: '',
       country: '',
       street: '',
       zip_code: ''
     }));
-    this.phoneNumbersArray.push(this.fb.group({
-      phoneNumber:''
-    }));
+
 
 
 
@@ -124,10 +122,7 @@ export class CustomersComponent implements OnInit {
     this.customerId = cid;
     console.log(this.customerId);
   }
-
-  transformNumber(phoneNumbers: any) {
-    return phoneNumbers.map(item => item.phoneNumber);
-  }
+ 
 
   transformCity(addresses: any) {
     return addresses.map(item => item.city);
