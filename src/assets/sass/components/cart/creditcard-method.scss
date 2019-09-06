@@ -7,13 +7,14 @@
   color: ghostwhite;
 }
 
-#checkoutButton {
-  //border-radius: 5%;
-  border: none;
-  background-color: #ff2600;
-  color: ghostwhite;
+#checkout-button {
+  &:hover {
+    color: #000;
+  }
+}
 
-  &:hover{
-    background-color: map_get($ucx-colors,deep-orange);
+#goback-button {
+  &:hover {
+    color: #000;
   }
 }

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="checkout-steps">
     <div class="step-buttons no-hover">
-      <progress class="progress is-danger" value="75" max="100"></progress>
+      <progress class="progress is-danger" max="100" value="75"></progress>
     </div>
   </div>
   <div class="sub-info">
@@ -12,34 +12,35 @@
       </div>
     </div>
     <div class="columns payment-container is-mobile is-multiline">
-      <div class="border-container column is-4-desktop is-12-mobile">
+      <div class="border-container column is-6-desktop is-12-mobile">
         <a class="payment-method-link" id="img-paypal" routerLink="/cart/paypal-method">
-          <span class="category-icon"><img alt="" src="assets/img/paypal1.png"></span>
+          <!--          <span class="category-icon"><img alt="" src="assets/img/paypal.png"></span>-->
+          <span class="category-icon"><i class="fab fa-cc-paypal" id="paypal-icon"></i></span>
           <br>
           <span class="payment-method-title">PAYPAL</span>
         </a>
       </div>
-      <div class="column is-4-desktop is-12-mobile">
+      <div class="column is-6-desktop is-12-mobile">
         <a class="payment-method-link" id="img-credit-card" routerLink="/cart/creditcard-method">
-                <span class="category-icon">
-                    <img alt="" class="img-credit-card" src="assets/img/creditcard1.png">
-                </span><br>
+<!--          <span class="category-icon"><img alt="" class="img-credit-card" src="assets/img/creditcard.png"></span>-->
+          <span class="category-icon"><i class="far fa-credit-card" id="creditcard-iconi"></i></span>
+          <br>
           <span class="category-title">CREDIT CARD</span>
         </a>
       </div>
-      <div class="column is-4-desktop is-12-mobile">
-        <a class="payment-method-link" id="img-cash" routerLink="/cart/cash-method">
-                <span class="category-icon">
-                    <img alt="" class="img-cash" src="assets/img/cash2.png">
-                </span><br>
-          <span class="category-title">CASH</span>
-        </a>
-      </div>
+      <!-- <div class="column is-4-desktop is-12-mobile">
+         <a class="payment-method-link" id="img-cash" routerLink="/cart/cash-method">
+                 <span class="category-icon">
+                     <img alt="" class="img-cash" src="assets/img/cash2.png">
+                 </span><br>
+           <span class="category-title">CASH</span>
+         </a>
+       </div>-->
     </div>
 
     <div class="columns back-next-buttons">
       <div class="column is-12-desktop is-12-mobile left-button has-text-centered">
-        <a routerLink="/cart/verification" class="button">Previous</a>
+        <a class="button" routerLink="/cart/verification">Previous</a>
       </div>
     </div>
   </div>
