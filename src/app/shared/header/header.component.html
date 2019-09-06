@@ -61,7 +61,7 @@
               <a href="#" class="dropdown-item is-dark is-active" *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'">{{this.customerName}}</a>
             </div>
             <div>
-              <a href="#" class="dropdown-item" [routerLink]="'./wish-list'">Wishlist</a>
+              <a href="#" class="dropdown-item" [routerLink]="'/wish-list'">Wishlist</a>
             </div>
             <div *ngIf="this.isLoggedIn()">
               <a href="#" class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
