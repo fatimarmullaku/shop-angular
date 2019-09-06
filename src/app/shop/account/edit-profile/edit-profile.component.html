@@ -69,7 +69,7 @@
             </div>
           </div>
 
-          <div class="display-address" *ngIf="(customer.addresses[0].country && customer.addresses[0].city && customer.addresses[0].street && customer.addresses[0].zipCode)">
+          <div class="display-address" *ngIf="(customer.addresses[0]) && (customer.addresses[0].country && customer.addresses[0].city && customer.addresses[0].street && customer.addresses[0].zipCode)">
             <p>{{customer.addresses[0].country +', '+ customer.addresses[0].city +', '+ customer.addresses[0].zipCode +', '+ customer.addresses[0].street}}</p>
           </div>
         </div>
