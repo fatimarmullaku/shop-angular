@@ -51,7 +51,7 @@
                 <div class="d-inline-block " ngbDropdown>
                   <button class="btn" id="dropdownBasic1" ngbDropdownToggle>{{username}}</button>
                   <div aria-labelledby="dropdownBasic1" ngbDropdownMenu>
-                    <button (click)="onLogOut()" ngbDropdownItem>Log Out</button>
+                    <button (click)="this.userService.logout()" ngbDropdownItem>Log Out</button>
                   </div>
                 </div>
               </div>

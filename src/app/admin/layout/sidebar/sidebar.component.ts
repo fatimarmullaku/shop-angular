@@ -10,6 +10,7 @@ import {StatsService} from '../../orders/stats/stats.service';
 import {StorageService} from '../../../shared/services/storage.service';
 import {RestService} from '../../../shared/services/rest.service';
 import {BaseStorageService} from '../../../shared/services/base-storage.service';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -34,7 +35,8 @@ export class SidebarComponent implements OnInit {
               private router: Router,
               private storageService: StorageService,
               private restService: RestService,
-              private baseStorageService: BaseStorageService) {
+              private baseStorageService: BaseStorageService,
+              private userService: UserService) {
   }
 
 
@@ -44,10 +46,6 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-
-  onLogOut() {
-    this.router.navigate(['auth/login']);
-  }
 
   onMyProfile() {
     this.router.navigate(['/my-profile']);
