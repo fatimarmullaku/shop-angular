@@ -1,5 +1,6 @@
 <a [routerLink]="['./products/', item.id]" class="my-cart">
   <div class="image">
+<!--    <img [src]="'http://localhost:8080/api' + item.fileName" alt="">-->
     <img [src]="productUrl + item.fileName" alt="">
   </div>
 </a>
@@ -8,7 +9,7 @@
       <h4>{{ item.name }}</h4>
       <h4>Price: {{ item.unitPrice }} $</h4>
     </div>
-    <div class="columns" >
+    <div class="columns product-options">
       <div class="column is-2-desktop" (click)="addToCart($event)">
         <i class="fab fa-opencart"></i>
       </div>

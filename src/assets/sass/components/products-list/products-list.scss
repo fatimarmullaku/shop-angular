@@ -48,9 +48,9 @@
     border-style: solid;
     font-size: 20px;
 
-    &:hover  {
+    &:hover {
       background-color: map-get($ucx-colors, dark);
-      color:white;
+      color: white;
       cursor: pointer;
     }
   }
@@ -79,6 +79,7 @@
         display: block;
       }
     }
+
     .dropdown-trigger {
       position: relative;
 
@@ -93,28 +94,80 @@
   }
 }
 
+.product-options {
+  @include mobile {
+    display: flex;
+  }
+}
 
-.game-info-home{
-  padding: 8px;color: black;
-  .columns{
+.game-info-home {
+  padding: 8px;
+  color: black;
+
+  .columns {
     font-size: 22px;
     padding: 5px 10px;
 
   }
 }
 
+.search-container {
+  width: 49%;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  padding: 1px;
+  border: 1px solid orange;
 
-i{
+  @include mobile {
+    width: 100%;
+    border-radius: 35px;
+  }
+}
+
+.search-icon {
+  font-size: 20px;
+  color: grey;
+  margin-left: 5px;
+
+  @include mobile {
+    font-size: 17px;
+  }
+
+  &:hover {
+    transform: scale(1);
+  }
+}
+
+.search-bar {
+  width: 90%;
+  border: none;
+  padding: 7px;
+  font-size: 20px;
+  color: grey;
+  background: transparent;
+  outline: none;
+
+
+  @include mobile {
+    width: 80%;
+    padding: 4px;
+    font-size: 18px;
+  }
+}
+
+i {
   font-size: 22px;
   color: black;
   padding: 5px;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
     transform: scale(1.3);
     transition: 0.7s;
   }
-  @include mobile{
-    font-size: 60px;
+
+  @include mobile {
+    //font-size: 60px;
   }
 }
 .modal-cart-wrapper{
@@ -146,6 +199,8 @@ i{
     }
   }
 }
+
+
 
 
 

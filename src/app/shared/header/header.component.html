@@ -12,7 +12,7 @@
            [ngClass]="status ? 'is-active' : ''">
         <div class="dropdown-trigger">
           <button class="button cart-button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span><i class="fab fa-opencart"></i></span>
+            <span><i class="fab fa-opencart open-cart-icon"></i></span>
             <span class="is-medium cart-nr" *ngIf="cartQty != null">{{cartQty}}</span>
           </button>
         </div>
@@ -68,7 +68,7 @@
     <!-- End of header right buttons   -->
     <div class="hamburger-menu-container is-hidden-tablet">
       <button>
-        <i class="fa"></i>
+        <i class="fa hamburger-menu"></i>
       </button>
     </div>
   </div>
