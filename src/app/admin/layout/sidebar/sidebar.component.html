@@ -46,25 +46,16 @@
           <div class="col-lg-6">
           </div>
           <div class="col-lg-6">
-            <div class="row">
-              <div class="d-inline-block" ngbDropdown>
-                <button class="btn " id="dropdownBasic1" ngbDropdownToggle>{{username}}</button>
-                <div aria-labelledby="dropdownBasic1" ngbDropdownMenu>
-                  <button (click)="onLogOut()" ngbDropdownItem>Log Out</button>
-                </div>
-              </div>
-              <div class="d-inline-block" ngbDropdown>
-                <button class="btn " id="dropdownBasic1" ngbDropdownToggle>Language</button>
-                <div aria-labelledby="dropdownBasic1" ngbDropdownMenu>
-                  <button ngbDropdownItem>English</button>
-                  <button ngbDropdownItem>Albanian</button>
-                  <button ngbDropdownItem>Deutsch</button>
+            <div class="row set-contnet-right">
+              <div class="menu-item-logout">
+                <div class="d-inline-block " ngbDropdown>
+                  <button class="btn" id="dropdownBasic1" ngbDropdownToggle>{{username}}</button>
+                  <div aria-labelledby="dropdownBasic1" ngbDropdownMenu>
+                    <button (click)="onLogOut()" ngbDropdownItem>Log Out</button>
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <input class="form-control" placeholder="search" type="text" value>
-              </div>
             </div>
           </div>
         </div>
