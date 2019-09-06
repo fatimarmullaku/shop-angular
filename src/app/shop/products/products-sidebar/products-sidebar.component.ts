@@ -19,8 +19,8 @@ export class ProductsSidebarComponent implements OnInit {
   selectedBrandd: any = '';
   platformsList: PlatformModel[];
   brandsList: any;
-  minValue: number;
-  maxValue: number;
+  minValue: number = 100;
+  maxValue: number = 500;
   options: Options = {
     floor: 0,
     ceil: 500,
