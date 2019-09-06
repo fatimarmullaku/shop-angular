@@ -36,8 +36,11 @@ export class ProductsService {
   }
 
   getProductBySelectedPrice(event: any) {
-    console.log('from service', event)
     return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params: event});
+  }
+
+  getHighestPrice() {
+    return this.http.get(this.rootUrl + 'getHighestPrice')
   }
 
 
