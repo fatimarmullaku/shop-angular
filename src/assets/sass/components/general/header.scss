@@ -29,13 +29,13 @@ a.dropdown-item.is-active {
   z-index: 3;
   margin-bottom: 20px;
   flex-direction: column;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(225deg, #2d0b1e 0%, #2d0b1e 39%, #4e1319 35%, #4e1319 49%, #6f1b13 44%, #6f1b13 58%, #8f240e 54%, #8f240e 68%, #b02c08 67%, #b02c08 78%, #d13403 68%, #d13403 100%);
+  //background: rgb(0, 0, 0);
+  //background: linear-gradient(225deg, #2d0b1e 0%, #2d0b1e 39%, #4e1319 35%, #4e1319 49%, #6f1b13 44%, #6f1b13 58%, #8f240e 54%, #8f240e 68%, #b02c08 67%, #b02c08 78%, #d13403 68%, #d13403 100%);
 
-  //background: #000000; /* fallback for old browsers */
-  //background: -webkit-linear-gradient(to bottom, #434343, #000000); /* Chrome 10-25, Safari 5.1-6 */
-  //background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  //border-bottom: 1px solid grey;
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #434343, #000000); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-bottom: 1px solid grey;
 
 
   @include mobile {
