@@ -6,3 +6,14 @@
   font-size: 150px;
   color: ghostwhite;
 }
+
+#checkoutButton {
+  //border-radius: 5%;
+  border: none;
+  background-color: #ff2600;
+  color: ghostwhite;
+
+  &:hover{
+    background-color: map_get($ucx-colors,deep-orange);
+  }
+}

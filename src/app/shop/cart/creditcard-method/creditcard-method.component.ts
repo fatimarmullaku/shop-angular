@@ -30,19 +30,28 @@ export class CreditcardMethodComponent implements OnInit {
   }
 
   ngOnInit() {
+
       this.creditCard = this.formBuilder.group({
-          creditCardNumber: new FormControl('',<any>CreditCardValidator.validateCCNumber(null)),
-          expireMonth: new FormControl('',<any>CreditCardValidator.validateExpDate(null)),
-          expireYear: new FormControl('',<any>CreditCardValidator.validateExpDate(null)),
-          cvc: new FormControl('',Validators.required(<any>[Validators.minLength(3),<any>Validators.maxLength(4)]))
+        fullName: ['',[Validators.required]],
+        creditCardNumber: ['', [<any>CreditCardValidator.validateCCNumber, Validators.required]],
+        expireYear: ['',[<any>CreditCardValidator.validateExpDate,Validators.required]],
+        cvc: ['',[Validators.required, Validators.minLength(3), <any>Validators.maxLength(4)]]
       });
+
   }
+
+
+
 
   get form() {
     return this.creditCard.controls;
   }
 
-  createCustomer() : boolean{
+  createCustomer(): boolean{
+    if(this.creditCard.invalid){
+      alert("Fields must no be empty");
+      return;
+    }
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID,true);
     this.restService.publicRequest<any>(HttpRequestMethod.POST, ENDPOINTS.stripe.createStripeCustomer + `/${customerId}`)
       .subscribe(result=>{

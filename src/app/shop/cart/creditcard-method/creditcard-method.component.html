@@ -28,39 +28,40 @@
               <i class="fa fa-credit-card" id="creditcard-icon"></i>
             </div>
                                 <!--     Form begins here   -->
-            <form [formGroup]="creditCard">
+            <form [formGroup]="creditCard" (ngSubmit)="createCustomer()">
               <div class="columns is-multiline is-gapless">
                 <div class="column is-6">
                   <div class="control">
-                      <input class="input unknown jp-card-invalid" formControlName="creditCardNumber" placeholder="Card number" type="text" ccNumber>
-                  </div>
-                  <div class="columns is multiline">
-                    <div class="column is-6">
-                  <div class="control">
-                    <input class="input jp-card-invalid" formControlName="expireMonth" placeholder="MM" type="text" ccExp>
-                  </div>
-                    </div>
-                    <div class="column is-6">
-                      <div class="control">
-                        <input class="input jp-card-invalid" formControlName="expireYear" placeholder="YY" type="text" ccExp>
-                      </div>
-                    </div>
+                      <input class="input unknown jp-card-invalid" formControlName="creditCardNumber" placeholder="Card Number" type="text" ccNumber>
                   </div>
                 </div>
                 <div class="column is-6">
                   <div class="control">
-                    <input class="input" name="name" placeholder="Full name" type="text">
-                  </div>
-                  <div class="control">
-                    <input class="input" formControlName="cvc" placeholder="CVC" type="text" ccCVC>
+                    <input class="input" formControlName="fullName" placeholder="Full name" type="text">
                   </div>
                 </div>
               </div>
+              <div class="columns is-multiline is-gapless">
+                  <div class="column is-6">
+                      <div class="control">
+                        <input class="input jp-card-invalid" formControlName="expireYear" placeholder="MM/YY" type="text" ccExp>
+                      </div>
+                  </div>
+                <div class="column is-6">
+                    <div class="control">
+                      <input class="input" formControlName="cvc" placeholder="CVC" type="text" ccCVC>
+                    </div>
+                  </div>
+                </div>
+              <div class="column is-12-desktop is-12-mobile left-button has-text-centered">
+<!--                <a class="button" (click)="createCustomer()">Checkout</a>-->
+                <input type="submit" value="Checkout" id="checkoutButton" class="button">
+              </div>
             </form>
                             <!--       End of form           -->
-            <div class="column is-12-desktop is-12-mobile left-button has-text-centered">
-              <a class="button" (click)="createCustomer()">Checkout</a>
-            </div>
+<!--            <div class="column is-12-desktop is-12-mobile left-button has-text-centered">-->
+<!--              <a class="button" (click)="createCustomer()">Checkout</a>-->
+<!--            </div>-->
           </div>
         </div>
       </div>
