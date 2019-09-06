@@ -27,10 +27,18 @@ export class ProductsService {
   }
 
   getProductByPlatformAndBrand(params: any) {
+    console.log('from service', params);
     return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params});
   }
 
+  getMinAndMaxPrices() {
+    return this.http.get(this.rootUrl + 'getPrices');
+  }
 
+  getProductBySelectedPrice(event: any) {
+    console.log('from service', event)
+    return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params: event});
+  }
 
 
   uploadFiles(payload) {

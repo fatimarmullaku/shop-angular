@@ -22,24 +22,25 @@ import {HttpClientModule} from '@angular/common/http';
 import {AdditionalInformationComponent} from './auth/additional-information/additional-information.component';
 import {AddNewProductComponent} from './newproduct/add-new-product/add-new-product.component';
 import {PaginationComponent} from '../shared/pagination/pagination.component';
-import { AccountInfoComponent } from './cart/account-info/account-info.component';
+import {AccountInfoComponent} from './cart/account-info/account-info.component';
 import {ShippingComponent} from './cart/shipping/shipping.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
-import { SliderComponent } from './products/product-list/slider/slider.component';
+import {WishlistComponent} from './wishlist/wishlist.component';
+import {SliderComponent} from './products/product-list/slider/slider.component';
 import {CartPreviewComponent} from './cart/cart-preview/cart-preview.component';
 import {PaymentMethodsComponent} from './cart/payment-methods/payment-methods.component';
 import {VerificationComponent} from './cart/verification/verification.component';
-import { CashMethodComponent } from './cart/cash-method/cash-method.component';
-import { CreditcardMethodComponent } from './cart/creditcard-method/creditcard-method.component';
-import { PaypalMethodComponent } from './cart/paypal-method/paypal-method.component';
-import { SuccessScreenComponent } from './cart/success-screen/success-screen.component';
-import { ProductUploadComponent } from './product-upload/product-upload.component';
-import {CreditCardDirectivesModule} from "angular-cc-library";
+import {CashMethodComponent} from './cart/cash-method/cash-method.component';
+import {CreditcardMethodComponent} from './cart/creditcard-method/creditcard-method.component';
+import {PaypalMethodComponent} from './cart/paypal-method/paypal-method.component';
+import {SuccessScreenComponent} from './cart/success-screen/success-screen.component';
+import {ProductUploadComponent} from './product-upload/product-upload.component';
+import {CreditCardDirectivesModule} from 'angular-cc-library';
 import {AccountComponent} from './account/account.component';
-import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
-import { OrderHistoryComponent } from './account/order-history/order-history.component';
+import {EditProfileComponent} from './account/edit-profile/edit-profile.component';
+import {OrderHistoryComponent} from './account/order-history/order-history.component';
 import {MatExpansionModule} from '@angular/material';
-import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {Ng5SliderModule} from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    Ng5SliderModule,
     MatExpansionModule,
     Ng2SearchPipeModule,
     FormsModule,

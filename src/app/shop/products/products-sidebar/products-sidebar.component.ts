@@ -4,9 +4,7 @@ import {BrandsService} from '../../../shared/services/brands.service';
 import 'hammerjs';
 import {ProductsService} from '../products.service';
 import {BrandsModel} from '../../../shared/models/brands.model';
-import {ɵNgStyleR2Impl} from '@angular/common';
-import {HttpParams} from '@angular/common/http';
-import {ProductModel} from '../../../shared/models/product.model';
+import {Options, LabelType} from 'ng5-slider';
 
 @Component({
   selector: 'app-products-sidebar',
@@ -21,10 +19,28 @@ export class ProductsSidebarComponent implements OnInit {
   selectedBrandd: any = '';
   platformsList: PlatformModel[];
   brandsList: any;
+  minValue: number = 100;
+  maxValue: number = 500;
+  options: Options = {
+    floor: 0,
+    ceil: 500,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Min price:</b> $' + value;
+        case LabelType.High:
+          return '<b>Max price:</b> $' + value;
+        default:
+          return '$' + value;
+      }
+    }
+  };
 
   @Output()
   params: EventEmitter<object> = new EventEmitter();
 
+  @Output()
+  prices: EventEmitter<object> = new EventEmitter();
 
   constructor(private productsService: ProductsService,
               private platformsService: PlatformsService,
@@ -40,8 +56,20 @@ export class ProductsSidebarComponent implements OnInit {
       this.brandsList = data;
     });
 
+    this.productsService.getMinAndMaxPrices().subscribe((data: any) => {
+      this.minValue = data.min;
+      this.maxValue = data.max;
+    });
+
   }
 
+
+  getProductsByPrice(event: any) {
+    this.prices.emit({
+      min: event.value,
+      max: event.highValue
+    });
+  }
 
   getProducts() {
     const params = {
@@ -51,10 +79,11 @@ export class ProductsSidebarComponent implements OnInit {
     this.params.emit(params);
   }
 
-  selectedPlatform(option: string) {
-    this.selectedPlatformm = option;
-    this.getProducts();
-  }
+  // selectedPlatform(option: string) {
+  //   this.selectedPlatformm = option;
+  //   this.getProducts();
+  // }
+
 
   selectedBrand(option: any) {
     this.selectedBrandd = option;

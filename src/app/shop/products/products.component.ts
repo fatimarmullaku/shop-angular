@@ -29,6 +29,10 @@ export class ProductsComponent implements OnInit {
               private baseStorage: BaseStorageService) {
   }
 
+  get f() {
+    return this.informationForm.controls;
+  }
+
   ngOnInit() {
     this.products = this.productService.getProducts();
 
@@ -41,6 +45,12 @@ export class ProductsComponent implements OnInit {
 
   onFilterChange(event: any) {
     this.productsService.getProductByPlatformAndBrand(event).subscribe(res => {
+      this.products = res;
+    });
+  }
+
+  onFilterPriceChange(event: any) {
+    this.productsService.getProductBySelectedPrice(event).subscribe(res => {
       this.products = res;
     });
   }
@@ -99,10 +109,6 @@ export class ProductsComponent implements OnInit {
     this.numbersOnlyValidator = false;
     return true;
 
-  }
-
-  get f() {
-    return this.informationForm.controls;
   }
 }
 

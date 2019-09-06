@@ -9,7 +9,6 @@ import {UsersComponent} from './users/users.component';
 import {HomeComponent} from './home/home.component';
 import {MatExpansionModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
-import {TablesDComponent} from '../shared/tables-d/tables-d.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
@@ -33,7 +32,6 @@ import { OrderDataComponent } from './orders/order-data/order-data.component';
     UsersComponent,
     HomeComponent,
     CustomersComponent,
-    TablesDComponent,
     SidebarComponent,
     PlatformsFilterPipe,
     CustomersFPipe,

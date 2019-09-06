@@ -52,10 +52,7 @@ export class BrandsComponent implements OnInit {
       deletedDateTime: [],
       description: [''],
       version: [],
-    });
-
-    console.log(this.updateForm);
-
+    }); 
   }
 
   public captureScreen() {
@@ -75,8 +72,7 @@ export class BrandsComponent implements OnInit {
   }
 
   onSubmit() {
-    const values = this.form.value;
-    console.log('on Submit', values);
+    const values = this.form.value; 
     this.brandsService.registerBrand(values).subscribe(
       get => {
         this.brandsService.getAllBrands().subscribe((data: any) => {
@@ -163,7 +159,6 @@ export class BrandsComponent implements OnInit {
 
   openDelete(bid) {
     this.deleteModal = true;
-    this.bid = bid;
-    console.log(this.bid);
+    this.bid = bid; 
   }
 }

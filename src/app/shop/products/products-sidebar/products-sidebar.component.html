@@ -2,23 +2,6 @@
   <mat-expansion-panel class="panel">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Platforms
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="contentt">
-      <ul class="game-list">
-        <li *ngFor="let p of platformsList " class="game-item">
-          <input (change)="selectedPlatform(p.id)" type="checkbox"
-                 name="games"
-                 value="{{p.id}}"/>
-          <span class="game-text">{{p.name}}</span>
-        </li>
-      </ul>
-    </div>
-  </mat-expansion-panel>
-  <mat-expansion-panel class="panel">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
         Brands
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -26,7 +9,6 @@
       <ul class="game-list">
         <li *ngFor="let b of brandsList " class="game-item">
           <input (change)="selectedBrand(b.id)" type="checkbox"
-                 name="games"
                  value="{{b.id}}"/>
           <span class="game-text">{{b.name}}</span>
         </li>
@@ -39,6 +21,10 @@
         Price
       </mat-panel-title>
     </mat-expansion-panel-header>
+    <ng5-slider [(value)]="minValue"
+                (userChangeEnd)="getProductsByPrice($event)"
+                [(highValue)]="maxValue"
+                [options]="options"></ng5-slider>
   </mat-expansion-panel>
 </mat-accordion>
 
