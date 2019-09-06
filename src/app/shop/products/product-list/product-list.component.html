@@ -9,5 +9,5 @@
        [item]="product"></div>
 </div>
 <div class="product-list">
-    <app-product-list-pagination></app-product-list-pagination>
+    <app-product-list-pagination *ngIf="products.length != 0 "></app-product-list-pagination>
 </div>
