@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {LocalStorageKey} from "../../shared/constants/local-storage-key";
+import {BaseStorageService} from "../../shared/services/base-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,9 @@ export class ProductsService {
 
   resData: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private baseStorage: BaseStorageService
+              ) {
   }
 
   getAllProducts() {
@@ -39,6 +43,8 @@ export class ProductsService {
 
 
   deleteProduct(id) {
+    this.baseStorage.deleteElementInStorage(id, LocalStorageKey.CART);
     return this.http.delete(this.rootUrl + id);
+
   }
 }
