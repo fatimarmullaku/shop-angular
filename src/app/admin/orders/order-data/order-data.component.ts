@@ -46,7 +46,6 @@ export class OrderDataComponent implements OnInit {
   }
 
   resetPageAndMakeRequest() {
-    this.searchWithCustomParams();
     this.paginationService.changePage(1);
   }
 
