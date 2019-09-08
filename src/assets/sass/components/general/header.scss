@@ -22,7 +22,6 @@ a.dropdown-item.is-active {
   display: block;
 }
 
-
 .header {
   position: sticky;
   top: 0px;
@@ -50,6 +49,13 @@ a.dropdown-item.is-active {
 
     .dropdown-cart {
 
+      .dropdown-menu{
+        .proceed-checkout{
+          &:active{
+            background-color: transparent;
+          }
+        }
+      }
       .open-cart-icon {
         font-size: 20px;
       }
@@ -91,10 +97,16 @@ a.dropdown-item.is-active {
 
         .dropdown-cart-item {
           width: 350px;
+          &:hover{
+            background-color: transparent;
+          }
+          &:active{
+            background-color: transparent;
+            color: #000;
+          }
           @include mobile {
             width: auto;
           }
-
         }
 
         .item-desc {

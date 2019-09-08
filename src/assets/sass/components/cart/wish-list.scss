@@ -4,32 +4,36 @@
   min-height: 100vh;
 
 }
+
 .main-box {
   //border: 1px solid map_get($ucx-colors,deep-orange);
   //background: map_get($ucx-colors,dark-gray);
   background: transparent;
   border-radius: 12px;
 
-  img{
+  img {
     border-radius: 12px;
   }
+
   margin: 90px;
-  @include mobile{
+  @include mobile {
     margin: 10px 10px;
   }
-  .inner-box{
+
+  .inner-box {
     //background: map_get($ucx-colors,dark-gray);
     background: transparent;
-    border: 1px solid map_get($ucx-colors,deep-orange);
-    color: map_get($ucx-colors,deep-orange);
+    border: 1px solid map_get($ucx-colors, deep-orange);
+    color: map_get($ucx-colors, deep-orange);
     border-radius: 12px;
     //align-items: center;
   }
-  @include desktop{
-    .wishlist-item-information{
+
+  @include desktop {
+    .wishlist-item-information {
       margin-left: 0px;
     }
-    .wishlist-image-container{
+    .wishlist-image-container {
       width: auto;
     }
   }
@@ -38,15 +42,16 @@
   h1 {
     font-size: 25px;
     font-weight: 10;
-    color: map_get($ucx-colors,deep-orange);
+    color: map_get($ucx-colors, deep-orange);
   }
 
-  @include mobile{
-    img{
+  @include mobile {
+    img {
       width: 600px;
     }
   }
-  .wishlist-button-container{
+
+  .wishlist-button-container {
     .wishlist-button {
       line-height: 0;
       font-size: 0.8rem;
@@ -65,22 +70,26 @@
       cursor: pointer;
 
       background-color: map-get($ucx-colors, deep-orange);
+
       &:hover {
         color: black;
       }
     }
-    @include mobile{
-      .wishlist-button{
+
+    @include mobile {
+      .wishlist-button {
         width: 100%;
       }
     }
 
   }
 }
-.wishlist-button-container{
+
+.wishlist-button-container {
   align-items: baseline;
 }
-.remove-button{
+
+.remove-button {
   //float: right;
   line-height: 0;
   font-size: 1rem;
@@ -97,11 +106,13 @@
   padding: 3.5px 7px;
   border-radius: 500px;
   cursor: pointer;
-  i{
+
+  i {
     font-size: 20px;
     color: orange;
   }
-  &:hover{
+
+  &:hover {
     //i{
     //  color: black;
     //}
@@ -109,34 +120,40 @@
   }
 
 }
-#icon-container{
+
+#icon-container {
   width: 19%
 }
 
-.emptyWishlist{
+.emptyWishlist {
   margin-top: 120px;
   width: 100%;
   text-align: center;
   font-family: Bahnschrift;
-  h1{
+
+  h1 {
     font-size: 40px;
     color: white;
   }
-  h3{
+
+  h3 {
     font-size: 25px;
   }
-  .startShopping{
+
+  .startShopping {
     margin: 30px;
     padding: 10px 30px;
-    background: map_get($ucx-colors,deep-orange);
+    background: map_get($ucx-colors, deep-orange);
     border: none;
     border-radius: 9px;
-    &:hover{
+
+    &:hover {
       transform: scale(1.1);
       transition: 0.7s;
     }
   }
 }
-.column-container{
+
+.column-container {
   width: 106%;
 }
