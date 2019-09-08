@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {LocalStorageKey} from "../../shared/constants/local-storage-key";
 import {BaseStorageService} from "../../shared/services/base-storage.service";
 
@@ -13,11 +13,12 @@ export class ProductsService {
 
   constructor(private http: HttpClient,
               private baseStorage: BaseStorageService
-              ) {
+  ) {
   }
 
-  getAllProducts() {
-    return this.http.get(this.rootUrl + 'allActive');
+  getAllProducts(size: number, page: number) {
+    const params = new HttpParams().set('size', String(size)).set('page', String(page));
+    return this.http.get(this.rootUrl + 'allActive', {params});
 
   }
 
@@ -38,7 +39,7 @@ export class ProductsService {
 
   updateProduct(data, id) {
     console.log(data);
-    return this.http.put(this.rootUrl + id , data);
+    return this.http.put(this.rootUrl + id, data);
   }
 
 

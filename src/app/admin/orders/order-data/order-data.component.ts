@@ -6,7 +6,8 @@ import {OrderHistoryPagedModel, OrderModel} from '../orders.model';
 @Component({
   selector: 'app-order-data',
   templateUrl: './order-data.component.html',
-  styleUrls: ['./order-data.component.scss']
+  styleUrls: ['./order-data.component.scss'],
+  providers: [PaginationService]
 })
 export class OrderDataComponent implements OnInit {
   searchOrder = '';

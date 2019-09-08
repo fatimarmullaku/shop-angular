@@ -11,11 +11,14 @@ import {ProductsModel} from './products.model';
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
 import {ENDPOINTS} from '../../shared/constants/api.constants';
+import {PaginationService} from '../../shared/pagination/pagination.service';
+import {PaginationModel} from '../../shared/models/pagination.model';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  providers: [PaginationService]
 })
 export class ProductsComponent implements OnInit {
   photoUrl = ENDPOINTS.products.getProductImage;
@@ -37,11 +40,15 @@ export class ProductsComponent implements OnInit {
   selectedFile2: File;
   isNotPlatform = true;
   isNotBrand = true;
+  currentPage = 1;
+  pageSize = 6;
+
   constructor(private productsService: ProductsService,
               private modalService: NgbModal,
               private fb: FormBuilder,
               private platformsService: PlatformsService,
-              private brandsService: BrandsService) {
+              private brandsService: BrandsService,
+              private paginationService: PaginationService) {
   }
 
   ngOnInit() {
@@ -49,10 +56,12 @@ export class ProductsComponent implements OnInit {
       files: [],
     });
 
-    this.productsService.getAllProducts().subscribe((data: ProductsModel[]) => {
-      this.productsList = data;
-      console.log(this.productsList);
+    this.paginationService.changeTotalPages(9);
+    this.paginationService.currentPage.subscribe(currentPage => {
+      this.currentPage = currentPage;
+      this.getProductsPaged();
     });
+
     this.platformsService.getAllPlatforms().subscribe((data: any) => {
       this.platformList = data;
 
@@ -98,6 +107,13 @@ export class ProductsComponent implements OnInit {
 
     this.fileForm = this.fb.group({
       fileUpload: ['']
+    });
+  }
+
+  getProductsPaged() {
+    this.productsService.getAllProducts(this.pageSize, this.currentPage - 1).subscribe((data: PaginationModel<ProductsModel>) => {
+      this.productsList = data.content;
+      this.paginationService.changeTotalPages(data.totalPages);
     });
   }
 
@@ -147,10 +163,7 @@ export class ProductsComponent implements OnInit {
               if (data) {
                 this.productsForm.reset();
                 this.fileForm.reset();
-                this.productsService.getAllProducts().subscribe((data: any) => {
-                  this.productsList = data;
-                  console.log('name ', this.productsForm.controls.name.value);
-                });
+                this.getProductsPaged();
               }
             });
           }
@@ -175,10 +188,7 @@ export class ProductsComponent implements OnInit {
   onDelete() {
     this.productsService.deleteProduct(this.productId).subscribe(
       get => {
-        this.productsService.getAllProducts().subscribe((data: any) => {
-          this.productsList = data;
-        });
-
+        this.getProductsPaged();
       },
       (err: HttpErrorResponse) => {
         console.log(err);
@@ -225,16 +235,11 @@ export class ProductsComponent implements OnInit {
           payload.append('productId', this.productId.toString());
           payload.append('files', this.selectedFile2, this.selectedFile2.name);
           this.productsService.uploadFiles(payload).subscribe(res => {
-            this.productsService.getAllProducts().subscribe((data: any) => {
-              this.productsList = data;
-              this.insertModal = false;
-            });
+            this.getProductsPaged();
+            this.insertModal = false;
           });
         } else {
-          this.productsService.getAllProducts().subscribe((data: any) => {
-            this.productsList = data;
-          });
-
+          this.getProductsPaged();
         }
 
         this.insertModal = false;
