@@ -17,6 +17,10 @@
 }
 
 .shipping-parent {
+  p {
+    margin-bottom: 20px;
+  }
+  text-align: center;
   background-color: #1f2833;
   background-color: transparent;
   display: flex;
@@ -25,7 +29,7 @@
   justify-content: center;
   padding-left: 5px;
   border: 1px solid map_get($ucx-colors, deep-orange);
-  padding: 40px;
+  padding: 40px 23px;
 
   .shipping-total {
     text-align: center;

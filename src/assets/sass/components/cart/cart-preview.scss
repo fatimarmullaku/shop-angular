@@ -17,8 +17,8 @@
 
 .cart-items {
   .cancel-button-mobile {
-    width: 224px;
-    margin-left: 15px;
+    width: 100%;
+    margin-left: auto;
     color: black !important;
     background-color: map_get($ucx-colors, deep-orange);
   }

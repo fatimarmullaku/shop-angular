@@ -30,19 +30,19 @@
 
       <div class="column is-8-desktop is-12-mobile shipping-parent-infos">
         <div class="columns is-mobile shipping-infos" *ngFor="let item of getProductsFromCart(); let i = index;">
-          <div class="column is-6-desktop is-6-mobile">
+          <div class="column is-6-desktop is-4-mobile">
             <div class="shipping-delivery-content">
               <span><h3 *ngIf="item.product.name != null">{{item.product.name}}</h3></span>
               <span><h5 *ngIf="item.product.platform != null">{{item.product.platform.name}}</h5></span>
             </div>
           </div>
-          <div class="column is-3-desktop is-3-mobile">
+          <div class="column is-3-desktop is-4-mobile has-text-left-mobile">
             <div class="quantity">
               <span><h3>License Quantity</h3></span>
               <span><h5 *ngIf="item.qty != null">{{item.qty}}</h5></span>
             </div>
           </div>
-          <div class="column is-3-desktop is-3-mobile">
+          <div class="column is-3-desktop is-4-mobile">
             <div class="order-price">
               <span><h3>Unit Price</h3></span>
               <span><h5 *ngIf="item.product.unitPrice != null">{{item.product.unitPrice}}</h5></span>

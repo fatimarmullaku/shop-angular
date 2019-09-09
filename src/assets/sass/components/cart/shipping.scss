@@ -61,8 +61,11 @@ label.checkout-label {
 
 .shipping-form-container {
   height: 100%;
-  margin-left: 30px;
+  margin-left: 40px;
   padding: 1vh;
+  a {
+    word-break: break-all;
+  }
 }
 
 .shipping-image {
@@ -120,7 +123,8 @@ label.checkout-label {
 
   .steam-icon {
     color: white;
-    font-size: 270px;
+    font-size: 240px;
+    padding-right: 20px;
   }
 }
 
