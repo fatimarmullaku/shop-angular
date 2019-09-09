@@ -24,7 +24,7 @@
             <div class="column is-2 product-info">
 
             </div>
-              <div class="column is-1 quantity-div">
+            <div class="column is-1 quantity-div">
               <br>
               <h2 class="product-quantity">{{ item.qty }}</h2>
               <div class="buttons inc-desc-buttons">
@@ -36,14 +36,17 @@
               <label>Price</label>
               <h1>{{ item.product.unitPrice}} $ </h1>
             </div>
-            <div class="column is-2 product-info">
+            <div class="column is-1 product-info">
               <label>Total price</label>
               <h1>{{ (item.product.unitPrice * item.qty).toFixed(2)}} $ </h1>
+            </div>
+            <div class="column is-1 cancel-item is-hidden-desktop">
+              <a (click)="deleteFromCart(item)" class="button is-danger is-rounded cancel-button-mobile">Cancel</a>
             </div>
           </div>
         </div>
         <div class="column is-1-desktop is-12-mobile cancels">
-          <div class="cancel-item">
+          <div class="cancel-item is-hidden-mobile">
             <a (click)="deleteFromCart(item)" class="delete is-large is-center"></a>
           </div>
         </div>

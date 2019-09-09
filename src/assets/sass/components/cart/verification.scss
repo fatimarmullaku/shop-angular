@@ -34,6 +34,9 @@
 
 .shipping-parent-infos {
   padding: 40px;
+  @include mobile {
+    padding: 25px;
+  }
 
   .shipping-infos {
     padding: 10px 0;

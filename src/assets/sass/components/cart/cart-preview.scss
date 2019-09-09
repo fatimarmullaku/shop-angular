@@ -16,9 +16,16 @@
 }
 
 .cart-items {
+  .cancel-button-mobile {
+    width: 224px;
+    margin-left: 15px;
+    color: black !important;
+    background-color: map_get($ucx-colors, deep-orange);
+  }
+
   .quantity-div {
     @include mobile {
-      margin-left: 100px;
+      margin-left: 70px;
     }
   }
 
@@ -50,7 +57,7 @@
 
 .buttons {
   display: block;
-  margin-left: 20px;
+  margin-left: 30px;
   margin-top: -45px;
 
 }

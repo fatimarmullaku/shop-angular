@@ -91,6 +91,9 @@ label.checkout-label {
   padding: 40px;
   border: 2px solid #FF5A09;
   border-radius: 10px;
+  @include mobile{
+    padding: 25px;
+  }
 }
 
 .shipping-nav-buttons {
