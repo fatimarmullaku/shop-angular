@@ -5,6 +5,9 @@
 #creditcard-icon {
   font-size: 150px;
   color: ghostwhite;
+  &:hover{
+    transform: scale(1);
+  }
 }
 
 #checkout-button {

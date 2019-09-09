@@ -59,7 +59,7 @@ export class UserService {
     this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
     this.baseStorage.clearStorageOf(LocalStorageKey.CUSTOMER_ID);
     this.baseStorage.clearStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY);
-    this.router.navigateByUrl('/auth/login');
+    this.router.navigateByUrl('/');
   }
 
   addPhonesAndAddresses(payload: any) {

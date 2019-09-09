@@ -5,8 +5,9 @@
   <input type="text" class="search-bar" placeholder="Search products..." name="search" [(ngModel)]="searchText">
 </div>
 <div class="columns is-multiline is-mobile is-tablet is-desktop">
-  <div class="column is-desktop is-tablet is-12-mobile is-3-desktop" app-product-item *ngFor="let product of products | filter:searchText"
-       [item]="product"></div>
+  <div *ngFor="let product of products | filter:searchText" [item]="product"
+       app-product-item
+       class="column is-desktop is-tablet is-12-mobile is-3-desktop"></div>
 </div>
 <div class="product-list">
     <app-product-list-pagination *ngIf="products.length != 0 "></app-product-list-pagination>
