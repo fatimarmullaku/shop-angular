@@ -18,6 +18,7 @@ const routes: Routes = [
     canActivate: [AdminAuthGuardService],
     children: [
       {path: '', component: HomeComponent},
+      {path: 'home', component: HomeComponent},
       {path: 'customers', component: CustomersComponent},
       {path: 'orders', component: OrdersComponent},
       {path: 'products', component: ProductsComponent},

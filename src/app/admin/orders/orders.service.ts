@@ -18,6 +18,7 @@ export class OrdersService {
     const params = new HttpParams().set('size', String(size)).set('page', String(page));
     return this.http.get(this.baseUrl + '/invoices/history/paged', {params});
   }
+
   pagedWithCustomParams(size: number, searchText, paramSearch) {
     const params = new HttpParams().set('size', String(size)).set('page', String('0')).set(paramSearch, String(searchText));
     return this.http.get(this.baseUrl + '/invoices/history/paged', {params});
