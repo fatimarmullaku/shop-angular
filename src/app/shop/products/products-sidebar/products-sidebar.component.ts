@@ -19,7 +19,7 @@ export class ProductsSidebarComponent implements OnInit {
   selectedBrandd: any = '';
   platformsList: PlatformModel[];
   brandsList: any;
-  minValue: number = 10;
+  minValue = 0;
   maxValue: number = 500;
   options: Options = {
     floor: 0,
@@ -27,7 +27,7 @@ export class ProductsSidebarComponent implements OnInit {
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return '<b>Min :</b> $' + value;
+          return `<b>Min:</b> ${value}`;
         case LabelType.High:
           return '<b>Max :</b> $' + value;
         default:
@@ -61,6 +61,11 @@ export class ProductsSidebarComponent implements OnInit {
       this.maxValue = data.max;
     });
 
+    this.productsService.getHighestPrice().subscribe((data: number) => {
+      this.maxValue = data;
+    });
+
+
   }
 
 
@@ -75,8 +80,8 @@ export class ProductsSidebarComponent implements OnInit {
     const params = {
       platformId: this.selectedPlatformm,
       brandId: this.selectedBrandd,
-      min:this.minValue,
-      max:this.maxValue
+      min: this.minValue,
+      max: this.maxValue
     };
     this.params.emit(params);
   }
