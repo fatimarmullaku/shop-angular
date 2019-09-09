@@ -6,6 +6,10 @@
   border-radius: 50px;
   background-color: transparent;
 
+  @include mobile {
+    width: 100%;
+  }
+
   progress {
     .progress {
       width: 500px;

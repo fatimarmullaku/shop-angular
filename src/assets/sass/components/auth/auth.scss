@@ -1,13 +1,14 @@
 .auth-intro {
   text-align: center;
   //background: url(asset(images, 'signin_signup_bg.jpg')) center center no-repeat;
-  background: linear-gradient(45deg, rgb(45, 11, 30) 0%, rgb(45, 11, 30) 49%,rgb(78, 19, 25) 49%, rgb(78, 19, 25) 67%,rgb(111, 27, 19) 67%, rgb(111, 27, 19) 76%,rgb(143, 36, 14) 76%, rgb(143, 36, 14) 81%,rgb(176, 44, 8) 81%, rgb(176, 44, 8) 82%,rgb(209, 52, 3) 82%, rgb(209, 52, 3) 100%);
+  background: linear-gradient(45deg, rgb(45, 11, 30) 0%, rgb(45, 11, 30) 49%, rgb(78, 19, 25) 49%, rgb(78, 19, 25) 67%, rgb(111, 27, 19) 67%, rgb(111, 27, 19) 76%, rgb(143, 36, 14) 76%, rgb(143, 36, 14) 81%, rgb(176, 44, 8) 81%, rgb(176, 44, 8) 82%, rgb(209, 52, 3) 82%, rgb(209, 52, 3) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 100vh;
   color: white;
+
   span {
     font-weight: 600;
     display: block;
@@ -35,33 +36,34 @@
 
   .auth-form-footer {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
   }
 }
 
 .auth-form-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 
   h4 {
     margin-top: 30px;
     font-weight: 600;
     text-align: center;
-    color: map_get($ucx-colors,deep-orange);
+    color: map_get($ucx-colors, deep-orange);
     font-size: 1.5rem;
   }
 
   span {
     font-size: 16px;
-    color: map_get($ucx-colors,deep-orange);
+    color: map_get($ucx-colors, deep-orange);
     text-align: center;
   }
 }
+
 .auth-button {
   display: block;
   font-size: 16px;
   background: transparent;
-  border: 1px solid map_get($ucx-colors,deep-orange);
+  border: 1px solid map_get($ucx-colors, deep-orange);
   width: 100%;
   padding: 10px 0;
   color: #fff;
@@ -73,28 +75,34 @@
     background: map-get($ucx-colors, deep-orange);
   }
 }
-.login-screen{
-  background-color: map_get($ucx-colors,dark-gray);
-  img{
+
+.login-screen {
+  background-color: map_get($ucx-colors, dark-gray);
+
+  img {
     transform: scale(0.4);
     margin-bottom: -50px;
   }
 }
-.register-screen{
-  background-color: map_get($ucx-colors,dark-gray);
-  img{
+
+.register-screen {
+  background-color: map_get($ucx-colors, dark-gray);
+
+  img {
     transform: scale(0.4);
     margin-bottom: -50px;
   }
 }
-.paragraph{
-  color: map_get($ucx-colors,deep-orange);
+
+.paragraph {
+  color: map_get($ucx-colors, deep-orange);
 }
-.auth-input{
+
+.auth-input {
   border: none;
 
-  &:focus{
-    border: 2px solid map_get($ucx-colors,deep-orange);
+  &:focus {
+    border: 2px solid map_get($ucx-colors, deep-orange);
   }
 }
 
