@@ -2,11 +2,19 @@
 .product-details-container {
   position: relative;
   min-height: calc(100vh - 140px);
+  max-height: calc(100vh - 140px);
+  overflow: hidden;
+  @include mobile{
+    max-height: 100%;
+  }
 
   .columns {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-top: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: map-get($ucx-colors, darkest-gray);
   }
 
   .product-panel {
@@ -18,84 +26,19 @@
 
     .product-panel-wrapper {
       border: 1px solid map-get($ucx-colors, deep-orange);
-      border-radius: 3px;
-
+      height: 401.5px;
+      width: 300px;
       .product-view {
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
         position: relative;
-        height: calc(100vh - 250px);
 
         .image-container {
-
           img {
-            object-fit: contain;
-            max-height: calc(100vh - 250px);
-          }
-        }
-
-        .review-panel {
-          overflow-y: auto;
-          height: 100%;
-          width: 100%;
-          max-height: calc(100vh - 250px);
-          color: map-get($ucx-colors, light-gray);
-          background-color: map-get($ucx-colors, dark-gray);
-          padding: 20px 40px;
-
-          .main-rating {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px map-get($ucx-colors, deep-orange) solid;
-
-            h3 {
-              font-family: $titleFont;
-              font-size: 1.4rem;
-              color: map-get($ucx-colors, deep-orange);
-            }
-
-            i {
-              color: map-get($ucx-colors, yellow);
-            }
-
-            span {
-              padding-top: 15px;
-
-              small {
-                color: map-get($ucx-colors, light-orange);
-              }
-
-              i {
-                color: map-get($ucx-colors, light-gray);
-              }
-            }
-          }
-
-          .customer-rating {
-            .content {
-              padding-top: 20px;
-              text-align: left;
-
-              .customer-rating-header {
-                .customer-name {
-                  color: map-get($ucx-colors, light-orange);
-                  font-size: 1.1em;
-                }
-
-                i {
-                  color: map-get($ucx-colors, yellow);
-                }
-              }
-
-              .rating-content {
-                padding-top: 10px;
-              }
-            }
+            height: 400px;
+            width: 300px;
           }
         }
       }
@@ -150,14 +93,15 @@
   }
 
   .product-info-panel {
-    height: calc(100vh - 180px);
-    max-height: calc(100vh - 130px);
+    max-height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
     position: relative;
-    background: map-get($ucx-colors, dark-gray);;
+    background-color: transparent;
+    @include mobile{
+      max-height: 100%;
+    }
 
     .inner-panel {
-
-      overflow-y: auto;
       height: 100%;
 
       .product-info-header {
@@ -180,7 +124,27 @@
       .product-info-body {
         padding: 30px 50px;
 
+        @include mobile {
+          padding: 30px 0;
+        }
+
         .product-name-instock {
+          display: flex;
+          flex-direction: row;
+
+          .right-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-left: 5px;
+            i {
+              font-size: 30px;
+              color: map-get($ucx-colors, light-orange);
+
+              &:hover {
+                color: map-get($ucx-colors, red-orange);
+              }
+            }
+          }
 
           h3 {
             font-family: $titleFont;
@@ -195,9 +159,29 @@
           }
         }
 
-        .product-description {
-          padding: 20px 0;
-          color: #999;
+        .product-description-container{
+          height: 100%;
+          max-height: 250px;
+          border-color: map-get($ucx-colors, deep-orange);
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            display: none;  // Safari and Chrome
+          }
+
+
+          @include mobile {
+            height: 100%;
+            overflow-y: auto;
+          }
+
+          .product-description {
+            padding: 20px 0;
+            color: #999;
+
+            @include mobile {
+              padding: 0 0;
+            }
+          }
         }
 
         .product-controls {
@@ -274,3 +258,6 @@
     }
   }
 }
+
+
+
