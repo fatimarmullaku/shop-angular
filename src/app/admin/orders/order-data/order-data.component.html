@@ -1,21 +1,24 @@
 <div class="container flex-container">
   <div class="form-group fill-space">
-    <input type="text" class="form-control" placeholder="Search order..." [(ngModel)]="searchOrder" (keyup)="resetPageAndMakeRequest()" >
+    <input type="number" class="form-control" *ngIf="searchTypeNumber" placeholder="Search order..."
+           [(ngModel)]="searchOrder" (keyup)="resetPageAndMakeRequest()">
+    <input type="text" class="form-control" *ngIf="!searchTypeNumber" placeholder="Search order..."
+           [(ngModel)]="searchOrder" (keyup)="resetPageAndMakeRequest()">
   </div>
   <div class="form-group">
-    <select name="" class="form-control" [(ngModel)]="searchBy">
-      <option value="customerName" selected>Customer Name</option>
-      <option value="orderId">Order Number</option>
+    <select (change)="changeSelectedType()" name="" class="form-control" [(ngModel)]="searchBy">
+      <option value="customerName" (click)="changeSelectedType(false)" selected>Customer Name</option>
+      <option value="orderId" (click)="changeSelectedType(true)">Order Number</option>
     </select>
   </div>
 </div>
 
 
-
 <div class="panel-body columns is-multiline overflow-hidden">
   <div class="row column columns is-10-desktop is-offset-1-desktop" *ngFor="let d of data">
 
-    <div class="columns column is-1-desktop is-vcentered"><img src="assets/img/My-Cart/tick.png" class="media-object img-thumbnail"></div>
+    <div class="columns column is-1-desktop is-vcentered"><img src="assets/img/My-Cart/tick.png"
+                                                               class="media-object img-thumbnail"></div>
     <div class="column is-11">
       <div class="columns row">
         <div class="column is-12">
