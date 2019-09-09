@@ -50,12 +50,15 @@
                 ) "
                   class="far fa-edit"></i>
               </a>
-              <i (click)="openDelete(p.id)" class="fa fa-trash" aria-hidden="true"></i>
+<!--              <i (click)="openDelete(p.id)" class="fa fa-trash" aria-hidden="true"></i>-->
             </td>
           </tr>
         </table>
-        <button type="button" class="btn btn-outline-secondary btnPDF" (click)="captureScreen()">PDF</button>
+<!--        <button type="button" class="btn btn-outline-secondary btnPDF" (click)="captureScreen()">PDF</button>-->
+        <div class="columns is-centered">
+        <app-product-list-pagination class="column is-narrow-desktop is-narrow-tablet"></app-product-list-pagination><div>
       </div>
+
     </div>
   </div>
 

@@ -1,5 +1,5 @@
 <!-- PAGINATION -->
-<div class="block pg">
+<div class="block pg" *ngIf="totalPages>=1">
   <div class="pagination">
     <ng-template [ngIfElse]="lowerThanFourPages" [ngIf]="totalPages>=3">
       <nav aria-label="pagination" class="pagination" role="navigation">

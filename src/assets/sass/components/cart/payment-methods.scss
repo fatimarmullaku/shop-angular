@@ -73,6 +73,9 @@
       font-size: 230px;
       padding: 10px;
       margin: 15px;
+      @include mobile {
+        font-size: 150px;
+      }
     }
 
     &:hover #creditcard-iconi {
@@ -85,6 +88,9 @@
       font-size: 230px;
       padding: 10px;
       margin: 15px;
+      @include mobile {
+        font-size: 150px;
+      }
     }
 
     //.paypal-icon{

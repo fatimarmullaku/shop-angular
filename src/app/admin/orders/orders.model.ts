@@ -4,6 +4,7 @@ export class OrderModel {
   orderId: number;
   orderTime: string;
   total: number;
+  totalFilteredOrders: number;
   itemspurchased: any[];
   constructor(customerName: string,
               customerId: number,
@@ -20,4 +21,9 @@ export class OrderModel {
   }
 
 
+}
+
+export class OrderHistoryPagedModel {
+  totalFilteredOrders: number;
+  filteredOrdersPage: OrderModel[];
 }

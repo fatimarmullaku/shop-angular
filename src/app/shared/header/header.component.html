@@ -1,9 +1,9 @@
 <div class="header uses-flex">
   <div class="header-top uses-flex between-space">
-    <a href="home.html">
-      <div class="image-container" [routerLink]="['/']">
-        <img src="assets/img/ucx-logo-desktop.png" alt="logo" class="header-logo is-hidden-mobile">
-        <img src="assets/img/ucx-logo-mobile.png" alt="logo" class="header-logo is-hidden-desktop">
+    <a>
+      <div class="image-container">
+        <img src="assets/img/ucx-logo-desktop.png" alt="logo" class="header-logo is-hidden-mobile" [routerLink]="['/']">
+        <img src="assets/img/ucx-logo-mobile.png" alt="logo" class="header-logo is-hidden-desktop" [routerLink]="['/']">
       </div>
     </a>
 
@@ -79,7 +79,7 @@
   </div>
   <div class="header-bottom uses-flex">
     <nav class="navbar navbar-container" role="navigation" aria-label="main navigation">
-      <a href="index.html" class="navbar-item">Home</a>
+      <a routerLink="/" class="navbar-item">Home</a>
       <a routerLink="/wish-list" class="navbar-item">WishList</a>
       <a href="" class="navbar-item">News</a>
       <app-publisher-dropdown></app-publisher-dropdown>
