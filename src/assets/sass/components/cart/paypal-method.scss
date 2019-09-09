@@ -2,6 +2,10 @@
   .icon-container{
     .paypal-icon{
       color: ghostwhite;
+      margin-left: -19px;
+      &:hover{
+        transform: scale(1);
+      }
     }
   }
 }

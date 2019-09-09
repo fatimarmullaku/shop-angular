@@ -22,7 +22,6 @@ a.dropdown-item.is-active {
   display: block;
 }
 
-
 .header {
   position: sticky;
   top: 0px;
@@ -49,6 +48,17 @@ a.dropdown-item.is-active {
     }
 
     .dropdown-cart {
+      @include mobile {
+        margin-right: 40px;
+      }
+
+      .dropdown-menu {
+        .proceed-checkout {
+          &:active {
+            background-color: transparent;
+          }
+        }
+      }
 
       .open-cart-icon {
         font-size: 20px;
@@ -91,10 +101,19 @@ a.dropdown-item.is-active {
 
         .dropdown-cart-item {
           width: 350px;
+
+          &:hover {
+            background-color: transparent;
+          }
+
+          &:active {
+            background-color: transparent;
+            color: #000;
+          }
+
           @include mobile {
             width: auto;
           }
-
         }
 
         .item-desc {
@@ -156,7 +175,7 @@ a.dropdown-item.is-active {
       }
 
       a {
-        color: pink;
+        color: map-get($ucx-colors, light-gray);
         @include mobile {
           color: black;
         }
@@ -165,7 +184,8 @@ a.dropdown-item.is-active {
 
         &:hover {
           background: none;
-          color: black;
+          text-decoration: none;
+          color: map-get($ucx-colors, deep-orange);
         }
       }
 

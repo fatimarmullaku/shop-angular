@@ -30,15 +30,15 @@
         <i class="fa fa-user"></i> Users</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar>
+  <mat-sidenav-content class="overflow-hidden">
+    <mat-toolbar class="admin-dashboard-header-menu">
       <button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
         aria-label="Toggle sidenav"
         mat-icon-button
         type="button">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon"></mat-icon>
       </button>
       <span>   </span>
       <div class="col-lg-12">
@@ -51,7 +51,7 @@
                 <div class="d-inline-block " ngbDropdown>
                   <button class="btn" id="dropdownBasic1" ngbDropdownToggle>{{username}}</button>
                   <div aria-labelledby="dropdownBasic1" ngbDropdownMenu>
-                    <button (click)="this.userService.logout()" ngbDropdownItem>Log Out</button>
+                    <button (click)="this.userService.logout()" ngbDropdownItem><i class="fa fa-sign-out"></i>  Log Out</button>
                   </div>
                 </div>
               </div>

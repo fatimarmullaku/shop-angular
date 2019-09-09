@@ -6,6 +6,10 @@
   border-radius: 50px;
   background-color: transparent;
 
+  @include mobile {
+    width: 100%;
+  }
+
   progress {
     .progress {
       width: 500px;
@@ -57,8 +61,11 @@ label.checkout-label {
 
 .shipping-form-container {
   height: 100%;
-  margin-left: 30px;
+  margin-left: 40px;
   padding: 1vh;
+  a {
+    word-break: break-all;
+  }
 }
 
 .shipping-image {
@@ -87,6 +94,9 @@ label.checkout-label {
   padding: 40px;
   border: 2px solid #FF5A09;
   border-radius: 10px;
+  @include mobile{
+    padding: 25px;
+  }
 }
 
 .shipping-nav-buttons {
@@ -113,7 +123,8 @@ label.checkout-label {
 
   .steam-icon {
     color: white;
-    font-size: 270px;
+    font-size: 240px;
+    padding-right: 20px;
   }
 }
 

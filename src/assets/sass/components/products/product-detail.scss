@@ -2,12 +2,21 @@
 .product-details-container {
   position: relative;
   min-height: calc(100vh - 140px);
-
-  .columns{
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 5px;
+  max-height: calc(100vh - 140px);
+  overflow: hidden;
+  @include mobile{
+    max-height: 100%;
   }
+
+  .columns {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: map-get($ucx-colors, darkest-gray);
+  }
+
   .product-panel {
     position: relative;
     padding-right: 0;
@@ -15,122 +24,67 @@
     height: 100%;
     max-height: calc(100vh - 130px);
 
-    .product-panel-wrapper{
-      border: 1px solid map-get($ucx-colors,deep-orange);
-      border-radius: 3px;
-
-      .product-view{
+    .product-panel-wrapper {
+      border: 1px solid map-get($ucx-colors, deep-orange);
+      height: 401.5px;
+      width: 300px;
+      .product-view {
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
         position: relative;
-        height: calc(100vh - 250px);
 
-        .image-container{
-
-          img{
-            object-fit: contain;
-            max-height: calc(100vh - 250px);
-          }
-        }
-
-        .review-panel{
-          overflow-y:auto;
-          height: 100%;
-          width: 100%;
-          max-height: calc(100vh - 250px);
-          color: map-get($ucx-colors,light-gray);
-          background-color: map-get($ucx-colors,dark-gray);
-          padding:20px 40px;
-
-          .main-rating{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px map-get($ucx-colors,deep-orange) solid;
-
-            h3{
-              font-family: $titleFont;
-              font-size: 1.4rem;
-              color: map-get($ucx-colors,deep-orange);
-            }
-
-            i{
-              color: map-get($ucx-colors,yellow);
-            }
-
-            span{
-              padding-top: 15px;
-              small{
-                color: map-get($ucx-colors,light-orange);
-              }
-              i{
-                color: map-get($ucx-colors,light-gray);
-              }
-            }
-          }
-
-          .customer-rating{
-            .content{
-              padding-top: 20px;
-              text-align: left;
-              .customer-rating-header{
-                .customer-name{
-                  color: map-get($ucx-colors,light-orange);
-                  font-size: 1.1em;
-                }
-
-                i{
-                  color: map-get($ucx-colors,yellow);
-                }
-              }
-              .rating-content{
-                padding-top: 10px;
-              }
-            }
+        .image-container {
+          img {
+            height: 400px;
+            width: 300px;
           }
         }
       }
 
-      .panel-actions{
-        border-top: 1px solid map-get($ucx-colors,deep-orange);
-        background-color: map-get($ucx-colors,darkest-gray);
+      .panel-actions {
+        border-top: 1px solid map-get($ucx-colors, deep-orange);
+        background-color: map-get($ucx-colors, darkest-gray);
 
-        padding:5px 5px;
+        padding: 5px 5px;
         display: flex;
         justify-content: space-between;
 
-        a{
-          font-size:20px;
+        a {
+          font-size: 20px;
           color: map-get($ucx-colors, light-orange);
           margin-left: 10px;
 
-          &:active, :hover{
+          &:active, :hover {
             color: map-get($ucx-colors, deep-orange);
           }
         }
 
-        .left-actions{
+        .left-actions {
           display: flex;
         }
 
-        .left-actions .fa-star-o{
-          color:map-get($ucx-colors,yellow);
+        .left-actions {
+          .fa-star-o {
+            color: map-get($ucx-colors, yellow);
+          }
+
+          .image-icon {
+            color: map-get($ucx-colors, yellow);
+          }
         }
 
-        .right-actions{
+        .right-actions {
           display: flex;
           justify-content: flex-end;
 
-          i{
-            font-size:25px;
-            color: map-get($ucx-colors,light-orange);
+          i {
+            font-size: 25px;
+            color: map-get($ucx-colors, light-orange);
 
-            &:hover{
-              color: map-get($ucx-colors,red-orange);
+            &:hover {
+              color: map-get($ucx-colors, red-orange);
             }
           }
         }
@@ -138,15 +92,16 @@
     }
   }
 
-  .product-info-panel{
-    height: calc(100vh - 180px);
-    max-height: calc(100vh - 130px);
+  .product-info-panel {
+    max-height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
     position: relative;
-    background: map-get($ucx-colors, dark-gray);;
+    background-color: transparent;
+    @include mobile{
+      max-height: 100%;
+    }
 
-    .inner-panel{
-
-      overflow-y:auto;
+    .inner-panel {
       height: 100%;
 
       .product-info-header {
@@ -154,39 +109,79 @@
         justify-content: center;
         align-items: center;
         padding: 20px 0;
-        border-bottom: 2px solid map-get($ucx-colors,border-color);
+        border-bottom: 2px solid map-get($ucx-colors, border-color);
 
-        h2{
+        h2 {
           font-family: $titleFont;
           font-size: 1.3rem;
           text-transform: uppercase;
           font-weight: 500;
           padding: 0 20px;
-          color: map-get($ucx-colors,orange-yellow);
+          color: map-get($ucx-colors, orange-yellow);
         }
       }
 
       .product-info-body {
         padding: 30px 50px;
 
-        .product-name-instock{
+        @include mobile {
+          padding: 30px 0;
+        }
 
-          h3{
+        .product-name-instock {
+          display: flex;
+          flex-direction: row;
+
+          .right-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-left: 5px;
+            i {
+              font-size: 30px;
+              color: map-get($ucx-colors, light-orange);
+
+              &:hover {
+                color: map-get($ucx-colors, red-orange);
+              }
+            }
+          }
+
+          h3 {
             font-family: $titleFont;
             text-transform: uppercase;
             font-size: 2.2rem;
             font-weight: 500;
-            color: map-get($ucx-colors,deep-orange);
+            color: map-get($ucx-colors, deep-orange);
           }
 
-          h5{
-            color: map-get($ucx-colors,light-orange);
+          h5 {
+            color: map-get($ucx-colors, light-orange);
           }
         }
 
-        .product-description {
-          padding: 20px 0;
-          color: #999;
+        .product-description-container{
+          height: 100%;
+          max-height: 250px;
+          border-color: map-get($ucx-colors, deep-orange);
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            display: none;  // Safari and Chrome
+          }
+
+
+          @include mobile {
+            height: 100%;
+            overflow-y: auto;
+          }
+
+          .product-description {
+            padding: 20px 0;
+            color: #999;
+
+            @include mobile {
+              padding: 0 0;
+            }
+          }
         }
 
         .product-controls {
@@ -195,7 +190,7 @@
           align-items: baseline;
           justify-content: center;
           font-family: $titleFont;
-          color: map-get($ucx-colors,light-gray);
+          color: map-get($ucx-colors, light-gray);
 
           .product-price {
             position: relative;
@@ -209,7 +204,7 @@
             .value {
               font-size: 1.6rem;
               font-weight: 700;
-              color: map-get($ucx-colors,deep-orange);
+              color: map-get($ucx-colors, deep-orange);
             }
           }
 
@@ -221,17 +216,18 @@
               margin: 5px 0;
               text-align: center;
             }
+
             .input {
               text-align: center;
               background-color: transparent;
               border-color: map-get($ucx-colors, deep-orange);
-              color: map-get($ucx-colors,light-gray);
+              color: map-get($ucx-colors, light-gray);
               padding: 20px 0;
             }
           }
 
           .add-to-cart {
-            .heading{
+            .heading {
               margin: 5px 0;
             }
 
@@ -247,7 +243,7 @@
               outline: none;
               border-color: map-get($ucx-colors, deep-orange);
               background-color: transparent;
-              color: map-get($ucx-colors,light-gray);
+              color: map-get($ucx-colors, light-gray);
               transition: all 0.5s;
               padding: 20px 40px;
               border-radius: 500px;
@@ -262,3 +258,6 @@
     }
   }
 }
+
+
+

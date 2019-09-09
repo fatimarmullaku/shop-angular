@@ -28,9 +28,14 @@
     width: 100%;
   }
 }
-.buy-now{
-  background-color: black;
-  color: orange;
-  border: none;
-  border-radius: 6px;
+
+.buy-now-div{
+  padding-right: 25px;
+  .buy-now{
+    background-color: black;
+    color: orange;
+    border: none;
+    border-radius: 6px;
+  }
 }
+

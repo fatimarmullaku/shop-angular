@@ -1,27 +1,25 @@
 <a [routerLink]="['./products/', item.id]" class="my-cart">
   <div class="image">
-<!--    <img [src]="'http://localhost:8080/api' + item.fileName" alt="">-->
+    <!--    <img [src]="'http://localhost:8080/api' + item.fileName" alt="">-->
     <img [src]="productUrl + item.fileName" alt="">
   </div>
 </a>
-  <div style="border: 1px solid orange;padding-bottom: 6px;background: orange">
-    <div class="game-info-home">
-      <h4>{{ item.name }}</h4>
-      <h4>Price: {{ item.unitPrice }} $</h4>
+<div style="border: 1px solid orange;padding-bottom: 6px;background: orange">
+  <div class="game-info-home">
+    <h4>{{ item.name }}</h4>
+    <h4>Price: {{ item.unitPrice }} $</h4>
+  </div>
+  <div class="columns product-options">
+    <div (click)="addToCart($event)" class="column is-2-desktop is-2-mobile has-text-left-mobile">
+      <i class="fab fa-opencart"></i>
     </div>
-    <div class="columns product-options">
-      <div class="column is-2-desktop" (click)="addToCart($event)">
-        <i class="fab fa-opencart"></i>
-      </div>
-      <div class="column is-2-desktop">
-        <i *ngIf="!item.isWishlisted" class='far fa-heart' (click)="addToWishlist()"></i>
-        <i *ngIf="item.isWishlisted" class='fas fa-heart' (click)="removeFromWishlist()"></i>
-      </div>
-      <div class="column is-3-desktop">
-      </div>
-      <div class="column is-5-desktop">
-        <a class="button buy-now" [routerLink] = "['cart']" (click)="addToCart($event)">Buy Now</a>
-      </div>
+    <div class="column is-2-desktop is-2-mobile has-text-left-mobile">
+      <i (click)="addToWishlist()" *ngIf="!item.isWishlisted" class='far fa-heart'></i>
+      <i (click)="removeFromWishlist()" *ngIf="item.isWishlisted" class='fas fa-heart'></i>
+    </div>
+    <div class="column is-8-desktop has-text-right-desktop is-8-mobile has-text-right-mobile buy-now-div">
+      <a (click)="addToCart($event)" [routerLink]="['cart']" class="button buy-now">Buy Now</a>
     </div>
   </div>
+</div>
 

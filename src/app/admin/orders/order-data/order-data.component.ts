@@ -1,46 +1,62 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {OrdersService} from '../orders.service';
 import {PaginationService} from '../../../shared/pagination/pagination.service';
-import {OrderModel} from '../orders.model';
+import {OrderHistoryPagedModel, OrderModel} from '../orders.model';
 
 @Component({
   selector: 'app-order-data',
   templateUrl: './order-data.component.html',
-  styleUrls: ['./order-data.component.scss']
+  styleUrls: ['./order-data.component.scss'],
+  providers: [PaginationService]
 })
 export class OrderDataComponent implements OnInit {
-  searchOrder: string;
+  searchOrder = '';
   searchBy = 'customerName';
-
-  data = [];
+  searchTypeNumber = false;
+  data: OrderModel[];
   currentPage: number;
-  pageSize = 2;
-  pageSizeOnFilter = 10;
+  pageSize = 3;
 
   constructor(private ordersService: OrdersService,
-              private paginationService: PaginationService) { }
+              private paginationService: PaginationService) {
+  }
 
   ngOnInit() {
     this.paginationService.changeTotalPages(9);
     this.paginationService.currentPage.subscribe(currentPage => {
-      this.getOrderHistoryPaged(this.pageSize, currentPage - 1);
       this.currentPage = currentPage;
+      this.searchWithCustomParams();
     });
   }
 
-  getOrderHistoryPaged(size: number, page: number) {
-    this.ordersService.paged(size, page).subscribe((orders: OrderModel[]) => {
-      this.data = orders;
-    });
+  changeSelectedType() {
+    if (this.searchBy === 'customerName') {
+      this.searchTypeNumber = false;
+    } else {
+      this.searchTypeNumber = true;
+
+    }
   }
 
   parseDate(d: string) {
     return new Date(d);
   }
+
   searchWithCustomParams() {
-    this.ordersService.pagedWithCustomParams(this.pageSizeOnFilter, this.searchOrder, this.searchBy).subscribe((orders: OrderModel[]) => {
-      this.data = orders;
-    });
+    this.ordersService.pagedWithCustomParams(this.pageSize, this.currentPage - 1, this.searchOrder, this.searchBy)
+      .subscribe((response: OrderHistoryPagedModel[]) => {
+        if (response.length >= 1) {
+          this.data = response[0].filteredOrdersPage;
+          this.paginationService.changeTotalPages(Math.ceil(response[0].totalFilteredOrders / this.pageSize));
+        } else {
+          this.paginationService.changeTotalPages(0);
+          this.data = [];
+        }
+      });
+  }
+
+  resetPageAndMakeRequest() {
+    this.paginationService.changePage(1);
   }
 
 }
