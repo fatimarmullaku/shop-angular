@@ -18,13 +18,12 @@ export class ShopAuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean |
     UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const accessToken: [] = this.baseStorage.getStorageOf(LocalStorageKey.ACCESS_TOKEN, true);
-    console.log('TOKEN FROM AUTHGUARD', accessToken);
     const temp = false;
     if (accessToken && accessToken.length > 0) {
       return true;
     }
     this.router.navigateByUrl('/');
-    alert('YOURE NOT LOGGED IN');
+    alert('YOU\'RE NOT LOGGED IN');
     return false;
   }
 }
