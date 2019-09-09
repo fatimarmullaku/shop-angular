@@ -23,7 +23,7 @@
         <div class="shipping-total">
           <i class="fa fa-credit-card fa-3x credit-card-iconi"></i>
           <h3>ORDER TOTAL</h3>
-          <h2 class="title" id="title">{{generateTotalPrice().toFixed(2)}}</h2>
+          <h2 class="title" id="title">$ {{generateTotalPrice().toFixed(2)}}</h2>
           <h3>{{getProductsFromCart().length}} {{getProductsFromCart().length > 1 ? 'products are ordered': 'product is ordered'}}</h3>
         </div>
       </div>
@@ -45,7 +45,7 @@
           <div class="column is-3-desktop is-4-mobile">
             <div class="order-price">
               <span><h3>Unit Price</h3></span>
-              <span><h5 *ngIf="item.product.unitPrice != null">{{item.product.unitPrice}}</h5></span>
+              <span><h5 *ngIf="item.product.unitPrice != null">$ {{item.product.unitPrice}}</h5></span>
             </div>
           </div>
         </div>

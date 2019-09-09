@@ -39,15 +39,6 @@
     padding: 0 0;
     margin: 40px 10px;
   }
-  /*
-  #img-paypal {
-    //background-color: tra;
-  }
-
-  #img-credit-card {
-    //background-color: tra;
-  }
-  */
 
   img {
     width: 230px;
@@ -56,7 +47,6 @@
   }
 
   .payment-method-link {
-    //background: map_get($ucx-colors, dark-gray);
     background: transparent;
     border: 2px solid map_get($ucx-colors, deep-orange);
     display: block;
@@ -66,7 +56,7 @@
     font-size: 18px;
 
     &:hover #paypal-icon {
-      transform: scale(1.2) !important;
+      transform: scale(1.05) !important;
       transition: 250ms !important;
     }
 
@@ -81,7 +71,7 @@
     }
 
     &:hover #creditcard-iconi {
-      transform: scale(1.2) !important;
+      transform: scale(1.05) !important;
       transition: 250ms !important;
     }
 
@@ -94,16 +84,6 @@
         font-size: 135px;
       }
     }
-
-    //.paypal-icon{
-    //  color: white;
-    //  font-size: 230px;
-    //  &:hover{
-    //    transform: scale(1.2);
-    //    transition: 450ms;
-    //  }
-    //}
-
 
     img {
       width: 230px;
