@@ -4,7 +4,7 @@ import {BrandsService} from '../../../shared/services/brands.service';
 import 'hammerjs';
 import {ProductsService} from '../products.service';
 import {BrandsModel} from '../../../shared/models/brands.model';
-import {Options, LabelType} from 'ng5-slider';
+import {LabelType, Options} from 'ng5-slider';
 
 @Component({
   selector: 'app-products-sidebar',
@@ -12,18 +12,16 @@ import {Options, LabelType} from 'ng5-slider';
   styleUrls: ['./products-sidebar.component.scss']
 })
 export class ProductsSidebarComponent implements OnInit {
-  productSort = ['Alphabetical A to Z', 'Alphabetical from Z to A', 'Most popular', 'Release date'];
-  showFiller = false;
-  selected: boolean;
   selectedPlatformm: any = '';
+  maxx: number;
   selectedBrandd: any = '';
   platformsList: PlatformModel[];
   brandsList: any;
   minValue = 0;
-  maxValue: number = 500;
+  maxValue: number;
   options: Options = {
     floor: 0,
-    ceil: 500,
+    ceil: 100,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
@@ -56,13 +54,10 @@ export class ProductsSidebarComponent implements OnInit {
       this.brandsList = data;
     });
 
-    this.productsService.getMinAndMaxPrices().subscribe((data: any) => {
-      this.minValue = data.min;
-      this.maxValue = data.max;
-    });
 
-    this.productsService.getHighestPrice().subscribe((data: number) => {
-      this.maxValue = data;
+    this.productsService.getHighestPrice().subscribe((res: number) => {
+      this.maxValue = res;
+      console.log('from max', this.maxValue)
     });
 
 
