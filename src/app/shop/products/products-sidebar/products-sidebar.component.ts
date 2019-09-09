@@ -12,8 +12,6 @@ import {LabelType, Options} from 'ng5-slider';
   styleUrls: ['./products-sidebar.component.scss']
 })
 export class ProductsSidebarComponent implements OnInit {
-  selectedPlatformm: any = '';
-  maxx: number;
   selectedBrandd =  [];
   platformsList: PlatformModel[];
   brandsList: any;
@@ -54,15 +52,10 @@ export class ProductsSidebarComponent implements OnInit {
       this.brandsList = data;
     });
 
-
     this.productsService.getHighestPrice().subscribe((res: number) => {
       this.maxValue = res;
-      console.log('from max', this.maxValue)
     });
-
-
   }
-
 
   getProductsByPrice(event: any) {
     this.prices.emit({
@@ -74,7 +67,6 @@ export class ProductsSidebarComponent implements OnInit {
   getProducts() {
 
     const params = {
-      platformId: this.selectedPlatformm,
       brandId: this.selectedBrandd,
       min: this.minValue,
       max: this.maxValue
