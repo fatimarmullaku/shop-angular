@@ -94,6 +94,7 @@
 
   .product-info-panel {
     max-height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
     position: relative;
     background-color: transparent;
     @include mobile{
@@ -128,6 +129,22 @@
         }
 
         .product-name-instock {
+          display: flex;
+          flex-direction: row;
+
+          .right-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-left: 5px;
+            i {
+              font-size: 30px;
+              color: map-get($ucx-colors, light-orange);
+
+              &:hover {
+                color: map-get($ucx-colors, red-orange);
+              }
+            }
+          }
 
           h3 {
             font-family: $titleFont;
@@ -144,7 +161,7 @@
 
         .product-description-container{
           height: 100%;
-          max-height: 200px;
+          max-height: 250px;
           border-color: map-get($ucx-colors, deep-orange);
           overflow-y: scroll;
           &::-webkit-scrollbar {

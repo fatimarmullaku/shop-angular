@@ -14,10 +14,14 @@
           </div>
           <div class="product-info-body">
             <div class="product-name-instock">
-              <h3 class="product-name">{{ product.name }}</h3>
+              <h3 class="product-name">{{ product.name }} </h3>
+              <div class="right-actions" (click)="toggleWishlist()">
+                <i *ngIf="!isWishlisted()" class='far fa-heart'></i>
+                <i *ngIf="isWishlisted()" class='fas fa-heart'></i>
+              </div>
             </div>
             <div class="product-description-container">
-              <p class="product-description">{{product.productDescription}} Mortal Kombat 11 (MK11) is a fighting video game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment. Running on a heavily modified version of Unreal Engine 3, it is the eleventh main installment in the Mortal Kombat series and a sequel to 2015's Mortal Kombat X. Mortal Kombat 11 (MK11) is a fighting video game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment. Running on a heavily modified version of Unreal Engine 3, it is the eleventh main installment in the Mortal Kombat series and a sequel to 2015's Mortal Kombat X.Mortal Kombat 11 (MK11) is a fighting video game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment. Running on a heavily modified version of Unreal Engine 3, it is the eleventh main installment in the Mortal Kombat series and a sequel to 2015's Mortal Kombat X.Mortal Kombat 11 (MK11) is a fighting video game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment. Running on a heavily modified version of Unreal Engine 3, it is the eleventh main installment in the Mortal Kombat series and a sequel to 2015's Mortal Kombat X.Mortal Kombat 11 (MK11) is a fighting video game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment. Running on a heavily modified version of Unreal Engine 3, it is the eleventh main installment in the Mortal Kombat series and a sequel to 2015's Mortal Kombat X.</p>
+              <p class="product-description">{{product.productDescription}}</p>
             </div>
             <div class="product-controls">
               <div class="product-price">
