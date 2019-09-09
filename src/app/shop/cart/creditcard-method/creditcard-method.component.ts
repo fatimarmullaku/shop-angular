@@ -61,7 +61,11 @@ export class CreditcardMethodComponent implements OnInit {
   }
 
   buy() {
+
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID,true);
+
     const params = new FormData();
+    params.append('customerId',customerId);
     params.append('amount',this.generateTotalPrice().toFixed(2));
     this.httpClient.post<any>(ENDPOINTS.stripe.charge, params).subscribe(result => {
         console.log(result);
