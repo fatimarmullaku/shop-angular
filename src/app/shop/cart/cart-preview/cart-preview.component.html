@@ -6,46 +6,48 @@
       <hr>
     </div>
     <br>
-    <div class="container main-container-checkout" *ngIf="cartProducts && cartProducts.length > 0; else emptyCart">
-<!--      <div class="" >-->
-        <div class="columns is-mobile" *ngFor="let item of cartProducts">
-          <div class="column cart-items is-11">
-            <div class="columns is-vcentered">
-              <div class="column is-2">
-                <div class="product-img">
-                  <img [src]="item.product.fileName.startsWith('/asset')? item.product.fileName : productUrl + item.product.fileName" alt="">
-                </div>
-              </div>
-              <div class="column is-3 product-info">
-                <h1>{{ item.product.name }}</h1>
-              </div>
-              <div class="column is-2 product-info">
-
-              </div>
-              <div class="column is-1">
-                <br>
-                <h2>{{ item.qty }}</h2>
-                <div class="buttons">
-                  <span class="button is-small qty" (click)="addQty(item)"><strong>+</strong></span>
-                  <span class="button is-small qty" (click)="subQty(item)"><strong>-</strong></span>
-                </div>
-              </div>
-              <div class="column is-2 product-info">
-                <label>Price</label>
-                <h1>{{ item.product.unitPrice}} $ </h1>
-              </div>
-              <div class="column is-2 product-info">
-                <label>Total price</label>
-                <h1>{{ (item.product.unitPrice * item.qty).toFixed(2)}} $ </h1>
+    <div *ngIf="cartProducts && cartProducts.length > 0; else emptyCart" class="container main-container-checkout">
+      <!--      <div class="" >-->
+      <div *ngFor="let item of cartProducts" class="columns is-mobile product-item">
+        <div class="column cart-items is-11-desktop is-12-mobile">
+          <div class="columns is-vcentered">
+            <div class="column is-2">
+              <div class="product-img">
+                <img
+                  [src]="item.product.fileName.startsWith('/asset')? item.product.fileName : productUrl + item.product.fileName"
+                  alt="">
               </div>
             </div>
-          </div>
-          <div class="column is-1 cancels">
-            <div class="cancel-item">
-              <a (click)="deleteFromCart(item)" class="delete is-large is-center"></a>
+            <div class="column is-3 product-info">
+              <h1>{{ item.product.name }}</h1>
+            </div>
+            <div class="column is-2 product-info">
+
+            </div>
+              <div class="column is-1 quantity-div">
+              <br>
+              <h2 class="product-quantity">{{ item.qty }}</h2>
+              <div class="buttons inc-desc-buttons">
+                <span (click)="addQty(item)" class="button is-small qty"><strong>+</strong></span>
+                <span (click)="subQty(item)" class="button is-small qty"><strong>-</strong></span>
+              </div>
+            </div>
+            <div class="column is-2 product-info">
+              <label>Price</label>
+              <h1>{{ item.product.unitPrice}} $ </h1>
+            </div>
+            <div class="column is-2 product-info">
+              <label>Total price</label>
+              <h1>{{ (item.product.unitPrice * item.qty).toFixed(2)}} $ </h1>
             </div>
           </div>
         </div>
+        <div class="column is-1-desktop is-12-mobile cancels">
+          <div class="cancel-item">
+            <a (click)="deleteFromCart(item)" class="delete is-large is-center"></a>
+          </div>
+        </div>
+      </div>
       <div class="columns cart-items-footer">
         <div class="column is-4 left-link">
           <a routerLink="/">Continue Shopping</a>
@@ -63,35 +65,37 @@
         </div>
       </div>
 
-        <!--       buttons     -->
+      <!--       buttons     -->
 
-<!--      </div>-->
-                                              <!--  Login/Register Modal    -->
-      <div class="modal" [ngClass]="{'is-active':isModalActive}">
+      <!--      </div>-->
+      <!--  Login/Register Modal    -->
+      <div [ngClass]="{'is-active':isModalActive}" class="modal">
         <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">
             <p class="modal-card-title">Sign in to UCXGaming</p>
-            <button class="delete" aria-label="close" (click)="removeActiveClass()"></button>
+            <button (click)="removeActiveClass()" aria-label="close" class="delete"></button>
           </header>
           <section class="modal-card-body">
             <div class="auth-content login-screen">
               <div class="auth-form-header">
-                <img src="assets/img/ucx-white-logo.svg" alt="">
+                <img alt="" src="assets/img/ucx-white-logo.svg">
                 <h4>Sign in to UCXMarket</h4>
                 <span>Enter your email and password below</span>
               </div>
 
-              <form [formGroup]="loginForm" (submit)="onLoginFormSubmit()">
+              <form (submit)="onLoginFormSubmit()" [formGroup]="loginForm">
                 <div class="field">
                   <div class="control">
-                    <input type="text" [formControlName]="'email'" class="input auth-input" placeholder="Username or Email">
+                    <input [formControlName]="'email'" class="input auth-input" placeholder="Username or Email"
+                           type="text">
                   </div>
                 </div>
 
                 <div class="field">
                   <div class="control">
-                    <input type="password" [formControlName]="'password'" class="input auth-input" placeholder="Password">
+                    <input [formControlName]="'password'" class="input auth-input" placeholder="Password"
+                           type="password">
                   </div>
                 </div>
 
@@ -106,14 +110,15 @@
                 </div>
 
                 <div class="register-account-link">
-                  <p class="paragraph">Don't have an account yet?<a [routerLink]="['/auth', 'register']" (click)="createDummyKey()">Sign up</a></p>
+                  <p class="paragraph">Don't have an account yet?<a (click)="createDummyKey()"
+                                                                    [routerLink]="['/auth', 'register']">Sign up</a></p>
                 </div>
               </div>
             </div>
           </section>
         </div>
       </div>
-                                      <!--        End of Login/Register Modal            -->
+      <!--        End of Login/Register Modal            -->
     </div>
   </div>
 </div>
@@ -122,6 +127,6 @@
   <div class="emptyWishlist">
     <h1>Your cart is empty!</h1>
     <h3>Explore more and add some items</h3>
-    <button routerLink="/" class="startShopping">START SHOPPING</button>
+    <button class="startShopping" routerLink="/">START SHOPPING</button>
   </div>
 </ng-template>

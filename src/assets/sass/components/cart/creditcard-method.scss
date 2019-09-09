@@ -6,3 +6,15 @@
   font-size: 150px;
   color: ghostwhite;
 }
+
+#checkout-button {
+  &:hover {
+    color: #000;
+  }
+}
+
+#goback-button {
+  &:hover {
+    color: #000;
+  }
+}
