@@ -14,7 +14,7 @@ import {LabelType, Options} from 'ng5-slider';
 export class ProductsSidebarComponent implements OnInit {
   selectedPlatformm: any = '';
   maxx: number;
-  selectedBrandd: any = '';
+  selectedBrandd =  [];
   platformsList: PlatformModel[];
   brandsList: any;
   minValue = 0;
@@ -72,6 +72,7 @@ export class ProductsSidebarComponent implements OnInit {
   }
 
   getProducts() {
+
     const params = {
       platformId: this.selectedPlatformm,
       brandId: this.selectedBrandd,
@@ -83,7 +84,13 @@ export class ProductsSidebarComponent implements OnInit {
 
 
   selectedBrand(option: any) {
-    this.selectedBrandd = option;
+    const exist = this.selectedBrandd.find(current => current === +option);
+    if (!exist) {
+      this.selectedBrandd.push(option);
+    } else {
+      this.selectedBrandd = this.selectedBrandd.filter(current => current !== +option);
+    }
+
     this.getProducts();
   }
 
