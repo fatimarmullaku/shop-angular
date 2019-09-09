@@ -7,6 +7,8 @@ import {BaseStorageService} from '../../shared/services/base-storage.service';
 import {RestService} from '../../shared/services/rest.service';
 import {ProductsService} from '../products/products.service';
 import {StatsService} from '../orders/stats/stats.service';
+import {OrdersService} from '../orders/orders.service';
+import {OrderHistoryPagedModel} from '../orders/orders.model';
 
 @Component({
   selector: 'app-home-dashboard',
@@ -15,13 +17,14 @@ import {StatsService} from '../orders/stats/stats.service';
 })
 export class HomeComponent implements OnInit {
   username: string;
-  productCount: number;
+  orderCount: number;
   topProduct: string;
   constructor(private categoriesService: PlatformsService,
               private baseStorageService: BaseStorageService,
               private restService: RestService,
               private statsService: StatsService,
-              private productService: ProductsService) { }
+              private productService: ProductsService,
+              private ordersService: OrdersService) { }
 
   ngOnInit() {
     this.fetchUser();
@@ -39,13 +42,23 @@ export class HomeComponent implements OnInit {
       });
   }
   loadAndCountProducts() {
-    this.productService.getAllProducts().subscribe((products: any) => {
+/*    this.productService.getAllProducts().subscribe((products: any) => {
       if (products) {
         this.productCount = products.length;
       } else {
         this.productCount = 0;
       }
-    });
+    });*/
+
+
+      this.ordersService.pagedWithCustomParams(1,1, '', 'customerName')
+        .subscribe((response: OrderHistoryPagedModel[]) => {
+          if (response.length >= 1) {
+            this.orderCount = response[0].totalFilteredOrders;
+          } else {
+            this.orderCount = 0;
+          }
+        });
     this.statsService.getStats().subscribe((product: any) => {
       const prod = product;
       if (prod){
