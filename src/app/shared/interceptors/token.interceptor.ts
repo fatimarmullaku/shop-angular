@@ -7,7 +7,7 @@ import {RestService} from '../services/rest.service';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private tokenService: TokenService, private restService: RestService) {
+  constructor(private tokenService: TokenService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
