@@ -1,6 +1,6 @@
 <div class="container flex-container">
   <div class="form-group fill-space">
-    <input type="text" class="form-control" placeholder="Search order..." [(ngModel)]="searchOrder" (keyup)="searchWithCustomParams()">
+    <input type="text" class="form-control" placeholder="Search order..." [(ngModel)]="searchOrder" (keyup)="resetPageAndMakeRequest()" >
   </div>
   <div class="form-group">
     <select name="" class="form-control" [(ngModel)]="searchBy">
@@ -12,15 +12,14 @@
 
 
 
-<div class="panel-body columns is-multiline overflow-auto">
+<div class="panel-body columns is-multiline overflow-hidden">
   <div class="row column columns is-10-desktop is-offset-1-desktop" *ngFor="let d of data">
 
     <div class="columns column is-1-desktop is-vcentered"><img src="assets/img/My-Cart/tick.png" class="media-object img-thumbnail"></div>
     <div class="column is-11">
       <div class="columns row">
         <div class="column is-12">
-          <span><strong>Order Id: {{d.orderId}}</strong></span><br>
-          <span class=""><strong>Customer ID: {{d.customerId}}</strong></span><br>
+          <span><strong>Order Number: {{d.orderId}}</strong></span><br>
           <span class=""><strong>Total Amount:  {{d.total}}$</strong></span><br>
         </div>
         <div class="column is-12 alert-dark">
