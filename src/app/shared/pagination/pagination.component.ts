@@ -20,21 +20,22 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.paginationService.currentPage.subscribe(currentPage => this.currentPage = currentPage);
+    this.paginationService.currentPage.subscribe(currentPage => {this.currentPage = currentPage;
+                                                                 this.pageStates(); });
     this.paginationService.totalPages.subscribe(totalPages => this.totalPages = totalPages);
   }
 
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.paginationService.changePage(page);
-        // this.router.navigate(
-        //   [],
-        //   {
-        //     relativeTo: this.activatedRoute,
-        //     queryParams: {size: this.pageSize, page: this.currentPage}
-        //   });
       console.log(this.currentPage);
     }
+    this.pageStates();
+
+
+  }
+
+  private pageStates() {
     if (this.currentPage === 1) {
       this.left = 1;
       this.mid = 2;
@@ -48,7 +49,5 @@ export class PaginationComponent implements OnInit {
       this.mid = this.currentPage;
       this.right = this.currentPage + 1;
     }
-
-
   }
 }
