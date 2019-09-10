@@ -73,7 +73,9 @@ export class ProductsSidebarComponent implements OnInit {
     this.prices.emit({
       brandId: this.selectedBrandd,
       min: event.value,
-      max: event.highValue
+      max: event.highValue,
+      page: this.currentPageNumber,
+      size: this.size
     });
   }
 

@@ -28,7 +28,7 @@ export class ProductsService {
 
   getProductByPlatformAndBrand(params: any) {
     console.log('from service', params);
-    return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params});
+    return this.http.get(this.rootUrl + 'filter', {params});
   }
 
   getMinAndMaxPrices() {
@@ -36,7 +36,7 @@ export class ProductsService {
   }
 
   getProductBySelectedPrice(event: any) {
-    return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params: event});
+    return this.http.get(this.rootUrl + 'filter', {params: event});
   }
 
   getHighestPrice() {
