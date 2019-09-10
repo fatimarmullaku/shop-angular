@@ -15,7 +15,6 @@ export class ProductsService {
 
   getAllProducts() {
     return this.http.get(this.rootUrl + 'allActive');
-
   }
 
   getProductId(name) {
@@ -27,7 +26,6 @@ export class ProductsService {
   }
 
   getProductByPlatformAndBrand(params: any) {
-    console.log('from service', params);
     return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params});
   }
 
@@ -52,7 +50,6 @@ export class ProductsService {
   }
 
   updateProduct(data, id) {
-    console.log(data);
     return this.http.put(this.rootUrl + id, data);
   }
 

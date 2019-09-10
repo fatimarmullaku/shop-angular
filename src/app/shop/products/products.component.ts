@@ -76,12 +76,6 @@ export class ProductsComponent implements OnInit {
     this.userService.addPhonesAndAddresses(this.informationForm.getRawValue()).subscribe((res) => {
       const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
       const dummyKey = this.baseStorage.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
-      // if ((cartStorage && cartStorage.length > 0) && dummyKey) {
-      //   this.routerLink.navigateByUrl('/cart/shipping');
-      // } else {
-      //   this.routerLink.navigateByUrl('/');
-      // }
-
       this.removeActiveClass();
     }, (error) => {
       console.error(error);
@@ -91,12 +85,6 @@ export class ProductsComponent implements OnInit {
   skipAdditionalInformation() {
     const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
     const dummyKey = this.baseStorage.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
-    // if ((cartStorage && cartStorage.length > 0) && dummyKey) {
-    //   this.routerLink.navigateByUrl('/cart/shipping');
-    // } else {
-    //   this.routerLink.navigateByUrl('/');
-    // }
-
     this.removeActiveClass();
   }
 
