@@ -12,14 +12,14 @@ import {LabelType, Options} from 'ng5-slider';
   styleUrls: ['./products-sidebar.component.scss']
 })
 export class ProductsSidebarComponent implements OnInit {
-  selectedPlatformm: any = '';
-  maxx: number;
-  selectedBrandd: any = '';
+  selectedBrandd =  [];
   platformsList: PlatformModel[];
   brandsList: any;
   minValue = 0;
-  maxValue: number;
+  maxValue: number = 100;
+  ceilValue: number;
   options: Options = {
+    showOuterSelectionBars: true,
     floor: 0,
     ceil: 100,
     translate: (value: number, label: LabelType): string => {
@@ -46,6 +46,10 @@ export class ProductsSidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productsService.getHighestPrice().subscribe((res: number) => {
+      this.maxValue = res;
+    });
+
     this.platformsService.getAllPlatforms().subscribe((data: PlatformModel[]) => {
       this.platformsList = data;
     });
@@ -55,14 +59,7 @@ export class ProductsSidebarComponent implements OnInit {
     });
 
 
-    this.productsService.getHighestPrice().subscribe((res: number) => {
-      this.maxValue = res;
-      console.log('from max', this.maxValue)
-    });
-
-
   }
-
 
   getProductsByPrice(event: any) {
     this.prices.emit({
@@ -73,7 +70,6 @@ export class ProductsSidebarComponent implements OnInit {
 
   getProducts() {
     const params = {
-      platformId: this.selectedPlatformm,
       brandId: this.selectedBrandd,
       min: this.minValue,
       max: this.maxValue
@@ -83,7 +79,13 @@ export class ProductsSidebarComponent implements OnInit {
 
 
   selectedBrand(option: any) {
-    this.selectedBrandd = option;
+    const exist = this.selectedBrandd.find(current => current === +option);
+    if (!exist) {
+      this.selectedBrandd.push(option);
+    } else {
+      this.selectedBrandd = this.selectedBrandd.filter(current => current !== +option);
+    }
+
     this.getProducts();
   }
 

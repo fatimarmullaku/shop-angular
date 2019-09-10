@@ -1,5 +1,5 @@
-<div class="order-history-wrapper">
-  <div class="panel panel-default panel-order">
+<div class="order-history-wrapper" *ngIf="data && data.length > 0; else emptyWishlist">
+  <div class="panel panel-default panel-order" >
 
 
     <div class="">
@@ -40,3 +40,12 @@
 
   </div>
 </div>
+
+<ng-template #emptyWishlist>
+  <div class="emptyWishlist">
+    <h1>Your have no orders!</h1>
+    <h3>Explore more and add some items</h3>
+    <button routerLink="/" class="startShopping">START SHOPPING</button>
+  </div>
+</ng-template>
+

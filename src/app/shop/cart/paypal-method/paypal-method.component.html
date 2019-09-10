@@ -18,42 +18,50 @@
         <div class="column is-6-desktop is-12-mobile shipping-parent">
           <div class="cash-total has-text-centered">
             <h3>Total Price</h3>
-            <h1 class="title" id="title">$ {{generateTotalPrice().toFixed(2)}}</h1>
+<!--            <h1 class="title" id="title">$ {{generateTotalPrice().toFixed(2)}}</h1>-->
+            <h1 class="title" id="title">$ {{generateTotalPrice()}}</h1>
           </div>
         </div>
 
         <div class="column is-6-desktop is-12-mobile has-text-centered">
-          <div class="righ-container">
+          <form [formGroup]="paypalForm" class="righ-container" (ngSubmit)="buy()">
             <div class="icon-container">
               <i class="fab fa-cc-paypal fa-8x paypal-icon" id="paypal-icon"></i>
             </div>
 
             <div class="profile-inputs">
-              <div class="control">
+              <div class="control form-group">
                 <label class="checkout-label"></label>
-                <input class="input" onblur="this.placeholder='Enter your Paypal email'" onclick="this.placeholder=''"
-                       placeholder="Enter your Paypal email"
-                       type="text">
+                <input class="input form-control" formControlName="paypalEmail" onblur="this.placeholder='Enter your Paypal email'" onclick="this.placeholder=''"
+                       placeholder="Enter your PayPal email"
+                       type="text" [ngClass]="{ 'is-invalid': submitted && f.paypalEmail.errors }">
+                <div *ngIf="submitted && f.paypalEmail.errors" class="invalid-feedback">
+                  <div *ngIf="f.paypalEmail.errors.required">PayPal email is required</div>
+                  <div *ngIf="f.paypalEmail.errors.email">Please write a valid email address</div>
+                </div>
               </div>
-              <div class="control">
+              <div class="control form-group">
                 <label class="checkout-label"></label>
-                <input class="input" onblur="this.placeholder='Enter your Paypal password'"
+                <input class="input form-control" formControlName="paypalPassword" onblur="this.placeholder='Enter your Paypal password'"
                        onclick="this.placeholder=''"
-                       placeholder="Enter your Paypal password" type="password">
+                       placeholder="Enter your PayPal password" type="password" [ngClass]="{ 'is-invalid': submitted && f.paypalPassword.errors }">
+                <div *ngIf="submitted && f.paypalPassword.errors" class="invalid-feedback">
+                  <div *ngIf="f.paypalPassword.errors.required">PayPal password is required</div>
+                </div>
               </div>
             </div>
 
-            <div class="column is-12-desktop is-12-mobile left-button has-text-centered">
-              <a class="button" routerLink="/cart/success-screen" (click)="buy()">Checkout</a>
+            <div class="column form-group is-12-desktop is-12-mobile has-text-centered">
+              <button class="button">Checkout</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
 
     <div class="columns back-next-buttons is-mobile">
       <div class="column is-12-desktop is-12-mobile has-text-centered left-button">
-        <a class="button " routerLink="/cart/payment-methods">Go Back</a>
+        <a class="button" routerLink="/cart/payment-methods">Go Back</a>
       </div>
     </div>
   </div>
