@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   cartQty = 0;
   status = false;
   status2 = false;
+  status3 = false;
   customerName: string;
 
   constructor(private userService: UserService,
@@ -66,6 +67,10 @@ export class HeaderComponent implements OnInit {
 
   toggleClass2() {
     this.status2 = !this.status2;
+  }
+
+  toggleClass3() {
+    this.status3 = !this.status3;
   }
 
   isLoggedIn(): boolean {

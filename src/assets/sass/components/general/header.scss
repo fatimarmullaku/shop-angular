@@ -168,16 +168,42 @@ a.dropdown-item.is-active {
       }
       @include mobile {
         margin-top: -20px;
+        display: block;
       }
 
       .navbar-dropdown a {
         color: black;
       }
 
+      .customer-options {
+        @include mobile {
+
+        }
+      }
+
+      a.customer-name {
+        @include mobile {
+          color: white;
+          font-size: 16px;
+          padding: 8px 8px 8px 12px;
+          text-align: center;
+        }
+      }
+
+      a.sign-up-button, .wishlist {
+        @include mobile {
+          font-size: 16px;
+          padding: 8px 8px 8px 12px;
+          text-align: center;
+        }
+      }
+
       a {
         color: map-get($ucx-colors, light-gray);
         @include mobile {
           color: black;
+          padding-right: 8px;
+          text-align: center;
         }
         padding-right: 80px;
         border: 3px solid transparent;
