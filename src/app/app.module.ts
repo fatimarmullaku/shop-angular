@@ -35,7 +35,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     ReactiveFormsModule,
     ModalModule.forRoot(),
     HttpClientModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
   ],
   providers: [
     {

@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private productsService: ProductsService,
-              private userService: UserService,
+              public   userService: UserService,
               private formBuilder: FormBuilder,
               private routerLink: Router,
               private baseStorage: BaseStorageService) {
