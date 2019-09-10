@@ -16,7 +16,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {CarouselModule} from "ngx-carousel-lib";
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     CarouselModule,
@@ -35,9 +35,7 @@ import {CarouselModule} from "ngx-carousel-lib";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-
     HttpClientModule,
-
     CreditCardDirectivesModule
   ],
   providers: [
