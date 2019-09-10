@@ -32,11 +32,6 @@ export class PlatformsService {
     return this.http.put(this.rootUrl + '/' + cid, data);
 
   }
-
-
-  getPlatformById(id) {
-    return this.http.get(this.rootUrl + '/' + id);
-  }
-
+ 
 
 }
