@@ -4,7 +4,7 @@ import {BrandsService} from '../../../shared/services/brands.service';
 import 'hammerjs';
 import {ProductsService} from '../products.service';
 import {BrandsModel} from '../../../shared/models/brands.model';
-import {Options, LabelType} from 'ng5-slider';
+import {LabelType, Options} from 'ng5-slider';
 
 @Component({
   selector: 'app-products-sidebar',
@@ -12,18 +12,16 @@ import {Options, LabelType} from 'ng5-slider';
   styleUrls: ['./products-sidebar.component.scss']
 })
 export class ProductsSidebarComponent implements OnInit {
-  productSort = ['Alphabetical A to Z', 'Alphabetical from Z to A', 'Most popular', 'Release date'];
-  showFiller = false;
-  selected: boolean;
-  selectedPlatformm: any = '';
-  selectedBrandd: any = '';
+  selectedBrandd =  [];
   platformsList: PlatformModel[];
   brandsList: any;
   minValue = 0;
-  maxValue: number = 500;
+  maxValue: number = 100;
+  ceilValue: number;
   options: Options = {
+    showOuterSelectionBars: true,
     floor: 0,
-    ceil: 500,
+    ceil: 100,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
@@ -48,6 +46,10 @@ export class ProductsSidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productsService.getHighestPrice().subscribe((res: number) => {
+      this.maxValue = res;
+    });
+
     this.platformsService.getAllPlatforms().subscribe((data: PlatformModel[]) => {
       this.platformsList = data;
     });
@@ -56,18 +58,8 @@ export class ProductsSidebarComponent implements OnInit {
       this.brandsList = data;
     });
 
-    this.productsService.getMinAndMaxPrices().subscribe((data: any) => {
-      this.minValue = data.min;
-      this.maxValue = data.max;
-    });
-
-    this.productsService.getHighestPrice().subscribe((data: number) => {
-      this.maxValue = data;
-    });
-
 
   }
-
 
   getProductsByPrice(event: any) {
     this.prices.emit({
@@ -78,7 +70,6 @@ export class ProductsSidebarComponent implements OnInit {
 
   getProducts() {
     const params = {
-      platformId: this.selectedPlatformm,
       brandId: this.selectedBrandd,
       min: this.minValue,
       max: this.maxValue
@@ -88,7 +79,13 @@ export class ProductsSidebarComponent implements OnInit {
 
 
   selectedBrand(option: any) {
-    this.selectedBrandd = option;
+    const exist = this.selectedBrandd.find(current => current === +option);
+    if (!exist) {
+      this.selectedBrandd.push(option);
+    } else {
+      this.selectedBrandd = this.selectedBrandd.filter(current => current !== +option);
+    }
+
     this.getProducts();
   }
 

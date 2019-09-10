@@ -10,7 +10,7 @@
 <!--          <div class="column">-->
 <!--            <input class="form-control"  placeholder="filter by date "#dp="bsDatepicker" bsDatepicker [(ngModel)]="datePicker" [bsConfig]="{containerClass:'theme-blue'}">-->
 <!--          </div>-->
-        </div> 
+        </div>
         <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
           <tr>
             <th>Name</th>
@@ -29,7 +29,7 @@
             <td>{{c.name}}</td>
             <td>{{c?.email}}</td>
             <td>{{transformCity(c.addresses)}}</td>
-            <td>{{transformNumber(c.phoneNumbers) }}</td>
+            <td>{{c?.phoneNumber}}</td>
             <td>{{c.createDateTime | date:'dd-MM-yyyy'}}</td>
             <td>{{c.updateDateTime| date:'dd-MM-yyyy'}}</td>
             <td>{{c.deletedDateTime| date:'dd-MM-yyyy'}}</td>
@@ -91,12 +91,8 @@
             </div>
           </div>
           <span> Phone Number</span>
-          <div formArrayName="phoneNumbers" *ngFor="let item of phoneNumbersArray['controls']; let i = index">
-            <div [formGroupName]="i">
               <input class="form-control" formControlName="phoneNumber"
                      type="text">
-            </div>
-          </div>
           <span> Description </span>
           <div class="control">
             <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
