@@ -16,8 +16,10 @@ export class ProductsSidebarComponent implements OnInit {
   platformsList: PlatformModel[];
   brandsList: any;
   minValue = 0;
-  maxValue: number;
+  maxValue: number = 100;
+  ceilValue: number;
   options: Options = {
+    showOuterSelectionBars: true,
     floor: 0,
     ceil: 100,
     translate: (value: number, label: LabelType): string => {
@@ -44,6 +46,10 @@ export class ProductsSidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productsService.getHighestPrice().subscribe((res: number) => {
+      this.maxValue = res;
+    });
+
     this.platformsService.getAllPlatforms().subscribe((data: PlatformModel[]) => {
       this.platformsList = data;
     });
@@ -52,9 +58,7 @@ export class ProductsSidebarComponent implements OnInit {
       this.brandsList = data;
     });
 
-    this.productsService.getHighestPrice().subscribe((res: number) => {
-      this.maxValue = res;
-    });
+
   }
 
   getProductsByPrice(event: any) {
@@ -65,7 +69,6 @@ export class ProductsSidebarComponent implements OnInit {
   }
 
   getProducts() {
-
     const params = {
       brandId: this.selectedBrandd,
       min: this.minValue,
