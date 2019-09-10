@@ -8,8 +8,6 @@ import {BrandsService} from '../brands/brands.service';
 import {PlatformsModel} from '../platforms/platforms.model';
 import {BrandsModel} from '../brands/brands.model';
 import {ProductsModel} from './products.model';
-import html2canvas from 'html2canvas';
-import * as jspdf from 'jspdf';
 import {ENDPOINTS} from '../../shared/constants/api.constants';
 import {PaginationService} from '../../shared/pagination/pagination.service';
 import {PaginationModel} from '../../shared/models/pagination.model';
@@ -117,21 +115,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  public captureScreen() {
-    const data = document.getElementById('contentToConvert');
-    html2canvas(data).then(canvas => {
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      const heightLeft = imgHeight;
 
-      const contentDataURL = canvas.toDataURL('image/png');
-      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-      const position = 10;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('brandsList.pdf');
-    });
-  }
 
   onAddProduct() {
     if (this.productsForm.controls.platform.invalid && this.productsForm.controls.brand.invalid) {
