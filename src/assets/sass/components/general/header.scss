@@ -69,6 +69,10 @@ a.dropdown-item.is-active {
       margin-right: 20px;
       margin-top: 20px;
 
+      .customer-name{
+        color: white;
+      }
+
       @include mobile {
         display: flex;
         flex-direction: row;
