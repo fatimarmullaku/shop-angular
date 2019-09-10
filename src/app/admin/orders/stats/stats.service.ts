@@ -9,8 +9,8 @@ export class StatsService {
   baseUrl = environment.apiHost;
   constructor(private http: HttpClient) { }
 
-  // http://localhost:8080/api/v1/invoices/stats
+  // http://localhost:8080/api/v1/orders/stats
   getStats() {
-    return this.http.get(`${this.baseUrl}/invoices/stats`);
+    return this.http.get(`${this.baseUrl}/orders/stats`);
   }
 }
