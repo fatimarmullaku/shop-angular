@@ -16,11 +16,11 @@ export class ProductsSidebarComponent implements OnInit {
   platformsList: PlatformModel[];
   brandsList: any;
   minValue = 0;
-  maxValue: number;
+  maxValue: number = 100;
   options: Options = {
     showOuterSelectionBars: true,
     floor: 0,
-    ceil: 200,
+    ceil: 100,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
