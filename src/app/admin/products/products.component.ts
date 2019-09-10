@@ -65,7 +65,6 @@ export class ProductsComponent implements OnInit {
     this.platformsService.getAllPlatforms().subscribe((data: any) => {
       this.platformList = data;
 
-      console.log('from products func', data);
 
     });
     this.brandsService.getAllBrands().subscribe((data: any) => {
