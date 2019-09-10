@@ -7,11 +7,8 @@
           <div class="column">
             <input type="text" class="form-control searchCustomer"  placeholder="search customer" name="search" [(ngModel)]="filter" >
           </div>
-<!--          <div class="column">-->
-<!--            <input class="form-control"  placeholder="filter by date "#dp="bsDatepicker" bsDatepicker [(ngModel)]="datePicker" [bsConfig]="{containerClass:'theme-blue'}">-->
-<!--          </div>-->
         </div>
-        <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
+        <table class="table table-bordered table-responsive-md table-striped text-center"  >
           <tr>
             <th>Name</th>
             <th>Email</th>
@@ -41,7 +38,6 @@
             </td>
           </tr>
         </table>
-        <button type="button" class="btn btn-outline-secondary btnPDF" (click)="captureScreen()">PDF</button>
       </div>
     </div>
   </div>
