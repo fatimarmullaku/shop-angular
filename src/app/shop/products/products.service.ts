@@ -26,11 +26,6 @@ export class ProductsService {
     return this.http.post<any>(this.rootUrl, data);
   }
 
-  getProductByPlatformAndBrand(params: any) {
-    console.log('from service', params);
-    return this.http.get(this.rootUrl + 'filter', {params});
-  }
-
   getMinAndMaxPrices() {
     return this.http.get(this.rootUrl + 'getPrices');
   }

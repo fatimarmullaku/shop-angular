@@ -46,12 +46,6 @@ export class ProductsComponent implements OnInit {
   }
 
   onFilterChange(event: any) {
-    this.productsService.getProductByPlatformAndBrand(event).subscribe((response: PaginationModel<ProductModel>) => {
-      this.products = response.content;
-    });
-  }
-
-  onFilterPriceChange(event: any) {
     this.productsService.getProductBySelectedPrice(event).subscribe((response: PaginationModel<ProductModel>) => {
       this.products = response.content;
     });
