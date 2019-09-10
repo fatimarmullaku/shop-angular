@@ -29,8 +29,4 @@ export class BrandsService {
 
   }
 
-
-  getBrandById(id) {
-    return this.http.get(this.rootUrl + id);
-  }
 }
