@@ -28,6 +28,7 @@ import {AccountComponent} from './account/account.component';
 import {EditProfileComponent} from './account/edit-profile/edit-profile.component';
 import {OrderHistoryComponent} from './account/order-history/order-history.component';
 import {ShopAuthGuardService} from '../shared/services/guards/shop-auth-guard.service';
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {
@@ -158,6 +159,10 @@ const routes: Routes = [
   {
     path: 'police',
     component: PoliceComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   }
 ];
 

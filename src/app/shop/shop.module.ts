@@ -41,6 +41,7 @@ import {OrderHistoryComponent} from './account/order-history/order-history.compo
 import {MatExpansionModule} from '@angular/material';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {Ng5SliderModule} from 'ng5-slider';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {Ng5SliderModule} from 'ng5-slider';
     ProductUploadComponent,
     AccountComponent,
     EditProfileComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    HomeComponent
   ],
   exports: [
     PaginationComponent,
