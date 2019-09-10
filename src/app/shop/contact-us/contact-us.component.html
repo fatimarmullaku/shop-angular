@@ -1,0 +1,51 @@
+<app-header></app-header>
+<div class="contact-us-screen">
+  <div class="contact-us-wrapper">
+<!--    <div class="most-sold-wrapper">-->
+<!--      <div class="most-sold-container">-->
+<!--      </div>-->
+<!--      <div class="most-sold-information">-->
+<!--        <h1>UCX Gaming</h1>-->
+<!--        <button class="contact-us-button" routerLink="/">Start shopping</button>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="title-contact-us">
+      <h3>HAVE SOME QUESTIONS?</h3>
+    </div>
+    <div class="columns">
+      <div class="icon-container column is-5">
+        <img src="assets/img/contact-us-message.png" alt="">
+      </div>
+      <div class="contact-form column is-7">
+        <form [formGroup]="contactUsFormGroup" class="form" (ngSubmit)="onSubmit()">
+          <div class="columns">
+            <div class="column">
+              <label class="label">Full name</label>
+              <input formControlName="name" type="text" class="input form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div>
+            <div class="column">
+              <label class="label">Email address</label>
+              <input formControlName="email" type="text" class="input form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+              </div>
+            </div>
+          </div>
+
+          <label class="label">Message</label>
+          <textarea formControlName="message" class="input form-control" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
+          <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+            <div *ngIf="f.message.errors.required">Message is required</div>
+          </div>
+          <div class="field is-grouped is-grouped-left">
+            <button class="contact-us-button">Submit</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

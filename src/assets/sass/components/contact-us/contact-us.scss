@@ -1,0 +1,125 @@
+.contact-us-screen{
+  height: calc(100vh + 80px);
+  .contact-us-wrapper{
+
+    .most-sold-wrapper{
+      position: relative;
+      .most-sold-container{
+        height: 400px;
+        margin-top: -20px;
+        width: 100%;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        transition: all 0.7s ease;
+        &:hover {
+          //transform: scale(1.1);
+          background-size: 110%;
+        }
+      }
+      .most-sold-information {
+        position: absolute;
+        top: 50px;
+        right: 30px;
+        color: white;
+        text-shadow: 2px 2px 4px #000000;
+
+        h1 {
+          font-size: 50px;
+          font-family: Bahnschrift;
+          color: white;
+        }
+      }
+    }
+
+    .icon-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i{
+        font-size: 300px;
+        color: map-get($ucx-colors, light-gray);
+      }
+    }
+
+    .title-contact-us{
+      h3{
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: map-get($ucx-colors, deep-orange);
+      }
+    }
+
+    .contact-form{
+      padding: 30px 50px;
+
+      .input{
+        width: 100%;
+        background-color: transparent;
+        border-color: map-get($ucx-colors, deep-orange);
+        color: map-get($ucx-colors, light-gray);
+      }
+
+      textarea{
+        height: 10em;
+      }
+
+      .label{
+        color: map-get($ucx-colors, light-gray);
+        font-size: 15px;
+        margin-top: 10px;
+      }
+
+
+      .contact-button{
+        display: block;
+        font-size: 16px;
+        background:  map-get($ucx-colors, deep-orange);
+        border: none;
+        width: 100%;
+        padding: 10px 0;
+        color: map-get($ucx-colors, light-gray);
+        font-weight: 300;
+        cursor: pointer;
+        border-radius: 3px;
+        margin-top: 10px;
+      }
+    }
+
+    .contact-us-info{
+      color: map-get($ucx-colors, light-gray);
+      padding: 20px;
+      text-align: center;
+      h3{
+        font-weight: bold;
+        margin-top:40px;
+        font-size: 30px;
+      }
+
+      h4{
+        font-weight: bold;
+        margin-top: 15px;
+        font-size: 20px;
+      }
+
+      p{
+        margin-top: 10px;
+        font-size: 15px;
+      }
+    }
+
+
+  }
+}
+
+.contact-us-button {
+  margin: 30px 0;
+  padding: 10px 30px;
+  width: 20%;
+  color: white;
+  background: map_get($ucx-colors, deep-orange);
+  border: none;
+  border-radius: 3px;
+}
