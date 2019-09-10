@@ -21,9 +21,10 @@
         Price
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <ng5-slider [(value)]="minValue"
-                (userChangeEnd)="getProductsByPrice($event)"
+    <ng5-slider
+                [(value)]="minValue"
                 [(highValue)]="maxValue"
+                (userChangeEnd)="getProductsByPrice($event)"
                 [options]="options"></ng5-slider>
   </mat-expansion-panel>
 </mat-accordion>
