@@ -13,12 +13,13 @@ import {ModalModule} from 'ngx-bootstrap';
 import {TokenInterceptor} from './shared/interceptors/token.interceptor';
 import {CreditCardDirectivesModule} from "angular-cc-library";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
-
+import {CarouselModule} from "ngx-carousel-lib";
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
+    CarouselModule,
     Ng2SearchPipeModule,
     FormsModule,
     HttpClientModule,
@@ -34,7 +35,9 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
+
     HttpClientModule,
+
     CreditCardDirectivesModule
   ],
   providers: [

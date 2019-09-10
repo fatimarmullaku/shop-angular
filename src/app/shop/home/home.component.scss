@@ -1,55 +1,85 @@
-.most-sold-wrapper{
-  position: relative;
-  .most-sold-container{
-    height: 400px;
-    margin-top: -20px;
-    width: 100%;
-    background-image: url('src/assets/img/buttlefield.jpg');
-    background-size: 100%;
-    background-position: center;
-    transition: all 0.7s ease;
-    &:hover {
-      //transform: scale(1.1);
-      background-size: 110%;
-    }
-  }
-  .most-sold-information {
-    position: absolute;
-    top: 50px;
-    left: 30px;
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
+//.most-sold-wrapper{
+//  border: 2px solid white;
+//  padding: 0px;
+//  background-size: cover;
+//  background-position: center;
+//  background-repeat: no-repeat;
+//  transition: all 0.7s ease;
+//  height: 400px;
+//  width: 200px;
+//  position: relative;
+//  .most-sold-container{
+//    //height: 200px;
+//    margin-top: -20px;
+//    //width: 150px;
+//    //background-size: 100%;
+//    //background-size: cover;
+//    //background-position: center;
+//    //background-repeat: no-repeat;
+//    //transition: all 0.7s ease;
+//    &:hover {
+//      //transform: scale(1.1);
+//      background-size: 110%;
+//    }
+//  }
+//  .most-sold-information {
+//    position: absolute;
+//    top: 50px;
+//    left: 30px;
+//    color: white;
+//    text-shadow: 2px 2px 4px #000000;
+//
+//    h1 {
+//      font-size: 80px;
+//      font-family: Bahnschrift;
+//      color: white;
+//    }
+//
+//    h2 {
+//      font-size: 37px;
+//      font-family: Bahnschrift;
+//      color: white;
+//    }
+//  }
+//}
 
-    h1 {
-      font-size: 80px;
-      font-family: Bahnschrift;
-      color: white;
-    }
-
-    h2 {
-      font-size: 37px;
-      font-family: Bahnschrift;
-      color: white;
-    }
-  }
-}
-
-
-//@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
-//@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
+.parenti{
+  padding: 0 20px;
+  h1{
+    font-size: 80px;
+    color: orange;
+    font-family: Bahnschrift;
+    text-shadow: 2px 2px 4px #000000;
+  }
+  div.card{
+    background-image: url("src/assets/imgac4-cover.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
 .slider {
   background-color: white;
-  height: 500px;
+  height: 400px;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-end;
   justify-content: center;
+  padding-bottom: 30px;
+  .radio-buttons{
+    margin-top: 20px;
+    margin-bottom: -40px;
+  }
 }
 .slider__nav {
   width: 12px;
@@ -90,8 +120,8 @@
   flex-flow: row nowrap;
 }
 .slider__contents {
+  padding-top: -30px;
   height: 100%;
-  padding: 2rem;
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -101,15 +131,33 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  .partner-container{
+    margin: 10px;
+
+    .item-carousel{
+      width: 100px !important;
+      height: 100px !important;
+      border: 1px solid black;
+      border-radius: 9px;
+    }
+    //.partner{
+    //  margin: 10px;
+    //  height: 100px;
+    //  width: 100px;
+    //  border: 1px solid black;
+    //  border-radius: 9px;
+    //}
+  }
 }
 .slider__image {
-  font-size: 2.7rem;
+  font-size: 3.7rem;
   color: #2196F3;
 }
 .slider__caption {
   font-size: 30px;
   font-weight: 500;
-  margin: 2rem 0 1rem;
+  margin-top: 0;
+  margin-bottom: 14px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
 }
@@ -117,7 +165,7 @@
   color: #999;
   font-size: 20px;
   margin-bottom: 3rem;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 @-webkit-keyframes check {
@@ -142,3 +190,33 @@
   }
 }
 
+///===========================================
+
+.cards {
+  display: flex;
+}
+.card {
+  background: white;
+  border-radius: 9px;
+  border: none;
+  padding: 1.5rem;
+  height: 400px;
+  width: 300px;
+  box-shadow: 3px 3px 12px 2px rgba(black, 0.6);
+  transition: 0.2s;
+}
+.card:not(:first-child) {
+  margin-left: -2rem;
+}
+.card:not(:last-child):hover,
+.card:not(:last-child):focus-within {
+  transform: translateY(-1rem);
+  ~ .card {
+    transform: translateX(2rem);
+  }
+}
+
+div.item-carousel{
+  height: 100px;
+  width: 100px;
+}

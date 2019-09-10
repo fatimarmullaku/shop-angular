@@ -42,6 +42,9 @@ import {MatExpansionModule} from '@angular/material';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {Ng5SliderModule} from 'ng5-slider';
 import { HomeComponent } from './home/home.component';
+import {FooterComponent} from "./home/footer/footer.component";
+import {CarouselModule} from "ngx-carousel-lib";
+
 
 @NgModule({
   declarations: [
@@ -77,7 +80,8 @@ import { HomeComponent } from './home/home.component';
     AccountComponent,
     EditProfileComponent,
     OrderHistoryComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   exports: [
     PaginationComponent,
@@ -93,7 +97,8 @@ import { HomeComponent } from './home/home.component';
     MatExpansionModule,
     Ng2SearchPipeModule,
     FormsModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
+    CarouselModule
 
   ]
 })
