@@ -21,7 +21,6 @@ export class CustomersComponent implements OnInit {
   datePicker: Date;
   searchPicker: string;
   addressesArray: FormArray;
-  phoneNumbersArray: FormArray;
   customerId: number;
   updateForm: FormGroup;
 
@@ -40,30 +39,21 @@ export class CustomersComponent implements OnInit {
       id: new FormControl(),
       name: [''],
       email: new FormControl('', Validators.required),
-      phoneNumbers: this.fb.array([]),
       addresses: this.fb.array([]),
       createDateTime: [],
       updateDateTime: [],
       deletedDateTime: [],
       description: [''],
-      version: ['']
+      version: [''],
+      phoneNumber:[]
     });
     this.addressesArray = this.customersForm.get('addresses') as FormArray;
-    this.phoneNumbersArray = this.customersForm.get('phoneNumbers') as FormArray;
     this.addressesArray.push(this.fb.group({
       city: '',
       country: '',
       street: '',
       zip_code: ''
     }));
-    this.phoneNumbersArray.push(this.fb.group({
-      phoneNumber:''
-    }));
-
-
-
-
-    console.log(this.updateForm);
 
   }
 
@@ -84,9 +74,6 @@ export class CustomersComponent implements OnInit {
   }
 
 
- 
-
-
   onDelete() {
     this.customersService.deleteCostumer(this.customerId).subscribe(
       get => {
@@ -99,7 +86,6 @@ export class CustomersComponent implements OnInit {
       }
     );
     this.toggleModal();
-
   }
 
 
@@ -123,10 +109,6 @@ export class CustomersComponent implements OnInit {
     this.deleteModal = true;
     this.customerId = cid;
     console.log(this.customerId);
-  }
-
-  transformNumber(phoneNumbers: any) {
-    return phoneNumbers.map(item => item.phoneNumber);
   }
 
   transformCity(addresses: any) {
