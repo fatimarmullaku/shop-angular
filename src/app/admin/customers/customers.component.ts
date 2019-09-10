@@ -56,6 +56,7 @@ export class CustomersComponent implements OnInit {
   }
 
 
+<<<<<<< Updated upstream
 
   onDelete() {
     this.customersService.deleteCostumer(this.customerId).subscribe(
