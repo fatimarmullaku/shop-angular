@@ -9,6 +9,9 @@
 .edit-profile-wrapper {
   padding-right: 70px;
   padding-left: 0px;
+  @include mobile {
+    padding-right: 30px;
+  }
 }
 
 .cancel-button-block {

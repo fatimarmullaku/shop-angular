@@ -12,10 +12,10 @@ import {OrderHistoryPagedModel, OrderModel} from '../orders.model';
 export class OrderDataComponent implements OnInit {
   searchOrder = '';
   searchBy = 'customerName';
-
+  searchTypeNumber = false;
   data: OrderModel[];
   currentPage: number;
-  pageSize = 2;
+  pageSize = 3;
 
   constructor(private ordersService: OrdersService,
               private paginationService: PaginationService) {
@@ -27,6 +27,15 @@ export class OrderDataComponent implements OnInit {
       this.currentPage = currentPage;
       this.searchWithCustomParams();
     });
+  }
+
+  changeSelectedType() {
+    if (this.searchBy === 'customerName') {
+      this.searchTypeNumber = false;
+    } else {
+      this.searchTypeNumber = true;
+
+    }
   }
 
   parseDate(d: string) {

@@ -1,22 +1,12 @@
 <app-header></app-header>
 <div class="product-details-container" *ngIf="product">
   <div class="columns is-vcentered">
-    <div class="column product-panel">
+    <div class="column is-3 product-panel">
       <div class="product-panel-wrapper">
         <router-outlet></router-outlet>
-        <div class="panel-actions">
-          <div class="left-actions">
-            <a [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class='far fa-image image-icon'></i></a>
-            <a [routerLink]="['./reviews']" routerLinkActive="active"><i class="fa fa-star-o"></i></a>
-          </div>
-          <div class="right-actions" (click)="toggleWishlist()">
-            <i *ngIf="!isWishlisted()" class='far fa-heart'></i>
-            <i *ngIf="isWishlisted()" class='fas fa-heart'></i>
-          </div>
-        </div>
       </div>
     </div>
-    <div class="column is-three-fifths" *ngIf="product">
+    <div class="column is-9" *ngIf="product">
       <div class="product-info-panel">
         <div class="inner-panel">
           <div class="product-info-header">
@@ -24,9 +14,15 @@
           </div>
           <div class="product-info-body">
             <div class="product-name-instock">
-              <h3 class="product-name">{{ product.name }}</h3>
+              <h3 class="product-name">{{ product.name }} </h3>
+              <div class="right-actions" (click)="toggleWishlist()">
+                <i *ngIf="!isWishlisted()" class='far fa-heart'></i>
+                <i *ngIf="isWishlisted()" class='fas fa-heart'></i>
+              </div>
             </div>
-            <p class="product-description">{{product.productDescription}}</p>
+            <div class="product-description-container">
+              <p class="product-description">{{product.productDescription ? product.productDescription : 'This product has no description'}}</p>
+            </div>
             <div class="product-controls">
               <div class="product-price">
                 <div class="heading">
@@ -37,8 +33,11 @@
                 </div>
               </div>
               <div class="product-quantity">
-                <div class="heading">
+                <div class="heading is-hidden-mobile">
                   License Quantity
+                </div>
+                <div class="heading is-hidden-desktop">
+                  Quantity
                 </div>
                 <div class="">
                   <input class="input is-rounded" value="1" (keyup)="getQuantity($event)" (keypress)="numbersOnly($event)" maxlength="3">
