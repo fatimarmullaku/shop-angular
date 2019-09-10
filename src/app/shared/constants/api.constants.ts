@@ -10,7 +10,8 @@ const AUTH = {
 const PRODUCTS = {
   getAll: environment.apiHost + '/products',
   getProduct: environment.apiHost + '/products/{id}',
-  getProductImage: environment.apiHost + '/products/image/'
+  getProductImage: environment.apiHost + '/products/image/',
+  getTopSoldProducts: environment.apiHost + '/products/topsoldproducts'
 };
 
 const CUSTOMERS = {
@@ -22,17 +23,17 @@ const CUSTOMERS = {
 
 const BRANDS = {
   getAll: environment.apiHost + '/brands'
-}
+};
 
 const PURCHASES = {
   addToCart: environment.apiHost + '/purchases/lineitems',
   buy: environment.apiHost + '/purchases'
-}
+};
 
-const STRIPE ={
-  createStripeCustomer : environment.apiHost + '/payment',
+const STRIPE = {
+  createStripeCustomer: environment.apiHost + '/payment',
   charge: environment.apiHost + '/payment/charge'
-}
+};
 
 
 export const ENDPOINTS = {
