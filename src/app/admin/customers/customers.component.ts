@@ -57,6 +57,8 @@ export class CustomersComponent implements OnInit {
 
   }
 
+
+
   public captureScreen() {
     const data = document.getElementById('contentToConvert');
     html2canvas(data).then(canvas => {
