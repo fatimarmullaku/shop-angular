@@ -1,11 +1,13 @@
+
+
 <div class="search-container">
   <span>
     <i class="fas fa-search search-icon"></i>
   </span>
-  <input type="text" class="search-bar" placeholder="Search products..." name="search" [(ngModel)]="searchText">
+  <input type="text" class="search-bar" placeholder="Search products..." name="search">
 </div>
 <div class="columns is-multiline is-mobile is-tablet is-desktop">
-  <div *ngFor="let product of products | filter:searchText" [item]="product"
+  <div *ngFor="let product of products" [item]="product"
        app-product-item
        class="column is-desktop is-tablet is-12-mobile is-3-desktop"></div>
 </div>

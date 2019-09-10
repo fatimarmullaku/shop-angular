@@ -36,7 +36,7 @@ export class SidebarComponent implements OnInit {
               private storageService: StorageService,
               private restService: RestService,
               private baseStorageService: BaseStorageService,
-              private userService: UserService) {
+              public userService: UserService) {
   }
 
 

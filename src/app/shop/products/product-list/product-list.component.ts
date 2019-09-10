@@ -4,12 +4,14 @@ import {ProductService} from '../../../shared/services/product.service';
 import {PaginationService} from '../../../shared/pagination/pagination.service';
 import {ProductRatingModel} from '../../../shared/models/product-rating.model';
 import {ProductReviewModel} from '../../../shared/models/product-review.model';
+import {TopProductsService} from '../../../shared/services/top-products.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
+
 export class ProductListComponent implements OnInit {
   @Input()
   products: ProductModel[];
@@ -17,14 +19,17 @@ export class ProductListComponent implements OnInit {
   currentPage: number;
   pageSize = 8;
 
+
   constructor(private productService: ProductService,
-              private paginationService: PaginationService) {
+              private paginationService: PaginationService,
+              private topProducts: TopProductsService) {
   }
 
   ngOnInit() {
     this.paginationService.currentPage.subscribe(currentPage => {
       this.currentPage = currentPage;
       this.getProductsPaged();
+      this.getTopProducts();
     });
     // this.getProductsPaged();
   }
@@ -63,5 +68,12 @@ export class ProductListComponent implements OnInit {
 
   }
 
-
+  getTopProducts() {
+    this.topProducts.getTopSoldProducts(3).subscribe(res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }
