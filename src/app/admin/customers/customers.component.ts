@@ -3,8 +3,6 @@ import {CustomersService} from './customers.service';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CustomerModel} from './customer.model';
-import html2canvas from 'html2canvas';
-import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'app-costumers',
@@ -58,6 +56,7 @@ export class CustomersComponent implements OnInit {
   }
 
 
+<<<<<<< Updated upstream
 
   public captureScreen() {
     const data = document.getElementById('contentToConvert');
@@ -74,6 +73,8 @@ export class CustomersComponent implements OnInit {
       pdf.save('customers.pdf');
     });
   }
+=======
+>>>>>>> Stashed changes
 
 
   onDelete() {
@@ -93,9 +94,7 @@ export class CustomersComponent implements OnInit {
 
 
   openInsert() {
-    console.log('insert is called');
     this.insertModal = true;
-    console.log('from open insert', this.insertModal);
   } 
 
   closeInsertModal() {
