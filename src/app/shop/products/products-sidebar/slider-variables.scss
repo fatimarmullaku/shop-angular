@@ -23,11 +23,11 @@ $handleBgColor: #0db9f0 !default;
 $handleInnerColor: #fff !default;
 $handleDisabledColor: #d8e0f3 !default;
 $limitLabelTextColor: $labelTextColor !default;
-$barFillColor: $handleBgColor !default;
+$barFillColor: orangered !default;
 $barDisabledFillColor: #8b91a2 !default;
 $barNormalColor: #d8e0f3 !default;
-$barLeftOutSelectionColor: black !default;
-$barRightOutSelectionColor: #03a688 !default;
+$barLeftOutSelectionColor: grey !default;
+$barRightOutSelectionColor: grey !default;
 
 $ticksColor: $barNormalColor !default;
 $selectedTicksColor: $barFillColor !default;
