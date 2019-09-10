@@ -136,6 +136,15 @@ div.static-filter {
 @import 'slider-variables.scss';
 
 :host {
+  mat-expansion-panel {
+    mat-expansion-panel-header{
+      mat-panel-title {
+        color:white;
+      }
+    }
+  }
+ 
+
   mat-accordion {
     @include ng-deep($enableNgDeep) {
       .ng5-slider {
