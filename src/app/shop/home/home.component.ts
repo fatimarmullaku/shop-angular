@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TopProductsService} from "../../shared/services/top-products.service";
 import {forEachComment} from "tslint";
 import {ProductModel} from "../../shared/models/product.model";
+import {TopTenModel} from "../../shared/models/top-ten.model";
+import {parse} from "ts-node";
 
 @Component({
   selector: 'app-home',
@@ -13,25 +15,24 @@ export class HomeComponent implements OnInit {
   constructor(private topSold: TopProductsService) {
   }
 
-  top4: any;
+  public top4 = [];
+  imgPath:string = './assets/img/';
+
 
   ngOnInit() {
-    // this.getTopSoldProducts();
-    this.topSold.getTopSoldProducts(4).subscribe(res => {
-      console.log('Mrena ', res[0]);
-      this.top4 = res;
-
+    this.topSold.getTopSoldProducts(4).subscribe(data => {
+      this.top4 = data;
     });
   }
 
   // getTopSoldProducts(){
-  //   this.topSold.getTopSoldProducts(4).subscribe(res => {
-  //       console.log(res);
-  //       this.top4 = res;
+  //   this.topSold.getTopSoldProducts(4).subscribe((res: any) => {
   //
-  //   });
-  //   console.log("Top 4 sold", this.top4);
-  //
+  //       this.top4.push(res);
+  //     },
+  //     (error: any) => {
+  //       console.log(error);
+  //     });
   // }
 
 }

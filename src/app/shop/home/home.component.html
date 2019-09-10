@@ -4,14 +4,10 @@
     <h1>OUR MOST POPULAR GAMES</h1>
   </div>
   <div class="column">
-    <div class="cards" >
-      <div class="card">
-      </div>
-      <div class="card">
-      </div>
-      <div class="card">
-      </div>
-      <div class="card">
+    <div class="cards">
+      <div class="card" *ngFor="let item of top4">
+        <img [src]="imgPath + item.image" style="object-fit: cover">
+        <p>{{item.quantity}}</p>
       </div>
     </div>
   </div>
