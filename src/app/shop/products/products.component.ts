@@ -7,6 +7,8 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {LocalStorageKey} from '../../shared/constants/local-storage-key';
 import {Router} from '@angular/router';
 import {BaseStorageService} from '../../shared/services/base-storage.service';
+import {PaginationModel} from "../../shared/models/pagination.model";
+import {ProductsModel} from "../../admin/products/products.model";
 
 @Component({
   selector: 'app-products',
@@ -50,7 +52,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onFilterPriceChange(event: any) {
-    this.productsService.getProductBySelectedPrice(event).subscribe(res => {
+    this.productsService.getProductBySelectedPrice(event).subscribe((res: any ) => {
       this.products = res;
     });
   }
