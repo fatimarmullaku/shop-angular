@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -9,7 +10,8 @@ export class ContactUsComponent implements OnInit {
   contactUsFormGroup: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class ContactUsComponent implements OnInit {
       return;
     }
     console.log('Contact forma: ', this.contactUsFormGroup.getRawValue());
+    this.userService.contactUs(this.contactUsFormGroup.getRawValue());
   }
 
 }
