@@ -23,11 +23,11 @@ $handleBgColor: orangered !default;
 $handleInnerColor: #fff !default;
 $handleDisabledColor: orangered !default;
 $limitLabelTextColor: $labelTextColor !default;
-$barFillColor: grey !default;
+$barFillColor: white !default;
 $barDisabledFillColor: grey !default;
 $barNormalColor: #d8e0f3 !default;
-$barLeftOutSelectionColor: grey !default;
-$barRightOutSelectionColor: grey !default;
+$barLeftOutSelectionColor: white !default;
+$barRightOutSelectionColor: white !default;
 
 $ticksColor: $barNormalColor !default;
 $selectedTicksColor: $barFillColor !default;
@@ -38,7 +38,7 @@ $ticksLegendPosition: 24px !default;
 $ticksValuePositionOnVertical: 24px !default;
 $tickLegendMaxWidth: 50px !default;
 
-$handleSize: 32px !default;
+$handleSize: 25px !default;
 $handlePointerSize: 5px !default;
 $bubblePaddingVertical: 1px !default;
 $bubblePaddingHorizontal: 3px !default;
