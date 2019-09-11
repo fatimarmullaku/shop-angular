@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationService} from './pagination.service';
 
 @Component({
@@ -16,19 +16,24 @@ export class PaginationComponent implements OnInit {
   right = 3;
 
   constructor(private router: Router,
-              private paginationService: PaginationService) {
+              private paginationService: PaginationService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.paginationService.currentPage.subscribe(currentPage => {this.currentPage = currentPage;
-                                                                 this.pageStates(); });
+    this.paginationService.currentPage.subscribe(currentPage => {
+      this.currentPage = currentPage;
+      this.pageStates();
+    });
     this.paginationService.totalPages.subscribe(totalPages => this.totalPages = totalPages);
   }
 
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.paginationService.changePage(page);
-      console.log(this.currentPage);
+      this.router.navigate(['/'], { queryParams: {page} });
+      // this.router.navigate(['page', page], {
+      //   queryParams: {'page': page}
+      // });
     }
     this.pageStates();
 

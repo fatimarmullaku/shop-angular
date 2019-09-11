@@ -8,8 +8,11 @@
         <a (click)="changePage(currentPage + 1)" class="pagination-next pagination-default log-out-button">Next page</a>
         <ul class="pagination-list">
           <li>
-            <a (click)="changePage(1)" [class.selected]="currentPage==1" aria-label="Goto page 1"
+<!--            [routerLink]="['']" [queryParams]="{ page:currentPage }"-->
+            <a
+              (click)="changePage(1)" [class.selected]="currentPage==1" aria-label="Goto page 1"
                class="pagination-link pagination-default">1</a>
+
           </li>
           <li>
             <span class="pagination-ellipsis">&hellip;</span>

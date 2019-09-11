@@ -14,7 +14,7 @@ export class PaginationService {
   private pageSource = new BehaviorSubject(1);
   currentPage = this.pageSource.asObservable();
 
-  constructor(private productService: ProductService) {
+  constructor( ) {
   }
 
 

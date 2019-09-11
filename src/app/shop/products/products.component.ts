@@ -8,8 +8,6 @@ import {LocalStorageKey} from '../../shared/constants/local-storage-key';
 import {Router} from '@angular/router';
 import {BaseStorageService} from '../../shared/services/base-storage.service';
 import {PaginationModel} from '../../shared/models/pagination.model';
-import {ProductsModel} from '../../admin/products/products.model';
-import {ProductListComponent} from './product-list/product-list.component';
 import {PaginationService} from '../../shared/pagination/pagination.service';
 
 
@@ -37,7 +35,8 @@ export class ProductsComponent implements OnInit {
               private formBuilder: FormBuilder,
               private routerLink: Router,
               private baseStorage: BaseStorageService,
-              private paginationService: PaginationService) {
+              private paginationService: PaginationService,
+              private router: Router) {
   }
 
   get f() {
@@ -57,6 +56,7 @@ export class ProductsComponent implements OnInit {
     this.paginationService.currentPage.subscribe(currentPage => {
       this.currentPage = currentPage;
       this.setRequestAditionalPropertiesAndMakeRequest(this.currentPage - 1, this.pageSize, this.searchText, this.temporaryEventState);
+
     });
 
   }
@@ -71,6 +71,7 @@ export class ProductsComponent implements OnInit {
   resetPageAndMakeRequest(event: any) {
     this.temporaryEventState = event;
     this.paginationService.changePage(1);
+
   }
 
   simpleRequest() {
