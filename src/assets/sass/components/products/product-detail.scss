@@ -74,20 +74,6 @@
             color: map-get($ucx-colors, yellow);
           }
         }
-
-        .right-actions {
-          display: flex;
-          justify-content: flex-end;
-
-          i {
-            font-size: 25px;
-            color: map-get($ucx-colors, light-orange);
-
-            &:hover {
-              color: map-get($ucx-colors, red-orange);
-            }
-          }
-        }
       }
     }
   }
@@ -109,7 +95,24 @@
         justify-content: center;
         align-items: center;
         padding: 20px 0;
-        border-bottom: 2px solid map-get($ucx-colors, border-color);
+        border-bottom: 1px solid map-get($ucx-colors, deep-orange);
+
+        .product-name-instock {
+          display: flex;
+          flex-direction: row;
+
+          h3 {
+            font-family: $titleFont;
+            text-transform: uppercase;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: map-get($ucx-colors, deep-orange);
+          }
+
+          h5 {
+            color: map-get($ucx-colors, light-orange);
+          }
+        }
 
         h2 {
           font-family: $titleFont;
@@ -132,18 +135,13 @@
           display: flex;
           flex-direction: row;
 
-          .right-actions {
-            display: flex;
-            justify-content: flex-end;
-            margin-left: 5px;
-            i {
-              font-size: 30px;
-              color: map-get($ucx-colors, light-orange);
-
-              &:hover {
-                color: map-get($ucx-colors, red-orange);
-              }
-            }
+          h2 {
+            font-family: $titleFont;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 0 20px;
+            color: map-get($ucx-colors, orange-yellow);
           }
 
           h3 {
@@ -162,6 +160,8 @@
         .product-description-container{
           height: 100%;
           max-height: 250px;
+          justify-content: center;
+          text-align: center;
           border-color: map-get($ucx-colors, deep-orange);
           overflow-y: scroll;
           &::-webkit-scrollbar {
@@ -176,7 +176,7 @@
 
           .product-description {
             padding: 20px 0;
-            color: #999;
+            color: white;
 
             @include mobile {
               padding: 0 0;
@@ -190,11 +190,13 @@
           align-items: baseline;
           justify-content: center;
           font-family: $titleFont;
-          color: map-get($ucx-colors, light-gray);
+          .heading{
+            color: map-get($ucx-colors, deep-orange);
+          }
 
           .product-price {
             position: relative;
-            padding-right: 15px;
+            padding:0 15px;
 
             .heading {
               font-weight: 600;
@@ -204,12 +206,12 @@
             .value {
               font-size: 1.6rem;
               font-weight: 700;
-              color: map-get($ucx-colors, deep-orange);
+              color: white;
             }
           }
 
           .product-quantity {
-
+               text-align: center;
             .heading {
               font-family: 'Raleway', sans-serif;
               font-weight: 600;
@@ -221,12 +223,32 @@
               text-align: center;
               background-color: transparent;
               border-color: map-get($ucx-colors, deep-orange);
-              color: map-get($ucx-colors, light-gray);
+              color: white;
               padding: 20px 0;
+              width: 80%;
+            }
+            .is-vhidden {
+              visibility: hidden !important;
+            }
+
+            .right-actions {
+              display: flex;
+              justify-content: center;
+
+              i {
+                font-size: 35px;
+                color: map-get($ucx-colors, deep-orange);
+                padding: 0;
+
+                &:hover {
+                  color: map-get($ucx-colors, red-orange);
+                }
+              }
             }
           }
 
           .add-to-cart {
+            padding-right: 15px;
             .heading {
               margin: 5px 0;
             }
@@ -239,11 +261,10 @@
               line-height: 0;
               font-size: 0.8rem;
               font-weight: 600;
-              margin-left: 20px;
               outline: none;
               border-color: map-get($ucx-colors, deep-orange);
               background-color: transparent;
-              color: map-get($ucx-colors, light-gray);
+              color: white;
               transition: all 0.5s;
               padding: 20px 40px;
               border-radius: 500px;
