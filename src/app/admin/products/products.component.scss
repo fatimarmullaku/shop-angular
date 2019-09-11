@@ -44,8 +44,7 @@
   //display: none;
 }
 
-.image-upload img
-{
+.image-upload img {
   width: 80px;
   cursor: pointer;
 }
@@ -54,3 +53,13 @@
   color:red;
 }
 
+
+footer {
+  display: flex;
+  justify-content: right;
+}
+
+
+.admin-button {
+  background-color:#ec7f37;
+}
