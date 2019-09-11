@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ProductModel} from '../../shared/models/product.model';
+import {ENDPOINTS} from '../../shared/constants/api.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  readonly rootUrl = 'http://localhost:8080/api/v1/products/';
+  readonly rootUrl = ENDPOINTS.products.getAll + '/';
+
 
   resData: any;
 
@@ -35,7 +37,7 @@ export class ProductsService {
   }
 
   getHighestPrice() {
-    return this.http.get(this.rootUrl + 'getHighestPrice')
+    return this.http.get(this.rootUrl + 'getHighestPrice');
   }
 
 

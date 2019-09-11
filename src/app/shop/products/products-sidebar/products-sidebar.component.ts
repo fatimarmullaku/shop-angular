@@ -5,7 +5,7 @@ import 'hammerjs';
 import {ProductsService} from '../products.service';
 import {BrandsModel} from '../../../shared/models/brands.model';
 import {LabelType, Options} from 'ng5-slider';
-import {PaginationService} from "../../../shared/pagination/pagination.service";
+import {PaginationService} from '../../../shared/pagination/pagination.service';
 
 @Component({
   selector: 'app-products-sidebar',
@@ -13,13 +13,13 @@ import {PaginationService} from "../../../shared/pagination/pagination.service";
   styleUrls: ['./products-sidebar.component.scss']
 })
 export class ProductsSidebarComponent implements OnInit {
-  currentPageNumber:number;
-  size:number = 2;
-  selectedBrandd =  [];
+  currentPageNumber: number;
+  size = 2;
+  selectedBrandd = [];
   platformsList: PlatformModel[];
   brandsList: any;
   minValue = 0;
-  maxValue: number = 100;
+  maxValue = 100;
   ceilValue: number;
   options: Options = {
     showOuterSelectionBars: true,
@@ -43,6 +43,7 @@ export class ProductsSidebarComponent implements OnInit {
   @Output()
   prices: EventEmitter<object> = new EventEmitter();
 
+
   constructor(private productsService: ProductsService,
               private platformsService: PlatformsService,
               private brandsService: BrandsService,
@@ -64,7 +65,7 @@ export class ProductsSidebarComponent implements OnInit {
 
     this.paginationService.currentPage.subscribe(res => {
       this.currentPageNumber = res;
-    })
+    });
 
 
   }
