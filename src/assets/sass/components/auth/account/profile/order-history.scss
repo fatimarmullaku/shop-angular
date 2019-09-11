@@ -28,17 +28,17 @@
       margin-bottom: 0;
     }
     strong {
-      color: map-get($ucx-colors, light-gray);
+      color: map-get($ucx-colors, deep-orange);
     }
     p{
-      color: map-get($ucx-colors, deep-orange);
+      color: map-get($ucx-colors, light-gray);
     }
   }
 
   .product_purchased{
     background-color: transparent;
     .list-item{
-      color: map-get($ucx-colors, deep-orange);
+      color: map-get($ucx-colors, light-gray);
     }
   }
 }
