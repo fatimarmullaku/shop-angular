@@ -9,7 +9,7 @@
                 <i (click)="openInsert()" class="fas fa-plus"></i>
                 </a>
             </span>
-        <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
+        <table class="table table-bordered table-responsive-md table-striped text-center"  >
           <tr>
             <th>Name</th>
             <th>Photo</th>
@@ -50,11 +50,9 @@
                 ) "
                   class="far fa-edit"></i>
               </a>
-<!--              <i (click)="openDelete(p.id)" class="fa fa-trash" aria-hidden="true"></i>-->
             </td>
           </tr>
         </table>
-<!--        <button type="button" class="btn btn-outline-secondary btnPDF" (click)="captureScreen()">PDF</button>-->
         <div class="columns is-centered">
         <app-product-list-pagination class="column is-narrow-desktop is-narrow-tablet"></app-product-list-pagination><div>
       </div>
@@ -108,9 +106,6 @@
               <label for="platform">Platform:</label>
               <div>
                 <select formControlName="id" id="platform">
-<!--                  <option *ngFor="let p of platformList" [ngValue]="p.id">-->
-<!--                    {{p.name}}-->
-<!--                  </option>-->
                   <option [ngValue]="1">PC</option>
                 </select>
               </div>
@@ -188,9 +183,6 @@
             <label for="platform">Platform:</label>
             <div>
               <select formControlName="id" id="uPlatform">
-<!--                <option *ngFor="let p of platformList" [ngValue]="p.id">-->
-<!--                  {{p.name}}-->
-<!--                </option>-->
                 <option [ngValue]="1">PC</option>
               </select>
             </div>
