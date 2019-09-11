@@ -28,12 +28,19 @@ import {AccountComponent} from './account/account.component';
 import {EditProfileComponent} from './account/edit-profile/edit-profile.component';
 import {OrderHistoryComponent} from './account/order-history/order-history.component';
 import {ShopAuthGuardService} from '../shared/services/guards/shop-auth-guard.service';
+import {ContactUsComponent} from './contact-us/contact-us.component';
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {
     path: '',
     component: ProductsComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'page',
+    component: ProductsComponent,
+    pathMatch:'full'
   },
   {
     path: 'products/:id',
@@ -158,6 +165,14 @@ const routes: Routes = [
   {
     path: 'police',
     component: PoliceComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'contact-us',
+    component: ContactUsComponent
   }
 ];
 

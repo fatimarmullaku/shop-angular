@@ -16,6 +16,7 @@ export class OrderDataComponent implements OnInit {
   data: OrderModel[];
   currentPage: number;
   pageSize = 3;
+  postponedCall;
 
   constructor(private ordersService: OrdersService,
               private paginationService: PaginationService) {
@@ -57,6 +58,15 @@ export class OrderDataComponent implements OnInit {
 
   resetPageAndMakeRequest() {
     this.paginationService.changePage(1);
+  }
+
+  postponeRequest() {
+    if (this.postponedCall) {
+      clearTimeout(this.postponedCall);
+    }
+    this.postponedCall = setTimeout(() => {
+      this.resetPageAndMakeRequest();
+    }, 800);
   }
 
 }

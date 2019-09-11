@@ -19,8 +19,8 @@ export class OrderService {
 
   paged(size: number, page: number) {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    const params = new HttpParams().set('size', String(size)).set('page', String(page));
-    return this.http.get(this.baseUrl + '/orders/history/paged/' + `/${customerId}`, {params});
+    const params = new HttpParams().set('size', String(size)).set('page', String(page)).set('customerId', `${customerId}`);
+    return this.http.get(this.baseUrl + '/orders/history/paged', {params});
   }
 
 

@@ -1,4 +1,3 @@
-import {PhoneModel} from './phone.model';
 import {AddressesModel} from './addresses.model';
 
 export class CustomerModel {
