@@ -31,7 +31,6 @@ export class ContactUsComponent implements OnInit {
     if (this.contactUsFormGroup.invalid) {
       return;
     }
-    console.log('Contact forma: ', this.contactUsFormGroup.getRawValue());
     this.userService.contactUs(this.contactUsFormGroup.getRawValue()).subscribe((res) => {
     }, (error) => {
       console.error(error);

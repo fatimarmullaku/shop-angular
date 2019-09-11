@@ -179,7 +179,7 @@ a.dropdown-item.is-active {
       }
 
       a {
-        color: map-get($ucx-colors, light-gray);
+        color: white;
         @include mobile {
           color: black;
         }

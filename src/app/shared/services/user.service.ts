@@ -73,7 +73,6 @@ export class UserService {
   }
 
   contactUs(payload: any) {
-    console.log('Service: ', payload);
     return this.restService.request<any>(HttpRequestMethod.POST, ENDPOINTS.auth.contactUs, {
       body: payload
     });
