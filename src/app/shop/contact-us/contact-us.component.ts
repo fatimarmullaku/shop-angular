@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Form, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../shared/services/user.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
     this.contactUsFormGroup = this.formBuilder.group({
       name: new FormControl('', Validators.required),
-      email: ['', [Validators.required, Validators.email]],
+      email: new FormControl('', [Validators.required, Validators.email]),
       message: new FormControl('', Validators.required)
     });
   }
@@ -32,7 +32,10 @@ export class ContactUsComponent implements OnInit {
       return;
     }
     console.log('Contact forma: ', this.contactUsFormGroup.getRawValue());
-    this.userService.contactUs(this.contactUsFormGroup.getRawValue());
+    this.userService.contactUs(this.contactUsFormGroup.getRawValue()).subscribe((res) => {
+    }, (error) => {
+      console.error(error);
+    });
   }
 
 }

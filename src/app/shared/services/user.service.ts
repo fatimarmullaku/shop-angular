@@ -55,10 +55,6 @@ export class UserService {
     return this.httpClient.post<UserRegisterModel>(ENDPOINTS.auth.register, payload);
   }
 
-  contactUs(payload: any) {
-    return this.httpClient.post<any>(ENDPOINTS.auth.contactUs, payload);
-  }
-
   logout(): void {
     this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
     this.baseStorage.clearStorageOf(LocalStorageKey.CUSTOMER_ID);
@@ -74,6 +70,13 @@ export class UserService {
       {
         body: payload
       });
+  }
+
+  contactUs(payload: any) {
+    console.log('Service: ', payload);
+    return this.restService.request<any>(HttpRequestMethod.POST, ENDPOINTS.auth.contactUs, {
+      body: payload
+    });
   }
 
   updateCustomer(payload: any) {
