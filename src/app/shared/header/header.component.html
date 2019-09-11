@@ -1,4 +1,4 @@
-<div (click)="toggleClass3()" [ngClass]="status3 ? 'is-active active' : ''" class="header uses-flex">
+<div  [ngClass]="status3 ? 'active' : ''" class="header uses-flex" id="leshimaris">
   <div class="header-top uses-flex between-space">
     <a>
       <div class="image-container">
@@ -68,7 +68,7 @@
                  href="#">Account</a>
             </div>
             <div>
-              <a [routerLink]="'/wish-list'" class="dropdown-item" href="#">Wishlist</a>
+              <a [routerLink]="'/wish-list'" class="dropdown-item" >Wishlist</a>
             </div>
             <div *ngIf="this.isLoggedIn()">
               <a (click)="this.userService.logout()" class="dropdown-item sign-up-button">Log Out</a>
@@ -79,8 +79,8 @@
       </div>
     </div>
     <!-- End of header right buttons   -->
-    <div class="hamburger-menu-container is-hidden-tablet">
-      <button>
+    <div class="hamburger-menu-container is-hidden-tablet" >
+      <button (click)="onHamburgerclick()">
         <i class="fa hamburger-menu"></i>
       </button>
     </div>
@@ -88,10 +88,7 @@
   <div class="header-bottom uses-flex">
     <nav aria-label="main navigation" class="navbar navbar-container" role="navigation">
       <a (click)="pageR()" class="navbar-item is-hidden-mobile" routerLink="/home">Home</a>
-
-
       <div class="is-hidden-desktop customer-options">
-
         <div *ngIf="this.isLoggedIn()">
           <a *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'"
              class="dropdown-item is-dark is-active customer-name"><i class="far fa-user"></i>{{this.customerName}}</a>
@@ -115,15 +112,9 @@
           <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/login"><i class="fas fa-sign-in-alt"></i>Login</a>
         </div>
       </div>
-
       <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
       <a class="navbar-item is-hidden-mobile" routerLink="/">Games</a>
       <a class="navbar-item is-hidden-mobile" routerLink="/contact-us">Contact Us</a>
-<!--      <div *ngIf="!this.isLoggedIn()">
-        <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/register"><i class="fas fa-user-plus"></i>Sign Up</a>
-        <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/login"><i class="fas fa-sign-in-alt"></i>Login</a>
-      </div>-->
-
     </nav>
   </div>
 </div>

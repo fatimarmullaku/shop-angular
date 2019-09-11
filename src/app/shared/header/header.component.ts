@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit {
     this.status2 = !this.status2;
   }
 
-  toggleClass3() {
+  onHamburgerclick() {
     this.status3 = !this.status3;
   }
 
@@ -89,7 +89,7 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchCustomer(): void {
-    if(this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID) != null) {
+    if (this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID) != null) {
       const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
       if (customerId && customerId.length > 0) {
         this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
@@ -103,5 +103,4 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
-
 }
