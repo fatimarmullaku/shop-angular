@@ -1,9 +1,9 @@
 <div class="container flex-container">
   <div class="form-group fill-space">
     <input type="number" class="form-control" *ngIf="searchTypeNumber" placeholder="Search order..."
-           [(ngModel)]="searchOrder" (keyup)="resetPageAndMakeRequest()">
+           [(ngModel)]="searchOrder" (keyup)="postponeRequest()">
     <input type="text" class="form-control" *ngIf="!searchTypeNumber" placeholder="Search order..."
-           [(ngModel)]="searchOrder" (keyup)="resetPageAndMakeRequest()">
+           [(ngModel)]="searchOrder" (keyup)="postponeRequest()">
   </div>
   <div class="form-group">
     <select (change)="changeSelectedType()" name="" class="form-control" [(ngModel)]="searchBy">
