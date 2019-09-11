@@ -26,15 +26,13 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.paginationService.currentPage.subscribe(currentPage => {
-      this.currentPage = currentPage;
+    this.paginationService.currentPage.subscribe(res => {
+      this.currentPage = res;
       this.getProductsPaged();
       this.getTopProducts();
     });
-    // this.getProductsPaged();
   }
 
-// hard-coded 9
   getProductsPaged() {
     this.productService.getProductsPaged(this.pageSize, this.currentPage - 1).subscribe((data: any) => {
       this.productsList = data.content;

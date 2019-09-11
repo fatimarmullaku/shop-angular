@@ -43,7 +43,7 @@ export class CustomersComponent implements OnInit {
       deletedDateTime: [],
       description: [''],
       version: [''],
-      phoneNumber:[]
+      phoneNumber: []
     });
     this.addressesArray = this.customersForm.get('addresses') as FormArray;
     this.addressesArray.push(this.fb.group({
@@ -54,9 +54,6 @@ export class CustomersComponent implements OnInit {
     }));
 
   }
-
-
-<<<<<<< Updated upstream
 
   onDelete() {
     this.customersService.deleteCostumer(this.customerId).subscribe(
@@ -73,10 +70,9 @@ export class CustomersComponent implements OnInit {
   }
 
 
-
   openInsert() {
     this.insertModal = true;
-  } 
+  }
 
   closeInsertModal() {
     this.insertModal = !this.insertModal;

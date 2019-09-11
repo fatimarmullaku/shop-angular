@@ -17,7 +17,6 @@ export class ProductsSidebarComponent implements OnInit {
   brandsList: any;
   minValue = 0;
   maxValue: number = 100;
-  ceilValue: number;
   options: Options = {
     showOuterSelectionBars: true,
     floor: 0,
