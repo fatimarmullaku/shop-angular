@@ -30,9 +30,6 @@ export class ProductService {
   fetchProducts(): void {
     this.restService.publicRequest<ProductModel[]>(HttpRequestMethod.GET, ENDPOINTS.products.getAll).subscribe(res => {
         this.products = res;
-        this.products.forEach(value => {
-          console.log(value.fileName);
-        });
       },
       (error) => {
         console.error(error);

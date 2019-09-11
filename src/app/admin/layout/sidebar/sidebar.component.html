@@ -1,10 +1,10 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" xmlns:dipslay="http://www.w3.org/1999/xhtml">
   <mat-sidenav #drawer [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="!(isHandset$ | async)"
                class="sidenav"
                fixedInViewport="true">
-    <mat-toolbar>UCX Games</mat-toolbar>
+    <mat-toolbar>UCX Gaming</mat-toolbar>
     <div class="side-nav-container">
       <p class="user"> {{username}}</p>
       <p class="detalis">{{role}}</p>
@@ -15,19 +15,19 @@
       <a class="sidebarMenu" mat-list-item routerLink="/admin/platforms">
         <i class="fa fa-tablet"></i> Platforms</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/brands">
-        <i class="fa fa-tablet"></i> Brands</a>
+        <i class="fa fa-gamepad"></i> Brands</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/products">
-        <i class="fas fa-shopping-cart"></i> Products</a>
+        <i class="fa fa-cart-plus"></i> Products</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/customers">
         <i class="fa fa-user"></i>Customers</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/orders">
-        <i class="fa fa-building"></i> Orders</a>
-      <a class="sidebarMenu" mat-list-item routerLink="/admin/activitylogs">
+        <i class="fa fa-truck"></i> Orders</a>
+<!--      <a class="sidebarMenu" mat-list-item routerLink="/admin/activitylogs">
         <i class="fa fa-tablet"></i>Activity Logs</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/roles">
         <i class="fa fa-user"></i> Roles</a>
-      <a class="sidebarMenu" mat-list-item routerLink="/admin/users">
-        <i class="fa fa-user"></i> Users</a>
+      <a class="sidebarMenu"  mat-list-item routerLink="/admin/users">
+        <i class="fa fa-user"></i> Users</a>-->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="overflow-hidden">
@@ -51,6 +51,7 @@
                 <div class="d-inline-block " ngbDropdown>
                   <button class="btn" id="dropdownBasic1" ngbDropdownToggle>{{username}}</button>
                   <div aria-labelledby="dropdownBasic1" ngbDropdownMenu>
+                    <button routerLink="my-profile" ngbDropdownItem><i class="fa fa-user"></i>  My Profile</button>
                     <button (click)="this.userService.logout()" ngbDropdownItem><i class="fa fa-sign-out"></i>  Log Out</button>
                   </div>
                 </div>

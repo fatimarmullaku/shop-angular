@@ -36,29 +36,34 @@ export class UserService {
         password
       }
     }).pipe(map(user => {
-        if (user) {
-          if (user.accessToken) {
-            this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
-            console.log(this.tokenService.decodeToken());
-          }
-          if (user.customerId) {
-            console.log(user.customerId);
-            this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.customerId, true);
-          }
+      if (user) {
+        if (user.accessToken) {
+          this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
+          console.log(this.tokenService.decodeToken());
         }
+        if (user.customerId) {
+          console.log(user.customerId);
+          this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.customerId, true);
+        }
+      }
 
-        return user;
-      }));
+      return user;
+    }));
   }
 
   register(payload: UserRegisterModel) {
     return this.httpClient.post<UserRegisterModel>(ENDPOINTS.auth.register, payload);
   }
 
+  contactUs(payload: any) {
+    return this.httpClient.post<any>(ENDPOINTS.auth.contactUs, payload);
+  }
+
   logout(): void {
     this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
     this.baseStorage.clearStorageOf(LocalStorageKey.CUSTOMER_ID);
     this.baseStorage.clearStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY);
+    window.location.reload();
     this.router.navigateByUrl('/');
   }
 

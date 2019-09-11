@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 import {PlatformsService} from './platforms.service';
-import html2canvas from 'html2canvas';
-import * as jspdf from 'jspdf';
+
 
 
 @Component({
@@ -58,21 +57,7 @@ export class PlatformsComponent implements OnInit {
 
   }
 
-  public captureScreen() {
-    const data = document.getElementById('contentToConvert');
-    html2canvas(data).then(canvas => {
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      const heightLeft = imgHeight;
 
-      const contentDataURL = canvas.toDataURL('image/png');
-      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-      const position = 10;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('platformsList.pdf');
-    });
-  }
 
   onSubmit() {
     const values = this.form.value;

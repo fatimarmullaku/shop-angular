@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {LocalStorageKey} from '../../shared/constants/local-storage-key';
 import {BaseStorageService} from '../../shared/services/base-storage.service';
@@ -38,7 +38,6 @@ export class ProductsService {
   }
 
   updateProduct(data, id) {
-    console.log(data);
     return this.http.put(this.rootUrl + id, data);
   }
 

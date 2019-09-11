@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
     });*/
 
 
-      this.ordersService.pagedWithCustomParams(1,1, '', 'customerName')
+      this.ordersService.pagedWithCustomParams(1, 1, '', 'customerName')
         .subscribe((response: OrderHistoryPagedModel[]) => {
           if (response.length >= 1) {
             this.orderCount = response[0].totalFilteredOrders;
@@ -59,9 +59,9 @@ export class HomeComponent implements OnInit {
             this.orderCount = 0;
           }
         });
-    this.statsService.getStats().subscribe((product: any) => {
+      this.statsService.getStats().subscribe((product: any) => {
       const prod = product;
-      if (prod){
+      if (prod) {
         this.topProduct =  prod.topSoldItems[0].productname;
       } else {
         this.topProduct = 'No product sold';

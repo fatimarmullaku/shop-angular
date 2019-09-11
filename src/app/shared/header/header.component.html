@@ -1,30 +1,29 @@
-<div (click)="toggleClass3()" [ngClass]="status3 ? 'is-active active' : ''"
-     class="header uses-flex">
+<div class="header uses-flex">
   <div class="header-top uses-flex between-space">
     <a>
       <div class="image-container">
-        <img [routerLink]="['/']" alt="logo" class="header-logo is-hidden-mobile" src="assets/img/ucx-logo-desktop.png">
-        <img [routerLink]="['/']" alt="logo" class="header-logo is-hidden-desktop" src="assets/img/ucx-logo-mobile.png">
+        <img src="assets/img/ucx-logo-desktop.png" alt="logo" class="header-logo is-hidden-mobile" (click)="pageR()" [routerLink]="['/']">
+        <img src="assets/img/ucx-logo-mobile.png" alt="logo" class="header-logo is-hidden-desktop" (click)="pageR()" [routerLink]="['/']">
       </div>
     </a>
 
     <div class="columns right-buttons is-hidden-tablet-only">
-      <div (click)="toggleClass()" [ngClass]="status ? 'is-active' : ''"
-           class="column is-6 dropdown dropdown-cart is-right is-large">
+      <div class="column is-6 dropdown dropdown-cart is-right is-large" (click)="toggleClass()"
+           [ngClass]="status ? 'is-active' : ''">
         <div class="dropdown-trigger">
-          <button aria-controls="dropdown-menu" aria-haspopup="true" class="button cart-button">
+          <button class="button cart-button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span><i class="fab fa-opencart open-cart-icon"></i></span>
-            <span *ngIf="cartQty != null" class="is-medium cart-nr">{{cartQty}}</span>
+            <span class="is-medium cart-nr" *ngIf="cartQty != null">{{cartQty}}</span>
           </button>
         </div>
         <div class="dropdown-menu" id="dropdown-menu-2" role="menu">
           <div class="dropdown-content">
-            <div *ngFor="let item of getProductsFromCart()"
-                 class="columns is-mobile dropdown-item dropdown-cart-item">
+            <div class="columns is-mobile dropdown-item dropdown-cart-item"
+                 *ngFor="let item of getProductsFromCart()">
               <div class="column item-picture is-4">
                 <figure class="image is-64x64">
-                  <img *ngIf="item.product.fileName != null" [src]="photoUrl + item.product.fileName"
-                       class="is-rounded">
+                  <img class="is-rounded" *ngIf="item.product.fileName != null"
+                       [src]="photoUrl + item.product.fileName">
                 </figure>
               </div>
               <div class="column is-4 item-desc">
@@ -38,38 +37,42 @@
             </div>
             <hr class="dropdown-divider">
             <div class="dropdown-item proceed-checkout">
-              <a class="button is-dark is-fullwidth" routerLink="/cart">Proceed to checkout</a>
+              <a routerLink="/cart" class="button is-dark is-fullwidth">Proceed to checkout</a>
             </div>
           </div>
         </div>
       </div>
-      <div (click)="toggleClass2()" [ngClass]="status2 ? 'is-active' : ''"
-           class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large">
+      <div class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large" (click)="toggleClass2()"
+           [ngClass]="status2 ? 'is-active' : ''">
         <div class="dropdown-trigger">
-          <button aria-controls="dropdown-menu" aria-haspopup="true" class="button user-button">
-            <span><i class="fas fa-user-alt "></i></span>
-            <span class="icon is-medium"><i aria-hidden="true" class="fas fa-angle-down"></i></span>
+          <button class="button user-button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span><i *ngIf="!this.isLoggedIn()" class="fas fa-user-alt "></i></span>
+            <span><a href="#" class="customer-name"
+                     *ngIf="this.isLoggedIn() && customerName != null">{{customerName}}</a></span>
+            <span class="icon is-medium">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
           </button>
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
             <div *ngIf="!this.isLoggedIn()">
-              <a class="dropdown-item sign-up-button" routerLink="/auth/register">Sign Up</a>
-              <a class="dropdown-item sign-up-button" routerLink="/auth/login">Login</a>
+              <a routerLink="/auth/register" class="dropdown-item sign-up-button">Sign Up</a>
+              <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
             </div>
             <div *ngIf="this.isLoggedIn()">
-              <a *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'"
-                 class="dropdown-item is-dark is-active"
-                 href="#">{{this.customerName}}</a>
+              <a href="#" class="dropdown-item is-dark is-active" *ngIf="this.customerName != null"
+                 [routerLink]="'/account/edit-profile'">Account</a>
             </div>
             <div>
-              <a [routerLink]="'/wish-list'" class="dropdown-item" href="#">Wishlist</a>
+              <a href="#" class="dropdown-item" [routerLink]="'/wish-list'">Wishlist</a>
             </div>
             <div *ngIf="this.isLoggedIn()">
-              <a (click)="this.userService.logout()" class="dropdown-item sign-up-button">Log Out</a>
+              <a class="dropdown-item sign-up-button" (click)="this.userService.logout()">Log Out</a>
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <!-- End of header right buttons   -->
@@ -80,52 +83,38 @@
     </div>
   </div>
   <div class="header-bottom uses-flex">
-    <nav aria-label="main navigation" class="navbar navbar-container" role="navigation">
-      <a class="navbar-item" routerLink="/">Home</a>
-      <div class="is-hidden-desktop customer-options">
-        <div *ngIf="!this.isLoggedIn()">
-          <a class="dropdown-item sign-up-button" routerLink="/auth/register">Sign Up</a>
-          <a class="dropdown-item sign-up-button" routerLink="/auth/login">Login</a>
-        </div>
-        <div *ngIf="this.isLoggedIn()">
-          <a *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'"
-             class="dropdown-item is-dark is-active customer-name">{{this.customerName}}</a>
-        </div>
-        <div>
-          <a [routerLink]="'/wish-list'" class="dropdown-item wishlist">Wishlist</a>
-        </div>
-        <div *ngIf="this.isLoggedIn()">
-          <a (click)="this.userService.logout()" class="dropdown-item sign-up-button">Log Out</a>
-        </div>
-      </div>
-      <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
-      <a class="navbar-item" routerLink="">Platforms</a>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-item" routerLink="">Contact us</a>
+    <nav class="navbar navbar-container" role="navigation" aria-label="main navigation">
+      <a (click)="pageR()" routerLink="/" class="navbar-item">Home</a>
+      <a routerLink="/home" class="navbar-item">Home</a>
+      <a routerLink="/" class="navbar-item">Games</a>
+      <a routerLink="/wish-list" class="navbar-item">WishList</a>
+      <a routerLink="/contact-us" class="navbar-item">Contact Us</a>
+      <a routerLink="/brands" class="navbar-item" style="visibility: hidden">Brands</a>
+      <!--      <app-publisher-dropdown></app-publisher-dropdown>-->
+      <!--      <div class="navbar-item has-dropdown is-hoverable">-->
 
-        <!--<a class="navbar-link" style="background: none">
-          More
-        </a>
+      <!--        <a class="navbar-link" style="background: none">-->
+      <!--          More-->
+      <!--        </a>-->
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>-->
-      </div>
-
-      <!--      <a class="navbar-item is-hidden-tablet" href="">Sign up</a>
-            <a class="navbar-item is-hidden-tablet" href="">Log in</a>-->
+      <!--        <div class="navbar-dropdown">-->
+      <!--          <a class="navbar-item">-->
+      <!--            About-->
+      <!--          </a>-->
+      <!--          <a class="navbar-item">-->
+      <!--            Jobs-->
+      <!--          </a>-->
+      <!--          <a class="navbar-item">-->
+      <!--            Contact-->
+      <!--          </a>-->
+      <!--          <hr class="navbar-divider">-->
+      <!--          <a class="navbar-item">-->
+      <!--            Report an issue-->
+      <!--          </a>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <a href="" class="navbar-item is-hidden-tablet">Sign up</a>
+      <a href="" class="navbar-item is-hidden-tablet">Log in</a>
     </nav>
   </div>
 </div>

@@ -7,26 +7,36 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {LocalStorageKey} from '../../shared/constants/local-storage-key';
 import {Router} from '@angular/router';
 import {BaseStorageService} from '../../shared/services/base-storage.service';
+import {PaginationModel} from '../../shared/models/pagination.model';
+import {PaginationService} from '../../shared/pagination/pagination.service';
+
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  providers: [PaginationService]
 })
 export class ProductsComponent implements OnInit {
-
   products: ProductModel[];
   informationForm: FormGroup;
   addresses: FormArray;
   submitted = false;
   numbersOnlyValidator = false;
+  currentPage = 1;
+  pageSize = 8;
+  temporaryEventState: any;
+  postponedCall: any;
+  searchText = '';
 
   constructor(private productService: ProductService,
               private productsService: ProductsService,
               public   userService: UserService,
               private formBuilder: FormBuilder,
               private routerLink: Router,
-              private baseStorage: BaseStorageService) {
+              private baseStorage: BaseStorageService,
+              private paginationService: PaginationService,
+              private router: Router) {
   }
 
   get f() {
@@ -40,19 +50,56 @@ export class ProductsComponent implements OnInit {
       phoneNumber: new FormControl('', Validators.required),
       addresses: this.formBuilder.array([this.createAddress()])
     });
+    if (!this.temporaryEventState) {
+      this.temporaryEventState = {page: 1, size: this.pageSize, min: 0, max: 100};
+    }
+    this.paginationService.currentPage.subscribe(currentPage => {
+      this.currentPage = currentPage;
+      this.setRequestAditionalPropertiesAndMakeRequest(this.currentPage - 1, this.pageSize, this.searchText, this.temporaryEventState);
+
+    });
 
   }
 
   onFilterChange(event: any) {
-    this.productsService.getProductByPlatformAndBrand(event).subscribe(res => {
-      this.products = res;
+    this.productsService.getProductBySelectedPrice(event).subscribe((response: PaginationModel<ProductModel>) => {
+      this.products = response.content;
+      this.paginationService.changeTotalPages(response.totalPages);
     });
   }
 
-  onFilterPriceChange(event: any) {
-    this.productsService.getProductBySelectedPrice(event).subscribe(res => {
-      this.products = res;
-    });
+  resetPageAndMakeRequest(event: any) {
+    this.temporaryEventState = event;
+    this.paginationService.changePage(1);
+
+  }
+
+  simpleRequest() {
+    this.paginationService.changePage(1);
+  }
+
+  setRequestAditionalPropertiesAndMakeRequest(page: number, size: number, productName: string, event: any) {
+    event.page = page;
+    event.size = size;
+    if (productName) {
+      if (productName.trim() !== '') {
+        event.productName = productName.trim();
+      } else {
+        delete event.productName;
+      }
+    } else {
+      delete event.productName;
+    }
+    this.onFilterChange(event);
+  }
+
+  postponedResetPageAndMakeRequest() {
+    if (this.postponedCall) {
+      clearTimeout(this.postponedCall);
+    }
+    this.postponedCall = setTimeout(() => {
+      this.simpleRequest();
+    }, 800);
   }
 
   removeActiveClass() {
@@ -76,12 +123,6 @@ export class ProductsComponent implements OnInit {
     this.userService.addPhonesAndAddresses(this.informationForm.getRawValue()).subscribe((res) => {
       const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
       const dummyKey = this.baseStorage.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
-      // if ((cartStorage && cartStorage.length > 0) && dummyKey) {
-      //   this.routerLink.navigateByUrl('/cart/shipping');
-      // } else {
-      //   this.routerLink.navigateByUrl('/');
-      // }
-
       this.removeActiveClass();
     }, (error) => {
       console.error(error);
@@ -91,12 +132,6 @@ export class ProductsComponent implements OnInit {
   skipAdditionalInformation() {
     const cartStorage = this.baseStorage.getStorageOf(LocalStorageKey.CART);
     const dummyKey = this.baseStorage.getStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY, true);
-    // if ((cartStorage && cartStorage.length > 0) && dummyKey) {
-    //   this.routerLink.navigateByUrl('/cart/shipping');
-    // } else {
-    //   this.routerLink.navigateByUrl('/');
-    // }
-
     this.removeActiveClass();
   }
 
@@ -110,6 +145,7 @@ export class ProductsComponent implements OnInit {
     return true;
 
   }
+
 }
 
 
