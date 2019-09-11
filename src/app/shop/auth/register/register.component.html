@@ -2,12 +2,12 @@
   <div class="auth-form-header">
     <img src="assets/img/ucx-logo-desktop.png" alt="">
     <h4>Create an Account</h4>
-    <span>Sign up to UCXMarket</span>
+    <span class="sign-up-to-market">Sign up to UCXMarket</span>
   </div>
 
   <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
     <div class="field form-group">
-      <div class="control">
+      <div class="control-reg">
         <input type="text" formControlName="firstName" class="input auth-input form-control" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
           <div *ngIf="f.firstName.errors.required">First Name is required</div>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="field form-group">
-      <div class="control">
+      <div class="control-reg">
         <input type="text" formControlName="lastName" class="input auth-input form-control" placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
           <div *ngIf="f.lastName.errors.required">Last Name is required</div>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="field form-group">
-      <div class="control">
+      <div class="control-reg">
         <input type="text" formControlName="email" class="input auth-input form-control" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
           <div *ngIf="f.email.errors.required">Email is required</div>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="field form-group">
-      <div class="control">
+      <div class="control-reg">
         <input type="password" name="password" formControlName="password" class="input auth-input form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
           <div *ngIf="f.password.errors.required">Password is required</div>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="field form-group">
-      <div class="control">
+      <div class="control-reg">
         <input type="password" name="password" min="6" formControlName="confirmPassword" class="input auth-input form-control" placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
         <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
           <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
@@ -61,7 +61,7 @@
 
   <div class="auth-form-footer">
     <div class="login-link">
-      <p class="paragraph">Already a member?<a [routerLink]="['/auth']">Sign in</a></p>
+      <p class="paragraph">Already a member?<a [routerLink]="['/auth']"> Sign in</a></p>
     </div>
   </div>
 </div>
