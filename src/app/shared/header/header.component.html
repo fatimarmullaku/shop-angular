@@ -11,7 +11,7 @@
 
     <div class="columns right-buttons is-hidden-tablet-only">
       <div (click)="toggleClass()" [ngClass]="status ? 'is-active' : ''"
-           class="column is-6 dropdown dropdown-cart is-right is-large">
+           class="column is-4-desktop is-6-mobile dropdown dropdown-cart is-right is-large">
         <div class="dropdown-trigger">
           <button aria-controls="dropdown-menu" aria-haspopup="true" class="button cart-button">
             <span><i class="fab fa-opencart open-cart-icon"></i></span>
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div (click)="toggleClass2()" [ngClass]="status2 ? 'is-active' : ''"
-           class="column is-6 dropdown is-hidden-mobile dropdown-profile is-right is-large">
+           class="column is-8-desktop is-6-mobile dropdown is-hidden-mobile dropdown-profile is-right is-large">
         <div class="dropdown-trigger">
           <button aria-controls="dropdown-menu" aria-haspopup="true" class="button user-button">
             <span><i *ngIf="!this.isLoggedIn()" class="fas fa-user-alt "></i></span>
@@ -91,27 +91,39 @@
 
 
       <div class="is-hidden-desktop customer-options">
-        <div *ngIf="!this.isLoggedIn()">
-          <a class="dropdown-item sign-up-button" routerLink="/auth/register">Sign Up</a>
-          <a class="dropdown-item sign-up-button" routerLink="/auth/login">Login</a>
-        </div>
+
         <div *ngIf="this.isLoggedIn()">
           <a *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'"
-             class="dropdown-item is-dark is-active customer-name">{{this.customerName}}</a>
+             class="dropdown-item is-dark is-active customer-name"><i class="far fa-user"></i>{{this.customerName}}</a>
         </div>
         <div>
-          <a (click)="pageR()" class="navbar-item is-hidden-desktop" routerLink="/home">Home</a>
-          <a [routerLink]="'/wish-list'" class="dropdown-item wishlist">Wishlist</a>
-          <a class="navbar-item is-hidden-desktop" routerLink="/">Games</a>
-          <a class="navbar-item is-hidden-desktop" routerLink="/contact-us">Contact Us</a>
+          <a (click)="pageR()" class="navbar-item is-hidden-desktop" routerLink="/home"><i class="fas fa-home"></i>Home</a>
+          <a [routerLink]="'/wish-list'" class="dropdown-item wishlist"><i class="far fa-heart"></i>Wishlist</a>
+          <a class="navbar-item is-hidden-desktop" routerLink="/"><i class="fas fa-gamepad"></i>Games</a>
+          <a class="navbar-item is-hidden-desktop" routerLink="/contact-us"> <i class="fas fa-envelope-square"></i>Contact
+            Us</a>
         </div>
         <div *ngIf="this.isLoggedIn()">
-          <a (click)="this.userService.logout()" class="dropdown-item sign-up-button">Log Out</a>
+          <a (click)="this.userService.logout()" class="dropdown-item sign-up-button"><i
+            class="fas fa-sign-out-alt"></i>Log Out</a>
+        </div>
+        <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
+        <a class="navbar-item is-hidden-mobile" routerLink="/">Games</a>
+        <a class="navbar-item is-hidden-mobile" routerLink="/contact-us">Contact Us</a>
+        <div *ngIf="!this.isLoggedIn()">
+          <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/register"><i class="fas fa-user-plus"></i>Sign Up</a>
+          <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/login"><i class="fas fa-sign-in-alt"></i>Login</a>
         </div>
       </div>
+
       <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
       <a class="navbar-item is-hidden-mobile" routerLink="/">Games</a>
       <a class="navbar-item is-hidden-mobile" routerLink="/contact-us">Contact Us</a>
+<!--      <div *ngIf="!this.isLoggedIn()">
+        <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/register"><i class="fas fa-user-plus"></i>Sign Up</a>
+        <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+      </div>-->
+
     </nav>
   </div>
 </div>
