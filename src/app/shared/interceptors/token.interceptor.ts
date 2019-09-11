@@ -2,15 +2,16 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
 import {TokenService} from '../services/token.service';
-import {RestService} from '../services/rest.service';
 import {catchError} from 'rxjs/operators';
 import {UserService} from '../services/user.service';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
   constructor(private tokenService: TokenService,
-              private userService: UserService) {
+              private userService: UserService,
+              public snackBar: MatSnackBar) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -18,8 +19,11 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError(err => {
         if (err.status === 401) {
           const message = err.error.message ? err.error.message : err.error.errorMessage;
-          alert(message);
-          this.userService.logout();
+          this.snackBar.open(message, 'close', {
+            duration: 3000,
+            verticalPosition: 'top'
+          });
+          this.userService.logout('/auth/login');
           return throwError(err);
         }
 

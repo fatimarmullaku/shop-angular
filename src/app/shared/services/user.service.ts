@@ -55,12 +55,16 @@ export class UserService {
     return this.httpClient.post<UserRegisterModel>(ENDPOINTS.auth.register, payload);
   }
 
-  logout(): void {
+  logout(route?: string): void {
     this.baseStorage.clearStorageOf(LocalStorageKey.ACCESS_TOKEN);
     this.baseStorage.clearStorageOf(LocalStorageKey.CUSTOMER_ID);
     this.baseStorage.clearStorageOf(LocalStorageKey.TEMP_SHIPPING_KEY);
-    window.location.reload();
-    this.router.navigateByUrl('/');
+    // window.location.reload();
+    if (route) {
+      this.router.navigateByUrl(route);
+    } else {
+      this.router.navigateByUrl('/');
+    }
   }
 
   addPhonesAndAddresses(payload: any) {
