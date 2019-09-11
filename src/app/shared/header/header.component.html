@@ -22,7 +22,8 @@
                  *ngFor="let item of getProductsFromCart()">
               <div class="column item-picture is-4">
                 <figure class="image is-64x64">
-                  <img class="is-rounded" *ngIf="item.product.fileName != null" [src]="photoUrl + item.product.fileName">
+                  <img class="is-rounded" *ngIf="item.product.fileName != null"
+                       [src]="photoUrl + item.product.fileName">
                 </figure>
               </div>
               <div class="column is-4 item-desc">
@@ -45,10 +46,12 @@
            [ngClass]="status2 ? 'is-active' : ''">
         <div class="dropdown-trigger">
           <button class="button user-button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span><i class="fas fa-user-alt "></i></span>
+            <span><i *ngIf="!this.isLoggedIn()" class="fas fa-user-alt "></i></span>
+            <span><a href="#" class="customer-name"
+                     *ngIf="this.isLoggedIn() && customerName != null">{{customerName}}</a></span>
             <span class="icon is-medium">
-                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
           </button>
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
@@ -58,7 +61,8 @@
               <a routerLink="/auth/login" class="dropdown-item sign-up-button">Login</a>
             </div>
             <div *ngIf="this.isLoggedIn()">
-              <a href="#" class="dropdown-item is-dark is-active" *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'">{{this.customerName}}</a>
+              <a href="#" class="dropdown-item is-dark is-active" *ngIf="this.customerName != null"
+                 [routerLink]="'/account/edit-profile'">Account</a>
             </div>
             <div>
               <a href="#" class="dropdown-item" [routerLink]="'/wish-list'">Wishlist</a>
@@ -68,6 +72,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <!-- End of header right buttons   -->
@@ -79,32 +84,34 @@
   </div>
   <div class="header-bottom uses-flex">
     <nav class="navbar navbar-container" role="navigation" aria-label="main navigation">
-      <a routerLink="/" class="navbar-item">Home</a>
+      <a routerLink="/home" class="navbar-item">Home</a>
+      <a routerLink="/" class="navbar-item">Games</a>
       <a routerLink="/wish-list" class="navbar-item">WishList</a>
-      <a href="" class="navbar-item">Platforms</a>
-      <app-publisher-dropdown></app-publisher-dropdown>
-      <div class="navbar-item has-dropdown is-hoverable">
+      <a routerLink="/contact-us" class="navbar-item">Contact Us</a>
+      <a routerLink="/brands" class="navbar-item" style="visibility: hidden">Brands</a>
+      <!--      <app-publisher-dropdown></app-publisher-dropdown>-->
+      <!--      <div class="navbar-item has-dropdown is-hoverable">-->
 
-        <a class="navbar-link" style="background: none">
-          More
-        </a>
+      <!--        <a class="navbar-link" style="background: none">-->
+      <!--          More-->
+      <!--        </a>-->
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
+      <!--        <div class="navbar-dropdown">-->
+      <!--          <a class="navbar-item">-->
+      <!--            About-->
+      <!--          </a>-->
+      <!--          <a class="navbar-item">-->
+      <!--            Jobs-->
+      <!--          </a>-->
+      <!--          <a class="navbar-item">-->
+      <!--            Contact-->
+      <!--          </a>-->
+      <!--          <hr class="navbar-divider">-->
+      <!--          <a class="navbar-item">-->
+      <!--            Report an issue-->
+      <!--          </a>-->
+      <!--        </div>-->
+      <!--      </div>-->
       <a href="" class="navbar-item is-hidden-tablet">Sign up</a>
       <a href="" class="navbar-item is-hidden-tablet">Log in</a>
     </nav>

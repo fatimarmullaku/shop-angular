@@ -4,7 +4,8 @@ const AUTH = {
   login: environment.apiHost + '/auth/login',
   register: environment.apiHost + '/auth/register',
   forgotPassword: environment.apiHost + 'auth/forgot-password',
-  newPassword: environment.apiHost + 'auth/new-password'
+  newPassword: environment.apiHost + 'auth/new-password',
+  contactUs: environment.apiHost + 'auth/contact-us'
 };
 
 const PRODUCTS = {
