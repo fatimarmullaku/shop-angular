@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
 import {TopProductsService} from '../../shared/services/top-products.service';
 import {ENDPOINTS} from '../../shared/constants/api.constants';
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app-home',
