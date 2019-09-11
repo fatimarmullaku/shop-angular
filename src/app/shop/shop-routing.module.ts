@@ -38,6 +38,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'page',
+    component: ProductsComponent,
+    pathMatch:'full'
+  },
+  {
     path: 'products/:id',
     component: ProductDetailComponent,
     children: [

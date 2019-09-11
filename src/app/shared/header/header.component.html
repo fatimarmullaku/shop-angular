@@ -2,8 +2,8 @@
   <div class="header-top uses-flex between-space">
     <a>
       <div class="image-container">
-        <img src="assets/img/ucx-logo-desktop.png" alt="logo" class="header-logo is-hidden-mobile" [routerLink]="['/']">
-        <img src="assets/img/ucx-logo-mobile.png" alt="logo" class="header-logo is-hidden-desktop" [routerLink]="['/']">
+        <img src="assets/img/ucx-logo-desktop.png" alt="logo" class="header-logo is-hidden-mobile" (click)="pageR()" [routerLink]="['/']">
+        <img src="assets/img/ucx-logo-mobile.png" alt="logo" class="header-logo is-hidden-desktop" (click)="pageR()" [routerLink]="['/']">
       </div>
     </a>
 
@@ -84,6 +84,7 @@
   </div>
   <div class="header-bottom uses-flex">
     <nav class="navbar navbar-container" role="navigation" aria-label="main navigation">
+      <a (click)="pageR()" routerLink="/" class="navbar-item">Home</a>
       <a routerLink="/home" class="navbar-item">Home</a>
       <a routerLink="/" class="navbar-item">Games</a>
       <a routerLink="/wish-list" class="navbar-item">WishList</a>

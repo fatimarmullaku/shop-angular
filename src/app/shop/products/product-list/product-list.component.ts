@@ -16,21 +16,22 @@ export class ProductListComponent implements OnInit {
   @Input()
   products: ProductModel[];
   productsList: ProductModel[];
-  currentPage: number;
+  currentPage = 1;
+  @Input()
+  paginationService: PaginationService;
   pageSize = 8;
 
 
   constructor(private productService: ProductService,
-              private paginationService: PaginationService,
               private topProducts: TopProductsService) {
   }
 
   ngOnInit() {
-    this.paginationService.currentPage.subscribe(res => {
-      this.currentPage = res;
-      this.getProductsPaged();
-      this.getTopProducts();
-    });
+    /*    this.paginationService.currentPage.subscribe(res => {
+          this.currentPage = res;
+          this.getProductsPaged();
+        });*/
+    this.getTopProducts();
   }
 
   getProductsPaged() {

@@ -5,6 +5,7 @@ import 'hammerjs';
 import {ProductsService} from '../products.service';
 import {BrandsModel} from '../../../shared/models/brands.model';
 import {LabelType, Options} from 'ng5-slider';
+import {PaginationService} from '../../../shared/pagination/pagination.service';
 
 @Component({
   selector: 'app-products-sidebar',
@@ -12,11 +13,14 @@ import {LabelType, Options} from 'ng5-slider';
   styleUrls: ['./products-sidebar.component.scss']
 })
 export class ProductsSidebarComponent implements OnInit {
-  selectedBrandd =  [];
+  currentPageNumber: number;
+  size = 2;
+  selectedBrandd = [];
   platformsList: PlatformModel[];
   brandsList: any;
   minValue = 0;
-  maxValue: number = 100;
+  maxValue = 100;
+  ceilValue: number;
   options: Options = {
     showOuterSelectionBars: true,
     floor: 0,
@@ -39,9 +43,11 @@ export class ProductsSidebarComponent implements OnInit {
   @Output()
   prices: EventEmitter<object> = new EventEmitter();
 
+
   constructor(private productsService: ProductsService,
               private platformsService: PlatformsService,
-              private brandsService: BrandsService) {
+              private brandsService: BrandsService,
+              private paginationService: PaginationService) {
   }
 
   ngOnInit() {
@@ -57,13 +63,20 @@ export class ProductsSidebarComponent implements OnInit {
       this.brandsList = data;
     });
 
+    this.paginationService.currentPage.subscribe(res => {
+      this.currentPageNumber = res;
+    });
+
 
   }
 
   getProductsByPrice(event: any) {
     this.prices.emit({
+      brandId: this.selectedBrandd,
       min: event.value,
-      max: event.highValue
+      max: event.highValue,
+      page: this.currentPageNumber,
+      size: this.size
     });
   }
 
@@ -71,7 +84,9 @@ export class ProductsSidebarComponent implements OnInit {
     const params = {
       brandId: this.selectedBrandd,
       min: this.minValue,
-      max: this.maxValue
+      max: this.maxValue,
+      page: this.currentPageNumber,
+      size: this.size
     };
     this.params.emit(params);
   }

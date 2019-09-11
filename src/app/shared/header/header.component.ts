@@ -10,6 +10,7 @@ import {RestService} from '../services/rest.service';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
 import {BaseStorageService} from '../services/base-storage.service';
+import {PaginationService} from '../pagination/pagination.service';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class HeaderComponent implements OnInit {
               private productService: ProductService,
               private storageService: StorageService,
               private restService: RestService,
-              private baseStorageService: BaseStorageService) {
+              private baseStorageService: BaseStorageService,
+              private paginationService: PaginationService) {
   }
 
   ngOnInit() {
@@ -75,6 +77,10 @@ export class HeaderComponent implements OnInit {
       isLogedIn = !isLogedIn;
     }
     return isLogedIn;
+  }
+
+  pageR() {
+    this.paginationService.changePage(1);
   }
 
   fetchCustomer(): void {
