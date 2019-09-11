@@ -78,18 +78,19 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchCustomer(): void {
-    const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    if (customerId && customerId.length > 0) {
-      this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
-        .subscribe((res) => {
-            this.customerName = res.name;
-            console.log(this.customerName);
-          },
-          (err) => {
-            console.log(err);
-          });
+    if(this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID) != null) {
+      const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+      if (customerId && customerId.length > 0) {
+        this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
+          .subscribe((res) => {
+              this.customerName = res.name;
+              console.log(this.customerName);
+            },
+            (err) => {
+              console.log(err);
+            });
+      }
     }
   }
-
 
 }
