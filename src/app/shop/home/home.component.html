@@ -1,60 +1,75 @@
 <app-header></app-header>
-<div class="columns parenti">
-  <div class="column is-3">
-    <h1>OUR MOST POPULAR GAMES</h1>
-  </div>
-  <div class="column">
-    <div class="cards">
-      <div class="card" *ngFor="let item of top4">
-        <img [src]="imgPath + item.image" style="object-fit: cover">
-        <p>{{item.quantity}}</p>
-      </div>
+
+<!--    <div class="cards columns" style="width: 80%;margin: 0 auto">-->
+<!--      <div class="card column is-3" *ngFor="let item of top4">-->
+<!--        <img [src]="imgPath + item.image" style="object-fit: cover">-->
+<!--      </div>-->
+<!--    </div>-->
+
+<div class="columns top-4-containero is-multiline is-mobile is-tablet is-desktop">
+  <div class="column top-4-itemo is-desktop is-tablet is-12-mobile is-3-desktop">
+    <div class="testo" >
+      <img [src]="imgPath + top4[0].image">
     </div>
   </div>
-<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
-<!--    <div class="most-sold-container" >-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
-<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
-
-<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
-<!--    <div class="most-sold-container" >-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
-<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
-
-<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
-<!--    <div class="most-sold-container" >-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
-<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
-
-<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
-<!--    <div class="most-sold-container" >-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
-<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
-
-
+  <div class="column top-4-itemo is-desktop is-tablet is-12-mobile is-3-desktop">
+    <div class="testo" >
+      <img [src]="imgPath + top4[1].image">
+    </div>
+  </div>
+  <div class="column top-4-itemo is-desktop is-tablet is-12-mobile is-3-desktop">
+    <div class="testo" >
+      <img [src]="imgPath + top4[2].image">
+    </div>
+  </div>
+  <div class="column top-4-itemo is-desktop is-tablet is-12-mobile is-3-desktop">
+    <div class="testo" >
+      <img [src]="imgPath + top4[3].image">
+    </div>
+  </div>
 </div>
+
+<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
+<!--    <div class="most-sold-container" >-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
+<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
+
+<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
+<!--    <div class="most-sold-container" >-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
+<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
+
+<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
+<!--    <div class="most-sold-container" >-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
+<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
+
+<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
+<!--    <div class="most-sold-container" >-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
+<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
 
 <!--======================Slider===========================-->
 <div class="slider">
-  <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav"/>
-  <input type="radio" name="slider" title="slide2" class="slider__nav"/>
-  <input type="radio" name="slider" title="slide3" class="slider__nav"/>
+  <input checked="checked" class="slider__nav" name="slider" title="slide1" type="radio"/>
+  <input class="slider__nav" name="slider" title="slide2" type="radio"/>
+  <input class="slider__nav" name="slider" title="slide3" type="radio"/>
   <div class="slider__inner">
     <div class="slider__contents"><i class="slider__image fas fa-gamepad"></i>
       <h2 class="slider__caption">Over 30 different games</h2>
@@ -64,7 +79,8 @@
       <h2 class="slider__caption">Partners</h2>
       <nav class="partner-container">
 
-        <carousel-component class="columns" autoPlay="true" delayAutoPlay="1000" onReachEnd="1" [angle]=30 >
+        <carousel-component [angle]=30 autoPlay="false" class="columns" delayAutoPlay="1000"
+                            dots="true" slides="ctrl.autoplay.slides">
           <div class="column item-carousel partner">Rockstar Games</div>
           <div class="column item-carousel partner">Activision</div>
           <div class="column item-carousel partner">EA</div>
@@ -75,17 +91,6 @@
           <div class="column item-carousel partner">Valve</div>
         </carousel-component>
 
-<!--        <carousel-component >-->
-<!--          <div class="item-carousel">a</div>-->
-<!--          <div class="item-carousel">-->
-<!--            <div class="b">-->
-<!--              <img src="https://www.losminionsaldia.com/images/mas-minions/minion.png" />-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="item-carousel">c</div>-->
-<!--          <div class="item-carousel">d</div>-->
-<!--        </carousel-component>-->
-
       </nav>
     </div>
     <div class="slider__contents"><i class="slider__image fas fa-map-marker-alt"></i>
@@ -94,7 +99,8 @@
     </div>
     <div class="slider__contents"><i class="slider__image fa fa-diamond"></i>
       <h2 class="slider__caption">diamond</h2>
-      <p class="slider__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!</p>
+      <p class="slider__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo
+        quos, corporis minima!</p>
     </div>
   </div>
 </div>

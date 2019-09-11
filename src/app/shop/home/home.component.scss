@@ -184,48 +184,58 @@
   box-shadow: 3px 3px 12px 2px rgba(black, 0.6);
   transition: 0.2s;
 }
-.card:not(:first-child) {
-  margin-left: -2rem;
-}
-.card:not(:last-child):hover,
-.card:not(:last-child):focus-within {
-  transform: translateY(-1rem);
-  ~ .card {
-    transform: translateX(2rem);
-  }
-}
-
-
-//
-//
-//
-//.parenti{
-//  padding: 0 20px;
-//  h1{
-//    font-size: 80px;
-//    color: orange;
-//    font-family: Bahnschrift;
-//    text-shadow: 2px 2px 4px #000000;
-//  }
-//  div.card{
-//    //background-image: url("src/assets/imgac4-cover.jpg");
-//    //background-size: 100%;
-//    //background-position: center;
-//    //background-repeat: no-repeat;
-//    padding: 0px;
-//    img{
-//      border-radius: 9px;
-//    }
-//    &:hover{
-//      cursor: pointer;
-//    }
+//.card:not(:first-child) {
+//  margin-left: -2rem;
+//}
+//.card:not(:last-child):hover,
+//.card:not(:last-child):focus-within {
+//  transform: translateY(-1rem);
+//  ~ .card {
+//    transform: translateX(2rem);
 //  }
 //}
 
+//
+////
+////
+////
+////.parenti{
+////  padding: 0 20px;
+////  h1{
+////    font-size: 80px;
+////    color: orange;
+////    font-family: Bahnschrift;
+////    text-shadow: 2px 2px 4px #000000;
+////  }
+////  div.card{
+////    //background-image: url("src/assets/imgac4-cover.jpg");
+////    //background-size: 100%;
+////    //background-position: center;
+////    //background-repeat: no-repeat;
+////    padding: 0px;
+////    img{
+////      border-radius: 9px;
+////    }
+////    &:hover{
+////      cursor: pointer;
+////    }
+////  }
+////}
+//
 
 
 
-
+.top-4-containero{
+  margin: 15px;
+  height: 500px;
+  .testo{
+    min-height: 400px;
+    max-height: 400px;
+    //min-width: 300px;
+    //max-width: 300px;
+    object-fit: cover;
+  }
+}
 
 
 
