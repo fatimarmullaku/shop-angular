@@ -5,7 +5,7 @@ const AUTH = {
   register: environment.apiHost + '/auth/register',
   forgotPassword: environment.apiHost + 'auth/forgot-password',
   newPassword: environment.apiHost + 'auth/new-password',
-  contactUs: environment.apiHost + 'auth/contact-us'
+  contactUs: environment.apiHost + '/auth/contact-us'
 };
 
 const PRODUCTS = {
