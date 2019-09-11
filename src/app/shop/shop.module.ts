@@ -41,7 +41,11 @@ import {OrderHistoryComponent} from './account/order-history/order-history.compo
 import {MatExpansionModule} from '@angular/material';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {Ng5SliderModule} from 'ng5-slider';
-import { ContactUsComponent } from './contact-us/contact-us.component';
+import {ContactUsComponent} from './contact-us/contact-us.component';
+import {HomeComponent} from './home/home.component';
+import {FooterComponent} from './home/footer/footer.component';
+import {CarouselModule} from 'ngx-carousel-lib';
+
 
 @NgModule({
   declarations: [
@@ -77,6 +81,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     AccountComponent,
     EditProfileComponent,
     OrderHistoryComponent,
+    HomeComponent,
+    FooterComponent,
     ContactUsComponent
   ],
   exports: [
@@ -93,7 +99,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     MatExpansionModule,
     Ng2SearchPipeModule,
     FormsModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
+    CarouselModule
 
   ]
 })

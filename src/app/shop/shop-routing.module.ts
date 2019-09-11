@@ -29,6 +29,7 @@ import {EditProfileComponent} from './account/edit-profile/edit-profile.componen
 import {OrderHistoryComponent} from './account/order-history/order-history.component';
 import {ShopAuthGuardService} from '../shared/services/guards/shop-auth-guard.service';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {
@@ -159,6 +160,10 @@ const routes: Routes = [
   {
     path: 'police',
     component: PoliceComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'contact-us',
