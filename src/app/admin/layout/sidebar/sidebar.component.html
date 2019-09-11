@@ -4,24 +4,30 @@
                [opened]="!(isHandset$ | async)"
                class="sidenav"
                fixedInViewport="true">
-    <mat-toolbar>UCX Gaming</mat-toolbar>
+    <div class="admin-logo">
+        <img src="assets/img/admin-module/logo-xd.png"
+           alt="logo"
+           class="admin-ucx-logo"
+           [routerLink]="['/admin']">
+    </div>
+
     <div class="side-nav-container">
       <p class="user"> {{username}}</p>
       <p class="detalis">{{role}}</p>
     </div>
     <mat-nav-list (click)="closeSideNav()">
       <a class="sidebarMenu" mat-list-item routerLink="/admin/home">
-        <i class="fa fa-home"></i> Home</a>
+        <i class="admin-icon fa fa-home"></i> Home</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/platforms">
-        <i class="fa fa-tablet"></i> Platforms</a>
+        <i class="admin-icon fa fa-tablet"></i> Platforms</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/brands">
-        <i class="fa fa-gamepad"></i> Brands</a>
+        <i class="admin-icon fa fa-gamepad"></i> Brands</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/products">
-        <i class="fa fa-cart-plus"></i> Products</a>
+        <i class="admin-icon fa fa-cart-plus"></i> Products</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/customers">
-        <i class="fa fa-user"></i>Customers</a>
+        <i class="admin-icon fa fa-user"></i>Customers</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/orders">
-        <i class="fa fa-truck"></i> Orders</a>
+        <i class="admin-icon fa fa-truck"></i> Orders</a>
 <!--      <a class="sidebarMenu" mat-list-item routerLink="/admin/activitylogs">
         <i class="fa fa-tablet"></i>Activity Logs</a>
       <a class="sidebarMenu" mat-list-item routerLink="/admin/roles">

@@ -1,6 +1,21 @@
 .sidenav-container {
   height: 100%;
 
+  .admin-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .admin-icon {
+    color:white;
+  }
+
+  .admin-ucx-logo {
+    margin-top:50px;
+    margin-bottom: 20px;
+    display:flex;
+    justify-items: center;
+  }
   .sidenav {
     width: 200px;
     background-color:#2d323e;
