@@ -4,24 +4,28 @@
   .contact-us-wrapper{
 
     .test{
-      padding-left: 400px;
-
+      //padding-left: 400px;
+      text-align: center;
       h3{
         overflow: hidden; /* Ensures the content is not revealed until the animation */
         font-size: 40px;
-        margin-bottom: 60px;
+        margin-bottom: 25px;
         color: map-get($ucx-colors, deep-orange);
-        white-space: nowrap; /* Keeps the content on a single line */
-        animation:
-          typing 7s infinite,
-          blink-caret .7s infinite;
-      }
+        //white-space: nowrap; /* Keeps the content on a single line */
+        //animation:
+        //  typing 7s infinite,
+        //  blink-caret .7s infinite;
 
-      /* The typing effect */
-      @keyframes typing {
-        from { width: 1% }
-        to { width: 80% }
+        hr{
+
+        }
       }
+      //
+      ///* The typing effect */
+      //@keyframes typing {
+      //  from { width: 1% }
+      //  to { width: 80% }
+      //}
 
       //div {
       //  overflow:hidden;
@@ -69,7 +73,7 @@
       align-items: center;
       i{
         font-size: 250px;
-        color: map-get($ucx-colors, light-gray);
+        color: white;
       }
     }
 
@@ -78,9 +82,8 @@
 
       .input{
         width: 100%;
-        background-color: transparent;
-        border-color: map-get($ucx-colors, deep-orange);
-        color: map-get($ucx-colors, light-gray);
+        //border-color: map-get($ucx-colors, deep-orange);
+        //color: map-get($ucx-colors, light-gray);
       }
 
       textarea{
@@ -88,7 +91,7 @@
       }
 
       .label{
-        color: map-get($ucx-colors, light-gray);
+        //color: map-get($ucx-colors, light-gray);
         font-size: 15px;
         margin-top: 10px;
       }
