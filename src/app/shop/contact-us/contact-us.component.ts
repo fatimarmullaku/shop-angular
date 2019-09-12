@@ -9,7 +9,7 @@ import {UserService} from '../../shared/services/user.service';
 export class ContactUsComponent implements OnInit {
   contactUsFormGroup: FormGroup;
   submitted = false;
-  messageForm: false;
+  messageForm = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService) {
@@ -21,6 +21,11 @@ export class ContactUsComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       message: new FormControl('', Validators.required)
     });
+    console.log("TEST", this.messageForm);
+  }
+
+  submitAgain(){
+    this.messageForm = false;
   }
 
   get f() {
@@ -28,6 +33,7 @@ export class ContactUsComponent implements OnInit {
   }
 
   delay(ms: number) {
+    this.messageForm = false;
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
@@ -39,6 +45,8 @@ export class ContactUsComponent implements OnInit {
     this.userService.contactUs(this.contactUsFormGroup.getRawValue()).subscribe((res) => {
       this.submitted = false;
       this.messageForm = true;
+      console.log("TEST", this.messageForm);
+
       this.contactUsFormGroup.reset();
     }, (error) => {
       console.error(error);
