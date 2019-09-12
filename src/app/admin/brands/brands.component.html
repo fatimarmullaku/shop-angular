@@ -1,18 +1,16 @@
 <div class="container">
   <div class="card">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Brands </h3>
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Brands</h3>
     <div class="card-body">
       <div class="table-editable" id="table">
         <div class="columns">
-          <div class="column">
           <input type="text" class="form-control searchBrand" placeholder="search brand" name="search" [(ngModel)]="filter">
-          </div>
-        </div>
-        <span class="table-add float-right mb-3 mr-2">
+          <span class="table-add float-right mb-3 mr-2">
                 <a>
                 <i (click)="openInsert()" class="fas fa-plus"></i>
                 </a>
             </span>
+        </div>
         <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
           <tr>
             <th>Name</th>
@@ -77,25 +75,28 @@
     <div (click)="closeUpdateModal()" class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Update Brands </p>
+        <p class="modal-card-title">Update Brand </p>
           <button (click)="closeUpdateModal()" aria-label="close" class="delete"></button>
       </header>
       <section class="modal-card-body">
         <form (ngSubmit)="onSubmit( )" [formGroup]="updateForm">
+          <label class="admin-label">Name:</label>
           <input class="form-control" formControlName="name"
                  placeholder="Name"
                  required
                  type="text">
           <div class="field">
-            <label class="label">Description</label>
             <div class="control">
-              <textarea formControlName="description" class="textarea" placeholder="Textarea"></textarea>
+              <label class="admin-label" for="uDescription">Description:</label>
+              <textarea class="textarea" formControlName="description" id="uDescription"
+                        placeholder="Add your description here! ">
+                     </textarea>
             </div>
           </div>
         </form>
       </section>
       <footer class="modal-card-foot">
-        <button (click)="onUpdate()" class="button is-danger">Update</button>
+        <button (click)="onUpdate()" class="button admin-button">Update</button>
         <button (click)="closeUpdateModal()" class="button">Cancel</button>
       </footer>
     </div>
@@ -109,18 +110,21 @@
       </header>
       <section class="modal-card-body">
         <form (ngSubmit)="onSubmit( )" [formGroup]="form">
+          <label class="admin-label">Name:</label>
           <input class="form-control" formControlName="name"
                  placeholder="Name"
                  required
                  type="text">
           <div class="control">
-            <textarea formControlName="description" class="textarea"
-                      placeholder="Add your description here! "></textarea>
+            <label class="admin-label" for="uDescription">Description:</label>
+            <textarea class="textarea" formControlName="description" id="uDescription"
+                      placeholder="Add your description here! ">
+                     </textarea>
           </div>
         </form>
       </section>
       <footer class="modal-card-foot">
-        <button (click)="onSubmit()" class="button is-danger">Submit</button>
+        <button (click)="onSubmit()" class="button admin-button">Save</button>
         <button (click)="closeInsertModal()" class="button">Cancel</button>
       </footer>
     </div>
