@@ -16,18 +16,18 @@
 
 $enableNgDeep: true !default;
 
-$handleActiveColor: white !default;
-$handleHoverColor: #fff !default;
-$labelTextColor: #55637d !default;
+$handleActiveColor: #ffffff !default;
+$handleHoverColor: #ffffff !default;
+$labelTextColor: #ffffff !default;
 $handleBgColor: orangered !default;
-$handleInnerColor: #fff !default;
+$handleInnerColor: #ffffff !default;
 $handleDisabledColor: orangered !default;
 $limitLabelTextColor: $labelTextColor !default;
-$barFillColor: white !default;
+$barFillColor: #ffffff !default;
 $barDisabledFillColor: grey !default;
 $barNormalColor: #d8e0f3 !default;
-$barLeftOutSelectionColor: white !default;
-$barRightOutSelectionColor: white !default;
+$barLeftOutSelectionColor: #ffffff !default;
+$barRightOutSelectionColor: #ffffff !default;
 
 $ticksColor: $barNormalColor !default;
 $selectedTicksColor: $barFillColor !default;
