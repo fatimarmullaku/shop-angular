@@ -28,7 +28,7 @@
             <td>{{c.createDateTime}}</td>
             <td>{{c.updateDateTime}}</td>
             <td>{{c.deletedDateTime}}</td>
-            <td>{{c.description}}</td>
+            <td>{{c.comment}}</td>
             <td>{{c.version}}</td>
             <td>
               <a>
@@ -39,7 +39,7 @@
                 c.recordStatus,
                 c.updateDateTime,
                 c.deletedDateTime,
-                c.description,
+                c.comment,
                 c.version) "
                   class="far fa-edit"></i>
               </a>
@@ -88,9 +88,9 @@
                  type="text">
           <div class="field">
             <div class="control">
-              <label class="admin-label" for="uDescription">Description:</label>
-              <textarea formControlName="description" class="textarea" id="uDescription"
-                        placeholder="Add your description here! ">
+              <label class="admin-label" for="ucomment">comment:</label>
+              <textarea formControlName="comment" class="textarea" id="ucomment"
+                        placeholder="Add your comment here! ">
                      </textarea>
             </div>
           </div>
@@ -119,9 +119,9 @@
                  required
                  type="text">
           <div class="control">
-            <label class="admin-label" for="uDescription">Description:</label>
-            <textarea formControlName="description" class="textarea" id="uDescription"
-                      placeholder="Add your description here! ">
+            <label class="admin-label" for="ucomment">comment:</label>
+            <textarea formControlName="comment" class="textarea" id="ucomment"
+                      placeholder="Add your comment here! ">
                      </textarea>
           </div>
         </form>
