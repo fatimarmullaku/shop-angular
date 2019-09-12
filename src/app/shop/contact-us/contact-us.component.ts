@@ -38,7 +38,7 @@ export class ContactUsComponent implements OnInit {
     }
     this.userService.contactUs(this.contactUsFormGroup.getRawValue()).subscribe((res) => {
       this.submitted = false;
-      this.messageForm = true;
+      // this.messageForm = true;
       this.contactUsFormGroup.reset();
     }, (error) => {
       console.error(error);
