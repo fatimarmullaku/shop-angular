@@ -14,6 +14,18 @@
   }
 }
 
+.save-button{
+  background-color: map-get($ucx-colors, deep-orange);
+  border: none;
+  color: white;
+
+  &:hover{
+    background-color: map-get($ucx-colors, deep-orange);
+    border: none;
+    color: white;
+  }
+}
+
 .cancel-button-block {
   position: relative;
   padding-left: 50px;
@@ -22,6 +34,7 @@
     display: block;
     position: absolute;
     bottom: 20px;
+    background-color: map-get($ucx-colors, dark-gray);
   }
 
   @include mobile {
@@ -144,6 +157,10 @@
     margin-top: 0;
     overflow: hidden;
   }
+}
+
+.address-title{
+  color: map-get($ucx-colors, light-orange);
 }
 
 

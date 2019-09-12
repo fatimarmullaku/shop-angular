@@ -88,6 +88,12 @@ export class HeaderComponent implements OnInit {
 
   pageR() {
     this.paginationService.changePage(1);
+    const values = document.querySelectorAll('.sel-box');
+    console.log('VALUEEEES', values);
+    values.forEach(value => {
+      const changeElement = value as HTMLInputElement;
+      changeElement.checked = false;
+    });
   }
 
   fetchCustomer(): void {
