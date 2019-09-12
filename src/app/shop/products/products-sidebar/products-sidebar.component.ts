@@ -17,7 +17,7 @@ export class ProductsSidebarComponent implements OnInit {
   size = 2;
   selectedBrandd = [];
   platformsList: PlatformModel[];
-  brandsList: any;
+  brandsList = new Array<BrandsModel>();
   minValue = 0;
   maxValue = 100;
   ceilValue: number;
@@ -53,13 +53,15 @@ export class ProductsSidebarComponent implements OnInit {
   ngOnInit() {
     this.productsService.getHighestPrice().subscribe((res: number) => {
       this.maxValue = res;
+      this.options.ceil = this.maxValue;
     });
 
     this.platformsService.getAllPlatforms().subscribe((data: PlatformModel[]) => {
       this.platformsList = data;
     });
 
-    this.brandsService.getAllBrands().subscribe((data: BrandsModel) => {
+    this.brandsService.getAllBrands().subscribe((data: any) => {
+
       this.brandsList = data;
     });
 
@@ -89,14 +91,46 @@ export class ProductsSidebarComponent implements OnInit {
     this.params.emit(params);
   }
 
+  clearFilters(){
+    const params = {
+      min: 0,
+      max: 100,
+      page: 0,
+      size: this.size
+    }
+    this.brandsList.forEach(brand => brand.checked = false);
+    this.prices.emit({
+      min:0,
+      max:0,
+      page:0,
+      size: this.size
+    });
+
+    this.minValue = 0;
+    this.maxValue = 100;
+    this.params.emit(params);
+
+    console.log(this.brandsList)
+  }
+
 
   selectedBrand(option: any) {
     const exist = this.selectedBrandd.find(current => current === +option);
     if (!exist) {
       this.selectedBrandd.push(option);
+
     } else {
       this.selectedBrandd = this.selectedBrandd.filter(current => current !== +option);
+      // this.brandsList.map(brand =>{
+      //    if(brand.id ===exist)
+      //      return brand.checked = !brand.checked;
+      //
+      //    return brand;
+      // });
+
+      console.log(exist)
     }
+
     this.getProducts();
   }
 

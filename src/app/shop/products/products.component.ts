@@ -44,7 +44,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    // this.products = this.productService.getProducts();
 
     this.informationForm = this.formBuilder.group({
       phoneNumber: new FormControl('', Validators.required),
@@ -66,14 +66,12 @@ export class ProductsComponent implements OnInit {
       this.products = response.content;
       this.paginationService.changeTotalPages(response.totalPages);
       this.router.navigate(['/'], { queryParams: {page:this.currentPage} });
-
     });
   }
 
   resetPageAndMakeRequest(event: any) {
     this.temporaryEventState = event;
     this.paginationService.changePage(1);
-
   }
 
   simpleRequest() {
