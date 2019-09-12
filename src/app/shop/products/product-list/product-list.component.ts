@@ -69,7 +69,6 @@ export class ProductListComponent implements OnInit {
 
   getTopProducts() {
     this.topProducts.getTopSoldProducts(3).subscribe(res => {
-        console.log(res);
       },
       error => {
         console.log(error);

@@ -2,6 +2,9 @@
 
 .contact-us-screen {
   height: 75vh;
+  @include mobile {
+    height: 100vh;
+  }
 
   .contact-us-wrapper {
 
@@ -17,6 +20,9 @@
         font-weight: 500;
         margin-bottom: 25px;
         color: map-get($ucx-colors, deep-orange);
+        @include mobile {
+          font-size: 1.5rem;
+        }
         //white-space: nowrap; /* Keeps the content on a single line */
         //animation:
         //  typing 7s infinite,

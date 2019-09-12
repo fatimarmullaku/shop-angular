@@ -44,7 +44,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    // this.products = this.productService.getProducts();
 
     this.informationForm = this.formBuilder.group({
       phoneNumber: new FormControl('', Validators.required),
@@ -56,7 +56,7 @@ export class ProductsComponent implements OnInit {
     this.paginationService.currentPage.subscribe(currentPage => {
       this.currentPage = currentPage;
       this.setRequestAditionalPropertiesAndMakeRequest(this.currentPage - 1, this.pageSize, this.searchText, this.temporaryEventState);
-
+  // here
     });
 
   }
@@ -64,14 +64,14 @@ export class ProductsComponent implements OnInit {
   onFilterChange(event: any) {
     this.productsService.getProductBySelectedPrice(event).subscribe((response: PaginationModel<ProductModel>) => {
       this.products = response.content;
-      this.paginationService.changeTotalPages(response.totalPages);
+      this.paginationService.changeTotalPages(response.totalPages)
+      // this.router.navigate(['/'], { queryParams: {page:this.currentPage} });
     });
   }
 
   resetPageAndMakeRequest(event: any) {
     this.temporaryEventState = event;
     this.paginationService.changePage(1);
-
   }
 
   simpleRequest() {

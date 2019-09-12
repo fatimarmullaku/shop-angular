@@ -39,10 +39,8 @@ export class UserService {
       if (user) {
         if (user.accessToken) {
           this.baseStorage.setStorage(LocalStorageKey.ACCESS_TOKEN, user.accessToken, true);
-          console.log(this.tokenService.decodeToken());
         }
         if (user.customerId) {
-          console.log(user.customerId);
           this.baseStorage.setStorage(LocalStorageKey.CUSTOMER_ID, user.customerId, true);
         }
       }
@@ -80,9 +78,7 @@ export class UserService {
 
   updateCustomer(payload: any) {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    console.log(this.restService.publicRequest<any>(HttpRequestMethod.PUT, ENDPOINTS.customers.update + `/${customerId}`, {
-      body: payload
-    }));
+
     return this.restService.request<any>(HttpRequestMethod.PUT,
       ENDPOINTS.customers.update + `/${customerId}`,
       {

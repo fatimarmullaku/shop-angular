@@ -7,6 +7,7 @@ export class BrandsModel {
   deletedDateTime: Date;
   description: string;
   version: number;
+  checked = false;
 }
 
 

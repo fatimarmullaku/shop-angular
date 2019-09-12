@@ -29,7 +29,6 @@ export class PlatformsComponent implements OnInit {
   ngOnInit() {
     this.platformsService.getAllPlatforms().subscribe((data: any) => {
       this.platformsList = data;
-      console.log(this.platformsList);
     });
 
 
@@ -51,15 +50,12 @@ export class PlatformsComponent implements OnInit {
       version: [],
     });
 
-    console.log(this.updateForm);
-
   }
 
 
 
   onSubmit() {
     const values = this.form.value;
-    console.log('on Submit', values);
     this.platformsService.registerPlatforms(values).subscribe(
       get => {
         this.platformsService.getAllPlatforms().subscribe((data: any) => {
@@ -93,7 +89,6 @@ export class PlatformsComponent implements OnInit {
 
   onUpdate() {
     const values = this.updateForm.value;
-    console.log(values);
     this.platformsService.updatePlatform(values, this.pid).subscribe(
       get => {
         this.platformsService.getAllPlatforms().subscribe((data: any) => {
@@ -108,9 +103,7 @@ export class PlatformsComponent implements OnInit {
   }
 
   openInsert() {
-    console.log('insert is called');
     this.insertModal = true;
-    console.log('from open insert', this.insertModal);
   }
 
   openUpdate(
@@ -153,7 +146,6 @@ export class PlatformsComponent implements OnInit {
   openDelete(pid) {
     this.deleteModal = true;
     this.pid = pid;
-    console.log(this.pid);
   }
 
 

@@ -45,42 +45,14 @@ export class CreditcardMethodComponent implements OnInit {
   }
 
   createCustomer(): boolean {
-    if (this.creditCard.get('creditCardNumber').invalid && this.creditCard.get('expireYear').invalid && this.creditCard.get('cvc').invalid && this.creditCard.get('fullName').invalid) {
-      alert('Please fill your credit information');
-      return;
-    }
-
-    if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('cvc').invalid && this.creditCard.get('fullName').invalid) {
-      alert('Please fill your credit information');
-      return;
-    }
-
-    if (this.creditCard.get('creditCardNumber').invalid && this.creditCard.get('expireYear').invalid && this.creditCard.get('cvc').valid && this.creditCard.get('fullName').valid) {
-      alert('Please fill your credit information');
-      return;
-    }
-
-    if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('cvc').valid && this.creditCard.get('fullName').invalid) {
-      alert('Please enter your name');
-      return;
-    }
-    if (this.creditCard.get('fullName').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('cvc').valid && this.creditCard.get('creditCardNumber').invalid) {
-      alert('Please enter a valid card');
-      return;
-    }
-    if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('fullName').valid && this.creditCard.get('cvc').valid && this.creditCard.get('expireYear').invalid) {
-      alert('Please enter your credit card expire date');
-      return;
-    }
-    if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('fullName').valid && this.creditCard.get('cvc').invalid) {
-      alert('Please Enter cvc number');
+    if (this.creditCard.invalid) {
+      alert('Please make sure you have filled all fields');
       return;
     }
 
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
     this.restService.publicRequest<any>(HttpRequestMethod.POST, ENDPOINTS.stripe.createStripeCustomer + `/${customerId}`)
       .subscribe(result => {
-        console.log(result);
       });
     return this.checkoutConfirm = true;
   }
@@ -94,7 +66,6 @@ export class CreditcardMethodComponent implements OnInit {
     params.append('amount', this.generateTotalPrice().toFixed(2));
     setTimeout(() => {
       this.httpClient.post<any>(ENDPOINTS.stripe.charge, params).subscribe(result => {
-        console.log(result);
 
         this.purchaseService.buy().subscribe((res) => {
             this.baseStorage.clearStorageOf(LocalStorageKey.CART);

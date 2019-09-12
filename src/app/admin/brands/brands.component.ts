@@ -29,7 +29,6 @@ export class BrandsComponent implements OnInit {
   ngOnInit() {
     this.brandsService.getAllBrands().subscribe((data: any) => {
       this.brandsList = data;
-      console.log(this.brandsList);
     });
 
 
@@ -84,7 +83,6 @@ export class BrandsComponent implements OnInit {
 
   onUpdate() {
     const values = this.updateForm.value;
-    console.log(values);
     this.brandsService.updateBrand(values, this.bid).subscribe(
       get => {
         this.brandsService.getAllBrands().subscribe((data: any) => {

@@ -30,7 +30,6 @@ export class PurchaseService {
     const purchaseModel = new PurchaseModel();
     purchaseModel.cart = [];
     purchaseModel.customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    //const address = this.baseStorage.getStorageOf(LocalStorageKey.SHIPPING_ADDRESS_ID);
 
     // if (address) {
     //   purchaseModel.address = address;
@@ -38,10 +37,10 @@ export class PurchaseService {
     purchaseModel.total = this.cartService.generateTotalPrice();
     const prod = this.cartService.getProductsFromCart();
     prod.forEach(value => {
-      const modelenzi = new PurchaseCartModel();
-      modelenzi.productId = value.id;
-      modelenzi.quantity = value.qty;
-      purchaseModel.cart.push(modelenzi);
+      const cartModel = new PurchaseCartModel();
+      cartModel.productId = value.id;
+      cartModel.quantity = value.qty;
+      purchaseModel.cart.push(cartModel);
     });
     return this.restService.request<any>(HttpRequestMethod.POST, ENDPOINTS.purchases.buy, {
       body: purchaseModel

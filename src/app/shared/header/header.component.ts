@@ -88,12 +88,6 @@ export class HeaderComponent implements OnInit {
 
   pageR() {
     this.paginationService.changePage(1);
-    const values = document.querySelectorAll('.sel-box');
-    console.log('VALUEEEES', values);
-    values.forEach(value => {
-      const changeElement = value as HTMLInputElement;
-      changeElement.checked = false;
-    });
   }
 
   fetchCustomer(): void {
@@ -103,7 +97,6 @@ export class HeaderComponent implements OnInit {
         this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
           .subscribe((res) => {
               this.customerName = res.name;
-              console.log(this.customerName);
             },
             (err) => {
               console.log(err);
