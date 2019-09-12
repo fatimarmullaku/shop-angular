@@ -53,7 +53,7 @@ a.dropdown-item.is-active {
 
     .dropdown-cart {
       @include mobile {
-        margin-right: 40px;
+        margin-right: 0px;
       }
 
       .dropdown-menu {
