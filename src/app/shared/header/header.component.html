@@ -1,4 +1,4 @@
-<div  [ngClass]="status3 ? 'active' : ''" class="header uses-flex" id="leshimaris">
+<div [ngClass]="status3 ? 'active' : ''" class="header uses-flex">
   <div class="header-top uses-flex between-space">
     <a>
       <div class="image-container">
@@ -31,7 +31,7 @@
               <div class="column is-4 item-desc">
                 <h6 *ngIf="item.product.name != null"><h6><strong>{{item.product.name}}</strong></h6></h6>
                 <h6 *ngIf="item.product.platform != null">{{item.product.platform.name}}</h6>
-                <h6 *ngIf=" item.product.unitPrice != null">{{item.product.unitPrice}}$</h6>
+                <h6 *ngIf=" item.product.unitPrice != null">${{item.product.unitPrice}}</h6>
               </div>
               <div class="column is-4 has-text-right">
                 <a (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>
@@ -50,7 +50,7 @@
           <button aria-controls="dropdown-menu" aria-haspopup="true" class="button user-button">
             <span><i *ngIf="!this.isLoggedIn()" class="fas fa-user-alt "></i></span>
             <span><a *ngIf="this.isLoggedIn() && customerName != null" class="customer-name"
-                     href="#">{{customerName}}</a></span>
+            >{{customerName}}</a></span>
             <span class="icon is-medium">
               <i aria-hidden="true" class="fas fa-angle-down"></i>
             </span>
@@ -65,10 +65,10 @@
             <div *ngIf="this.isLoggedIn()">
               <a *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'"
                  class="dropdown-item is-dark is-active"
-                 href="#">Account</a>
+              >Account</a>
             </div>
             <div>
-              <a [routerLink]="'/wish-list'" class="dropdown-item" >Wishlist</a>
+              <a [routerLink]="'/wish-list'" class="dropdown-item">Wishlist</a>
             </div>
             <div *ngIf="this.isLoggedIn()">
               <a (click)="this.userService.logout()" class="dropdown-item sign-up-button">Log Out</a>
@@ -79,7 +79,7 @@
       </div>
     </div>
     <!-- End of header right buttons   -->
-    <div class="hamburger-menu-container is-hidden-tablet" >
+    <div class="hamburger-menu-container is-hidden-tablet">
       <button (click)="onHamburgerclick()">
         <i class="fa hamburger-menu"></i>
       </button>
@@ -95,8 +95,8 @@
         </div>
         <div>
           <a (click)="pageR()" class="navbar-item is-hidden-desktop" routerLink="/"><i class="fas fa-home"></i>Home</a>
-          <a [routerLink]="'/wish-list'" class="dropdown-item wishlist"><i class="far fa-heart"></i>Wishlist</a>
           <a (click)="pageR()" class="navbar-item is-hidden-desktop" routerLink="/games"><i class="fas fa-gamepad"></i>Games</a>
+          <a [routerLink]="'/wish-list'" class="dropdown-item wishlist"><i class="far fa-heart"></i>Wishlist</a>
           <a class="navbar-item is-hidden-desktop" routerLink="/contact-us"> <i class="fas fa-envelope-square"></i>Contact
             Us</a>
         </div>
@@ -104,17 +104,20 @@
           <a (click)="this.userService.logout()" class="dropdown-item sign-up-button"><i
             class="fas fa-sign-out-alt"></i>Log Out</a>
         </div>
-        <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
         <a (click)="pageR()" class="navbar-item is-hidden-mobile" routerLink="/games">Games</a>
+        <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
         <a class="navbar-item is-hidden-mobile" routerLink="/contact-us">Contact Us</a>
         <div *ngIf="!this.isLoggedIn()">
-          <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/register"><i class="fas fa-user-plus"></i>Sign Up</a>
-          <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+          <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/register"><i
+            class="fas fa-user-plus"></i>Sign Up</a>
+          <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/login"><i
+            class="fas fa-sign-in-alt"></i>Login</a>
         </div>
       </div>
-      <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
       <a (click)="pageR()" class="navbar-item is-hidden-mobile" routerLink="/games">Games</a>
+      <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
       <a class="navbar-item is-hidden-mobile" routerLink="/contact-us">Contact Us</a>
+      <a class="navbar-item is-hidden-mobile" style="visibility: hidden">asd</a>
     </nav>
   </div>
 </div>
