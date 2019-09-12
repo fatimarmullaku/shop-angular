@@ -5,46 +5,46 @@
 
     <div class="cards columns" style="width: 80%;margin: 0 auto">
       <div class="card column is-3" *ngFor="let item of top4">
-        <img routerLink="/products/{{item.productid}}" [src]="imgPath + item.image" style="object-fit: cover; height: 400px">
+        <img routerLink="/games/{{item.productid}}" [src]="imgPath + item.image" style="object-fit: cover; height: 400px">
 
-      </div>
     </div>
-
-<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
-<!--    <div class="most-sold-container" >-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
-<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
-
-<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
-<!--    <div class="most-sold-container" >-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
-<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
-
-<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
-<!--    <div class="most-sold-container" >-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
-<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
-
-<!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
-<!--    <div class="most-sold-container" >-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
-<!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
   </div>
+
+  <!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
+  <!--    <div class="most-sold-container" >-->
+  <!--    </div>-->
+  <!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
+  <!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
+  <!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
+  <!--&lt;!&ndash;    </div>&ndash;&gt;-->
+  <!--  </div>-->
+
+  <!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
+  <!--    <div class="most-sold-container" >-->
+  <!--    </div>-->
+  <!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
+  <!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
+  <!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
+  <!--&lt;!&ndash;    </div>&ndash;&gt;-->
+  <!--  </div>-->
+
+  <!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
+  <!--    <div class="most-sold-container" >-->
+  <!--    </div>-->
+  <!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
+  <!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
+  <!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
+  <!--&lt;!&ndash;    </div>&ndash;&gt;-->
+  <!--  </div>-->
+
+  <!--  <div class="column most-sold-wrapper" style="background-image: url('./assets/img/buttlefield.jpg');">-->
+  <!--    <div class="most-sold-container" >-->
+  <!--    </div>-->
+  <!--&lt;!&ndash;    <div class="most-sold-information">&ndash;&gt;-->
+  <!--&lt;!&ndash;      <h1>Battlefield 4</h1>&ndash;&gt;-->
+  <!--&lt;!&ndash;      <h2>Intense multiplayer action</h2>&ndash;&gt;-->
+  <!--&lt;!&ndash;    </div>&ndash;&gt;-->
+</div>
 
 <!--======================Slider===========================-->
 <div class="slider">
@@ -60,16 +60,24 @@
       <h2 class="slider__caption">Partners</h2>
       <nav class="partner-container">
 
-          <carousel-component [angle]=10  ratioScale="100" class="columns"
+        <carousel-component [angle]=10 ratioScale="100" class="columns"
                             dots="true">
-          <div class="column item-carousel partner" style="background-image: url('./assets/img/activision-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
-          <div class="column item-carousel partner" style="background-image: url('./assets/img/2k-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
-          <div class="column item-carousel partner" style="background-image: url('./assets/img/ea-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
-          <div class="column item-carousel partner" style="background-image: url('./assets/img/insomniac-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
-          <div class="column item-carousel partner" style="background-image: url('./assets/img/netherralm-studios-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
-          <div class="column item-carousel partner" style="background-image: url('./assets/img/rockstar-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
-          <div class="column item-carousel partner" style="background-image: url('./assets/img/square-enix-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
-          <div class="column item-carousel partner" style="background-image: url('./assets/img/ubisoft-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
+          <div class="column item-carousel partner"
+               style="background-image: url('./assets/img/activision-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
+          <div class="column item-carousel partner"
+               style="background-image: url('./assets/img/2k-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
+          <div class="column item-carousel partner"
+               style="background-image: url('./assets/img/ea-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
+          <div class="column item-carousel partner"
+               style="background-image: url('./assets/img/insomniac-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
+          <div class="column item-carousel partner"
+               style="background-image: url('./assets/img/netherralm-studios-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
+          <div class="column item-carousel partner"
+               style="background-image: url('./assets/img/rockstar-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
+          <div class="column item-carousel partner"
+               style="background-image: url('./assets/img/square-enix-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
+          <div class="column item-carousel partner"
+               style="background-image: url('./assets/img/ubisoft-logo.png');background-size: 100%;background-position: center;background-repeat: no-repeat"></div>
         </carousel-component>
 
       </nav>
@@ -78,13 +86,116 @@
       <h2 class="slider__caption">Location</h2>
       <p class="slider__txt">We are located at Bajram Kelmendi Street in Pristina, Kosovo!</p>
     </div>
-<!--  DON'T DELETE THIS DIV!!!!   -->
+    <!--  DON'T DELETE THIS DIV!!!!   -->
     <div class="slider__contents"><i class="slider__image fa fa-diamond"></i>
       <h2 class="slider__caption">diamond</h2>
       <p class="slider__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo
         quos, corporis minima!</p>
     </div>
   </div>
+
+  <div class="modal is-hidden-mobile" [ngClass]="{'is-active': userService.justSignUp}">
+    <div class="modal-background"></div>
+    <div class="modal-card modal-cart-wrapper">
+      <section class="modal-card-body model-edit-profile-body">
+        <div class="modal-content-edit-profile">
+
+          <div class="columns">
+            <div class="">
+              <div class="additional-information-wrap">
+                <div class="additional-information-screen">
+                  <div class="auth-form-header">
+                    <h4>Additional Information</h4>
+                  </div>
+                  <form [formGroup]="informationForm" class="form" (submit)="onSubmit()">
+                    <div id="box-phone">
+                      <div>
+                        <div class="columns">
+                          <div class="column is-12">
+                            <label>Phone Number</label><br>
+                            <input formControlName="phoneNumber" type="text" class="input form-control"
+                                   [ngClass]="{ 'is-invalid': (submitted && f.phoneNumber.errors) || numbersOnlyValidator }"
+                                   (keypress)="numbersOnly($event)">
+                            <div *ngIf="(submitted && f.phoneNumber.errors) || numbersOnlyValidator "
+                                 class="invalid-feedback">
+                              <div *ngIf="f.phoneNumber.errors.required">PhoneNumber is required</div>
+                              <div *ngIf="numbersOnlyValidator">Phone number must be a number</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div id="box-address">
+                      <div formArrayName="addresses"
+                           *ngFor="let n of informationForm.get('addresses')['controls']; let i = index;">
+                        <div [formGroupName]="0">
+
+                          <div class="columns">
+                            <div class="column">
+                              <label class="label">Country</label>
+                              <input type="text" class="input form-control" formControlName="country"
+                                     [ngClass]="{ 'is-invalid': submitted && n.controls.country.errors }">
+                              <div *ngIf="submitted && n.controls.country.errors" class="invalid-feedback">
+                                <div *ngIf="n.controls.country.errors.required">Country is required</div>
+                              </div>
+                            </div>
+
+                            <div class="column">
+                              <label class="label">City</label>
+                              <input type="text" class="input form-control" formControlName="city"
+                                     [ngClass]="{ 'is-invalid': submitted && n.controls.city.errors }">
+                              <div *ngIf="submitted && n.controls.city.errors" class="invalid-feedback">
+                                <div *ngIf="n.controls.city.errors.required">City is required</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="columns">
+                            <div class="column">
+                              <label class="label">Zip code</label>
+                              <input maxlength="9" type="text" class="input form-control" formControlName="zipCode"
+                                     [ngClass]="{ 'is-invalid': submitted && n.controls.zipCode.errors }">
+                              <div *ngIf="submitted && n.controls.zipCode.errors" class="invalid-feedback">
+                                <div *ngIf="n.controls.zipCode.errors.required">Zip Code is required</div>
+                              </div>
+                            </div>
+
+                            <div class="column">
+                              <label class="label">Street</label>
+                              <input type="text" class="input form-control" formControlName="street"
+                                     [ngClass]="{ 'is-invalid': submitted && n.controls.street.errors }">
+                              <div *ngIf="submitted && n.controls.street.errors" class="invalid-feedback">
+                                <div *ngIf="n.controls.street.errors.required">Street is required</div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="columns additional-information-button-group">
+                      <br>
+                      <div class="column">
+                        <button class="auth-button">Save</button>
+                      </div>
+                      <div class="column">
+                        <button class="auth-button" (click)="skipAdditionalInformation()">Skip</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </section>
+    </div>
+  </div>
+
 </div>
 
 <!--<div class="most-sold-wrapper">-->

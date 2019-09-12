@@ -15,7 +15,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(this.handleHeader(req)).pipe(
-      catchError(err => {
+      /*catchError(err => {
         if (err.status === 401) {
           const message = err.error.message ? err.error.message : err.error.errorMessage;
           alert(message);
@@ -24,7 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
         }
 
         return throwError(err);
-      })
+      })*/
     );
   }
 
