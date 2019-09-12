@@ -9,7 +9,7 @@ import {UserService} from '../../shared/services/user.service';
 export class ContactUsComponent implements OnInit {
   contactUsFormGroup: FormGroup;
   submitted = false;
-  messageForm: false;
+  messageForm = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService) {
