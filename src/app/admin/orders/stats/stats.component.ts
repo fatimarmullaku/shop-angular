@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import {StatsService} from './stats.service';
-import {ENDPOINTS} from "../../../shared/constants/api.constants";
+import {ENDPOINTS} from '../../../shared/constants/api.constants';
 import {LocalStorageKey} from '../../../shared/constants/local-storage-key';
 import {HttpRequestMethod} from '../../../shared/constants/http-request.method';
 import {StorageService} from '../../../shared/services/storage.service';
@@ -16,8 +16,7 @@ import {BaseStorageService} from '../../../shared/services/base-storage.service'
 export class StatsComponent implements OnInit {
   title = 'dashboard';
   chart = [];
-  topSoldItemsArr = [];
-  photoUrl = ENDPOINTS.products.getProductImage;
+
   constructor(private statsService: StatsService) { }
 
   ngOnInit() {
@@ -25,8 +24,6 @@ export class StatsComponent implements OnInit {
   }
   getStatsData() {
     this.statsService.getStats().subscribe((stDataResponse: any) => {
-      this.topSoldItemsArr = stDataResponse.topSoldItems;
-      console.log('this.topSoldItemsArr: ', this.topSoldItemsArr);
       const chartData = [
         stDataResponse.FIRST_QUARTAL.orders,
         stDataResponse.SECOND_QUARTAL.orders,
