@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   products: ProductModel[];
   cartProducts: ProductCartModel[];
   cartQty = 0;
-  status = false;
+  opened = false;
   status2 = false;
   status3 = false;
   customerName: string;
@@ -64,10 +64,12 @@ export class HeaderComponent implements OnInit {
 
 
   toggleClass() {
-    this.status = !this.status;
+    this.status2= false;
+    this.opened = !this.opened;
   }
 
   toggleClass2() {
+    this.opened = false;
     this.status2 = !this.status2;
   }
 

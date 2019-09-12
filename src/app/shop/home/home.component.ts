@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
 import {TopProductsService} from '../../shared/services/top-products.service';
 import {ENDPOINTS} from '../../shared/constants/api.constants';
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app-home',
@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.topSold.getTopSoldProducts(4).subscribe(data => {
       this.top4 = data;
+      console.log(data);
     });
   }
 

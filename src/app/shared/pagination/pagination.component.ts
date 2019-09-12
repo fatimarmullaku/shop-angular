@@ -30,14 +30,8 @@ export class PaginationComponent implements OnInit {
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.paginationService.changePage(page);
-      this.router.navigate(['/'], { queryParams: {page} });
-      // this.router.navigate(['page', page], {
-      //   queryParams: {'page': page}
-      // });
     }
     this.pageStates();
-
-
   }
 
   private pageStates() {
