@@ -23,11 +23,16 @@ export class ContactUsComponent implements OnInit {
     });
   }
 
+  submitAgain(){
+    this.messageForm = false;
+  }
+
   get f() {
     return this.contactUsFormGroup.controls;
   }
 
   delay(ms: number) {
+    this.messageForm = false;
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
@@ -38,7 +43,7 @@ export class ContactUsComponent implements OnInit {
     }
     this.userService.contactUs(this.contactUsFormGroup.getRawValue()).subscribe((res) => {
       this.submitted = false;
-      // this.messageForm = true;
+      this.messageForm = true;
       this.contactUsFormGroup.reset();
     }, (error) => {
       console.error(error);
