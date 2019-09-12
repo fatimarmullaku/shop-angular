@@ -87,16 +87,16 @@
   </div>
   <div class="header-bottom uses-flex">
     <nav aria-label="main navigation" class="navbar navbar-container" role="navigation">
-      <a (click)="pageR()" class="navbar-item is-hidden-mobile" routerLink="/home">Home</a>
+      <a (click)="pageR()" class="navbar-item is-hidden-mobile" routerLink="/">Home</a>
       <div class="is-hidden-desktop customer-options">
         <div *ngIf="this.isLoggedIn()">
           <a *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'"
              class="dropdown-item is-dark is-active customer-name"><i class="far fa-user"></i>{{this.customerName}}</a>
         </div>
         <div>
-          <a (click)="pageR()" class="navbar-item is-hidden-desktop" routerLink="/home"><i class="fas fa-home"></i>Home</a>
+          <a (click)="pageR()" class="navbar-item is-hidden-desktop" routerLink="/"><i class="fas fa-home"></i>Home</a>
           <a [routerLink]="'/wish-list'" class="dropdown-item wishlist"><i class="far fa-heart"></i>Wishlist</a>
-          <a class="navbar-item is-hidden-desktop" routerLink="/"><i class="fas fa-gamepad"></i>Games</a>
+          <a (click)="pageR()" class="navbar-item is-hidden-desktop" routerLink="/games"><i class="fas fa-gamepad"></i>Games</a>
           <a class="navbar-item is-hidden-desktop" routerLink="/contact-us"> <i class="fas fa-envelope-square"></i>Contact
             Us</a>
         </div>
@@ -105,7 +105,7 @@
             class="fas fa-sign-out-alt"></i>Log Out</a>
         </div>
         <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
-        <a class="navbar-item is-hidden-mobile" routerLink="/">Games</a>
+        <a (click)="pageR()" class="navbar-item is-hidden-mobile" routerLink="/games">Games</a>
         <a class="navbar-item is-hidden-mobile" routerLink="/contact-us">Contact Us</a>
         <div *ngIf="!this.isLoggedIn()">
           <a class="dropdown-item sign-up-button is-hidden-desktop" routerLink="/auth/register"><i class="fas fa-user-plus"></i>Sign Up</a>
@@ -113,7 +113,7 @@
         </div>
       </div>
       <a class="navbar-item is-hidden-mobile" routerLink="/wish-list">Wishlist</a>
-      <a class="navbar-item is-hidden-mobile" routerLink="/">Games</a>
+      <a (click)="pageR()" class="navbar-item is-hidden-mobile" routerLink="/games">Games</a>
       <a class="navbar-item is-hidden-mobile" routerLink="/contact-us">Contact Us</a>
     </nav>
   </div>
