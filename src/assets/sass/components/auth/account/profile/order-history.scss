@@ -22,6 +22,11 @@
     .mat-expansion-panel-header{
       padding: 0 0;
     }
+
+    .specific-class > .mat-expansion-indicator, .mat-expansion-indicator:after {
+      color: white !important;
+    }
+
     overflow: hidden;
     background-color: transparent;
     .columns {
@@ -31,14 +36,14 @@
       color: map-get($ucx-colors, deep-orange);
     }
     p{
-      color: map-get($ucx-colors, light-gray);
+      color: white;
     }
   }
 
   .product_purchased{
     background-color: transparent;
     .list-item{
-      color: map-get($ucx-colors, light-gray);
+      color: white;
     }
   }
 }
