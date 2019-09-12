@@ -39,7 +39,7 @@ export class PlatformsComponent implements OnInit {
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
-      description: [''],
+      comment: [''],
       version: [''],
     });
 
@@ -47,7 +47,7 @@ export class PlatformsComponent implements OnInit {
       name: [''],
       updateDateTime: [],
       deletedDateTime: [],
-      description: [''],
+      comment: [''],
       version: [],
     });
 
@@ -119,7 +119,7 @@ export class PlatformsComponent implements OnInit {
     recordStatus,
     updateDateTime,
     deletedDateTime,
-    description,
+    comment,
     version: number) {
     this.pid = id;
     this.updateModal = true;
@@ -127,7 +127,7 @@ export class PlatformsComponent implements OnInit {
     this.updateForm.controls.recordStatus.setValue(recordStatus);
     this.updateForm.controls.updateDateTime.setValue(updateDateTime);
     this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
-    this.updateForm.controls.description.setValue(description);
+    this.updateForm.controls.comment.setValue(comment);
     this.updateForm.controls.version.setValue(version);
 
   }
