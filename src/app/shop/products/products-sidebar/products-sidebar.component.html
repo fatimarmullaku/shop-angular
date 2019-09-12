@@ -12,7 +12,7 @@
         <li *ngFor="let b of brandsList " class="game-item">
 
           <input (change)="selectedBrand(b.id)" type="checkbox"
-                 value="{{b.id }}"  [checked]="b.checked"/>
+                 value="{{b.id }}"  [(ngModel)]="b.checked"/>
           <span class="game-textt">{{b.name  }}</span>
         </li>
       </ul>
