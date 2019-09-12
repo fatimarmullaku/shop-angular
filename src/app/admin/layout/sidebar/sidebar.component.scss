@@ -76,6 +76,14 @@ mat-toolbar.admin-dashboard-header-menu.mat-toolbar.mat-toolbar-single-row {
 
 .sidebarMenu {
   &.active {
-    background-color: grey;
+    color:grey;
+    border: none;
+    color: white;
+    padding: 1px 2px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
   }
 }
