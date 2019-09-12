@@ -112,8 +112,6 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-
-
   onAddProduct() {
     if (this.productsForm.controls.platform.invalid && this.productsForm.controls.brand.invalid) {
       this.isNotPlatform = false;
