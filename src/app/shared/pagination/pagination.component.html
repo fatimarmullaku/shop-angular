@@ -2,38 +2,40 @@
 <div class="block pg" *ngIf="totalPages>=1">
   <div class="pagination">
     <ng-template [ngIfElse]="lowerThanFourPages" [ngIf]="totalPages>=3">
-      <nav aria-label="pagination" class="pagination" role="navigation">
-        <a (click)="changePage(currentPage - 1)"
-           class="pagination-previous pagination-default log-out-button">Previous</a>
-        <a (click)="changePage(currentPage + 1)" class="pagination-next pagination-default log-out-button">Next page</a>
+      <nav aria-label="pagination" class="pagination orange-text" role="navigation">
         <ul class="pagination-list">
           <li>
             <a
-              (click)="changePage(1)" [class.selected]="currentPage==1" aria-label="Goto page 1"
-               class="pagination-link pagination-default">1</a>
+              (click)="changePage(1)"  aria-label="Goto page 1"
+              class="pagination-link pagination-coloring"><i class="fa fa-1x fa-fast-backward pagination-coloring" aria-hidden="true"></i></a>
 
           </li>
           <li>
-            <span class="pagination-ellipsis">&hellip;</span>
+            <a (click)="changePage(currentPage - 1)"
+               class=" pagination-coloring pagination-link"><i class="fa fa-1x fa-arrow-left pagination-coloring" aria-hidden="true"></i></a>
           </li>
           <li>
             <a (click)="changePage(left)" [class.selected]="currentPage==left"
-               class="pagination-link pagination-default">{{left}}</a>
+               class="pagination-link pagination-coloring"><b>{{left}}</b></a>
           </li>
           <li>
             <a (click)="changePage(mid)" [class.selected]="currentPage==mid"
-               class="pagination-link pagination-default">{{mid}}</a>
+               class="pagination-link pagination-coloring"><b>{{mid}}</b></a>
           </li>
           <li>
             <a (click)="changePage(right)" [class.selected]="currentPage==right"
-               class="pagination-link pagination-default"> {{right}}</a>
+               class="pagination-link pagination-coloring"><b>{{right}}</b></a>
           </li>
           <li>
-            <span [class.hidden]="" class="pagination-ellipsis">&hellip;</span>
+            <a (click)="changePage(currentPage + 1)" class="pagination-next pagination-coloring">
+              <i class="fa fa-1x fa-arrow-right pagination-coloring" aria-hidden="true"></i>
+            </a>
           </li>
           <li>
-            <a (click)="changePage(totalPages)" [class.selected]="currentPage==totalPages" aria-label="Goto page "
-               class="pagination-link pagination-default">{{totalPages}}</a>
+            <a (click)="changePage(totalPages)"  aria-label="Goto page "
+               class="pagination-link pagination-coloring">
+              <i class="fa fa-1x fa-fast-forward pagination-coloring" aria-hidden="true"></i>
+            </a>
           </li>
         </ul>
       </nav>
@@ -44,14 +46,14 @@
 
 
       <nav aria-label="pagination" class="pagination" role="navigation">
-        <a (click)="changePage(currentPage - 1)" class="pagination-previous pagination-default log-out-button"
+        <a (click)="changePage(currentPage - 1)" class="pagination-previous pagination-coloring log-out-button"
            title="This is the first page">Previous</a>
-        <a (click)="changePage(currentPage + 1)" class="pagination-next pagination-default log-out-button">Next page</a>
+        <a (click)="changePage(currentPage + 1)" class="pagination-next pagination-coloring log-out-button">Next page</a>
         <ul class="pagination-list">
           <li (click)="changePage(x+1)"
               *ngFor="let dummy of ' '.repeat(totalPages).split(''), let x = index"
               [class.selected]="currentPage==x+1"
-              aria-current="page" aria-label="Page 1" class="pagination-link pagination-default" >
+              aria-current="page" aria-label="Page 1" class="pagination-link pagination-coloring" >
             <a>{{x + 1}}</a>
           </li>
         </ul>
