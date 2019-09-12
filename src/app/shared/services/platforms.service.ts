@@ -17,17 +17,14 @@ export class PlatformsService {
   }
 
   registerPlatforms(values) {
-    console.log('from service', values);
     return this.http.post(this.rootUrl + '/', values);
   }
 
   deletePlatform(id) {
-    console.log('from service', id);
     return this.http.delete(this.rootUrl + '/' + id);
   }
 
   updatePlatform(data, cid) {
-    console.log('from service', data, cid);
     return this.http.put(this.rootUrl + '/' + cid, data);
 
   }

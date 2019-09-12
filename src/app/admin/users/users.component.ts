@@ -26,7 +26,6 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.usersService.getAllUsers().subscribe((data: any) => {
       this.usersList = data;
-      console.log(this.usersList);
     });
 
     this.form = this.formBuilder.group({
@@ -55,7 +54,6 @@ export class UsersComponent implements OnInit {
 
   onSubmit() {
     const values = this.form.value;
-    console.log('on Submit', values);
     this.usersService.registerUser(values).subscribe(
       get => {
         this.usersService.getAllUsers().subscribe((data: any) => {
@@ -122,9 +120,8 @@ export class UsersComponent implements OnInit {
   }
 
   openInsert() {
-    console.log('insert is called');
+
     this.insertModal = true;
-    console.log('from open insert', this.insertModal);
   }
 
   closeUpdateModal() {

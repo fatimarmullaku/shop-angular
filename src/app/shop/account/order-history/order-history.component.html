@@ -1,5 +1,5 @@
-<div class="order-history-wrapper" *ngIf="data && data.length > 0; else emptyWishlist">
-  <div class="panel panel-default panel-order" >
+<div *ngIf="data && data.length > 0; else emptyWishlist" class="order-history-wrapper">
+  <div class="panel panel-default panel-order">
 
 
     <div class="">
@@ -8,15 +8,17 @@
     <hr>
     <br>
     <div class="panel-body columns is-multiline overflow-hidden">
-      <div class="row column columns is-12-desktop" *ngFor="let d of data">
-        <div class="image-thumbnail-container column is-1-desktop is-vcentered"><i class="fas fa-check-circle"></i></div>
+      <div *ngFor="let d of data" class="row column columns is-12-desktop">
+        <div class="image-thumbnail-container column is-1-desktop is-vcentered"><i class="fas fa-check-circle"></i>
+        </div>
         <div class="column is-11">
           <div class="columns row">
             <div class="column is-12">
               <mat-expansion-panel class=" column alert-dark">
                 <mat-expansion-panel-header class="zero-margin-left ">
-                  <div class="column is-12 ">
-                    <span><strong>Order Number: {{d.orderId}} , made on: {{ parseDate(d.orderTime) | date:'dd-MM-yyyy'}} {{ parseDate(d.orderTime) | date:'HH:mm'}}</strong></span>
+                  <div class="column is-12 mat-expansion-panel-header">
+                    <span><strong>Order Number: {{d.orderId}}
+                      , made on: {{ parseDate(d.orderTime) | date:'dd-MM-yyyy'}} {{ parseDate(d.orderTime) | date:'HH:mm'}}</strong></span>
                   </div>
                 </mat-expansion-panel-header>
                 <hr>
@@ -45,7 +47,7 @@
   <div class="emptyWishlist">
     <h1>Your have no orders!</h1>
     <h3>Explore more and add some items</h3>
-    <button routerLink="/" class="startShopping">START SHOPPING</button>
+    <button class="startShopping" routerLink="/games">START SHOPPING</button>
   </div>
 </ng-template>
 

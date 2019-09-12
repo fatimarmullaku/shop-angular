@@ -58,7 +58,6 @@ export class ProductService {
   getProductObservable(id: number): Observable<ProductModel> {
     return this.productsObservable().pipe(
       map((response: ProductModel[]) => {
-        console.log(response);
         return response.find(item => +item.id === +id);
       })
     );

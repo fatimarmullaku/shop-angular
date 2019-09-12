@@ -72,7 +72,7 @@
   border: none;
 
   &:hover {
-    background-color: #ec7f37;
+    background-color: map_get($ucx-colors, deep-orange);
     color: #f1f1f1;
   }
 }
@@ -144,4 +144,10 @@ hr {
 
 .product-info {
   text-align: center;
+  .unit-price {
+    color: white;
+  }
+  .total-price {
+    color: white;
+  }
 }

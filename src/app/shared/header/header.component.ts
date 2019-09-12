@@ -97,7 +97,6 @@ export class HeaderComponent implements OnInit {
         this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
           .subscribe((res) => {
               this.customerName = res.name;
-              console.log(this.customerName);
             },
             (err) => {
               console.log(err);

@@ -29,7 +29,6 @@ export class PlatformsComponent implements OnInit {
   ngOnInit() {
     this.platformsService.getAllPlatforms().subscribe((data: any) => {
       this.platformsList = data;
-      console.log(this.platformsList);
     });
 
 
@@ -39,7 +38,7 @@ export class PlatformsComponent implements OnInit {
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
-      description: [''],
+      comment: [''],
       version: [''],
     });
 
@@ -47,11 +46,9 @@ export class PlatformsComponent implements OnInit {
       name: [''],
       updateDateTime: [],
       deletedDateTime: [],
-      description: [''],
+      comment: [''],
       version: [],
     });
-
-    console.log(this.updateForm);
 
   }
 
@@ -59,7 +56,6 @@ export class PlatformsComponent implements OnInit {
 
   onSubmit() {
     const values = this.form.value;
-    console.log('on Submit', values);
     this.platformsService.registerPlatforms(values).subscribe(
       get => {
         this.platformsService.getAllPlatforms().subscribe((data: any) => {
@@ -93,7 +89,6 @@ export class PlatformsComponent implements OnInit {
 
   onUpdate() {
     const values = this.updateForm.value;
-    console.log(values);
     this.platformsService.updatePlatform(values, this.pid).subscribe(
       get => {
         this.platformsService.getAllPlatforms().subscribe((data: any) => {
@@ -108,9 +103,7 @@ export class PlatformsComponent implements OnInit {
   }
 
   openInsert() {
-    console.log('insert is called');
     this.insertModal = true;
-    console.log('from open insert', this.insertModal);
   }
 
   openUpdate(
@@ -119,7 +112,7 @@ export class PlatformsComponent implements OnInit {
     recordStatus,
     updateDateTime,
     deletedDateTime,
-    description,
+    comment,
     version: number) {
     this.pid = id;
     this.updateModal = true;
@@ -127,7 +120,7 @@ export class PlatformsComponent implements OnInit {
     this.updateForm.controls.recordStatus.setValue(recordStatus);
     this.updateForm.controls.updateDateTime.setValue(updateDateTime);
     this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
-    this.updateForm.controls.description.setValue(description);
+    this.updateForm.controls.comment.setValue(comment);
     this.updateForm.controls.version.setValue(version);
 
   }
@@ -153,7 +146,6 @@ export class PlatformsComponent implements OnInit {
   openDelete(pid) {
     this.deleteModal = true;
     this.pid = pid;
-    console.log(this.pid);
   }
 
 

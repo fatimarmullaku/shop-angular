@@ -2,3 +2,15 @@
 //  display: flex;
 //  justify-content: center;
 //}
+
+.fa-trash {
+  margin-top: 2px;
+  margin-left: 10px;
+  font-size: 24px;
+
+  &:hover {
+    cursor: pointer ;
+    color:#ff2600;
+  }
+}
+

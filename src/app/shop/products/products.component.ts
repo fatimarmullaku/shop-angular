@@ -64,8 +64,8 @@ export class ProductsComponent implements OnInit {
   onFilterChange(event: any) {
     this.productsService.getProductBySelectedPrice(event).subscribe((response: PaginationModel<ProductModel>) => {
       this.products = response.content;
-      this.paginationService.changeTotalPages(response.totalPages);
-      this.router.navigate(['/'], { queryParams: {page:this.currentPage} });
+      this.paginationService.changeTotalPages(response.totalPages)
+      // this.router.navigate(['/'], { queryParams: {page:this.currentPage} });
     });
   }
 

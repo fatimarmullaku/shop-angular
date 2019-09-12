@@ -32,7 +32,6 @@ export class ProductUploadComponent implements OnInit {
 
   onSelectFile(event: any) {
     event.preventDefault();
-    console.log(event.target.files[0]);
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
 
@@ -42,10 +41,8 @@ export class ProductUploadComponent implements OnInit {
         this.myUrl = reader.result.toString();
       };
 
-      console.log(reader);
     }
     this.fileChosen = event.target.files[0];
-    console.log(this.fileChosen);
   }
 
   uploadProduct() {
@@ -55,16 +52,12 @@ export class ProductUploadComponent implements OnInit {
       name: this.form.name.value,
       unitPrice: this.form.unitPrice.value,
     };
-    console.log(payload);
     const stringifiedPayload = JSON.stringify(payload);
-    console.log('STRINGIFIED PAYLOAD', stringifiedPayload);
     formData.append('files', this.fileChosen);
     formData.append('data', stringifiedPayload);
     formData.forEach(value => {
-      console.log(value);
     });
     this.httpClient.post<any>(ENDPOINTS.products.getAll + '/withimage', formData).subscribe((res) => {
-        console.log('RESULT', res);
       },
       (error) => {
         console.log('ERROR', error);

@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
     const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
     this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res) => {
         this.username = res.name;
-        console.log(this.username);
       },
       (err) => {
         console.log(err);

@@ -40,7 +40,7 @@ export class ShippingComponent implements OnInit {
   }
 
   fetchCustomer(): void {
-    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll)
+    this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll)
       .subscribe((res) => {
           const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
           const tempId = +customerId;
@@ -54,9 +54,8 @@ export class ShippingComponent implements OnInit {
 
   fetchEmail(): void {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    this.restService.publicRequest<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res) => {
+    this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res) => {
         this.customerEmail = res.email;
-        console.log(this.customerEmail);
       },
       (err) => {
         console.log(err);
@@ -94,7 +93,7 @@ export class ShippingComponent implements OnInit {
         address
       ]
     };
-    return this.restService.publicRequest<any>(HttpRequestMethod.PUT, ENDPOINTS.customers.getAll + `/${customerId}`, {
+    return this.restService.request<any>(HttpRequestMethod.PUT, ENDPOINTS.customers.getAll + `/${customerId}`, {
       body: payload
     });
   }
@@ -102,7 +101,7 @@ export class ShippingComponent implements OnInit {
   getLastAddressRequest() {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID);
     const url = ENDPOINTS.customers.getAll + `/${customerId}/last-address`;
-    return this.restService.publicRequest<any>(HttpRequestMethod.GET, url);
+    return this.restService.request<any>(HttpRequestMethod.GET, url);
   }
 
   onSubmit(event: any) {
