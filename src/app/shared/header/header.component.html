@@ -87,7 +87,7 @@
   </div>
   <div class="header-bottom uses-flex">
     <nav aria-label="main navigation" class="navbar navbar-container" role="navigation">
-      <a (click)="pageR()" class="navbar-item is-hidden-mobile" routerLink="/">Home</a>
+      <a (click)="pageR()" class="navbar-item is-hidden-mobile"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a>
       <div class="is-hidden-desktop customer-options">
         <div *ngIf="this.isLoggedIn()">
           <a *ngIf="this.customerName != null" [routerLink]="'/account/edit-profile'"
