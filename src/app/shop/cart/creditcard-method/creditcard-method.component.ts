@@ -50,6 +50,16 @@ export class CreditcardMethodComponent implements OnInit {
       return;
     }
 
+    if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('cvc').invalid && this.creditCard.get('fullName').invalid) {
+      alert('Please fill your credit information');
+      return;
+    }
+
+    if (this.creditCard.get('creditCardNumber').invalid && this.creditCard.get('expireYear').invalid && this.creditCard.get('cvc').valid && this.creditCard.get('fullName').valid) {
+      alert('Please fill your credit information');
+      return;
+    }
+
     if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('cvc').valid && this.creditCard.get('fullName').invalid) {
       alert('Please enter your name');
       return;
