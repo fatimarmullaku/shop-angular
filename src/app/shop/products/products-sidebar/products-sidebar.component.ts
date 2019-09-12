@@ -99,13 +99,6 @@ export class ProductsSidebarComponent implements OnInit {
       size: this.size
     }
     this.brandsList.forEach(brand => brand.checked = false);
-    this.prices.emit({
-      min:0,
-      max:0,
-      page:0,
-      size: this.size
-    });
-
     this.minValue = 0;
     this.maxValue = 100;
     this.params.emit(params);
