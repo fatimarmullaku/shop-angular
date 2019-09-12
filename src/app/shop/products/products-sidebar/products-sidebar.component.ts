@@ -109,8 +109,6 @@ export class ProductsSidebarComponent implements OnInit {
     this.minValue = 0;
     this.maxValue = 100;
     this.params.emit(params);
-
-    console.log(this.brandsList)
   }
 
 
