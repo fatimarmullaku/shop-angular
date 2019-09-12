@@ -10,18 +10,14 @@
       <div class="product-info-panel">
         <div class="inner-panel">
           <div class="product-info-header">
-            <h2>{{ product.platform? product.platform.name : '' }}</h2>
-          </div>
-          <div class="product-info-body">
             <div class="product-name-instock">
               <h3 class="product-name">{{ product.name }} </h3>
-              <div class="right-actions" (click)="toggleWishlist()">
-                <i *ngIf="!isWishlisted()" class='far fa-heart'></i>
-                <i *ngIf="isWishlisted()" class='fas fa-heart'></i>
-              </div>
             </div>
+          </div>
+          <div class="product-info-body">
             <div class="product-description-container">
-              <p class="product-description">{{product.productDescription ? product.productDescription : 'This product has no description'}}</p>
+              <p
+                class="product-description">{{product.productDescription ? product.productDescription : 'This product has no description'}}</p>
             </div>
             <div class="product-controls">
               <div class="product-price">
@@ -40,12 +36,20 @@
                   Quantity
                 </div>
                 <div class="">
-                  <input class="input is-rounded" value="1" (keyup)="getQuantity($event)" (keypress)="numbersOnly($event)" maxlength="3">
+                  <input class="input is-rounded" value="1" (keyup)="getQuantity($event)"
+                         (keypress)="numbersOnly($event)" maxlength="3">
                 </div>
               </div>
               <div class="add-to-cart">
                 <div class="heading is-vhidden">Add to cart</div>
                 <button class="button" (click)="addToCart($event)">Add to cart</button>
+              </div>
+              <div class="product-quantity">
+                <div class="heading is-vhidden">add</div>
+                <div class="right-actions" (click)="toggleWishlist()">
+                  <i *ngIf="!isWishlisted()" class='far fa-heart'></i>
+                  <i *ngIf="isWishlisted()" class='fas fa-heart'></i>
+                </div>
               </div>
             </div>
           </div>
