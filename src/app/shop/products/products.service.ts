@@ -45,12 +45,12 @@ export class ProductsService {
   }
 
 
-  uploadFiles(payload) {
+  /*uploadFiles(payload) {
     return this.http
       .post('http://localhost:8080/api/v1/upload/',
         payload
       );
-  }
+  }*/
 
   updateProduct(data, id) {
     return this.http.put(this.rootUrl + id, data);
