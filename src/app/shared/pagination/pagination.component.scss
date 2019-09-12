@@ -3,15 +3,17 @@
 }
 
 .selected {
-  background: #FF5A09;
+  background: #ec7f37;
   color: white !important;
-
 }
 
 .hidden {
 visibility: hidden;
 }
 
-.pagination-default {
+.pagination-coloring {
   border-color:#ec7f37;
+  color: #ec7f37 ;
 }
+
+

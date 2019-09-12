@@ -2,7 +2,7 @@
 <div class="container">
   <div class="checkout-steps">
     <div class="step-buttons no-hover">
-      <progress class="progress is-link" value="100" max="100"></progress>
+      <progress class="progress is-danger" value="100" max="100"></progress>
     </div>
   </div>
 
@@ -29,7 +29,7 @@
             </div>
             <!--     Form begins here   -->
             <form [formGroup]="creditCard" (ngSubmit)="createCustomer()">
-              <div class="columns is-multiline is-gapless">
+              <div class="columns is-multiline is-gapless credit-card-forms">
                 <div class="column is-6">
                   <div class="control">
                     <input class="input unknown jp-card-invalid" formControlName="creditCardNumber"
