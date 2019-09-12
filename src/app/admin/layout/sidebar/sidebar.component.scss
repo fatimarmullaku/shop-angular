@@ -14,6 +14,10 @@
         top: 0;
         z-index: 1;
       }
+
+
+
+    }
     }
     mat-nav-list {
       a{
@@ -24,6 +28,7 @@
         font-size:20px;
         margin-left:12px;
         margin-right:5px;
+        color: white;
       }
     }
   }
@@ -50,7 +55,7 @@
   .hide-overflow {
     overflow: hidden;
   }
-}
+
 
 .set-contnet-right {
   flex-wrap: wrap;
@@ -60,4 +65,17 @@
 
 mat-toolbar.admin-dashboard-header-menu.mat-toolbar.mat-toolbar-single-row {
   border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+
+.admin-ucx-logo {
+ margin-left:35px;
+  margin-top:50px;
+  margin-bottom: 20px;
+}
+
+.sidebarMenu {
+  &.active {
+    background-color: grey;
+  }
 }

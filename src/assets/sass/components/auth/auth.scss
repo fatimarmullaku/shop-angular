@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: 107vh;
   color: white;
 
   span {
@@ -31,12 +31,13 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  margin-top: -30px;
+  height: 111vh;
   padding: 0 60px;
 
   .auth-form-footer {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
   }
 }
 

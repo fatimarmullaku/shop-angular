@@ -1,5 +1,4 @@
-
-.order-history-wrapper{
+.order-history-wrapper {
   background-color: transparent;
 
   color: map-get($ucx-colors, light-orange);
@@ -8,37 +7,47 @@
     color: map-get($ucx-colors, dark-gray);
   }
 
-  .image-thumbnail-container{
+  .image-thumbnail-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    i{
+
+    i {
       font-size: 40px;
       color: map-get($ucx-colors, light-orange);
     }
   }
 
-  .alert-dark{
-    .mat-expansion-panel-header{
+  .alert-dark {
+    .mat-expansion-panel-header {
       padding: 0 0;
     }
+
+    .specific-class > .mat-expansion-indicator, .mat-expansion-indicator:after {
+      color: white !important;
+    }
+
     overflow: hidden;
     background-color: transparent;
+
     .columns {
       margin-bottom: 0;
     }
+
     strong {
-      color: map-get($ucx-colors, light-gray);
-    }
-    p{
       color: map-get($ucx-colors, deep-orange);
+    }
+
+    p {
+      color: white;
     }
   }
 
-  .product_purchased{
+  .product_purchased {
     background-color: transparent;
-    .list-item{
-      color: map-get($ucx-colors, deep-orange);
+
+    .list-item {
+      color: white;
     }
   }
 }

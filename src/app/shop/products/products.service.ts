@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ProductModel} from '../../shared/models/product.model';
+import {ENDPOINTS} from '../../shared/constants/api.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  readonly rootUrl = 'http://localhost:8080/api/v1/products/';
+  readonly rootUrl = ENDPOINTS.products.getAll + '/';
+
 
   resData: any;
 
@@ -27,7 +29,6 @@ export class ProductsService {
   }
 
   getProductByPlatformAndBrand(params: any) {
-    console.log('from service', params);
     return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params});
   }
 
@@ -36,11 +37,11 @@ export class ProductsService {
   }
 
   getProductBySelectedPrice(event: any) {
-    return this.http.get<ProductModel[]>(this.rootUrl + 'filter', {params: event});
+    return this.http.get(this.rootUrl + 'filter', {params: event});
   }
 
   getHighestPrice() {
-    return this.http.get(this.rootUrl + 'getHighestPrice')
+    return this.http.get(this.rootUrl + 'getHighestPrice');
   }
 
 
@@ -52,7 +53,6 @@ export class ProductsService {
   }
 
   updateProduct(data, id) {
-    console.log(data);
     return this.http.put(this.rootUrl + id, data);
   }
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="admin-container container">
   <div class="card">
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Customers</h3>
     <div class="card-body">
@@ -7,11 +7,8 @@
           <div class="column">
             <input type="text" class="form-control searchCustomer"  placeholder="search customer" name="search" [(ngModel)]="filter" >
           </div>
-<!--          <div class="column">-->
-<!--            <input class="form-control"  placeholder="filter by date "#dp="bsDatepicker" bsDatepicker [(ngModel)]="datePicker" [bsConfig]="{containerClass:'theme-blue'}">-->
-<!--          </div>-->
         </div>
-        <table class="table table-bordered table-responsive-md table-striped text-center" id="contentToConvert">
+        <table class="table table-bordered table-responsive-md table-striped text-center"  >
           <tr>
             <th>Name</th>
             <th>Email</th>
@@ -41,74 +38,9 @@
             </td>
           </tr>
         </table>
-        <button type="button" class="btn btn-outline-secondary btnPDF" (click)="captureScreen()">PDF</button>
       </div>
     </div>
   </div>
-
-  <div [ngClass]="{ 'is-active' : insertModal }" class="modal">
-    <div (click)="closeInsertModal()" class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Insert Customer</p>
-        <button (click)="closeInsertModal()" aria-label="close" class="delete"></button>
-      </header>
-      <section class="modal-card-body">
-        <form (ngSubmit)="onSubmit( )" [formGroup]="customersForm">
-          <span> Name </span>
-          <input class="form-control"
-                 formControlName="name"
-                 type="text">
-          <span> Email </span>
-          <input class="form-control"
-                 formControlName="email"
-                 type="email">
-          <div formArrayName="addresses" *ngFor="let item of addressesArray['controls']; let i = index">
-            <div [formGroupName]="i">
-              <span> Address </span>
-              <div class="columns">
-                <div class="column">
-                  <input class="form-control" formControlName="city"
-                         placeholder="City"
-                         type="text">
-                </div>
-                <div class="column">
-                  <input class="form-control" formControlName="street"
-                         placeholder="Street"
-                         type="text">
-                </div>
-                <div class="column">
-                  <input class="form-control" formControlName="country"
-                         placeholder="Country"
-                         type="text">
-                </div>
-                <div class="column">
-                  <input class="form-control" formControlName="zip_code"
-                         placeholder="Zip Code"
-                         type="text">
-                </div>
-              </div>
-            </div>
-          </div>
-          <span> Phone Number</span>
-              <input class="form-control" formControlName="phoneNumber"
-                     type="text">
-          <span> Description </span>
-          <div class="control">
-            <textarea formControlName="description" class="textarea" placeholder="Add your description here! "></textarea>
-          </div>
-        </form>
-      </section>
-      <footer class="modal-card-foot">
-        <button (click)="onSubmit()" class="button is-danger">Submit</button>
-        <button (click)="closeInsertModal()" class="button">Cancel</button>
-      </footer>
-    </div>
-  </div>
-
-
-
-
 
   <div [ngClass]="{ 'is-active' : deleteModal }" class="modal">
     <div (click)="toggleModal()" class="modal-background"></div>

@@ -1,0 +1,44 @@
+.details li {
+  list-style: none;
+}
+li {
+  margin-bottom:10px;
+
+}
+/*.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #2d323e;
+  border-radius: .3rem;
+  color: white;
+}*/
+.myProfile {
+  border-bottom:1px solid black;
+}
+.profil_data {
+  margin-top: 60px;
+}
+.profil_picture {
+  width: 200px;
+  border: 1px solid #e7e7e7;
+  margin: 0 auto;
+  box-shadow: 0 0 3px #e7e7e7;
+}
+.container.myProfile {
+  border-bottom: 2px solid #e7e7e7;
+}
+h2, span, .profile_heading{
+  font-family: 'Source Sans Pro', sans-serif !important;
+  font-weight: 600;
+}
+td.labels {
+  border: none;
+  padding: 8;
+}
+td.labels.static_labels {
+  max-width: 230px;
+}
+
+
+
+

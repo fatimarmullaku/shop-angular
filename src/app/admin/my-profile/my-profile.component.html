@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="profil_data">
+    <div class="row column columns is-10-desktop is-offset-1-desktop ng-star-inserted">
+      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+        <div class="profil_picture">
+          <img src="assets/img/admin-module/adminprofile.jpg" alt="stack photo" class="img">
+        </div>
+      </div>
+      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+        <div class="container myProfile">
+      </div>
+        <br>
+        <table class="table">
+          <tr class=" user_data_table">
+            <td class="labels static_labels">Admin Id: </td>
+            <td class="labels"> {{ customer.id }}</td>
+          </tr>
+          <tr class=" user_data_table">
+            <td class="labels static_labels">Name : </td>
+            <td class="labels"> {{ customer.name }}</td>
+          </tr>
+          <tr class=" user_data_table">
+            <td class="labels static_labels">Phone Number :</td>
+            <td class="labels"> {{ customer.phoneNumber }}</td>
+          </tr>
+          <tr class=" user_data_table">
+            <td class="labels static_labels">Email Address: </td>
+            <td class="labels"> {{ customer.email }}</td>
+          </tr>
+          <tr class=" user_data_table" *ngIf="customer.addresses.length > 0">
+            <td class="labels static_labels">Address: </td>
+            <td class="labels">
+              {{ customer.addresses[0].street + ', ' + customer.addresses[0].city + ', ' + customer.addresses[0].zipCode + ', '
+            + customer.addresses[0].country
+              }}</td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>

@@ -17,7 +17,7 @@ export class AdminAuthGuardService implements CanActivate {
     if (this.userService.getRole() === 'ADMIN') {
       return true;
     } else {
-      this.router.navigateByUrl('/police');
+      this.router.navigateByUrl('/');
       return false;
     }
   }

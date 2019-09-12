@@ -4,32 +4,36 @@ import {ProductService} from '../../../shared/services/product.service';
 import {PaginationService} from '../../../shared/pagination/pagination.service';
 import {ProductRatingModel} from '../../../shared/models/product-rating.model';
 import {ProductReviewModel} from '../../../shared/models/product-review.model';
+import {TopProductsService} from '../../../shared/services/top-products.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
+
 export class ProductListComponent implements OnInit {
   @Input()
   products: ProductModel[];
   productsList: ProductModel[];
-  currentPage: number;
+  currentPage = 1;
+  @Input()
+  paginationService: PaginationService;
   pageSize = 8;
 
+
   constructor(private productService: ProductService,
-              private paginationService: PaginationService) {
+              private topProducts: TopProductsService) {
   }
 
   ngOnInit() {
-    this.paginationService.currentPage.subscribe(currentPage => {
-      this.currentPage = currentPage;
-      this.getProductsPaged();
-    });
-    // this.getProductsPaged();
+    /*    this.paginationService.currentPage.subscribe(res => {
+          this.currentPage = res;
+          this.getProductsPaged();
+        });*/
+    this.getTopProducts();
   }
 
-// hard-coded 9
   getProductsPaged() {
     this.productService.getProductsPaged(this.pageSize, this.currentPage - 1).subscribe((data: any) => {
       this.productsList = data.content;
@@ -63,5 +67,12 @@ export class ProductListComponent implements OnInit {
 
   }
 
-
+  getTopProducts() {
+    this.topProducts.getTopSoldProducts(3).subscribe(res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

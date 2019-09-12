@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import html2canvas from 'html2canvas';
 import {HttpErrorResponse} from '@angular/common/http';
 import {BrandsModel} from './brands.model';
-import {BrandsService} from './brands.service';
-import * as jspdf from 'jspdf';
+import {BrandsService} from "../../shared/services/brands.service";
+
 
 @Component({
   selector: 'app-brands',
@@ -35,14 +34,9 @@ export class BrandsComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      id: [''],
+
       name: [''],
-      recordStatus: [''],
-      createDateTime: [''],
-      updateDateTime: [''],
-      deletedDateTime: [''],
-      description: [''],
-      version: [''],
+      comment: [''],
     });
 
     this.updateForm = this.formBuilder.group({
@@ -50,29 +44,15 @@ export class BrandsComponent implements OnInit {
       recordStatus: [''],
       updateDateTime: [],
       deletedDateTime: [],
-      description: [''],
+      comment: [''],
       version: [],
-    }); 
-  }
-
-  public captureScreen() {
-    const data = document.getElementById('contentToConvert');
-    html2canvas(data).then(canvas => {
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      const heightLeft = imgHeight;
-
-      const contentDataURL = canvas.toDataURL('image/png');
-      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-      const position = 10;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('brandsList.pdf');
     });
   }
 
+
+
   onSubmit() {
-    const values = this.form.value; 
+    const values = this.form.value;
     this.brandsService.registerBrand(values).subscribe(
       get => {
         this.brandsService.getAllBrands().subscribe((data: any) => {
@@ -119,9 +99,7 @@ export class BrandsComponent implements OnInit {
   }
 
   openInsert() {
-    console.log('insert is called');
     this.insertModal = true;
-    console.log('from open insert', this.insertModal);
   }
 
   openUpdate(
@@ -130,7 +108,7 @@ export class BrandsComponent implements OnInit {
     recordStatus,
     updateDateTime,
     deletedDateTime,
-    description,
+    comment,
     version: number) {
     this.bid = id;
     this.updateModal = true;
@@ -138,7 +116,7 @@ export class BrandsComponent implements OnInit {
     this.updateForm.controls.recordStatus.setValue(recordStatus);
     this.updateForm.controls.updateDateTime.setValue(updateDateTime);
     this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
-    this.updateForm.controls.description.setValue(description);
+    this.updateForm.controls.comment.setValue(comment);
     this.updateForm.controls.version.setValue(version);
 
   }
@@ -159,6 +137,6 @@ export class BrandsComponent implements OnInit {
 
   openDelete(bid) {
     this.deleteModal = true;
-    this.bid = bid; 
+    this.bid = bid;
   }
 }

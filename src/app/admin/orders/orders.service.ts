@@ -16,12 +16,12 @@ export class OrdersService {
 
   paged(size: number, page: number) {
     const params = new HttpParams().set('size', String(size)).set('page', String(page));
-    return this.http.get(this.baseUrl + '/invoices/history/paged', {params});
+    return this.http.get(this.baseUrl + '/orders/history/paged', {params});
   }
 
   pagedWithCustomParams(size: number, page: number, searchText, paramSearch) {
     const params = new HttpParams().set('size', String(size)).set('page', String(page)).set(paramSearch, String(searchText));
-    return this.http.get(this.baseUrl + '/invoices/history/paged', {params});
+    return this.http.get(this.baseUrl + '/orders/history/paged', {params});
   }
 
 

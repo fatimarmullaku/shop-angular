@@ -5,7 +5,7 @@ import {CartService} from '../../../../shared/services/cart.service';
 import {ActivatedRoute} from '@angular/router';
 import {WishlistService} from '../../../../shared/services/wishlist.service';
 import {ENDPOINTS} from '../../../../shared/constants/api.constants';
-import {PurchaseService} from "../../../../shared/services/purchase.service";
+import {PurchaseService} from '../../../../shared/services/purchase.service';
 
 @Component({
   selector: '[app-product-item]',

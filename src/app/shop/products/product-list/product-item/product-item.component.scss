@@ -4,8 +4,8 @@
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 
     &:hover {
-      transform: scale(1.05);
-      transition-duration: 0.7s;
+      //transform: scale(1.05);
+      //transition-duration: 0.7s;
     }
   }
 
@@ -39,3 +39,7 @@
   }
 }
 
+.item-box:hover{
+  transform: scale(1.05);
+  transition-duration: 0.7s;
+}

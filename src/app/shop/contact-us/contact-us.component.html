@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="contact-us-screen">
+  <div class="contact-us-wrapper" *ngIf="!messageForm">
+
+    <div class="title-contact-us">
+
+      <div class="test">
+        <div><h3></h3></div>
+        <div>
+          <h3>HAVE SOME QUESTIONS? CONTACT US</h3>
+        </div>
+
+      </div>
+    </div>
+    <div class="columns">
+      <div class="contact-form">
+        <form (ngSubmit)="onSubmit()" [formGroup]="contactUsFormGroup" class="form">
+          <div class="columns">
+            <div class="column">
+              <label class="label">Full name</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="input form-control" formControlName="name"
+                     type="text">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div>
+            <div class="column">
+              <label class="label">Email address</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="input form-control" formControlName="email"
+                     type="text">
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+              </div>
+            </div>
+          </div>
+
+          <label class="label">Message</label>
+          <textarea [ngClass]="{ 'is-invalid': submitted && f.message.errors }" class="input form-control"
+                    formControlName="message"></textarea>
+          <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+            <div *ngIf="f.message.errors.required">Message is required</div>
+          </div>
+          <div class="field is-grouped is-grouped-left">
+            <button class="contact-us-button">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="messageForm">
+    <div class="contact-sent-message">
+      <h1>
+        Form has been submitted.
+      </h1>
+      <a class="button submit-again" (click)="submitAgain()">Send another message</a>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

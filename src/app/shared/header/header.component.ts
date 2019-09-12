@@ -10,6 +10,7 @@ import {RestService} from '../services/rest.service';
 import {HttpRequestMethod} from '../constants/http-request.method';
 import {ENDPOINTS} from '../constants/api.constants';
 import {BaseStorageService} from '../services/base-storage.service';
+import {PaginationService} from '../pagination/pagination.service';
 
 
 @Component({
@@ -22,8 +23,9 @@ export class HeaderComponent implements OnInit {
   products: ProductModel[];
   cartProducts: ProductCartModel[];
   cartQty = 0;
-  status = false;
+  opened = false;
   status2 = false;
+  status3 = false;
   customerName: string;
 
   constructor(private userService: UserService,
@@ -31,7 +33,8 @@ export class HeaderComponent implements OnInit {
               private productService: ProductService,
               private storageService: StorageService,
               private restService: RestService,
-              private baseStorageService: BaseStorageService) {
+              private baseStorageService: BaseStorageService,
+              private paginationService: PaginationService) {
   }
 
   ngOnInit() {
@@ -61,11 +64,17 @@ export class HeaderComponent implements OnInit {
 
 
   toggleClass() {
-    this.status = !this.status;
+    this.status2= false;
+    this.opened = !this.opened;
   }
 
   toggleClass2() {
+    this.opened = false;
     this.status2 = !this.status2;
+  }
+
+  onHamburgerclick() {
+    this.status3 = !this.status3;
   }
 
   isLoggedIn(): boolean {
@@ -77,19 +86,29 @@ export class HeaderComponent implements OnInit {
     return isLogedIn;
   }
 
-  fetchCustomer(): void {
-    const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
-    if (customerId && customerId.length > 0) {
-      this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
-        .subscribe((res) => {
-            this.customerName = res.name;
-            console.log(this.customerName);
-          },
-          (err) => {
-            console.log(err);
-          });
-    }
+  pageR() {
+    this.paginationService.changePage(1);
+    const values = document.querySelectorAll('.sel-box');
+    console.log('VALUEEEES', values);
+    values.forEach(value => {
+      const changeElement = value as HTMLInputElement;
+      changeElement.checked = false;
+    });
   }
 
-
+  fetchCustomer(): void {
+    if (this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID) != null) {
+      const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
+      if (customerId && customerId.length > 0) {
+        this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
+          .subscribe((res) => {
+              this.customerName = res.name;
+              console.log(this.customerName);
+            },
+            (err) => {
+              console.log(err);
+            });
+      }
+    }
+  }
 }

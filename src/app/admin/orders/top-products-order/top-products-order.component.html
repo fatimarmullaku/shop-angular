@@ -1,0 +1,29 @@
+<div class="row column columns is-10-desktop is-offset-1-desktop ng-star-inserted">
+  <div class="col-md-12">
+    <h3 class="table_head"><strong class="align-content-center">TOP 10 MOST SOLD PRODUCTS</strong></h3>
+  </div>
+  <div class="col-md-12">
+
+    <table class="table table-bordered table-responsive-md table-striped text-center" id="topSoldTable">
+      <thead>
+      <tr>
+        <th>No</th>
+        <th>Product Name</th>
+        <th>Product Image</th>
+        <th>Unit Price</th>
+        <th>Sold number</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let topitem of topSoldItemsArr; let i = index" class="hover-transform">
+        <td>{{i + 1}}</td>
+        <td>{{ topitem.productname }}</td>
+        <td><div class="image"><img src="{{photoUrl + topitem.image}}" class=" img-thumbnail product-image-sizing is-rounded hover-enlarge"></div></td>
+        <td>{{ topitem.unitprice }}</td>
+        <td>{{ topitem.pcssold }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -22,6 +22,8 @@ import {ProductsFPipe} from './products/products-f.pipe';
 import {ShopModule} from '../shop/shop.module';
 import { StatsComponent } from './orders/stats/stats.component';
 import { OrderDataComponent } from './orders/order-data/order-data.component';
+import {MyProfileComponent} from './my-profile/my-profile.component';
+import { TopProductsOrderComponent } from './orders/top-products-order/top-products-order.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { OrderDataComponent } from './orders/order-data/order-data.component';
     ProductsFPipe,
     StatsComponent,
     OrderDataComponent,
+    MyProfileComponent,
+    TopProductsOrderComponent
 
   ],
   imports: [

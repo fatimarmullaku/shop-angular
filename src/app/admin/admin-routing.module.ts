@@ -10,6 +10,8 @@ import {DashboardBaseComponent} from './layout/base/dashboard-base.component';
 import {PlatformsComponent} from './platforms/platforms.component';
 import {BrandsComponent} from './brands/brands.component';
 import {AdminAuthGuardService} from '../shared/services/guards/admin-auth-guard.service';
+import {MyProfileComponent} from './my-profile/my-profile.component';
+import {TopProductsOrderComponent} from './orders/top-products-order/top-products-order.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,9 @@ const routes: Routes = [
       {path: 'users', component: UsersComponent},
       {path: 'roles', component: RolesComponent},
       {path: 'platforms', component: PlatformsComponent},
-      {path: 'brands', component: BrandsComponent}
+      {path: 'brands', component: BrandsComponent},
+      {path: 'my-profile', component: MyProfileComponent},
+      {path: 'top-products-order', component: TopProductsOrderComponent}
     ]
   }
 ];
