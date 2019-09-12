@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 import {BrandsModel} from './brands.model';
-import {BrandsService} from './brands.service';
+import {BrandsService} from "../../shared/services/brands.service";
 
 
 @Component({
@@ -34,14 +34,9 @@ export class BrandsComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      id: [''],
+
       name: [''],
-      recordStatus: [''],
-      createDateTime: [''],
-      updateDateTime: [''],
-      deletedDateTime: [''],
       description: [''],
-      version: [''],
     });
 
     this.updateForm = this.formBuilder.group({
@@ -51,13 +46,13 @@ export class BrandsComponent implements OnInit {
       deletedDateTime: [],
       description: [''],
       version: [],
-    }); 
+    });
   }
 
 
 
   onSubmit() {
-    const values = this.form.value; 
+    const values = this.form.value;
     this.brandsService.registerBrand(values).subscribe(
       get => {
         this.brandsService.getAllBrands().subscribe((data: any) => {
@@ -142,6 +137,6 @@ export class BrandsComponent implements OnInit {
 
   openDelete(bid) {
     this.deleteModal = true;
-    this.bid = bid; 
+    this.bid = bid;
   }
 }

@@ -21,7 +21,6 @@ export class ContactUsComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       message: new FormControl('', Validators.required)
     });
-    console.log("TEST", this.messageForm);
   }
 
   submitAgain(){
@@ -45,8 +44,6 @@ export class ContactUsComponent implements OnInit {
     this.userService.contactUs(this.contactUsFormGroup.getRawValue()).subscribe((res) => {
       this.submitted = false;
       this.messageForm = true;
-      console.log("TEST", this.messageForm);
-
       this.contactUsFormGroup.reset();
     }, (error) => {
       console.error(error);
