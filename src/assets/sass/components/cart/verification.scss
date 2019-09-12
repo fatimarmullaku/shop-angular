@@ -13,13 +13,26 @@
 }
 
 .credit-card-iconi {
-  color: map_get($ucx-colors, deep-orange);
+  color: whitesmoke;
+}
+
+.license-qty {
+  color: white;
+}
+
+.product-platform {
+  color: white;
+}
+
+.unit-price-verification {
+  color: white;
 }
 
 .shipping-parent {
   p {
     margin-bottom: 20px;
   }
+
   text-align: center;
   background-color: #1f2833;
   background-color: transparent;
@@ -33,6 +46,26 @@
 
   .shipping-total {
     text-align: center;
+  }
+}
+
+.right-button {
+  a {
+    min-width: 100px;
+
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.left-button {
+  a {
+    min-width: 100px;
+
+    &:hover {
+      color: black;
+    }
   }
 }
 

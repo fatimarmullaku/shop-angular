@@ -3,14 +3,21 @@
 }
 
 #creditcard-icon {
-  font-size: 150px;
+  font-size: 110px;
   color: ghostwhite;
-  &:hover{
+
+  &:hover {
     transform: scale(1);
   }
 }
 
+.credit-card-forms {
+  margin-bottom: 0.5rem!important;
+}
+
 #checkout-button {
+  color: white;
+
   &:hover {
     color: #000;
   }
@@ -22,6 +29,6 @@
   }
 }
 
-.cash-total h1{
+.cash-total h1 {
   color: floralwhite;
 }
