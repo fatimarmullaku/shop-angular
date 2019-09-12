@@ -30,9 +30,7 @@
               <div class="additional-information-wrap">
                 <div class="additional-information-screen">
                   <div class="auth-form-header">
-                    <img src="assets/img/ucx-logo-mobile.png" alt="">
                     <h4>Additional Information</h4>
-                    <span>Enter your additional information.</span>
                   </div>
                   <form [formGroup]="informationForm" class="form" (submit)="onSubmit()">
                     <div id="box-phone">
@@ -53,12 +51,11 @@
                       </div>
                     </div>
                     <br>
-                    <h3 class="title is-5 static-titles">Address</h3>
                     <div id="box-address">
                       <div formArrayName="addresses"
                            *ngFor="let n of informationForm.get('addresses')['controls']; let i = index;">
                         <div class="columns" [formGroupName]="0">
-                          <div class="column is-3">
+                          <div class="column">
                             <label class="label">Country</label>
                             <input type="text" class="input form-control" formControlName="country"
                                    [ngClass]="{ 'is-invalid': submitted && n.controls.country.errors }">
@@ -67,7 +64,7 @@
                             </div>
                           </div>
 
-                          <div class="column is-3">
+                          <div class="column">
                             <label class="label">City</label>
                             <input type="text" class="input form-control" formControlName="city"
                                    [ngClass]="{ 'is-invalid': submitted && n.controls.city.errors }">
@@ -75,8 +72,9 @@
                               <div *ngIf="n.controls.city.errors.required">City is required</div>
                             </div>
                           </div>
-
-                          <div class="column is-2">
+                        </div>
+                        <div class="columns">
+                          <div class="column">
                             <label class="label">Zip code</label>
                             <input maxlength="9" type="text" class="input form-control" formControlName="zipCode"
                                    [ngClass]="{ 'is-invalid': submitted && n.controls.zipCode.errors }">
@@ -85,7 +83,7 @@
                             </div>
                           </div>
 
-                          <div class="column is-4">
+                          <div class="column">
                             <label class="label">Street</label>
                             <input type="text" class="input form-control" formControlName="street"
                                    [ngClass]="{ 'is-invalid': submitted && n.controls.street.errors }">
@@ -98,7 +96,7 @@
                     </div>
 
                     <br>
-                    <div class="columns">
+                    <div class="columns additional-information-button-group">
                       <br>
                       <div class="column">
                         <button class="auth-button">Save</button>
