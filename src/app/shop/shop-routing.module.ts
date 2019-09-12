@@ -29,21 +29,21 @@ import {EditProfileComponent} from './account/edit-profile/edit-profile.componen
 import {OrderHistoryComponent} from './account/order-history/order-history.component';
 import {ShopAuthGuardService} from '../shared/services/guards/shop-auth-guard.service';
 import {ContactUsComponent} from './contact-us/contact-us.component';
-import {HomeComponent} from "./home/home.component";
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: HomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'games',
     component: ProductsComponent,
     pathMatch: 'full'
   },
   {
-    path: 'page',
-    component: ProductsComponent,
-    pathMatch:'full'
-  },
-  {
-    path: 'products/:id',
+    path: 'games/:id',
     component: ProductDetailComponent,
     children: [
       {
@@ -165,10 +165,6 @@ const routes: Routes = [
   {
     path: 'police',
     component: PoliceComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent
   },
   {
     path: 'contact-us',
