@@ -25,9 +25,9 @@
           <tr *ngFor="let c of platformsList | pipeFilteer:filter">
             <td>{{c.name}}</td>
             <td>{{c.recordStatus}}</td>
-            <td>{{c.createDateTime}}</td>
-            <td>{{c.updateDateTime}}</td>
-            <td>{{c.deletedDateTime}}</td>
+            <td>{{c.createDateTime  | date:'dd-MM-yyyy'}}</td>
+            <td>{{c.updateDateTime  | date:'dd-MM-yyyy'}}</td>
+            <td>{{c.deletedDateTime  | date:'dd-MM-yyyy'}}</td>
             <td>{{c.comment}}</td>
             <td>{{c.version}}</td>
             <td>
