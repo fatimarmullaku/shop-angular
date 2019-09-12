@@ -230,7 +230,7 @@ a.dropdown-item.is-active {
         &:hover {
           background: none;
           text-decoration: none;
-          color: map-get($ucx-colors, deep-orange);
+          //color: map-get($ucx-colors, deep-orange);
         }
       }
 
