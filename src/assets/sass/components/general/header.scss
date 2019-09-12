@@ -183,10 +183,15 @@ a.dropdown-item.is-active {
         border-bottom: 2px solid ghostwhite;
       }
 
+
       .active{
         //border-bottom: 2px solid white;
         transform: scale(1.1);
         color: map-get($ucx-colors, light-orange);
+        &:focus-within{
+          background-color: transparent;
+        }
+
       }
 
       .customer-options {
