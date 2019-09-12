@@ -1,4 +1,4 @@
-<div class="container">
+<div class="admin-container container">
   <div class="card">
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Brands</h3>
     <div class="card-body">
@@ -28,7 +28,7 @@
             <td>{{b.createDateTime | date:'dd-MM-yyyy'}}</td>
             <td>{{b.updateDateTime | date:'dd-MM-yyyy'}}</td>
             <td>{{b.deletedDateTime | date:'dd-MM-yyyy'}}</td>
-            <td>{{b.description}}</td>
+            <td>{{b.comment}}</td>
             <td>{{b.version}}</td>
             <td>
               <a>
@@ -39,7 +39,7 @@
                 b.recordStatus,
                 b.updateDateTime,
                 b.deletedDateTime,
-                b.description,
+                b.comment,
                 b.version) "
                   class="far fa-edit"></i>
               </a>
@@ -87,9 +87,9 @@
                  type="text">
           <div class="field">
             <div class="control">
-              <label class="admin-label" for="uDescription">Description:</label>
-              <textarea formControlName="description" class="textarea" id="uDescription"
-                        placeholder="Add your description here! ">
+              <label class="admin-label" for="ucomment">comment:</label>
+              <textarea formControlName="comment" class="textarea" id="ucomment"
+                        placeholder="Add your comment here! ">
                      </textarea>
             </div>
           </div>
@@ -116,9 +116,9 @@
                  required
                  type="text">
           <div class="control">
-            <label class="admin-label" for="uDescription">Description:</label>
-            <textarea formControlName="description" class="textarea" id="uDescription"
-                      placeholder="Add your description here! ">
+            <label class="admin-label" for="ucomment">comment:</label>
+            <textarea formControlName="comment" class="textarea" id="ucomment"
+                      placeholder="Add your comment here! ">
                      </textarea>
           </div>
         </form>
