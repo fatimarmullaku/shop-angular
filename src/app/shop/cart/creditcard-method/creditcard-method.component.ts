@@ -9,6 +9,7 @@ import {HttpRequestMethod} from "../../../shared/constants/http-request.method";
 import {ENDPOINTS} from "../../../shared/constants/api.constants";
 import {HttpClient} from "@angular/common/http";
 import {CreditCardValidator} from "angular-cc-library";
+import {invalid} from "@angular/compiler/src/render3/view/util";
 
 
 @Component({
@@ -26,47 +27,63 @@ export class CreditcardMethodComponent implements OnInit {
               private formBuilder: FormBuilder,
               private restService: RestService,
               private httpClient: HttpClient
-              ) {
+  ) {
   }
 
   ngOnInit() {
 
-      this.creditCard = this.formBuilder.group({
-        fullName: ['',[Validators.required]],
-        creditCardNumber: ['', [<any>CreditCardValidator.validateCCNumber, Validators.required]],
-        expireYear: ['',[<any>CreditCardValidator.validateExpDate,Validators.required]],
-        cvc: ['',[Validators.required, Validators.minLength(3), <any>Validators.maxLength(4)]]
-      });
+    this.creditCard = this.formBuilder.group({
+      fullName: ['', [Validators.required]],
+      creditCardNumber: ['', [<any>CreditCardValidator.validateCCNumber, Validators.required]],
+      expireYear: ['', [<any>CreditCardValidator.validateExpDate, Validators.required]],
+      cvc: ['', [Validators.required, Validators.minLength(3), <any>Validators.maxLength(4)]]
+    });
 
   }
-
-
 
 
   get form() {
     return this.creditCard.controls;
   }
 
-  createCustomer(): boolean{
-    if(this.creditCard.invalid){
-      alert("Fields must no be empty");
+  createCustomer(): boolean {
+    if (this.creditCard.get('creditCardNumber').invalid && this.creditCard.get('expireYear').invalid && this.creditCard.get('cvc').invalid && this.creditCard.get('fullName').invalid) {
+      alert("Please fill your credit information");
       return;
     }
-    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID,true);
+
+    if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('cvc').valid && this.creditCard.get('fullName').invalid) {
+      alert("Please enter your name");
+      return;
+    }
+    if (this.creditCard.get('fullName').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('cvc').valid && this.creditCard.get('creditCardNumber').invalid) {
+      alert("Please enter a valid card");
+      return;
+    }
+    if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('fullName').valid && this.creditCard.get('cvc').valid && this.creditCard.get('expireYear').invalid) {
+      alert("Please enter your credit card expire date");
+      return;
+    }
+    if (this.creditCard.get('creditCardNumber').valid && this.creditCard.get('expireYear').valid && this.creditCard.get('fullName').valid && this.creditCard.get('cvc').invalid) {
+      alert("Please Enter cvc number");
+      return;
+    }
+
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
     this.restService.publicRequest<any>(HttpRequestMethod.POST, ENDPOINTS.stripe.createStripeCustomer + `/${customerId}`)
-      .subscribe(result=>{
-          console.log(result);
+      .subscribe(result => {
+        console.log(result);
       });
     return this.checkoutConfirm = true;
   }
 
   buy() {
 
-    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID,true);
+    const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
 
     const params = new FormData();
-    params.append('customerId',customerId);
-    params.append('amount',this.generateTotalPrice().toFixed(2));
+    params.append('customerId', customerId);
+    params.append('amount', this.generateTotalPrice().toFixed(2));
     setTimeout(() => {
       this.httpClient.post<any>(ENDPOINTS.stripe.charge, params).subscribe(result => {
         console.log(result);
@@ -80,14 +97,14 @@ export class CreditcardMethodComponent implements OnInit {
           });
 
       });
-    },3000);
+    }, 3000);
   }
 
   generateTotalPrice() {
     return this.cartService.generateTotalPrice();
   }
 
-  cancelModal(): boolean{
+  cancelModal(): boolean {
     return this.checkoutConfirm = false;
   }
 }
