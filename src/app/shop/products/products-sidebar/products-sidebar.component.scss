@@ -136,6 +136,14 @@ div.static-filter {
 @import 'slider-variables.scss';
 
 :host {
+  .mat-expansion-panel-header.ng-tns-c4-3.ng-trigger.ng-trigger-expansionHeight.mat-expansion-toggle-indicator-after.ng-star-inserted {
+    color:#ffffff;
+  }
+
+  mat-expansion-panel-header.ng-tns-c4-1.ng-trigger.ng-trigger-expansionHeight.mat-expansion-toggle-indicator-after.ng-star-inserted {
+    color:#ffffff;
+  }
+
   mat-expansion-panel {
     mat-expansion-panel-header{
       mat-panel-title {
@@ -451,5 +459,9 @@ div.static-filter {
   }
 }
 
+.game-textt {
+  color:#ffffff;
+  margin-left:10px;
+}
 
 

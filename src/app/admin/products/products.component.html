@@ -3,12 +3,14 @@
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Products</h3>
     <div class="card-body">
       <div class="table-editable" id="table">
-        <input type="text" class="form-control searchBrand" placeholder="search product" name="search" [(ngModel)]="filter">
-            <span class="table-add float-right mb-3 mr-2">
+        <div class="columns">
+          <input type="text" class="form-control searchBrand" placeholder="search product" name="search" [(ngModel)]="filter">
+          <span class="table-add float-right mb-3 mr-2">
                 <a>
                 <i (click)="openInsert()" class="fas fa-plus"></i>
                 </a>
             </span>
+        </div>
         <table class="table table-bordered table-responsive-md table-striped text-center"  >
           <tr>
             <th>Name</th>
@@ -152,8 +154,8 @@
         </form>
       </section>
       <footer class="modal-card-foot">
-        <button (click)="closeInsertModal()" class="button">Cancel</button>
-        <button  (click)="onAddProduct()" class="button is-danger">Add Product</button>
+        <button  (click)="onAddProduct()" class="admin-button button ">Save</button>
+        <button (click)="closeInsertModal()" class="button ">Cancel</button>
       </footer>
     </div>
   </div>
@@ -224,7 +226,7 @@
     </section>
     <footer class="modal-card-foot">
       <button (click)="closeUpdateModal()" class="button">Cancel</button>
-      <button  (click)="onUpdate()" class="button is-danger">Update Product</button>
+      <button  (click)="onUpdate()" class="button admin-product">Update Product</button>
     </footer>
   </div>
 </div>

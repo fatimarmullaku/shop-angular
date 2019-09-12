@@ -1,0 +1,41 @@
+.admin-container  {
+  margin-top:30px;
+}
+
+.admin-button {
+  background-color:#ec7f37;
+  color:white;
+}
+
+
+.admin-label{
+  color:#ec7f37;
+}
+
+.admin-icon{
+  font-size: 20px;
+}
+
+
+.fa-edit {
+  font-size: 22px;
+  color:black;
+
+  &:hover{
+    color:#ec7f37;
+  }
+}
+
+.fa-plus {
+  &:hover{
+    color:#ec7f37;
+  }
+}
+
+.fa-trash{
+  &:hover{
+    color:#ec7f37;
+  }
+}
+
+
