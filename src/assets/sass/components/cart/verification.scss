@@ -16,7 +16,7 @@
   color: whitesmoke;
 }
 
-.license-qty{
+.license-qty {
   color: white;
 }
 
@@ -24,7 +24,7 @@
   color: white;
 }
 
-.unit-price-verification{
+.unit-price-verification {
   color: white;
 }
 
@@ -32,6 +32,7 @@
   p {
     margin-bottom: 20px;
   }
+
   text-align: center;
   background-color: #1f2833;
   background-color: transparent;
@@ -45,6 +46,24 @@
 
   .shipping-total {
     text-align: center;
+  }
+}
+
+.right-button {
+  a {
+    min-width: 100px;
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.left-button {
+  a {
+    min-width: 100px;
+    &:hover {
+      color: black;
+    }
   }
 }
 
