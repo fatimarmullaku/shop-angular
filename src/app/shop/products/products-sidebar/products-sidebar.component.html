@@ -1,4 +1,5 @@
 <mat-accordion>
+  <button class="clear-button button is-danger is-inverted is-outlined" (click)="clearFilters()"> Clear</button>
   <mat-expansion-panel class="panel">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -6,7 +7,6 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="contentt">
-      <button class="shop-button" (click)="clearFilters()"> Clear</button>
       <ul class="game-list">
 
         <li *ngFor="let b of brandsList " class="game-item">
