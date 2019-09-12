@@ -1,4 +1,4 @@
-<div  [ngClass]="status3 ? 'active' : ''" class="header uses-flex" id="leshimaris">
+<div  [ngClass]="status3 ? 'active' : ''" class="header uses-flex">
   <div class="header-top uses-flex between-space">
     <a>
       <div class="image-container">
@@ -31,7 +31,7 @@
               <div class="column is-4 item-desc">
                 <h6 *ngIf="item.product.name != null"><h6><strong>{{item.product.name}}</strong></h6></h6>
                 <h6 *ngIf="item.product.platform != null">{{item.product.platform.name}}</h6>
-                <h6 *ngIf=" item.product.unitPrice != null">{{item.product.unitPrice}}$</h6>
+                <h6 *ngIf=" item.product.unitPrice != null">${{item.product.unitPrice}}</h6>
               </div>
               <div class="column is-4 has-text-right">
                 <a (click)="cartService.deleteFromCart(item.id)"><i class="fas fa-times"></i></a>
