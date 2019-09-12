@@ -53,7 +53,6 @@ export class CreditcardMethodComponent implements OnInit {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
     this.restService.publicRequest<any>(HttpRequestMethod.POST, ENDPOINTS.stripe.createStripeCustomer + `/${customerId}`)
       .subscribe(result => {
-        console.log(result);
       });
     return this.checkoutConfirm = true;
   }
@@ -67,7 +66,6 @@ export class CreditcardMethodComponent implements OnInit {
     params.append('amount', this.generateTotalPrice().toFixed(2));
     setTimeout(() => {
       this.httpClient.post<any>(ENDPOINTS.stripe.charge, params).subscribe(result => {
-        console.log(result);
 
         this.purchaseService.buy().subscribe((res) => {
             this.baseStorage.clearStorageOf(LocalStorageKey.CART);

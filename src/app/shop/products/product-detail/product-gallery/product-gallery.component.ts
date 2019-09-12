@@ -18,7 +18,6 @@ export class ProductGalleryComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.parent.params.subscribe(res => {
-      console.log(res);
       if (res.id) {
         this.productService.getProductObservable(res.id).subscribe(response => {
           this.image = response.fileName === null ? '/assets/img/bf4-cover.jpg' : this.productUrl + response.fileName;

@@ -29,7 +29,6 @@ export class MyProfileComponent implements OnInit {
     this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res) => {
         this.username = res.name;
         this.customer = res;
-        console.log(this.username);
       },
       (err) => {
         console.log(err);

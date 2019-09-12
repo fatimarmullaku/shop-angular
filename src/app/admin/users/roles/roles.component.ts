@@ -27,7 +27,6 @@ export class RolesComponent implements OnInit {
 
     this.rolesService.getAllRoles().subscribe((data: any) => {
       this.roleList = data;
-      console.log(this.roleList);
     });
 
     this.form = this.formBuilder.group({
@@ -52,13 +51,10 @@ export class RolesComponent implements OnInit {
       version: [],
     });
 
-    console.log(this.updateForm);
-
   }
 
   onSubmit() {
     const values = this.form.value;
-    console.log('on Submit', values);
     this.rolesService.registerRole(values).subscribe(
       get => {
         this.rolesService.getAllRoles().subscribe((data: any) => {
@@ -150,6 +146,5 @@ export class RolesComponent implements OnInit {
   openDelete(rid) {
     this.deleteModal = true;
     this.rid = rid;
-    console.log(this.rid);
   }
 }

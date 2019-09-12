@@ -56,7 +56,6 @@ export class ShippingComponent implements OnInit {
     const customerId = this.baseStorage.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
     this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`).subscribe((res) => {
         this.customerEmail = res.email;
-        console.log(this.customerEmail);
       },
       (err) => {
         console.log(err);

@@ -30,7 +30,6 @@ export class CustomersComponent implements OnInit {
   ngOnInit() {
     this.customersService.getAllCustomers().subscribe((data: CustomerModel[]) => {
       this.customersList = data;
-      console.log('from ts', this.customersList);
     });
 
     this.customersForm = this.fb.group({
@@ -86,7 +85,6 @@ export class CustomersComponent implements OnInit {
   openDelete(cid) {
     this.deleteModal = true;
     this.customerId = cid;
-    console.log(this.customerId);
   }
 
   transformCity(addresses: any) {

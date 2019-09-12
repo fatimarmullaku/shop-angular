@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.topSold.getTopSoldProducts(4).subscribe(data => {
       this.top4 = data;
-      console.log(data);
     });
     this.informationForm = this.formBuilder.group({
       phoneNumber: new FormControl('', Validators.required),

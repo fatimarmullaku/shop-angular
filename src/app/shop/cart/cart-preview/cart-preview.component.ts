@@ -41,7 +41,6 @@ export class CartPreviewComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.productService.getProducts();
-    console.log('this is the list of products on cart-preview: ', this.productService.getProducts());
     this.cartProducts = this.cartService.getProductsFromCart();
 
     this.loginForm = this.formBuilder.group({

@@ -18,17 +18,14 @@ export class BrandsService {
   }
 
   registerBrand(data) {
-    console.log('from service', data);
     return this.http.post(this.rootUrl, data);
   }
 
   deleteBrand(id) {
-    console.log('from service', id);
     return this.http.delete(this.rootUrl + id);
   }
 
   updateBrand(data, bid) {
-    console.log('from service', data, bid);
     return this.http.put(this.rootUrl + bid, data);
 
   }
