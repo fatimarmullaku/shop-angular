@@ -61,11 +61,12 @@
   padding-bottom: 30px;
   background-color: #181818;
 
-  .radio-buttons{
+  .radio-buttons {
     margin-top: 20px;
     margin-bottom: -40px;
   }
 }
+
 .slider__nav {
   width: 12px;
   height: 12px;
@@ -80,21 +81,27 @@
   appearance: none;
   backface-visibility: hidden;
 }
+
 .slider__nav:checked {
   animation: check 0.4s linear forwards;
 }
+
 .slider__nav:checked:nth-of-type(1) ~ .slider__inner {
   left: 0%;
 }
+
 .slider__nav:checked:nth-of-type(2) ~ .slider__inner {
   left: -100%;
 }
+
 .slider__nav:checked:nth-of-type(3) ~ .slider__inner {
   left: -200%;
 }
+
 .slider__nav:checked:nth-of-type(4) ~ .slider__inner {
   left: -300%;
 }
+
 .slider__inner {
   position: absolute;
   top: 0;
@@ -105,6 +112,7 @@
   display: flex;
   flex-flow: row nowrap;
 }
+
 .slider__contents {
   padding-top: -30px;
   height: 100%;
@@ -117,10 +125,11 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  .partner-container{
+
+  .partner-container {
     margin: 10px;
 
-    .item-carousel{
+    .item-carousel {
       width: 100px !important;
       height: 100px !important;
       border: 1px solid black;
@@ -128,10 +137,12 @@
     }
   }
 }
+
 .slider__image {
   font-size: 3.7rem;
   color: white;
 }
+
 .slider__caption {
   font-size: 30px;
   font-weight: 500;
@@ -141,6 +152,7 @@
   text-transform: uppercase;
   color: #FF5A09;
 }
+
 .slider__txt {
   color: #999;
   font-size: 20px;
@@ -171,10 +183,10 @@
 }
 
 
-
 .cards {
   display: flex;
 }
+
 .card {
   background: white;
   border-radius: 9px;
@@ -185,12 +197,15 @@
   box-shadow: 3px 3px 12px 2px rgba(black, 0.6);
   transition: 0.2s;
 }
+
 .card:not(:first-child) {
   margin-left: -2rem;
 }
+
 .card:not(:last-child):hover,
 .card:not(:last-child):focus-within {
   transform: translateY(-1rem);
+
   ~ .card {
     transform: translateX(2rem);
   }
@@ -200,29 +215,33 @@
 //
 //
 
-.parenti{
+.parenti {
   height: 400px;
   padding: 0 20px;
   margin-bottom: 20px;
   margin-left: 40px;
-  h1{
+
+  h1 {
     font-size: 80px;
     color: orange;
     font-family: Bahnschrift;
     text-shadow: 2px 2px 4px #000000;
   }
-  div.card{
+
+  div.card {
     padding: 0px;
-    img{
+
+    img {
       border-radius: 8px;
     }
-    &:hover{
+
+    &:hover {
       cursor: pointer;
     }
   }
 }
 
-.buy-from-home{
+.buy-from-home {
   width: 100%;
   background-color: #FF5A09;
   color: black;
@@ -247,11 +266,11 @@
 //
 
 
-
-
-
-
-div.item-carousel{
+div.item-carousel {
   height: 100px;
   width: 100px;
+  //background-image: url('src/assets/img/2k-logo.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
