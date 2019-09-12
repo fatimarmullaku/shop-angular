@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {OrdersService} from '../../../admin/orders/orders.service';
+import {Component, OnInit} from '@angular/core';
 import {PaginationService} from '../../../shared/pagination/pagination.service';
-import {OrderHistoryPagedModel, OrderModel} from '../../../admin/orders/orders.model';
+import {OrderHistoryPagedModel} from '../../../admin/orders/orders.model';
 import {OrderService} from '../../../shared/services/order.service';
 
 @Component({

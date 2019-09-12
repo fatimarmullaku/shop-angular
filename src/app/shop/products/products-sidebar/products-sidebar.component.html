@@ -7,7 +7,7 @@
     </mat-expansion-panel-header>
     <div class="contentt">
       <ul class="game-list">
-        <li *ngFor="let b of brandsList " class="game-item">
+        <li *ngFor="let b of brandsList " class="game-item sel-box">
           <input (change)="selectedBrand(b.id)" type="checkbox"
                  value="{{b.id}}"/>
           <span class="game-textt">{{b.name}}</span>
