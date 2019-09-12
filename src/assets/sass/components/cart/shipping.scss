@@ -61,7 +61,7 @@ label.checkout-label {
 
 .shipping-form-container {
   height: 100%;
-  margin-left: 40px;
+  margin-left: 5px;
   padding: 1vh;
   a {
     word-break: break-all;
@@ -175,6 +175,14 @@ label.checkout-label {
     #title {
       color: orange;
     }
+  }
+
+  h1 {
+    color: white;
+  }
+
+  p {
+    color: white ;
   }
 
   .customer-email {
