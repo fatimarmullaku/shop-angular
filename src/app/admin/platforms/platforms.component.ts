@@ -36,7 +36,6 @@ export class PlatformsComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: [''],
       name: [''],
-      recordStatus: [''],
       createDateTime: [''],
       updateDateTime: [''],
       deletedDateTime: [''],
@@ -46,7 +45,6 @@ export class PlatformsComponent implements OnInit {
 
     this.updateForm = this.formBuilder.group({
       name: [''],
-      recordStatus: [''],
       updateDateTime: [],
       deletedDateTime: [],
       description: [''],
