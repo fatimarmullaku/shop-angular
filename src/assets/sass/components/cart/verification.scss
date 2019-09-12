@@ -4,7 +4,7 @@
 
 .shipping-infos {
   margin-left: 3px;
-  border-top: 1px solid map_get($ucx-colors, deep-orange);
+  border-top: 1px solid white;
   padding: 40px;
 
   .shipping-total {
@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: center;
   padding-left: 5px;
-  border: 1px solid map_get($ucx-colors, deep-orange);
+  border: 1px solid white;
   padding: 40px 23px;
 
   .shipping-total {
