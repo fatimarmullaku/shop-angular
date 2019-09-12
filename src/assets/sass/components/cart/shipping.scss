@@ -111,6 +111,20 @@ label.checkout-label {
     background-color: #1f2833;
     border-color: #FF5A09;
     color: #ffffff;
+    min-width: 100px;
+    &:hover {
+      background-color:#FF5A09 ;
+      color: black;
+      border: transparent;
+    }
+  }
+  .previous-button {
+    min-width: 100px;
+    &:hover {
+      background-color:#FF5A09  ;
+      color: black;
+      border: transparent;
+    }
   }
 }
 
