@@ -8,7 +8,7 @@
   padding: 20px 50px;
   border: 1px solid orange;
   border-radius: 4px;
-  background: repeating-linear-gradient(45deg, rgb(45, 11, 30) 0%, rgb(45, 11, 30) 49%,rgb(78, 19, 25) 49%, rgb(78, 19, 25) 67%,rgb(111, 27, 19) 67%, rgb(111, 27, 19) 76%,rgb(143, 36, 14) 76%, rgb(143, 36, 14) 81%,rgb(176, 44, 8) 81%, rgb(176, 44, 8) 82%,rgb(209, 52, 3) 82%, rgb(209, 52, 3) 100%);
+  background-color: map-get($ucx-colors, dark);
 
 }
 .additional-information-wrap {
@@ -73,4 +73,8 @@
     background: map_get($ucx-colors,deep-orange);
     color: white;
   }
+}
+
+.additional-information-button-group{
+  padding-bottom: 30px;
 }
