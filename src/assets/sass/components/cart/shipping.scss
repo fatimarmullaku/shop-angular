@@ -99,6 +99,11 @@ label.checkout-label {
   }
 }
 
+
+#title-steam {
+  color: map_get($ucx-colors, deep-orange) ;
+}
+
 .shipping-nav-buttons {
   a {
     background-color: #1f2833;
