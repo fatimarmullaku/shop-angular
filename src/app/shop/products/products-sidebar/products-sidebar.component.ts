@@ -66,8 +66,6 @@ export class ProductsSidebarComponent implements OnInit {
     this.paginationService.currentPage.subscribe(res => {
       this.currentPageNumber = res;
     });
-
-
   }
 
   getProductsByPrice(event: any) {
@@ -99,7 +97,6 @@ export class ProductsSidebarComponent implements OnInit {
     } else {
       this.selectedBrandd = this.selectedBrandd.filter(current => current !== +option);
     }
-
     this.getProducts();
   }
 

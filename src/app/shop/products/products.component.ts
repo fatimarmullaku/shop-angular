@@ -56,7 +56,7 @@ export class ProductsComponent implements OnInit {
     this.paginationService.currentPage.subscribe(currentPage => {
       this.currentPage = currentPage;
       this.setRequestAditionalPropertiesAndMakeRequest(this.currentPage - 1, this.pageSize, this.searchText, this.temporaryEventState);
-
+  // here
     });
 
   }
@@ -65,6 +65,8 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProductBySelectedPrice(event).subscribe((response: PaginationModel<ProductModel>) => {
       this.products = response.content;
       this.paginationService.changeTotalPages(response.totalPages);
+      this.router.navigate(['/'], { queryParams: {page:this.currentPage} });
+
     });
   }
 
