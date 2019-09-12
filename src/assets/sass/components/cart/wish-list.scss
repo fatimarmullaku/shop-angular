@@ -43,6 +43,9 @@
     font-weight: 10;
     color: map_get($ucx-colors, deep-orange);
   }
+  h1.wl-price{
+    color: white;
+  }
 
   @include mobile {
     img {

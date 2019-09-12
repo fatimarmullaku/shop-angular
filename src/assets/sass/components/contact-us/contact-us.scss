@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
-.contact-us-screen{
-  height: calc(100vh + 80px);
-  .contact-us-wrapper{
 
-    .test{
+.contact-us-screen {
+  height: 75vh;
+
+  .contact-us-wrapper {
+
+    .test {
       //padding-left: 400px;
       text-align: center;
-      h3{
+
+      h3 {
         overflow: hidden; /* Ensures the content is not revealed until the animation */
-        font-size: 40px;
+        font-family: $titleFont;
+        text-transform: uppercase;
+        font-size: 2.2rem;
+        font-weight: 500;
         margin-bottom: 25px;
         color: map-get($ucx-colors, deep-orange);
         //white-space: nowrap; /* Keeps the content on a single line */
@@ -16,10 +22,11 @@
         //  typing 7s infinite,
         //  blink-caret .7s infinite;
 
-        hr{
+        hr {
 
         }
       }
+
       //
       ///* The typing effect */
       //@keyframes typing {
@@ -63,57 +70,63 @@
       //}
     }
 
-    .most-sold-wrapper{
+    .most-sold-wrapper {
       position: relative;
     }
 
-    .icon-container{
+    .icon-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      i{
+
+      i {
         font-size: 250px;
         color: white;
       }
     }
 
-    .contact-form{
-      padding: 30px 50px;
+    .contact-form {
+      margin: 30px 50px;
+      padding-top: 50px;
+      width: 70%;
+      margin: 0 auto;
+      border-top: 1px solid map-get($ucx-colors, deep-orange);
 
-      .input{
+      .input {
         width: 100%;
         //border-color: map-get($ucx-colors, deep-orange);
         //color: map-get($ucx-colors, light-gray);
       }
 
-      textarea{
+      textarea {
         height: 10em;
       }
 
-      .label{
+      .label {
         //color: map-get($ucx-colors, light-gray);
         font-size: 15px;
         margin-top: 10px;
       }
     }
 
-    .contact-us-info{
+    .contact-us-info {
       color: map-get($ucx-colors, light-gray);
       padding: 20px;
       text-align: center;
-      h3{
+
+      h3 {
         font-weight: bold;
-        margin-top:40px;
+        margin-top: 40px;
         font-size: 30px;
       }
 
-      h4{
+      h4 {
         font-weight: bold;
         margin-top: 15px;
         font-size: 20px;
       }
 
-      p{
+      p {
         margin-top: 10px;
         font-size: 15px;
       }

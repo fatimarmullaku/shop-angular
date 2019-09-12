@@ -7,13 +7,13 @@
 
   <form [formGroup]="loginForm" (submit)="onLoginFormSubmit()">
     <div class="field">
-      <div class="control">
+      <div class="control-log">
         <input type="text" [formControlName]="'email'" class="input auth-input" placeholder="Username or Email">
       </div>
     </div>
 
     <div class="field">
-      <div class="control">
+      <div class="control-log">
         <input type="password" [formControlName]="'password'" class="input auth-input" placeholder="Password">
       </div>
     </div>

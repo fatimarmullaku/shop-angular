@@ -1,5 +1,9 @@
 a.dropdown-item.is-active {
   background-color: #272424;
+  @include mobile {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(225deg, #2d0b1e 0%, #2d0b1e 39%, #4e1319 35%, #4e1319 49%, #6f1b13 44%, #6f1b13 58%, #8f240e 54%, #8f240e 68%, #b02c08 67%, #b02c08 78%, #d13403 68%, #d13403 100%);
+  }
 }
 
 .log-out-button {
@@ -69,7 +73,7 @@ a.dropdown-item.is-active {
       margin-right: 20px;
       margin-top: 20px;
 
-      .customer-name{
+      .customer-name {
         color: white;
       }
 
@@ -172,16 +176,53 @@ a.dropdown-item.is-active {
       }
       @include mobile {
         margin-top: -20px;
+        display: block;
+        background: #000000; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #434343, #000000); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-bottom: 2px solid ghostwhite;
       }
 
-      .navbar-dropdown a {
-        color: black;
+
+      .customer-options {
+        @include mobile {
+          .fa-home,
+          .fa-heart,
+          .fa-envelope-square,
+          .fa-user,
+          .fa-sign-out-alt,
+          .fa-gamepad,
+          .fa-user-plus,
+          .fa-sign-in-alt {
+            color: white;
+            padding: 10px;
+          }
+        }
+      }
+
+      a.customer-name {
+        @include mobile {
+          color: white;
+          font-size: 16px;
+          padding: 8px 8px 8px 12px;
+          text-align: center;
+        }
+      }
+
+      a.sign-up-button, .wishlist {
+        @include mobile {
+          font-size: 16px;
+          padding: 8px 8px 8px 12px;
+          text-align: center;
+        }
       }
 
       a {
         color: white;
         @include mobile {
-          color: black;
+          color: white;
+          padding-right: 8px;
+          text-align: center;
         }
         padding-right: 80px;
         border: 3px solid transparent;
@@ -189,7 +230,7 @@ a.dropdown-item.is-active {
         &:hover {
           background: none;
           text-decoration: none;
-          color: map-get($ucx-colors, deep-orange);
+          //color: map-get($ucx-colors, deep-orange);
         }
       }
 

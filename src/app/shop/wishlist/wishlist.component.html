@@ -11,7 +11,7 @@
         </div>
         <br>
         <div class="wishlist-button-container">
-          <h1>Price: {{item.product.unitPrice}} $</h1>
+          <h1 class="wl-price">Price: ${{item.product.unitPrice}}</h1>
           <button class="wishlist-button" (click)="addToCart(item.product,$event)">Add to cart</button>
           <br>
           <button class="wishlist-button is-hidden-desktop" >Remove</button>

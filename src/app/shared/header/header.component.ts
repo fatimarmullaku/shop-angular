@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   cartQty = 0;
   opened = false;
   status2 = false;
+  status3 = false;
   customerName: string;
 
   constructor(private userService: UserService,
@@ -72,6 +73,10 @@ export class HeaderComponent implements OnInit {
     this.status2 = !this.status2;
   }
 
+  onHamburgerclick() {
+    this.status3 = !this.status3;
+  }
+
   isLoggedIn(): boolean {
     const element = this.storageService.get(LocalStorageKey.ACCESS_TOKEN);
     let isLogedIn = false;
@@ -86,7 +91,7 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchCustomer(): void {
-    if(this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID) != null) {
+    if (this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID) != null) {
       const customerId = this.baseStorageService.getStorageOf(LocalStorageKey.CUSTOMER_ID, true);
       if (customerId && customerId.length > 0) {
         this.restService.request<any>(HttpRequestMethod.GET, ENDPOINTS.customers.getAll + `/${customerId}`)
@@ -100,5 +105,4 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
-
 }
