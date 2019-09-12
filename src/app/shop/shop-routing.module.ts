@@ -40,7 +40,6 @@ const routes: Routes = [
   {
     path: 'games',
     component: ProductsComponent,
-    pathMatch: 'full'
   },
   {
     path: 'games/:id',

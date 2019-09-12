@@ -19,7 +19,7 @@
         <i (click)="removeFromWishlist()" *ngIf="item.isWishlisted" class='fas fa-heart'></i>
       </div>
       <div class="column is-8-desktop has-text-right-desktop is-8-mobile has-text-right-mobile buy-now-div">
-        <a (click)="addToCart($event)" [routerLink]="['cart']" class="button buy-now">Buy Now</a>
+        <a (click)="addToCart($event)" [routerLink]="['/cart']" class="button buy-now">Buy Now</a>
       </div>
     </div>
   </div>
