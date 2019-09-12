@@ -5,6 +5,6 @@ export class PlatformsModel {
   createDateTime: Date;
   updateDateTime: Date;
   deletedDateTime: Date;
-  description: string;
+  comment: string;
   version: number;
 }

@@ -34,9 +34,8 @@ export class BrandsComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-
       name: [''],
-      description: [''],
+      comment: [''],
     });
 
     this.updateForm = this.formBuilder.group({
@@ -44,7 +43,7 @@ export class BrandsComponent implements OnInit {
       recordStatus: [''],
       updateDateTime: [],
       deletedDateTime: [],
-      description: [''],
+      comment: [''],
       version: [],
     });
   }
@@ -108,7 +107,7 @@ export class BrandsComponent implements OnInit {
     recordStatus,
     updateDateTime,
     deletedDateTime,
-    description,
+    comment,
     version: number) {
     this.bid = id;
     this.updateModal = true;
@@ -116,7 +115,7 @@ export class BrandsComponent implements OnInit {
     this.updateForm.controls.recordStatus.setValue(recordStatus);
     this.updateForm.controls.updateDateTime.setValue(updateDateTime);
     this.updateForm.controls.deletedDateTime.setValue(deletedDateTime);
-    this.updateForm.controls.description.setValue(description);
+    this.updateForm.controls.comment.setValue(comment);
     this.updateForm.controls.version.setValue(version);
 
   }
